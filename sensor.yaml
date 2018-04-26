@@ -1,0 +1,87 @@
+  - platform: moon
+  - platform: wunderground
+    api_key: 4ed3ddf36c8a734e
+    monitored_conditions:
+      - weather_1d_metric
+      - weather_1n_metric
+      - weather_2d_metric
+      - weather_2n_metric
+      - weather_3d_metric
+      - weather_3n_metric
+      - weather_4d_metric
+      - weather_4n_metric
+      - temp_c
+      - feelslike_c
+  - platform: template
+    sensors:
+      bedroom_wireless_switch_battery:
+        friendly_name: 'Bedroom Wireless Switch'
+        value_template: '{{ states.binary_sensor.wall_switch_158d0001830c7c.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      button_switch_battery:
+        friendly_name: 'Button Switch'
+        value_template: '{{ states.binary_sensor.switch_158d00018721c6.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      cube_battery:
+        friendly_name: 'Cube'
+        value_template: '{{ states.binary_sensor.cube_158d000103a8a5.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      frontdoor_battery:
+        friendly_name: 'Front Door Sensor'
+        value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e1738.attributes.battery_level}}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      hall_motion_battery:
+        friendly_name: 'Hall Motion Sensor'
+        value_template: '{{ states.binary_sensor.motion_sensor_158d0001655f53.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      hall_wireless_switch_battery:
+        friendly_name: 'Hall Wireless Switch'
+        value_template: '{{ states.binary_sensor.wall_switch_both_158d00017110b8.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      temperaure__sensor_battery:
+        friendly_name: 'Temperature Sensor'
+        value_template: '{{ states.sensor.humidity_158d0001b9205b.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      landing_motion_battery:
+        friendly_name: 'Landing Motion Sensor'
+        value_template: '{{ states.binary_sensor.motion_sensor_158d000187392e.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      kitchen_leak_battery:
+        friendly_name: 'Kitchen Leak Sensor'
+        value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      outside_motion_sensor_battery:
+        friendly_name: 'Outside Motion Sensor'
+        value_template: '{{ states.sensor.illumination_158d0001e43e18.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      patio_door_sensor_battery:
+        friendly_name: 'Patio Door Sensor'
+        value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e18bf.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      utility_leak_sensor_battery:
+        friendly_name: 'Utility Leak Sensor'
+        value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c347c9.attributes.battery_level }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: memory_use
+      - type: swap_use
+      - type: swap_free
+      - type: processor_use
+      - type: last_boot
+      - type: since_last_boot
+      

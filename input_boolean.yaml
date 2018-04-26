@@ -1,0 +1,4 @@
+  cube_state:
+    name: Cube State
+    initial: off
+    icon: mdi:cube

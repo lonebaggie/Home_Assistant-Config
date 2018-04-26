@@ -1,0 +1,37 @@
+'1518793254257':
+  alias: Bright
+  sequence:
+  - data:
+      entity_id: input_select.light_state
+      option: Bright
+    service: input_select.select_option
+'1518793291456':
+  alias: Dark
+  sequence:
+  - data:
+      entity_id: input_select.light_state
+      option: Dark
+    service: input_select.select_option
+'1518793331701':
+  alias: Relaxed
+  sequence:
+  - data:
+      entity_id: input_select.light_state
+      option: Relaxed
+    service: input_select.select_option
+'1518797549730':
+  alias: Media Reset
+  sequence:
+  - data:
+      entity_id: media_player.lg_tv_remote
+    service: media_player.turn_off
+  - data:
+      entity_id: media_player.gigablue
+    service: media_player.turn_off
+'1524130899065':
+  alias: 'Turn off Hall Toilet Light '
+  sequence:
+  - delay: '''00:10:00'''
+  - data:
+      entity_id: switch.wall_switch_158d00016cefdb
+    service: switch.turn_off

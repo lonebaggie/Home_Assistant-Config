@@ -1,0 +1,11 @@
+  - platform: lg_netcast
+    host: 192.168.1.89
+    access_token: 292855
+    icon: mdi:monitor
+  - platform: roku
+    host: 192.168.1.9
+    icon: mdi:monitor
+  - platform: enigma
+    host: 192.168.1.91
+    name: GigaBlue
+    icon: mdi:satellite-variant

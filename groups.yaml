@@ -1,0 +1,351 @@
+# Views
+#======
+#
+  default_view:
+    view: yes
+    icon: mdi:home 
+    entities:
+      - group.gtemperature
+      - group.gforcast
+      - group.ghouse
+      - group.gdownstairs
+      - group.gathome
+      - group.gupstairs
+  things:
+    name: Things
+    view: yes
+    icon: mdi:wrench
+    entities:
+      - group.gsensors
+  System:
+    name: Raspberry PI System
+    view: yes
+    icon: mdi:desktop-classic
+    entities:
+      - group.gsystem
+  battery:
+    name: Battery Level
+    view: yes
+    icon: mdi:battery
+    entities:
+      - group.gbattery
+  weather:
+    name: Weather
+    view: yes
+    icon: mdi:weather-cloudy
+    entities:
+      - group.gforcast1
+      - group.gtemperature
+      - group.gsunmoon
+  livingroom:
+    name: Living Room
+    view: yes
+    icon: mdi:sofa
+    control: hidden
+    entities:
+      - group.glivingroom
+      - group.glivingroommedia
+      - group.ggateway
+  kitchen:
+    name: Kitchen
+    view: yes
+    icon: mdi:food-variant
+    entities:
+      - group.gkitchen 
+  utility:
+    name: Utility
+    view: yes
+    icon: mdi:washing-machine
+    entities:
+      - group.gutil
+  hall:
+    name: Hall
+    view: yes
+    icon: mdi:clock
+    entities:
+      - group.ghallway
+  frontroom:
+    name: Front Room
+    view: yes
+    icon: mdi:sofa
+    entities:
+      - group.gfrontroom
+  outside:
+    name: Outside
+    view: yes
+    icon: mdi:flower
+    entities:
+      - group.goutside
+  landing:
+    name: Landing
+    view: yes
+    icon: mdi:glassdoor
+    entities:
+      - group.glanding
+  bathroom:
+    name: Bathroom
+    view: yes
+    icon: mdi:human-male-female
+    entities:
+      - group.gbathroom
+  masterbedroom:
+    name: Master Bedroom
+    view: yes
+    icon: mdi:hotel
+    entities:
+      - group.gmasterbedroom
+  study:
+    name: Study
+    view: yes
+    icon: mdi:book-open-variant
+    entities:
+      - group.gstudy
+  franroom:
+    name: Francis's Room
+    view: yes
+    icon: mdi:hotel
+    entities:
+      - group.gfranroom
+  maddyroom:
+    name: Madeline's Room
+    view: yes
+    icon: mdi:hotel
+    entities:
+      - group.gmaddyroom
+# Groups
+# ======
+#
+  gupstairs:
+    name: Upstairs Lights
+    view: false
+    icon: mdi:lightbulb-outline
+    entities:
+      - switch.wall_switch_158d0001a2424b
+      - switch.wall_switch_158d00016cf458
+      - switch.wall_switch_158d0001a68cf6
+      - switch.wall_switch_158d000159aa50
+      - switch.wall_switch_left_158d0001a6596b
+      - switch.wall_switch_left_158d0001660d34
+      - switch.wall_switch_right_158d0001a21f31
+  gdownstairs:
+    name: Downstairs Lights
+    view: false
+    icon: mdi:lightbulb-outline
+    entities:
+      - light.livingroom_light
+      - switch.wall_switch_158d0001614701
+      - light.gateway_light_34ce0081452d
+      - switch.wall_switch_158d000159a94f 
+      - switch.wall_switch_158d0001a68d54
+      - switch.wall_switch_left_158d0001a21f31
+      - switch.wall_switch_158d00016cefdb
+      - switch.wall_switch_158d0001828c33
+  gfans:
+    name: Fans
+    view: false
+    entities:
+      - switch.wall_switch_right_158d0001a6596b
+      - switch.wall_switch_right_158d0001660d34 
+  gsensors:
+    name: Sensors
+    view: false
+    control: hidden
+    entities:
+      - binary_sensor.motion_sensor_158d0001655f53
+      - binary_sensor.motion_sensor_158d000187392e
+      - binary_sensor.motion_sensor_158d0001e43e18
+      - binary_sensor.water_leak_sensor_158d0001c3472b
+      - binary_sensor.water_leak_sensor_158d0001c347c9
+  gbattery:
+    name: Battery Level
+    view: false
+    icon: mdi:battery
+    entities:
+      - sensor.bedroom_wireless_switch_battery
+      - sensor.button_switch_battery
+      - sensor.cube_battery
+      - sensor.frontdoor_battery
+      - sensor.landing_motion_battery
+      - sensor.hall_motion_battery
+      - sensor.hall_wireless_switch_battery
+      - sensor.kitchen_leak_battery
+      - sensor.outside_motion_sensor_battery
+      - sensor.patio_door_sensor_battery
+      - sensor.temperaure__sensor_battery
+      - sensor.utility_leak_sensor_battery
+  gsystem:
+    name: Raspberry Pi System
+    view: false
+    icon: mdi:desktop-classic
+    entities:
+      - sensor.processor_use
+      - sensor.memory_free
+      - sensor.memory_use
+      - sensor.disk_use_percent_home
+      - sensor.since_last_boot
+      - sensor.last_boot
+      
+  ghouse:
+    name: House
+    view: false
+    icon: mdi:home
+    entities:
+      - group.gdownstairs
+      - group.gupstairs
+  gforcast:
+    name: Weather
+    view: false
+    icon: mdi:weather-cloudy
+    entities:
+      - sensor.pws_weather_2d_metric
+      - sensor.pws_weather_2n_metric
+  gforcast1:
+    name: Weather
+    view: false
+    icon: mdi:weather-cloudy
+    entities:
+      - sensor.pws_weather_1d_metric
+      - sensor.pws_weather_1n_metric
+      - sensor.pws_weather_2d_metric
+      - sensor.pws_weather_2n_metric
+      - sensor.pws_weather_3d_metric
+      - sensor.pws_weather_3n_metric
+      - sensor.pws_weather_4d_metric
+      - sensor.pws_weather_4n_metric
+      - sensor.pws_weather_5d_metric
+      - sensor.pws_weather_5n_metric
+  gsunmoon:
+    name: Sun & Moon
+    view: false
+    entities:
+      - sun.sun
+      - sensor.moon
+  gathome:
+    name: At Home
+    view: false
+    entities:
+      - device_tracker.android6c7f7b0a01e8c5c2
+      - device_tracker.windowsphone
+      - device_tracker.simonsiphone
+  gtemperature:
+    name: Temperature
+    view: false
+    entities:
+      - sensor.temperature_158d0001b9205b
+      - sensor.pws_temp_c
+      - sensor.pws_feelslike_c
+  ggateway:
+    name: Xiaomi Gateway
+    view: false
+    entities:
+      - light.gateway_light_34ce0081452d
+      - sensor.illumination_34ce0081452d
+      - sensor.humidity_158d0001b9205b
+      - sensor.pressure_158d0001b9205b
+      - sensor.temperature_158d0001b9205b
+  glivingroom:
+    name: Living Room
+    view: false
+    control: hidden
+    entities:
+      - light.livingroom_light
+      - input_select.light_state
+      - binary_sensor.door_window_sensor_158d00019e18bf
+      - remote.harmony_hub
+      - sensor.humidity_158d0001b9205b
+      - sensor.pressure_158d0001b9205b
+      - sensor.temperature_158d0001b9205b
+      - binary_sensor.cube_158d000103a8a5 
+  glivingroommedia:
+    name: Living Room Media
+    view: false
+    entities:
+      - media_player.gigablue
+      - media_player.lg_tv_remote
+      - media_player.living_room
+  ghallway:
+    name: Hallway
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_left_158d0001a21f31
+      - binary_sensor.door_window_sensor_158d00019e1738
+      - binary_sensor.motion_sensor_158d0001655f53
+      - switch.wall_switch_158d00016cefdb 
+  gfrontroom:
+    name: Front Room
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d0001828c33
+  goutside:
+    name: Outside
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d0001614701
+      - sensor.illumination_158d0001e43e18
+      - binary_sensor.motion_sensor_158d0001e43e18
+      - sensor.pws_temp_c 
+  glanding:
+    name: Landing
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_right_158d0001a21f31
+      - binary_sensor.motion_sensor_158d000187392e
+  gkitchen:
+    name: Kitchen
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d000159a94f
+      - binary_sensor.water_leak_sensor_158d0001c3472b
+  gutil:
+    name: Utility
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d0001a68d54
+      - binary_sensor.water_leak_sensor_158d0001c347c9
+  gbathroom:
+    name: Bathroom
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_left_158d0001660d34
+      - switch.wall_switch_right_158d0001660d34
+  gmasterbedroom:
+    name: Master Bedroom
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d000159aa50 
+      - switch.wall_switch_left_158d0001a6596b
+      - switch.wall_switch_right_158d0001a6596b
+  gstudy:
+    name: Study
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d0001a68cf6
+  gfranroom:
+    name: Francis's Room
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d00016cf458
+  gmaddyroom:
+    name: Madeline's Room
+    view: false
+    control: hidden
+    entities:
+      - switch.wall_switch_158d0001a2424b
+
+
+
+
+      
+
+
+ 

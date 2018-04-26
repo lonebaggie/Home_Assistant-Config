@@ -1,0 +1,9 @@
+*
+!*.yaml
+!scenes
+!automations
+!appdaemon
+!custom_components
+!.gitignore
+secrets.yaml
+known_devices.yaml

@@ -1,0 +1,20 @@
+  light_state:
+    name: Living Room Light State
+    options:
+     - "Off"
+     - Dark
+     - Relaxed
+     - Bright
+    initial: "Off"
+    icon: mdi:lightbulb
+  living_room_harmony:
+    name: Living Room Harmony
+    options:
+      - Powered Off
+      - Sony
+      - Roku
+      - TV
+      - BluRay
+    initial: Powered Off
+    icon: mdi:monitor
+

@@ -1,0 +1,109 @@
+switch.wall_switch_158d000159a94f:
+  emulated_hue_name: Kitchen Light
+  friendly_name: Kitchen Switch
+  icon: mdi:power
+switch.wall_switch_left_158d0001660d34:
+  battery_level: 100
+  emulated_hue_name: Bathroom Light
+  friendly_name: Bathroom Switch
+  icon: mdi:power
+switch.wall_switch_right_158d0001660d34:
+  friendly_name: Bathroom Fan
+  icon: mdi:fan
+switch.wall_switch_left_158d0001a21f31:
+  emulated_hue_name: Hall Light
+  friendly_name: Hall Switch
+  icon: mdi:power
+switch.wall_switch_right_158d0001a21f31:
+  emulated_hue_name: Landing Light
+  friendly_name: Landing Switch
+  icon: mdi:power
+switch.wall_switch_left_158d0001a6596b:
+  emulated_hue_name: En-suite Light
+  friendly_name: En-suite Switch
+  icon: mdi:power
+switch.wall_switch_right_158d0001a6596b:
+  friendly_name: On-Suite Fan
+  icon: mdi:fan
+switch.wall_switch_158d0001828c33:
+  emulated_hue_name: Front Room Light
+  friendly_name: Front Room Switch
+  icon: mdi:power
+switch.wall_switch_158d00016cefdb:
+  emulated_hue_name: Hall  Toilet Light
+  friendly_name: Hall  Toilet Switch
+  icon: mdi:power
+switch.wall_switch_158d0001614701:
+  emulated_hue_name: Outside Light
+  friendly_name: Outside Switch
+  icon: mdi:power
+switch.wall_switch_158d0001a68cf6:
+  emulated_hue_name: Study Light
+  friendly_name: Study Switch
+  icon: mdi:power
+switch.wall_switch_158d0001a68d54:
+  emulated_hue_name: Utility Light
+  friendly_name: Utility Switch
+  icon: mdi:power
+switch.wall_switch_158d00016cf458:
+  emulated_hue_name: Francis  Light
+  friendly_name: Francis  Switch
+  icon: mdi:power
+switch.wall_switch_158d000159aa50:
+  emulated_hue_name: Master Bedroom Light
+  friendly_name: Master Bedroom Switch
+  icon: mdi:power
+switch.wall_switch_158d0001a2424b:
+  emulated_hue_name: Maddy Light
+  friendly_name: Maddy Switch
+  icon: mdi:power
+light.gateway_light_34ce0081452d:
+  friendly_name: Gateway Light
+media_player.living_room:
+  friendly_name: Roku
+binary_sensor.cube_158d000103a8a5:
+  friendly_name: Cube
+  icon: mdi:cube
+binary_sensor.door_window_sensor_158d00019e1738:
+  friendly_name: Front door
+binary_sensor.door_window_sensor_158d00019e18bf:
+  friendly_name: Patio door
+binary_sensor.motion_sensor_158d0001e43e18:
+  friendly_name: Outside motion sensor
+sensor.illumination_158d0001e43e18:
+  friendly_name: Outside light sensor
+sensor.illumination_34ce0081452d:
+  friendly_name: Gateway light sensor
+sensor.humidity_158d0001b9205b:
+  friendly_name: Humidity
+  icon: mdi:weather-cloudy
+sensor.pressure_158d0001b9205b:
+  friendly_name: Pressure
+sensor.temperature_158d0001b9205b:
+  friendly_name: Inside Temperature
+  icon: mdi:oil-temperature
+binary_sensor.motion_sensor_158d0001655f53:
+  friendly_name: Hall motion sensor
+binary_sensor.motion_sensor_158d000187392e:
+  friendly_name: Landing motion sensor
+binary_sensor.switch_158d00018721c6:
+  friendly_name: Button Switch
+binary_sensor.wall_switch_both_158d00017110b8:
+  friendly_name: Hall Wireless Switch (both)
+binary_sensor.wall_switch_left_158d00017110b8:
+  friendly_name: Hall Wireless Switch (Landing)
+binary_sensor.wall_switch_right_158d00017110b8:
+  friendly_name: Hall Wireless Switch (Hall)
+binary_sensor.wall_switch_158d0001830c7c:
+  friendly_name: Bedroom Wireless Switch
+light.livingroom_light:
+  emulated_hue_name: Living Room Light
+  friendly_name: Living Room Light
+group.dstoilet:
+  friendly_name: Hall Toilet
+sensor.pws_temp_c:
+  friendly_name: Outside Temperature
+sensor.pws_feelslike_c:
+  friendly_name: Feels Like
+device_tracker.simonsiphone:
+  friendly_name: Simon Phone
