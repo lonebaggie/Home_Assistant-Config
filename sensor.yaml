@@ -1,6 +1,6 @@
   - platform: moon
   - platform: wunderground
-    api_key: 4ed3ddf36c8a734e
+    api_key: !secret wg_key
     monitored_conditions:
       - weather_1d_metric
       - weather_1n_metric
@@ -74,6 +74,7 @@
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c347c9.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
+  - platform: systemmonitor
     resources:
       - type: disk_use_percent
         arg: /home
