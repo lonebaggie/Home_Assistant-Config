@@ -98,13 +98,9 @@ xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_key
-rflink:
-  port: /dev/ttyUSB0
-#logger:
-#  default: error
-#  logs:
-#    rflink: debug
-#    homeassistant.components.rflink: debug
+tradfri:
+  host: 192.168.1.88
+  allow_tradfri_groups: false
 device_tracker: 
   - platform: asuswrt
     host: 192.168.1.1
@@ -114,18 +110,10 @@ device_tracker:
     interval_seconds: 5
     consider_home: 180
     track_new_devices: yes    
-# Emulated hue to allow Harmoney romote to control lights
-emulated_hue:
-  expose_by_default: false
-  entities:
-    light.livingroom_light:
-      name: "LivingRoom Light"
-      hidden: false
+
 ifttt:
   key: !secret ifttt_key
-  
-      
- 
+
 
 
 

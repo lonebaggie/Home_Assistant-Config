@@ -5,7 +5,3 @@
   - platform: roku
     host: 192.168.1.9
     icon: mdi:monitor
-  - platform: enigma
-    host: 192.168.1.91
-    name: GigaBlue
-    icon: mdi:satellite-variant

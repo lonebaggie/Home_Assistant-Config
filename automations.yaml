@@ -1,58 +1,145 @@
-- action:
-  - data:
-      brightness: 254
-      entity_id: light.livingroom_light
-    service: light.turn_on
+- id: '1523967039617'
   alias: Set Bright
-  condition: []
-  id: '1523967039617'
   trigger:
   - entity_id: input_select.light_state
     platform: state
     to: Bright
-- action:
-  - data:
-      brightness: 60
-      entity_id: light.livingroom_light
-    service: light.turn_on
-  alias: Set Dark
   condition: []
-  id: '1523967151515'
+  action:
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.living_room_1
+    service: light.turn_on
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.living_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.living_room_3
+    service: light.turn_on
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.dining_room_1_2
+    service: light.turn_on
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.dining_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 254
+      color_temp: 250
+      entity_id: light.dining_room_3_2
+    service: light.turn_on
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_on
+- id: '1523967151515'
+  alias: Set Dark
   trigger:
   - entity_id: input_select.light_state
     platform: state
     to: Dark
-- action:
-  - data:
-      brightness: 160
-      entity_id: light.livingroom_light
-    service: light.turn_on
-  alias: Set Relaxed
   condition: []
-  id: '1523967215462'
+  action:
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.living_room_1
+    service: light.turn_on
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.living_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.living_room_3
+    service: light.turn_on
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.dining_room_1_2
+    service: light.turn_on
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.dining_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 25
+      color_temp: 450
+      entity_id: light.dining_room_3_2
+    service: light.turn_on
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_on
+- id: '1523967215462'
+  alias: Set Relaxed
   trigger:
   - entity_id: input_select.light_state
     platform: state
     to: Relaxed
-- action:
-  - data:
-      entity_id: light.livingroom_light
-    service: light.turn_off
-  - data:
-      entity_id: input_select.light_state
-      option: 'Off'
-    service: input_select.select_option
-  alias: Set Off
   condition: []
-  id: '1523967332497'
+  action:
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.living_room_1
+    service: light.turn_on
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.living_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.living_room_3
+    service: light.turn_on
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.dining_room_1_2
+    service: light.turn_on
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.dining_room_2_2
+    service: light.turn_on
+  - data:
+      brightness: 203
+      color_temp: 367
+      entity_id: light.dining_room_3_2
+    service: light.turn_on
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_on
+- id: '1523967332497'
+  alias: Set Off
   trigger:
   - entity_id: input_select.light_state
     platform: state
     to: 'Off'
-  - entity_id: light.livingroom_light
+  - entity_id: switch.wall_switch_158d00016cf4bc
     from: 'on'
     platform: state
     to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_off
+  - data:
+      entity_id: input_select.light_state
+      option: 'Off'
+    service: input_select.select_option
 - action:
   - data:
       entity_id: switch.wall_switch_158d0001a68d54
@@ -81,19 +168,19 @@
     from: 'off'
     platform: state
     to: 'on'
-- action:
-  - data:
-      entity_id: switch.wall_switch_left_158d0001a21f31
-    service: switch.toggle
+- id: '1524219819384'
   alias: Link Hall Wireless Switch ( Hall)
-  condition: []
-  id: '1524219819384'
   trigger:
   - event_data:
       click_type: single
       entity_id: binary_sensor.wall_switch_right_158d00017110b8
     event_type: click
     platform: event
+  condition: []
+  action:
+  - data:
+      entity_id: switch.wall_switch_left_158d0001a21f31
+    service: switch.toggle
 - action:
   - data:
       entity_id: switch.wall_switch_right_158d0001a21f31
@@ -139,19 +226,19 @@
     from: 'off'
     platform: state
     to: 'on'
-- action:
-  - delay: 00:05:00
-  - data:
-      entity_id: switch.wall_switch_158d00016cefdb
-    service: switch.turn_off
-  alias: Hall Toilet off after 5mins
-  condition: []
-  id: '1524229698425'
+- id: '1524229698425'
+  alias: Hall Toilet off after 10 mins
   trigger:
   - entity_id: switch.wall_switch_158d00016cefdb
     from: 'off'
     platform: state
     to: 'on'
+  condition: []
+  action:
+  - delay: 00:10:00
+  - data:
+      entity_id: switch.wall_switch_158d00016cefdb
+    service: switch.turn_off
 - action:
   - data:
       entity_id: switch.wall_switch_158d000159aa50
@@ -275,3 +362,56 @@
       entity_id: binary_sensor.cube_158d000103a8a5
     event_type: cube_action
     platform: event
+- id: '1525165991424'
+  alias: Turn lights on Motion Frontroom
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d000187392e
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.wall_switch_158d0001828c33
+    state: 'off'
+  - after: '20:00'
+    condition: time
+  action:
+  - data:
+      entity_id: switch.wall_switch_158d0001828c33
+    service: switch.turn_on
+- id: '1525419916907'
+  alias: Tradfri Turn off when Switch off
+  trigger:
+  - entity_id: switch.wall_switch_158d00016cf4bc
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: group.gikea
+    service: homeassistant.turn_off
+- id: '1525420737906'
+  alias: Switch Turn off when Tradfri off
+  trigger:
+  - entity_id: group.gikea
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_off
+- id: '1525442998545'
+  alias: Switch Turn on when Tradfri on
+  trigger:
+  - entity_id: group.gikea
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      entity_id: switch.wall_switch_158d00016cf4bc
+    service: switch.turn_on

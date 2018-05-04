@@ -134,3 +134,63 @@ binary_sensor.water_leak_sensor_158d0001c347c9:
   name: Utility Leak Sensor
   platform: xiaomi_aqara
   unique_id: status158d0001c347c9
+light.tradfri_group:
+  name:
+  platform: tradfri
+  unique_id: group-7e1c095204400077-131073
+switch.wall_switch_158d00016cf4bc:
+  name:
+  platform: xiaomi_aqara
+  unique_id: channel_0158d00016cf4bc
+light.dining_room_1:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65537
+light.living_room_3:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65543
+light.living_room_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65542
+light.living_room_1:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65538
+light.dining_room_3:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65541
+light.dining_room_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65539
+light.living_room:
+  name:
+  platform: tradfri
+  unique_id: group-7e1c095204400077-131074
+light.living_room_4:
+  name:
+  platform: tradfri
+  unique_id: group-7e1c095204400077-131075
+light.dining_room_1_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65550
+light.living_room_2_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65549
+light.dining_room_2_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65551
+light.dining_room_3_2:
+  name:
+  platform: tradfri
+  unique_id: light-7e1c095204400077-65552
+light.dining_room:
+  name:
+  platform: tradfri
+  unique_id: group-7e1c095204400077-131076

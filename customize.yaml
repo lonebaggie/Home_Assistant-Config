@@ -85,7 +85,7 @@ sensor.temperature_158d0001b9205b:
 binary_sensor.motion_sensor_158d0001655f53:
   friendly_name: Hall motion sensor
 binary_sensor.motion_sensor_158d000187392e:
-  friendly_name: Landing motion sensor
+  friendly_name: Frontroom motion sensor
 binary_sensor.switch_158d00018721c6:
   friendly_name: Button Switch
 binary_sensor.wall_switch_both_158d00017110b8:
@@ -107,3 +107,6 @@ sensor.pws_feelslike_c:
   friendly_name: Feels Like
 device_tracker.simonsiphone:
   friendly_name: Simon Phone
+switch.wall_switch_158d00016cf4bc:
+  friendly_name: Living Room Switch
+  icon: mdi:power
