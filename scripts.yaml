@@ -35,3 +35,9 @@
   - data:
       entity_id: switch.wall_switch_158d00016cefdb
     service: switch.turn_off
+'1526323591805':
+  alias: All
+  sequence:
+  - data:
+      entity_id: group.gikea
+    service: homeassistant.turn_on

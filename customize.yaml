@@ -95,7 +95,7 @@ binary_sensor.wall_switch_left_158d00017110b8:
 binary_sensor.wall_switch_right_158d00017110b8:
   friendly_name: Hall Wireless Switch (Hall)
 binary_sensor.wall_switch_158d0001830c7c:
-  friendly_name: Bedroom Wireless Switch
+  friendly_name: Livingroom Wireless Switch
 light.livingroom_light:
   emulated_hue_name: Living Room Light
   friendly_name: Living Room Light
@@ -110,3 +110,11 @@ device_tracker.simonsiphone:
 switch.wall_switch_158d00016cf4bc:
   friendly_name: Living Room Switch
   icon: mdi:power
+sensor.bedroom_wireless_switch_battery:
+  friendly_name: Living Room Wireless Switch
+group.gdrlights:
+  icon: mdi:lightbulb
+group.glrlights:
+  icon: mdi:lightbulb
+sensor.tradfri_wireless_dimmer:
+  icon: mdi:battery

@@ -1,0 +1,7 @@
+  tradfrinumber:
+    name: Tradfri Lights on
+    initial: 0
+    min: 0
+    max: 6
+    step: 1
+    mode: box

@@ -4,8 +4,7 @@
         - group.gdownstairs
         - group.ghouse
         - group.gupstairs
-        - group.gdrlights
-        - group.glrlights
+        - script.1526323591805
         - script.1518793291456
         - script.1518793331701
         - script.1518793254257
@@ -14,12 +13,12 @@
         - switch
         - light
       exclude_entities:
-        - light.dining_room_1_2
-        - light.dining_room_2_2
-        - light.dining_room_3_2
-        - light.living_room_1
-        - light.living_room_2_2
-        - light.living_room_3
+        - light.lr1
+        - light.lr2
+        - light.lr3
+        - light.dr1
+        - light.dr2
+        - light.dr3
     entity_config:
       switch.wall_switch_left_158d0001660d34:
         name: Bathroom Light
@@ -47,6 +46,5 @@
         name: Study Light
       switch.wall_switch_158d0001a68d54:
         name: Utility Light
-      switch.wall_switch_158d00016cf4bc:
-        name: Livingroom Switch
+
         

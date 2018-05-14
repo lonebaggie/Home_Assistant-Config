@@ -82,7 +82,7 @@ automation: !include automations.yaml
 automation old: !include_dir_merge_list automations
 script: !include scripts.yaml
 input_select: !include input_select.yaml
-#input_number: !include input_number.yaml
+input_number: !include input_number.yaml
 scene: !include scene.yaml
 light: !include light.yaml
 sensor: !include sensor.yaml

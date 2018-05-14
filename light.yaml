@@ -1,0 +1,12 @@
+  - platform: group
+    name: Living Room Lights
+    entities:
+      - light.lr1
+      - light.lr2
+      - light.lr3
+  - platform: group
+    name: Dining Room Lights
+    entities:
+      - light.dr1
+      - light.dr2
+      - light.dr3

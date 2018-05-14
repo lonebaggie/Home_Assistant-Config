@@ -47,8 +47,8 @@
       - group.glivingroommedia
       - group.ggateway
       - group.gikea
-      - group.gLRlights
-      - group.gDRlights
+      - light.living_room_lights
+      - light.dining_room_lights
   kitchen:
     name: Kitchen
     view: yes
@@ -121,7 +121,7 @@
   gupstairs:
     name: Upstairs Lights
     view: false
-    icon: mdi:lightbulb-outline
+    icon: mdi:lightbulb
     entities:
       - switch.wall_switch_158d0001a2424b
       - switch.wall_switch_158d00016cf458
@@ -133,8 +133,10 @@
   gdownstairs:
     name: Downstairs Lights
     view: false
-    icon: mdi:lightbulb-outline
+    icon: mdi:lightbulb
     entities:
+      - light.living_room_lights
+      - light.dining_room_lights
       - switch.wall_switch_158d00016cf4bc
       - switch.wall_switch_158d0001614701
       - light.gateway_light_34ce0081452d
@@ -164,7 +166,8 @@
     view: false
     icon: mdi:battery
     entities:
-      - sensor.bedroom_wireless_switch_battery
+      - sensor.livingroom_wireless_switch_battery
+      - sensor.tradfri_wireless_dimmer
       - sensor.button_switch_battery
       - sensor.cube_battery
       - sensor.frontdoor_battery
@@ -253,6 +256,7 @@
     entities:
       - switch.wall_switch_158d00016cf4bc
       - input_select.light_state
+      - input_boolean.ikea_state
       - binary_sensor.door_window_sensor_158d00019e18bf
       - remote.harmony_hub
       - sensor.humidity_158d0001b9205b
@@ -267,27 +271,10 @@
       - media_player.gigablue
       - media_player.living_room
   gikea:
-    name: Ikea Tradfri Lights
-    view: false
+    name: Tradfri Lights
     entities:
-      - light.dining_room_1_2
-      - light.dining_room_2_2
-      - light.dining_room_3_2
-      - light.living_room_1
-      - light.living_room_2_2
-      - light.living_room_3
-  gLRlights:
-    name: Living Room Lights
-    entities:
-      - light.living_room_1
-      - light.living_room_2_2
-      - light.living_room_3
-  gDRlights:
-    name: Dining Room Lights
-    entities:
-      - light.dining_room_1_2
-      - light.dining_room_2_2
-      - light.dining_room_3_2
+      - light.living_room_lights
+      - light.dining_room_lights
   ghallway:
     name: Hallway
     view: false

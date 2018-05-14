@@ -14,8 +14,8 @@
       - feelslike_c
   - platform: template
     sensors:
-      bedroom_wireless_switch_battery:
-        friendly_name: 'Bedroom Wireless Switch'
+      livingroom_wireless_switch_battery:
+        friendly_name: 'Living Room Wireless Switch'
         value_template: '{{ states.binary_sensor.wall_switch_158d0001830c7c.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
