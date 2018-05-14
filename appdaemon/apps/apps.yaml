@@ -11,6 +11,7 @@ MRswitch:
 HRswitch:
   module: HRSwitch
   class: HRswitch
-LRCheckState:
-  module: LRCheckState
-  class: LRcheckstate
+LRTradfri:
+  module: LRTradfri
+  class: LRtradfri
+

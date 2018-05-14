@@ -12,22 +12,22 @@ class LRselector(hass.Hass):
             self.turn_off("group.gikea")
         if new == "Dark" :
             if dr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 25, color_temp = 450)
+                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 25, transition = 6 , color_temp = 450)
             if lr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 25, color_temp = 450)
+                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 25, transition = 6 , color_temp = 450)
         if new == "Relaxed" :
             if dr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 203, color_temp = 367)
+                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 203, transition = 6 , color_temp = 367)
                 
             if lr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 203, color_temp = 367)
+                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 203, transition = 6 , color_temp = 367)
                 
         if new == "Bright" :
             if dr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 254, color_temp = 250)
+                self.call_service("light/turn_on", entity_id = "light.dining_room_lights", brightness = 254, transition = 6 , color_temp = 250)
                 
             if lr == "on" :
-                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 254, color_temp = 250)
+                self.call_service("light/turn_on", entity_id = "light.living_room_lights", brightness = 254, transition = 6 , color_temp = 250)
                 
             
         

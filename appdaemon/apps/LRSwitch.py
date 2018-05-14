@@ -8,12 +8,15 @@ class LRswitch(hass.Hass):
         if dr == "on" or lr == "on" :
             self.turn_off("light.living_room_lights")
             self.turn_off("light.dining_room_lights")
+            
         if dr == "off" and lr == "off" :
             self.turn_on("light.living_room_lights")
             self.turn_on("light.dining_room_lights")
+            
         if dr == "on" and lr == "on" :
             self.turn_off("light.living_room_lights")
             self.turn_off("light.dining_room_lights")
+            
         
             
         
