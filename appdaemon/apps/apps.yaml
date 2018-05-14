@@ -1,0 +1,16 @@
+
+LRselector:
+  module: LRSelector
+  class: LRselector
+LRswitch:
+  module: LRSwitch
+  class: LRswitch
+MRswitch:
+  module: MRSwitch
+  class: MRswitch
+HRswitch:
+  module: HRSwitch
+  class: HRswitch
+LRCheckState:
+  module: LRCheckState
+  class: LRcheckstate

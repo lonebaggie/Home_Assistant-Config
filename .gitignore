@@ -4,6 +4,7 @@
 !scenes
 !automations
 !appdaemon
+!appdaemon/apps
 !custom_components
 !.gitignore
 secrets.yaml
