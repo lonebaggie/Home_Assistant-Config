@@ -1,5 +1,4 @@
-
-LRselector:
+LRSelector:
   module: LRSelector
   class: LRselector
 LRswitch:
@@ -11,7 +10,16 @@ MRswitch:
 HRswitch:
   module: HRSwitch
   class: HRswitch
-LRTradfri:
-  module: LRTradfri
-  class: LRtradfri
+LRDark:
+  module: LRDark
+  class: LRdark
+LRRelaxed:
+  module: LRRelaxed
+  class: LRrelaxed
+LRBright:
+  module: LRBright
+  class: LRbright
+#LRTradfri:
+#  module: LRTradfri
+#  class: LRtradfri
 

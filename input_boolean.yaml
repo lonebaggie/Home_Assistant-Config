@@ -2,3 +2,12 @@
     name: Cube State
     initial: off
     icon: mdi:cube
+  bright:
+    name: bright
+    initial: off
+  relaxed:
+     name: relaxed
+     initial: off
+  dark:
+     name: dark
+     initial: off

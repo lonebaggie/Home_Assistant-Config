@@ -44,11 +44,9 @@
     control: hidden
     entities:
       - group.glivingroom
+      - group.glrlights
       - group.glivingroommedia
       - group.ggateway
-      - group.gikea
-      - light.living_room_lights
-      - light.dining_room_lights
   kitchen:
     name: Kitchen
     view: yes
@@ -135,8 +133,7 @@
     view: false
     icon: mdi:lightbulb
     entities:
-      - light.living_room_lights
-      - light.dining_room_lights
+      - light.all_living_room_lights
       - switch.wall_switch_158d00016cf4bc
       - switch.wall_switch_158d0001614701
       - light.gateway_light_34ce0081452d
@@ -254,11 +251,7 @@
     view: false
     control: hidden
     entities:
-      - switch.wall_switch_158d00016cf4bc
-      - input_select.light_state
-      - input_boolean.ikea_state
       - binary_sensor.door_window_sensor_158d00019e18bf
-      - remote.harmony_hub
       - sensor.humidity_158d0001b9205b
       - sensor.pressure_158d0001b9205b
       - sensor.temperature_158d0001b9205b
@@ -270,9 +263,16 @@
       - media_player.lg_tv_remote   
       - media_player.gigablue
       - media_player.living_room
-  gikea:
-    name: Tradfri Lights
+  glrlights:
+    name: Living Room lights
+    view: false
+    control: hidden
     entities:
+      - input_select.light_state
+      - input_boolean.dark
+      - input_boolean.relaxed
+      - input_boolean.bright
+      - light.all_living_room_lights
       - light.living_room_lights
       - light.dining_room_lights
   ghallway:

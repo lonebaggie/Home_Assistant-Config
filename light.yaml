@@ -10,3 +10,8 @@
       - light.dr1
       - light.dr2
       - light.dr3
+  - platform: group
+    name: All Living room Lights
+    entities:
+      - light.living_room_lights
+      - light.dining_room_lights

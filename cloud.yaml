@@ -4,14 +4,10 @@
         - group.gdownstairs
         - group.ghouse
         - group.gupstairs
-        - script.1526323591805
-        - script.1518793291456
-        - script.1518793331701
-        - script.1518793254257
-        - script.1518797549730
       include_domains:
         - switch
         - light
+        - input_boolean
       exclude_entities:
         - light.lr1
         - light.lr2
