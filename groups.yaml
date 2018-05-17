@@ -289,6 +289,7 @@
     view: false
     control: hidden
     entities:
+      - binary_sensor.motion_sensor_158d000187392e
       - switch.wall_switch_158d0001828c33
   goutside:
     name: Outside
@@ -305,7 +306,6 @@
     control: hidden
     entities:
       - switch.wall_switch_right_158d0001a21f31
-      - binary_sensor.motion_sensor_158d000187392e
   gkitchen:
     name: Kitchen
     view: false
