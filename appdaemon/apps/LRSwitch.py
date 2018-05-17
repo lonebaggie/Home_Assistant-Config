@@ -1,3 +1,4 @@
+# Program replaces phyiscal switch . Turns tradfri bulbs on and off via Xiaoma wireless switch
 import appdaemon.plugins.hass.hassapi as hass
 class LRswitch(hass.Hass):
     def initialize(self):

@@ -1,3 +1,7 @@
+#
+# Program to allow teanage daughter to turn off lights without getting out of bed
+#
+
 import appdaemon.plugins.hass.hassapi as hass
 class MRswitch(hass.Hass):
     def initialize(self):
