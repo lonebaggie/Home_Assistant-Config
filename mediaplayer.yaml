@@ -5,3 +5,14 @@
   - platform: roku
     host: 192.168.1.9
     icon: mdi:monitor
+  - platform: songpal
+    name: Sony HT-XT2
+    endpoint: http://192.168.1.79:10000/sony
+  - platform: cast
+    name: sony
+  - platform: enigma
+    host: 192.168.1.91
+    user: root
+    password: "password"
+  
+

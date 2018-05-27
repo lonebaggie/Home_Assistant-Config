@@ -11,7 +11,7 @@ class LRselector(hass.Hass):
 # Triggered if the superset of bulbs has changed state on or off
         self.listen_state(self.lrselect,"input_select.light_state")
     def lrselect (self, entity, attribute, old, new, kwargs):
-#  Varibale holds the default superset  of bulbs (6 bulbs) 
+#  Variable holds the default superset  of bulbs (6 bulbs) 
         ent = "light.all_living_room_lights"
         la = self.get_state(ent)
         lr = self.get_state("light.living_room_lights")
@@ -34,12 +34,12 @@ class LRselector(hass.Hass):
             self.call_service("light/turn_on", entity_id = ent, brightness = 25, transition = 6 , color_temp = 450)
             self.turn_on("input_boolean.dark")
         if new == "Relaxed" :
-# Selects dark settings and applys to all bulbs or subset. Set switch on for Alexa 
+# Selects relaxed settings and applys to all bulbs or subset. Set switch on for Alexa 
             self.log("relaxed triggered")
             self.call_service("light/turn_on", entity_id = ent, brightness = 203, transition = 6 , color_temp = 367)
             self.turn_on("input_boolean.relaxed")
         if new == "Bright" :
-# Selects dark settings and applys to all bulbs or subset. Set switch on for Alexa 
+# Selects bright  settings and applys to all bulbs or subset. Set switch on for Alexa 
             self.log("bright triggered")
             self.call_service("light/turn_on", entity_id = ent, brightness = 254, transition = 6 , color_temp = 250)
             self.turn_on("input_boolean.bright")    

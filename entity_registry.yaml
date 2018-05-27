@@ -202,3 +202,11 @@ light.dr2:
   name:
   platform: tradfri
   unique_id: light-7e1c095204400077-65538
+media_player.sony_htxt2:
+  name:
+  platform: songpal
+  unique_id: 10:4f:a8:32:92:78
+media_player.sony:
+  name:
+  platform: cast
+  unique_id: b81a96ed-91ac-620b-6981-8524d32fb6b3

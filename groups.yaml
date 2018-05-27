@@ -11,6 +11,12 @@
       - group.gdownstairs
       - group.gathome
       - group.gupstairs
+  mplayers:
+    name: Media Sources
+    view: yes
+    icon: mdi:monitor
+    entities:
+      - group.glivingroommedia
   things:
     name: Things
     view: yes
@@ -45,7 +51,6 @@
     entities:
       - group.glivingroom
       - group.glrlights
-      - group.glivingroommedia
       - group.ggateway
   kitchen:
     name: Kitchen
@@ -260,18 +265,23 @@
     name: Living Room Media
     view: false
     entities:
+      - sensor.tv_channel
+      - sensor.tv_program
+      - sensor.gigablue_power_state
+      - sensor.tv_description1
+      - sensor.tv_description2
+      - sensor.tv_description3
       - media_player.lg_tv_remote   
-      - media_player.gigablue
       - media_player.living_room
+      - media_player.sony_htxt2
+      - media_player.ultra_ue
+      - media_player.sony
   glrlights:
     name: Living Room lights
     view: false
     control: hidden
     entities:
       - input_select.light_state
-      - input_boolean.dark
-      - input_boolean.relaxed
-      - input_boolean.bright
       - light.all_living_room_lights
       - light.living_room_lights
       - light.dining_room_lights
@@ -282,13 +292,16 @@
     entities:
       - switch.wall_switch_left_158d0001a21f31
       - binary_sensor.door_window_sensor_158d00019e1738
+      - input_boolean.ms2
       - binary_sensor.motion_sensor_158d0001655f53
       - switch.wall_switch_158d00016cefdb 
+      - binary_sensor.water_leak_sensor_158d0001c3472b
   gfrontroom:
     name: Front Room
     view: false
     control: hidden
     entities:
+      - input_boolean.ms1
       - binary_sensor.motion_sensor_158d000187392e
       - switch.wall_switch_158d0001828c33
   goutside:
@@ -312,7 +325,6 @@
     control: hidden
     entities:
       - switch.wall_switch_158d000159a94f
-      - binary_sensor.water_leak_sensor_158d0001c3472b
   gutil:
     name: Utility
     view: false

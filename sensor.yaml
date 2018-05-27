@@ -77,7 +77,7 @@
   - platform: systemmonitor
     resources:
       - type: disk_use_percent
-        arg: /home
+        arg: /
       - type: memory_free
       - type: memory_use
       - type: swap_use
@@ -85,4 +85,21 @@
       - type: processor_use
       - type: last_boot
       - type: since_last_boot
+  - platform: scrape
+    resource: http://192.168.1.91/web/subservices
+    name: TV Channel 
+    select: 'e2servicename'
+  - platform: scrape
+    resource: http://192.168.1.91/web/getcurrent
+    name: TV Program 
+    select: 'e2eventtitle'
+  - platform: scrape
+    resource: http://192.168.1.91/web/powerstate
+    name: Gigablue Power State
+    select: 'e2instandby'
+    value_template: '{{value.replace("true","off")|replace("false","on") }}'
+  
+    
+
+      
       

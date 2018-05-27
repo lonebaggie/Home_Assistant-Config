@@ -88,12 +88,12 @@ light: !include light.yaml
 sensor: !include sensor.yaml
 input_boolean: !include input_boolean.yaml
 media_player: !include mediaplayer.yaml
+switch: !include switch.yaml
 
 remote:
   - platform: harmony
     name: Harmony Hub
     host: 192.168.1.252
-
 xiaomi_aqara:
   discovery_retry: 5
   gateways:

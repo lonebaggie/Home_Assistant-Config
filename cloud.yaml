@@ -15,6 +15,10 @@
         - light.dr1
         - light.dr2
         - light.dr3
+        - input_boolean.ms1
+        - input_boolean.ms2
+        - input_boolean.cube_state
+        - light.gateway_light_34ce0081452d
     entity_config:
       switch.wall_switch_left_158d0001660d34:
         name: Bathroom Light

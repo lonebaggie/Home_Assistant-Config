@@ -119,3 +119,16 @@ group.glrlights:
   icon: mdi:lightbulb
 sensor.tradfri_wireless_dimmer:
   icon: mdi:battery
+binary_sensor.water_leak_sensor_158d0001c3472b:
+  friendly_name: Hall Toilet  Leak Sensor
+  icon: mdi:water
+input_number.mastervolume:
+  icon: mdi:blank
+sensor.current_tv_channel:
+  icon: mdi:monitor
+sensor.tv_channel:
+  icon: mdi:monitor
+sensor.tv_program:
+  icon: mdi:monitor
+sensor.gigablue_power_state:
+  icon: mdi:monitor
