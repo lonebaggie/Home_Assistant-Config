@@ -210,3 +210,7 @@ media_player.sony:
   name:
   platform: cast
   unique_id: b81a96ed-91ac-620b-6981-8524d32fb6b3
+media_player.living_room:
+  name:
+  platform: roku
+  unique_id: YH00E2431122
