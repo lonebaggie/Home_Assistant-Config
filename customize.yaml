@@ -132,3 +132,25 @@ sensor.tv_program:
   icon: mdi:monitor
 sensor.gigablue_power_state:
   icon: mdi:monitor
+sensor.dark_sky_apparent_temperature:
+  friendly_name: Feels Like
+sensor.dark_sky_hourly_summary:
+  friendly_name: Later today
+sensor.dark_sky_daily_summary:
+  friendly_name: Forcast
+sensor.dark_sky_temperature:
+  friendly_name: Outside Temperature
+sensor.dark_sky_summary:
+  friendly_name: Summary
+sensor.dark_sky_humidity:
+  friendly_name: Humidity
+sensor.dark_sky_daytime_high_temperature:
+  friendly_name: Daytime High Temperature
+sensor.dark_sky_overnight_low_temperature:
+  friendly_name: Overnight Low Temperature
+sensor.dark_sky_pressure:
+  friendly_name: Pressure
+sensor.dark_sky_uv_index:
+  friendly_name: UV Index
+sensor.dark_sky_visibility:
+  friendly_name: Visibility

@@ -34,4 +34,7 @@ OSAutolight:
 URAutolightoff:
   module: URAutolightoff
   class: URautolightoff
+LeakWarning:
+  module: LeakWarning
+  class: Leakwarning
  

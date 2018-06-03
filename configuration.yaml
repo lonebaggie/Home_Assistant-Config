@@ -89,6 +89,7 @@ sensor: !include sensor.yaml
 input_boolean: !include input_boolean.yaml
 media_player: !include mediaplayer.yaml
 switch: !include switch.yaml
+notify: !include notify.yaml
 
 remote:
   - platform: harmony
