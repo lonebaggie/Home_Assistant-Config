@@ -1,4 +1,5 @@
-# Turn off Utility light if Kitchhen light turned off 
+# Turn off Utility light if Kitchen light is turned off . 
+
 import appdaemon.plugins.hass.hassapi as hass
 class URautolightoff(hass.Hass):
     def initialize(self):

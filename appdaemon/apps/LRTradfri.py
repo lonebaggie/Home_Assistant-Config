@@ -1,3 +1,7 @@
+#
+# Ensures if lights turned off by Alexa or physical switch. 
+# Item select is also turned off
+#
 import appdaemon.plugins.hass.hassapi as hass
 class LRtradfri(hass.Hass):
     def initialize(self):

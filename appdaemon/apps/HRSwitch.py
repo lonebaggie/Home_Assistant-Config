@@ -1,7 +1,7 @@
 #
 # Repaced orginal Xiaoma Mihome automation. 
 # Used to repace orginal analong two way switch. Switch is upstairs  and downstairs is wireless switch. 
-# THis program listen for left and right buton press and toggles Landing and hall switch
+# This program listens for left and right buton press and toggles Landing and hall switch
 # Pressing both buttons turn on both lights or turns off both lights  
 #
 
@@ -18,7 +18,7 @@ class HRswitch(hass.Hass):
 # Landing light on or off
     def lrswitch(self,event_name, data, kwargs):
         self.toggle("switch.wall_switch_right_158d0001a21f31")
-# Landing light and Hall Light on or off cannot use toogle as need to sync both lights
+# Landing light and Hall Light on or off cannot use toogle as need to sync both lights on or off.
     def hrlrswitch(self,event_name, data, kwargs):
         if self.get_state("switch.wall_switch_left_158d0001a21f31") == "on" or self.get_state("switch.wall_switch_right_158d0001a21f31") == "on" :
             self.turn_off("switch.wall_switch_left_158d0001a21f31")
