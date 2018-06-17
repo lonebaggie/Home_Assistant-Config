@@ -25,9 +25,6 @@ LRTradfri:
 FRAutolight:
   module: FRAutolight
   class: FRautolight
-LRMastervol:
-  module: LRMastervol
-  class: LRmastervol
 OSAutolight:
   module: OSAutolight
   class: OSautolight

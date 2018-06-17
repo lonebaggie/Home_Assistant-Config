@@ -3,7 +3,7 @@ homeassistant:
   name: Home
   # Location required to calculate the time the sun rises and sets
   latitude: 51.852063
-  longitude: -2.201922
+  longitude: -2.20192
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 38
   # metric for Metric, imperial for Imperial
@@ -30,6 +30,15 @@ panel_iframe:
     title: Configurator
     icon: mdi:wrench
     url: https://lonebaggie.duckdns.org:3218
+  ide:
+    title: Cloud 9 IDE
+    icon: mdi:code-braces
+    url: https://lonebaggie.duckdns.org:8321/ide.html
+    
+  sonoff:    
+    title: SonOff Config
+    icon: mdi:lightbulb
+    url: https://lonebaggie.duckdns.org:9541
 
 # Enables configuration UI
 config:
@@ -39,6 +48,8 @@ http:
   # Uncomment this if you are using SSL/TLS, running 
   # in Docker container, etc.
   base_url: https://lonebaggie.duckdns.org:8123
+  cors_allowed_origins:
+    - https://lonebaggie.duckdns.org:7080
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 # Checks for available updates
@@ -110,7 +121,11 @@ device_tracker:
     password: !secret asuswrt_password
     interval_seconds: 5
     consider_home: 180
-    track_new_devices: yes    
+    track_new_devices: yes   
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_user
+  password: !secret mqtt_password
 
 ifttt:
   key: !secret ifttt_key

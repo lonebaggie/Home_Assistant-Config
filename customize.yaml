@@ -154,3 +154,11 @@ sensor.dark_sky_uv_index:
   friendly_name: UV Index
 sensor.dark_sky_visibility:
   friendly_name: Visibility
+device_tracker.android3345c2743ec238cb:
+  friendly_name: Louise-Android
+sensor.kitchen_leak_battery:
+  friendly_name: Toilet Leak Sensor
+  icon: mdi:water
+sensor.utility_leak_sensor_battery: {}
+binary_sensor.water_leak_sensor_158d0001c347c9:
+  icon: mdi:water

@@ -57,7 +57,7 @@
         icon_template: mdi:battery
         unit_of_measurement: "%"
       kitchen_leak_battery:
-        friendly_name: 'Kitchen Leak Sensor'
+        friendly_name: 'Hall Toilet Leak Sensor'
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
@@ -76,8 +76,45 @@
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c347c9.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
+      tradfri_dimmer_battery:
+        friendly_name: 'Tradfri Dimmer'
+        value_template: '{{ states.sensor.tradfri_wireless_dimmer.attributes.battery_level | float(2) }}'
+        icon_template: mdi:battery
+        unit_of_measurement: "%"
+      since_last_boot_templated:
+        friendly_name: "Last reboot"
+        value_template: >-
+          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
+          {%- set count = slb | length -%}
+          {%- set hms = slb[count - 1] -%}
+          {%- set hms_trimmed = hms.split('.')[0] -%}
+          {%- set hms_split = hms_trimmed.split(':') -%}
+          {%- set hours = hms_split[0] | int -%}
+          
+          {%- if count == 3 -%}
+            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
+          {%- endif -%}
+          {%- if hours > 0 -%}
+            {%- if hours == 1 -%}
+              1 hour
+            {%- else -%}
+              {{ hours }} hours
+            {%- endif -%}
+          {%- endif -%}
+      temperature_high_templated:
+        friendly_name: 'Temperature High'
+        value_template: "{{ states('sensor.dark_sky_daytime_high_temperature') | round (1) }}"
+        icon_template: mdi:thermometer
+        unit_of_measurement: "%"
+      temperature_low_templated:
+        friendly_name: 'Temperature Low'
+        value_template: "{{ states('sensor.dark_sky_overnight_low_temperature') | round (1) }}"
+        icon_template: mdi:thermometer
+        unit_of_measurement: "%"
   - platform: systemmonitor
     resources:
+      - type: disk_free
+        arg: /
       - type: disk_use_percent
         arg: /
       - type: memory_free
