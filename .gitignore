@@ -1,6 +1,7 @@
 *
 !*.yaml
 !*.py
+!*.sh
 !scenes
 !automations
 !appdaemon
@@ -9,3 +10,5 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
+alexa.sh
+alexa_remote_control.sh
