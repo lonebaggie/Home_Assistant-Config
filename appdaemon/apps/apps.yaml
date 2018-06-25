@@ -34,4 +34,22 @@ URAutolightoff:
 LeakWarning:
   module: LeakWarning
   class: Leakwarning
+AuditAlexa:
+  module: AuditAlexa
+  class: Auditalexa
+  title: "Living Room Audit"
+  trigger: "input_boolean.audit_light"
+  notify: "alexalr"
+  temp-inside: "sensor.temperature_158d0001b9205b"
+  temp-outside: "sensor.dark_sky_temperature"
+  light:
+    - light.living_room_lights
+    - light.dining_room_lights
+    - light.gateway_light_34ce0081452d
+  switch:
+    - none
+  battery:
+    - sensor.livingroom_wireless_switch_battery
+    - sensor.cube_battery
+
  

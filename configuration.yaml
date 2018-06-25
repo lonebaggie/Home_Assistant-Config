@@ -36,7 +36,7 @@ panel_iframe:
     url: https://lonebaggie.duckdns.org:8321/ide.html
     
   sonoff:    
-    title: SonOff Config
+    title: Tasmo Admin
     icon: mdi:lightbulb
     url: https://lonebaggie.duckdns.org:9541
 
@@ -70,6 +70,9 @@ hassio:
 conversation:
 
 # Enables support for tracking state changes over time
+
+
+
 history:
 
 # View all events in a logbook
@@ -130,7 +133,8 @@ mqtt:
 ifttt:
   key: !secret ifttt_key
 
-
+shell_command:
+  alexa_speak: "/config/alexa.sh -d 'BR Echo' -e speak:{{text}}"
 
 
 

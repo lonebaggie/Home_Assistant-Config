@@ -56,7 +56,7 @@
         value_template: '{{ states.binary_sensor.motion_sensor_158d000187392e.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
-      kitchen_leak_battery:
+      toilet_leak_sensor_battery:
         friendly_name: 'Hall Toilet Leak Sensor'
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level }}'
         icon_template: mdi:battery

@@ -162,3 +162,7 @@ sensor.kitchen_leak_battery:
 sensor.utility_leak_sensor_battery: {}
 binary_sensor.water_leak_sensor_158d0001c347c9:
   icon: mdi:water
+switch.onoff_sonoff1:
+  friendly_name: Sonoff1
+switch.onoff_sonoff2:
+  friendly_name: Sonoff2

@@ -17,4 +17,8 @@
   ms2:
      name: "Motion Sensor 2 Active"
      initial: on
+  audit_light:
+     name: "Audit Light"
+     initial: off
+     
    

@@ -8,6 +8,8 @@ class Leakwarning(hass.Hass):
         mess= "Leak Detected by " + self.friendly_name(entity)
         self.log(mess)
         self.notify(mess, title = "Leak Warning", name = "notify.gmail_alert")
+        mess = mess.replace(" ", "_")
+        self.notify(mess, name = "notify.alexaall")
         self.call_service("persistent_notification/create", message = mess, title = "Leak Warning")
         
         

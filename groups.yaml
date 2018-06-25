@@ -42,7 +42,7 @@
   weather:
     name: Weather
     view: yes
-    icon: mdi:weather-cloudy
+    icon: mdi:weather-partlycloudy
     entities:
       - group.gforcast1
       - group.gtemperature
@@ -211,8 +211,6 @@
     entities:
       - sensor.dark_sky_summary
       - sensor.dark_sky_hourly_summary
-      
- 
   gforcast1:
     name: Weather
     view: false
@@ -268,6 +266,7 @@
       - binary_sensor.cube_158d000103a8a5 
       - switch.onoff_sonoff1
       - switch.onoff_sonoff2
+      - input_boolean.audit_light
   glivingroommedia:
     name: Living Room Media
     view: false
