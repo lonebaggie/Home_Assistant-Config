@@ -180,7 +180,7 @@
       - sensor.frontdoor_battery
       - sensor.landing_motion_battery
       - sensor.hall_motion_battery
-      - sensor.kitchen_leak_battery
+      - sensor.toilet_leak_sensor_battery
       - sensor.outside_motion_sensor_battery
       - sensor.patio_door_sensor_battery
       - sensor.temperaure__sensor_battery
@@ -267,6 +267,7 @@
       - switch.onoff_sonoff1
       - switch.onoff_sonoff2
       - input_boolean.audit_light
+      - input_text.alexa
   glivingroommedia:
     name: Living Room Media
     view: false
@@ -277,6 +278,7 @@
       - media_player.lg_tv_remote   
       - media_player.living_room
       - media_player.sony_htxt2
+      - media_player.lr_dot
   glrlights:
     name: Living Room lights
     view: false
@@ -366,6 +368,7 @@
     control: hidden
     entities:
       - switch.wall_switch_158d0001a2424b
+      - binary_sensor.switch_158d00018721c6
 
 
 

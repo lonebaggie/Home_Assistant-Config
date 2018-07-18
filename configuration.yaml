@@ -97,6 +97,7 @@ automation old: !include_dir_merge_list automations
 script: !include scripts.yaml
 input_select: !include input_select.yaml
 input_number: !include input_number.yaml
+input_text: !include input_text.yaml
 scene: !include scene.yaml
 light: !include light.yaml
 sensor: !include sensor.yaml
@@ -129,12 +130,9 @@ mqtt:
   broker: core-mosquitto
   username: !secret mqtt_user
   password: !secret mqtt_password
-
 ifttt:
   key: !secret ifttt_key
 
-shell_command:
-  alexa_speak: "/config/alexa.sh -d 'BR Echo' -e speak:{{text}}"
 
 
 
