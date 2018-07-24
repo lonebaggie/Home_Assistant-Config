@@ -368,6 +368,7 @@
     control: hidden
     entities:
       - switch.wall_switch_158d0001a2424b
+      - binary_sensor.switch_158d00018721c6
 
 
 

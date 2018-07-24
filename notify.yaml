@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   - name: gmail_alert
     platform: smtp
     server: smtp.gmail.com
@@ -25,3 +26,5 @@
   - name: alexafr
     platform: command_line
     command: "/config/alexa_notifyFR.sh" 
+=======
+>>>>>>> 7cb861f8cafb5cbfcb2a512be26aeed6bfa9ac7c
