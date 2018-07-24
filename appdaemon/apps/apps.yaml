@@ -39,7 +39,7 @@ AuditAlexa:
   class: Auditalexa
   title: "Living Room Audit"
   trigger: "input_boolean.audit_light"
-  notify: "alexalr"
+  device: "media_player.lr_dot"
   temp-inside: "sensor.temperature_158d0001b9205b"
   temp-outside: "sensor.dark_sky_temperature"
   light:
@@ -51,5 +51,7 @@ AuditAlexa:
   battery:
     - sensor.livingroom_wireless_switch_battery
     - sensor.cube_battery
-
+SpeakAlexa:
+  module: SpeakAlexa
+  class: Speakalexa
  

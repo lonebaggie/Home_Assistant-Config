@@ -1,0 +1,293 @@
+title: Home
+# Exclude entities from "Unused entities" view
+excluded_entities:
+  - weblink.router
+views:
+    # House Overall View
+  - icon: mdi:home-assistant
+    title: Overview
+
+    theme: dark-mode
+    # The cards to show on this view.
+    cards:
+# who is home
+      - type: entity-filter
+        entities:
+          - entity: device_tracker.simonsiphone
+            name: Simon
+          - entity: device_tracker.android6c7f7b0a01e8c5c2
+            name: Francis
+          - entity: device_tracker.android3345c2743ec238cb
+            name: Louise
+        state_filter:
+          - 'home'
+        card:
+          type: glance
+          title: At home
+# House lights
+      - type: entities 
+        title: House Lights
+        entities:
+          - entity: group.gdownstairs
+            name: Downstairs
+          - entity: group.gupstairs
+            name: Upstairs
+# temperature inside /outside
+      - type: entities
+        title: Temperature
+        entities:
+          - entity: sensor.temperature_158d0001b9205b
+            name: Inside
+          - entity: sensor.dark_sky_temperature
+            name: Outside
+# Yahoo weather
+      - type: weather-forecast
+        entity:  weather.yweather
+#All lights / light switches
+  - icon: mdi:lightbulb 
+    title: All lights
+    cards:
+      - type: entities
+        title: Downstairs Lights
+        entities:
+          - light.living_room_lights
+          - light.dining_room_lights
+          - switch.wall_switch_158d0001614701
+          - light.gateway_light_34ce0081452d
+          - switch.wall_switch_158d000159a94f 
+          - switch.wall_switch_158d0001a68d54
+          - switch.wall_switch_left_158d0001a21f31
+          - switch.wall_switch_158d00016cefdb
+          - switch.wall_switch_158d0001828c33
+      - type: entities
+        title: Upstairs Lights
+        entities:
+          - switch.wall_switch_158d0001a2424b
+          - switch.wall_switch_158d00016cf458
+          - switch.wall_switch_158d0001a68cf6
+          - switch.wall_switch_158d000159aa50
+          - switch.wall_switch_left_158d0001a6596b
+          - switch.wall_switch_left_158d0001660d34
+          - switch.wall_switch_right_158d0001a21f31
+# Living room media
+  - icon: mdi:monitor
+    title: Livingroom Media
+    cards:
+      - type: entities
+        title: Gigablue State
+        entities:
+          - sensor.tv_channel
+          - sensor.tv_program
+          - sensor.gigablue_power_state
+      - type: media-control
+        entity: media_player.lg_tv_remote
+      - type: media-control
+        entity: media_player.living_room
+      - type: media-control
+        entity: media_player.sony_htxt2
+      - type: media-control
+        entity: media_player.lr_dot
+# All sensors
+  - icon: mdi:wrench
+    title: Room sensors
+    cards:
+      - type: entities
+        title: Sensors 
+        show_header_toggle: false
+        entities:
+          - binary_sensor.motion_sensor_158d0001655f53
+          - binary_sensor.motion_sensor_158d000187392e
+          - binary_sensor.motion_sensor_158d0001e43e18
+          - binary_sensor.water_leak_sensor_158d0001c3472b
+          - binary_sensor.water_leak_sensor_158d0001c347c9
+# Raspberry Pi subsystems
+  - icon: mdi:desktop-classic
+    title: Raspberry Pi System
+    cards:
+      - type: entities
+        title: Raspberry Pi subsystems
+        show_header_toggle: false
+        entities:
+          - sensor.processor_use
+          - sensor.memory_free
+          - sensor.memory_use
+          - sensor.disk_use_percent_
+          - sensor.since_last_boot_templated
+          - sensor.last_boot
+# battery levels
+  - icon: mdi:battery
+    title: Battery Levels 
+    cards:
+      - type: entities
+        title: Battery levels
+        show_header_toggle: false
+        entities:
+          - sensor.livingroom_wireless_switch_battery
+          - sensor.hall_wireless_switch_battery
+          - sensor.tradfri_dimmer_battery
+          - sensor.button_switch_battery
+          - sensor.cube_battery
+          - sensor.frontdoor_battery
+          - sensor.landing_motion_battery
+          - sensor.hall_motion_battery
+          - sensor.toilet_leak_sensor_battery
+          - sensor.outside_motion_sensor_battery
+          - sensor.patio_door_sensor_battery
+          - sensor.temperaure__sensor_battery
+          - sensor.utility_leak_sensor_battery
+# Livingroom
+  - icon: mdi:sofa
+    title: Livingroom 
+    cards:
+      - type: entities
+        title: Living Room
+        show_header_toggle: false
+        entities:
+          - binary_sensor.door_window_sensor_158d00019e18bf
+          - sensor.humidity_158d0001b9205b
+          - sensor.pressure_158d0001b9205b
+          - sensor.temperature_158d0001b9205b
+          - binary_sensor.cube_158d000103a8a5 
+          - switch.onoff_sonoff1
+          - switch.onoff_sonoff2
+          - input_boolean.audit_light
+          - input_text.alexa
+      - type: entities
+        title: Living Room Lights
+        entities:
+          - input_select.light_state
+          - light.all_living_room_lights
+          - light.living_room_lights
+          - light.dining_room_lights
+      - type: entities
+        title: Xiaomi Gateway
+        show_header_toggle: false
+        entities:
+          - light.gateway_light_34ce0081452d
+          - sensor.illumination_34ce0081452d
+          - sensor.humidity_158d0001b9205b
+          - sensor.pressure_158d0001b9205b
+          - sensor.temperature_158d0001b9205b
+# kitchen
+  - icon: mdi:food-variant
+    title: Kitchen
+    cards:
+      - type: entities
+        title: Kitchen
+        entities:
+          - switch.wall_switch_158d000159a94f
+# Utility
+  - icon: mdi:washing-machine
+    title: Utility
+    cards:
+      - type: entities
+        title: Utility
+        show_header_toggle: false
+        entities:
+          - switch.wall_switch_158d0001a68d54
+          - binary_sensor.water_leak_sensor_158d0001c347c9
+# Hall
+  - icon: mdi:clock
+    title: Hall
+    cards:
+      - type: entities
+        title: Hall
+        show_header_toggle: false
+        entities:
+          - switch.wall_switch_left_158d0001a21f31
+          - binary_sensor.door_window_sensor_158d00019e1738
+          - input_boolean.ms2
+          - binary_sensor.motion_sensor_158d0001655f53
+          - switch.wall_switch_158d00016cefdb 
+          - binary_sensor.water_leak_sensor_158d0001c3472b
+# Frontroom
+  - icon: mdi:sofa
+    title: Frontroom
+    cards:
+      - type: entities
+        title: Frontroom
+        show_header_toggle: false
+        entities:
+          - input_boolean.ms1
+          - binary_sensor.motion_sensor_158d000187392e
+          - switch.wall_switch_158d0001828c33
+      - type: media-control
+        entity: media_player.fr_dot
+#Outside
+  - icon: mdi:flower
+    title: Outside
+    cards:
+      - type: entities
+        title: Outside
+        show_header_toggle: false
+        entities:
+          - switch.wall_switch_158d0001614701
+          - sensor.illumination_158d0001e43e18
+          - binary_sensor.motion_sensor_158d0001e43e18
+          - input_boolean.ms3
+# Landing
+  - icon: mdi:glassdoor
+    title: Landing
+    cards:
+      - type: entities
+        title: Landing
+        entities:
+          - switch.wall_switch_right_158d0001a21f31
+# Main Baathroom
+  -  icon: mdi:human-male-female
+     title: Main Bathroom
+     cards:
+       - type: entities
+         title: Main Bathroom
+         entities:
+          - switch.wall_switch_left_158d0001660d34
+          - switch.wall_switch_right_158d0001660d34
+# Master Bathroom
+  - icon: mdi:hotel
+    title: Master Bedroom
+    cards:
+      - type: entities
+        title: Master Bedroom
+        entities:
+          - switch.wall_switch_158d000159aa50 
+          - switch.wall_switch_left_158d0001a6596b
+          - switch.wall_switch_right_158d0001a6596b
+      - type: media-control
+        entity: media_player.br_echo
+# Study
+  - icon: mdi:book-open-variant
+    title: Study
+    cards:
+      - type: entities
+        title: Study
+        entities:
+          - switch.wall_switch_158d0001a68cf6
+# Francis Room
+  - icon: mdi:hotel
+    title: Francis's Room
+    cards:
+      - type: entities
+        title: Francis's Room
+        entities:
+          - switch.wall_switch_158d00016cf458
+# Maddy room
+  - icon: mdi:hotel
+    title: Maddy Room
+    cards:
+      - type: entities
+        title: Maddy Room
+        entities:
+          - switch.wall_switch_158d0001a2424b
+          - binary_sensor.switch_158d00018721c6
+          
+       
+    
+          
+
+    
+
+        
+          
+      
+        
+      

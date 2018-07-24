@@ -10,18 +10,18 @@
     recipient:
       - simon_walker@mac.com
     sender_name: My Home Assistant
-  - name: alexa-lr
+  - name: alexalr
     platform: command_line
     command: "/config/alexa_notifyLR.sh" 
-  - name: alexa-br
+  - name: alexabr
     platform: command_line
     command: "/config/alexa_notifyBR.sh"
-  - name: alexa-k
+  - name: alexak
     platform: command_line
     command: "/config/alexa_notifyK.sh" 
-  - name: alexa-all
+  - name: alexaall
     platform: command_line
     command: "/config/alexa_notifyALL.sh" 
-  - name: alexa-fr
+  - name: alexafr
     platform: command_line
     command: "/config/alexa_notifyFR.sh" 

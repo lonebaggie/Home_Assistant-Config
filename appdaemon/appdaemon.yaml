@@ -5,11 +5,13 @@ log:
 appdaemon:
   threads: 10
   app_dir: /config/appdaemon/apps
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
   plugins:
     HASS:
       type: hass
-      ha_url: http://hassio/homeassistant
-      ha_key: 56d0ccfc4d1a46f992211dfc8274f21b
+      ha_url: !secret http_url
+      ha_key: !secret http_password
 hadashboard:
   dash_url: http://127.0.0.1:5050
   dash_dir: /config/appdaemon/dashboards

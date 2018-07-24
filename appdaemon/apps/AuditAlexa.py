@@ -46,7 +46,7 @@ class Auditalexa(hass.Hass):
     def initialize(self):
 # get vars
         self.trigger=self.args["trigger"]
-        self.alexa = self.args["notify"]
+        self.alexa = self.args["device"]
 # check if trigger switch triggered
         self.listen_state(self.auditalexa,self.trigger,new="on")
     def auditalexa (self, entity, attribute, old, new, kwargs):
@@ -94,7 +94,7 @@ class Auditalexa(hass.Hass):
                 bt.append(temp)
             else :
                 battery.append("none")
-#create  message for alexa to speak . add , to pause to speech 
+#create  message for alexa to speak add , to pause speech 
         mess = title + "," + it + "," + ot + ","
 # append message for lights
         for entity in li :
@@ -110,9 +110,7 @@ class Auditalexa(hass.Hass):
                 mess = mess + entity + ","
 #add closing message
         mess = mess + title + "completed"
-# alexa notify unable to work with white spaces repalce spaces with _        
-        mess = mess.replace(" ","_")
-# send notify to alexa 
-        self.notify(mess,name = self.alexa)    
+# send tts to alexa 
+        self.call_service('media_player/alexa_tts', entity_id=self.alexa, message=mess)    
 # turn off trigger switch
         self.turn_off(self.trigger) 
