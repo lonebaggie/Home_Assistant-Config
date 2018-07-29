@@ -43,6 +43,8 @@ views:
 # Yahoo weather
       - type: weather-forecast
         entity:  weather.yweather
+
+        
 #All lights / light switches
   - icon: mdi:lightbulb 
     title: All lights
@@ -151,7 +153,7 @@ views:
           - switch.onoff_sonoff1
           - switch.onoff_sonoff2
           - input_boolean.audit_light
-          - input_text.alexa
+          - input_text.tts
       - type: entities
         title: Living Room Lights
         entities:

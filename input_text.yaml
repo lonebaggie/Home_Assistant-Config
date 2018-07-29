@@ -1,2 +1,2 @@
-  alexa:
-    name: alexa_speech
+  tts:
+    name: Alexa TTS

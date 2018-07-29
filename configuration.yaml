@@ -21,6 +21,7 @@ zone:
   radius: 500
 weather:
   - platform: yweather
+    Name: Weather
 
 # Enables the frontend
 frontend:

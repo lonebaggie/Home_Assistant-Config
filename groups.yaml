@@ -267,7 +267,7 @@
       - switch.onoff_sonoff1
       - switch.onoff_sonoff2
       - input_boolean.audit_light
-      - input_text.alexa
+      - input_text.tts
   glivingroommedia:
     name: Living Room Media
     view: false
