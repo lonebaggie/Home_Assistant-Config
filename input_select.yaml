@@ -7,6 +7,17 @@
      - Bright
     initial: "Off"
     icon: mdi:lightbulb
+  alexa_state:
+    name: Alexa State
+    options:
+     - LR_Dot
+     - K_Dot
+     - FR_Dot
+     - BR_Echo
+    initial: "LR_Dot"
+    icon: mdi:amazon-alexa
+    
+  
 
     
       

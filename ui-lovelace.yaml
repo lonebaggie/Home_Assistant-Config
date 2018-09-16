@@ -13,12 +13,14 @@ views:
 # who is home
       - type: entity-filter
         entities:
-          - entity: device_tracker.simonsiphone
+          - entity: device_tracker.f6d013042725
             name: Simon
           - entity: device_tracker.android6c7f7b0a01e8c5c2
             name: Francis
-          - entity: device_tracker.android3345c2743ec238cb
+          - entity: device_tracker.androidaa6a31c8b0e2e4b6
             name: Louise
+          - entity: device_tracker.androidaa6a31c8b0e2e4b6
+            name: Madeline
         state_filter:
           - 'home'
         card:
@@ -43,8 +45,6 @@ views:
 # Yahoo weather
       - type: weather-forecast
         entity:  weather.yweather
-
-        
 #All lights / light switches
   - icon: mdi:lightbulb 
     title: All lights
@@ -52,6 +52,7 @@ views:
       - type: entities
         title: Downstairs Lights
         entities:
+          - switch.wall_switch_158d00016cf4bc
           - light.living_room_lights
           - light.dining_room_lights
           - switch.wall_switch_158d0001614701
@@ -71,24 +72,34 @@ views:
           - switch.wall_switch_left_158d0001a6596b
           - switch.wall_switch_left_158d0001660d34
           - switch.wall_switch_right_158d0001a21f31
-# Living room media
-  - icon: mdi:monitor
-    title: Livingroom Media
+# Alexa Devices
+  - icon: mdi:amazon-alexa
+    title: Alexa Devices
     cards:
       - type: entities
-        title: Gigablue State
+        title: Alexa Devices
+        show_header_toggle: false
         entities:
-          - sensor.tv_channel
-          - sensor.tv_program
-          - sensor.gigablue_power_state
-      - type: media-control
-        entity: media_player.lg_tv_remote
-      - type: media-control
-        entity: media_player.living_room
-      - type: media-control
-        entity: media_player.sony_htxt2
-      - type: media-control
-        entity: media_player.lr_dot
+          - entity: media_player.lr_dot
+            name: "Livingroom Dot"
+            secondary_info: entity-id
+            icon: mdi:amazon-alexa
+          - entity: media_player.k_dot
+            secondary_info: entity-id
+            name: "Kitchen Dot"
+            icon: mdi:amazon-alexa
+          - entity: media_player.fr_dot
+            name: "Frontroom Dot"
+            secondary_info: entity-id
+            icon: mdi:amazon-alexa
+          - entity: media_player.br_echo
+            name: "Bedroom Echo"
+            secondary_info: entity-id
+            icon: mdi:amazon-alexa
+          - entity: input_boolean.audit_light
+            name: Livingroom Audit
+          - input_select.alexa_state
+          - input_text.tts
 # All sensors
   - icon: mdi:wrench
     title: Room sensors
@@ -152,15 +163,37 @@ views:
           - binary_sensor.cube_158d000103a8a5 
           - switch.onoff_sonoff1
           - switch.onoff_sonoff2
-          - input_boolean.audit_light
-          - input_text.tts
+          
+      - type: entities
+        title: Individual Lights
+        show_header_toggle: true
+        entities:
+          - light.lr1_2
+          - light.lr2
+          - light.lr3_2
+          - light.dr1
+          - light.dr2
+          - light.dr3
       - type: entities
         title: Living Room Lights
         entities:
+          - switch.wall_switch_158d00016cf4bc
           - input_select.light_state
           - light.all_living_room_lights
           - light.living_room_lights
           - light.dining_room_lights
+      - type: entities
+        title: TV
+        show_header_toggle: false
+        entities:
+          - sensor.tv_channel
+          - sensor.tv_program
+          - sensor.gigablue_power_state
+          - media_player.lg_tv_remote
+          - media_player.living_room
+          - media_player.sony_htxt2
+          - entity: media_player.lr_dot
+            icon: mdi:amazon-alexa
       - type: entities
         title: Xiaomi Gateway
         show_header_toggle: false
@@ -175,9 +208,12 @@ views:
     title: Kitchen
     cards:
       - type: entities
+        show_header_toggle: false
         title: Kitchen
         entities:
           - switch.wall_switch_158d000159a94f
+          - entity: media_player.k_dot
+            icon: mdi:amazon-alexa
 # Utility
   - icon: mdi:washing-machine
     title: Utility
@@ -213,8 +249,8 @@ views:
           - input_boolean.ms1
           - binary_sensor.motion_sensor_158d000187392e
           - switch.wall_switch_158d0001828c33
-      - type: media-control
-        entity: media_player.fr_dot
+          - entity: media_player.fr_dot
+            icon: mdi:amazon-alexa
 #Outside
   - icon: mdi:flower
     title: Outside
@@ -233,6 +269,7 @@ views:
     cards:
       - type: entities
         title: Landing
+        show_header_toggle: false
         entities:
           - switch.wall_switch_right_158d0001a21f31
 # Main Baathroom
@@ -241,6 +278,7 @@ views:
      cards:
        - type: entities
          title: Main Bathroom
+         show_header_toggle: false
          entities:
           - switch.wall_switch_left_158d0001660d34
           - switch.wall_switch_right_158d0001660d34
@@ -250,18 +288,20 @@ views:
     cards:
       - type: entities
         title: Master Bedroom
+        show_header_toggle: false       
         entities:
           - switch.wall_switch_158d000159aa50 
           - switch.wall_switch_left_158d0001a6596b
           - switch.wall_switch_right_158d0001a6596b
-      - type: media-control
-        entity: media_player.br_echo
+          - entity: media_player.br_echo
+            icon: mdi:amazon-alexa
 # Study
   - icon: mdi:book-open-variant
     title: Study
     cards:
       - type: entities
         title: Study
+        show_header_toggle: false
         entities:
           - switch.wall_switch_158d0001a68cf6
 # Francis Room
@@ -270,6 +310,7 @@ views:
     cards:
       - type: entities
         title: Francis's Room
+        show_header_toggle: false
         entities:
           - switch.wall_switch_158d00016cf458
 # Maddy room
@@ -278,15 +319,10 @@ views:
     cards:
       - type: entities
         title: Maddy Room
+        show_header_toggle: false
         entities:
           - switch.wall_switch_158d0001a2424b
           - binary_sensor.switch_158d00018721c6
-          
-       
-    
-          
-
-    
 
         
           

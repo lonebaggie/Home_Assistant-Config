@@ -4,6 +4,9 @@ class Speakalexa(hass.Hass):
         self.listen_state(self.speakalexa,"input_text.tts")
     def speakalexa (self, entity, attribute, old, new, kwargs):
         talk = self.get_state("input_text.tts")
+        alexa = self.get_state("input_select.alexa_state").lower()
+        alexa = "media_player." + alexa
         if talk != "" :
             self.log("TTS Called")
-            self.call_service("media_player/alexa_tts",entity_id="media_player.lr_dot",message=talk)
+            self.log(alexa)
+            self.call_service("media_player/alexa_tts",entity_id=alexa,message=talk)

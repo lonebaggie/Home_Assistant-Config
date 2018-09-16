@@ -19,9 +19,6 @@ LRRelaxed:
 LRBright:
   module: LRBright
   class: LRbright
-LRTradfri:
-  module: LRTradfri
-  class: LRtradfri
 FRAutolight:
   module: FRAutolight
   class: FRautolight
@@ -54,4 +51,7 @@ AuditAlexa:
 SpeakAlexa:
   module: SpeakAlexa
   class: Speakalexa
+#AllLights:
+#  module: AllLights
+#  class: Alllights
  

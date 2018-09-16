@@ -1,9 +1,9 @@
   - platform: group
     name: Living Room Lights
     entities:
-      - light.lr1
+      - light.lr1_2
       - light.lr2
-      - light.lr3
+      - light.lr3_2
   - platform: group
     name: Dining Room Lights
     entities:
@@ -11,7 +11,8 @@
       - light.dr2
       - light.dr3
   - platform: group
-    name: All Living room Lights
+    name: All Living Room Lights
     entities:
       - light.living_room_lights
       - light.dining_room_lights
+      

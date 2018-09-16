@@ -28,7 +28,7 @@
         unit_of_measurement: "%"
       cube_battery:
         friendly_name: 'Cube'
-        value_template: '{{ states.binary_sensor.cube_158d000103a8a5.attributes.battery_level }}'
+        value_template: '{{ states.binary_sensor.cube_158d000103a8a5_2.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
       frontdoor_battery:

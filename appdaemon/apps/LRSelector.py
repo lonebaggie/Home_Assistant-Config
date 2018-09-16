@@ -24,15 +24,23 @@ class LRselector(hass.Hass):
 #check to sse which item of the item select has been selected
         if new == "Off" :
 # resets item select and ensures all switches used by Alexa to change bulb state is off
+            self.turn_off("switch.wall_switch_158d00016cf4bc")
             self.turn_off(ent)
             self.turn_off("input_boolean.dark")
             self.turn_off("input_boolean.relaxed")
             self.turn_off("input_boolean.bright")
+            self.select_option("input_select.light_state","Off") 
+        if new != "Off" and self.get_state("switch.wall_switch_158d00016cf4bc") == "off" :
+            self.turn_on("switch.wall_switch_158d00016cf4bc")
+            new = ""
+            self.call_service('media_player/alexa_tts', entity_id= "media_player.lr_dot", 
+                               message="Lights ar syncronizing, please wait 45 seconds before you issue further commands") 
+            self.log("switch triggered")
         if new == "Dark" :
 # Selects dark settings and applys to all bulbs or subset. Set switch on for Alexa 
-            
             self.call_service("light/turn_on", entity_id = ent, brightness = 25, transition = 6 , color_temp = 450)
             self.turn_on("input_boolean.dark")
+            self.log("dark triggered")
         if new == "Relaxed" :
 # Selects relaxed settings and applys to all bulbs or subset. Set switch on for Alexa 
             self.log("relaxed triggered")
@@ -43,5 +51,6 @@ class LRselector(hass.Hass):
             self.log("bright triggered")
             self.call_service("light/turn_on", entity_id = ent, brightness = 254, transition = 6 , color_temp = 250)
             self.turn_on("input_boolean.bright")    
-            
+
+  
         

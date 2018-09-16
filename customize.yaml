@@ -166,3 +166,5 @@ switch.onoff_sonoff1:
   friendly_name: Sonoff1
 switch.onoff_sonoff2:
   friendly_name: Sonoff2
+group.glivingroomlights:
+  icon: mdi:lightbulb
