@@ -20,8 +20,9 @@ zone:
   icon: mdi:home
   radius: 500
 weather:
-  - platform: yweather
-    Name: Weather
+  - platform: darksky
+    mode: daily
+    api_key: !secret darksky_api
 
 # Enables the frontend
 frontend:

@@ -168,3 +168,11 @@ switch.onoff_sonoff2:
   friendly_name: Sonoff2
 group.glivingroomlights:
   icon: mdi:lightbulb
+binary_sensor.cube_158d000103a8a5_2:
+  friendly_name: Cube
+  icon: mdi:cube
+weather.yweather:
+  friendly_name: Yahoo Weather
+input_select.light_state:
+  friendly_name: Living Room Mood
+  icon: mdi:ceiling-light

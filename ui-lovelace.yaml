@@ -17,40 +17,83 @@ views:
             name: Simon
           - entity: device_tracker.android6c7f7b0a01e8c5c2
             name: Francis
-          - entity: device_tracker.androidaa6a31c8b0e2e4b6
+          - entity: device_tracker.androidd237b1685b303ccd
             name: Louise
           - entity: device_tracker.androidaa6a31c8b0e2e4b6
             name: Madeline
         state_filter:
-          - 'home'
+          - home
         card:
           type: glance
-          title: At home
-# House lights
-      - type: entities 
-        title: House Lights
+          title: At Home
+          show_state: false
+      - type: entity-filter
         entities:
-          - entity: group.gdownstairs
-            name: Downstairs
-          - entity: group.gupstairs
-            name: Upstairs
+          - entity: device_tracker.f6d013042725
+            name: Simon
+          - entity: device_tracker.android6c7f7b0a01e8c5c2
+            name: Francis
+          - entity: device_tracker.androidd237b1685b303ccd
+            name: Louise
+          - entity: device_tracker.androidaa6a31c8b0e2e4b6
+            name: Madeline
+        state_filter:
+          - not_home
+        card:
+          type: glance
+          title: Away
+          show_state: false
+
+# House lights
+      
+      - type: conditional
+        conditions:
+          - entity: group.all_lights_switches
+            state: "on"
+        card: 
+            type: entity-filter
+            entities:
+              - switch.wall_switch_158d00016cf4bc
+              - light.living_room_lights
+              - light.dining_room_lights
+              - switch.wall_switch_158d0001614701
+              - light.gateway_light_34ce0081452d
+              - switch.wall_switch_158d000159a94f 
+              - switch.wall_switch_158d0001a68d54
+              - switch.wall_switch_left_158d0001a21f31
+              - switch.wall_switch_158d00016cefdb
+              - switch.wall_switch_158d0001828c33
+              - switch.wall_switch_158d0001a2424b
+              - switch.wall_switch_158d00016cf458
+              - switch.wall_switch_158d0001a68cf6
+              - switch.wall_switch_158d000159aa50
+              - switch.wall_switch_left_158d0001a6596b
+              - switch.wall_switch_left_158d0001660d34
+              - switch.wall_switch_right_158d0001a21f31
+            state_filter:
+              - "on"
+            card:
+              type: entities
+              title: Lights left on
+        
+          
 # temperature inside /outside
-      - type: entities
+      - type: glance
         title: Temperature
         entities:
           - entity: sensor.temperature_158d0001b9205b
             name: Inside
           - entity: sensor.dark_sky_temperature
             name: Outside
-# Yahoo weather
+# darksky  weather
       - type: weather-forecast
-        entity:  weather.yweather
+        entity:   weather.dark_sky
 #All lights / light switches
   - icon: mdi:lightbulb 
     title: All lights
     cards:
       - type: entities
-        title: Downstairs Lights
+        title: Downstairs
         entities:
           - switch.wall_switch_158d00016cf4bc
           - light.living_room_lights
@@ -63,7 +106,7 @@ views:
           - switch.wall_switch_158d00016cefdb
           - switch.wall_switch_158d0001828c33
       - type: entities
-        title: Upstairs Lights
+        title: Upstairs 
         entities:
           - switch.wall_switch_158d0001a2424b
           - switch.wall_switch_158d00016cf458
@@ -98,8 +141,23 @@ views:
             icon: mdi:amazon-alexa
           - entity: input_boolean.audit_light
             name: Livingroom Audit
-          - input_select.alexa_state
-          - input_text.tts
+      - type: entities
+        title: "TTS"
+        show_header_toggle: false
+        entities:
+          - entity: input_select.alexa_state
+            name: "Select Echo"
+      - type: conditional
+        conditions:
+          - entity: input_select.alexa_state
+            state_not: "None"
+        card:
+          type: entities
+          entities:
+            - input_number.alexa_volume
+            - type: divider
+            - entity: input_text.tts
+              name: "Enter Text"
 # All sensors
   - icon: mdi:wrench
     title: Room sensors
@@ -199,6 +257,7 @@ views:
         show_header_toggle: false
         entities:
           - light.gateway_light_34ce0081452d
+          - binary_sensor.cube_158d000103a8a5_2
           - sensor.illumination_34ce0081452d
           - sensor.humidity_158d0001b9205b
           - sensor.pressure_158d0001b9205b

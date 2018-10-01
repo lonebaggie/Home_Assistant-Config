@@ -10,11 +10,13 @@
   alexa_state:
     name: Alexa State
     options:
+     - None
+     - All
      - LR_Dot
      - K_Dot
      - FR_Dot
      - BR_Echo
-    initial: "LR_Dot"
+    initial: "None"
     icon: mdi:amazon-alexa
     
   

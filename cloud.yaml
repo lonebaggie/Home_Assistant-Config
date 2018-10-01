@@ -9,14 +9,9 @@
         - light
         - input_boolean
       exclude_entities:
-        - light.lr1
-        - light.lr2
-        - light.lr3
-        - light.dr1
-        - light.dr2
-        - light.dr3
         - input_boolean.ms1
         - input_boolean.ms2
+        - input_boolean.ms3
         - input_boolean.cube_state
         - light.gateway_light_34ce0081452d
     entity_config:

@@ -1,6 +1,6 @@
   - platform: moon
   - platform: darksky
-    api_key: 76c0042d857a90702e045cafedb9da25
+    api_key: !secret darksky_api
     monitored_conditions:
       - summary
       - hourly_summary
