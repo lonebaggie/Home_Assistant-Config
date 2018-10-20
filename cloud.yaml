@@ -8,6 +8,7 @@
         - switch
         - light
         - input_boolean
+        - sensor
       exclude_entities:
         - input_boolean.ms1
         - input_boolean.ms2

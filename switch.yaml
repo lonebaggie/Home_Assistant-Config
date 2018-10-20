@@ -22,3 +22,16 @@
     payload_available: "Online"
     payload_not_available: "Offline"
     retain: true
+  - platform: mqtt  
+    name: "On/Off Sonoff-basic1"
+    state_topic: "stat/sonoff-basic1/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/sonoff-basic1/POWER"
+    availability_topic: "tele/sonoff-basic1/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+    

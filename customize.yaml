@@ -164,8 +164,10 @@ binary_sensor.water_leak_sensor_158d0001c347c9:
   icon: mdi:water
 switch.onoff_sonoff1:
   friendly_name: Sonoff1
+  icon: mdi:power-socket-uk
 switch.onoff_sonoff2:
   friendly_name: Sonoff2
+  icon: mdi:power-socket-uk
 group.glivingroomlights:
   icon: mdi:lightbulb
 binary_sensor.cube_158d000103a8a5_2:
@@ -176,3 +178,12 @@ weather.yweather:
 input_select.light_state:
   friendly_name: Living Room Mood
   icon: mdi:ceiling-light
+input_boolean.audit_light:
+  friendly_name: Audit trigger
+switch.onoff_sonoffbasic1:
+  friendly_name: Sonoff-basic1
+  icon: mdi:power-socket-uk
+weather.dark_sky:
+  friendly_name: Weather Forecast
+sensor.harmony:
+  icon: mdi:monitor

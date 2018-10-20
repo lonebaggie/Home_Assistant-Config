@@ -1,9 +1,9 @@
 import appdaemon.plugins.hass.hassapi as hass
 class LRhselector(hass.Hass):
     def initialize(self):
-        self.listen_state(self.lrhselect,"input_select.living_room_harmony")
+        self.listen_state(self.lrhselect,"input_select.harmony_state")
     def lrhselect (self, entity, attribute, old, new, kwargs):
-        hr = self.get_state("remote.harmony_hub")
+        hr = self.get_state("remote.harmony_hub", attribute="current activity")
         if new == "PowerOff" and hr != "PowerOff" :
             self.call_service("remote/turn_off",entity_id="remote.harmony_hub")
         if new == "Watch Roku" and hr != "Watch Roku":

@@ -15,4 +15,17 @@
     entities:
       - light.living_room_lights
       - light.dining_room_lights
-      
+  - platform: template
+    lights:
+      alexa_virtual:
+        friendly_name: "Alexa Dummy Light"
+        turn_on:
+
+        turn_off:
+
+        set_level:
+          
+
+
+
+

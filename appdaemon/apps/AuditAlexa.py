@@ -18,7 +18,7 @@
 #    Switch: List of switches
 #    battery: list of sensors with battery levels
 #
-# Title,Trigger and Notify parameters are mandatory, other parameters that not required must be set to none    
+# Title,Trigger and Device parameters are mandatory, other parameters that not required must be set to none    
 #
 # Example config 
 #
@@ -27,7 +27,7 @@
 # class: Auditalexa
 # title: "Living Room Audit"
 # trigger: "input_boolean.audit_light"
-# notify: "alexalr"
+# device : "media_player.lr_dot"
 # temp-inside: "sensor.temperature_158d0001b9205b"
 # temp-outside: "sensor.dark_sky_temperature"
 # light:
@@ -107,10 +107,11 @@ class Auditalexa(hass.Hass):
 # append message for battries
         for entity in bt :
             if entity != "none" :
-                mess = mess + entity + ","
+                mess = mess + entity + ", ."
 #add closing message
+
         mess = mess + title + "completed"
 # send tts to alexa 
-        self.call_service('media_player/alexa_tts', entity_id=self.alexa, message=mess)    
+        self.call_service('media_player/alexa_tts', entity_id=self.alexa, message=mess) 
 # turn off trigger switch
         self.turn_off(self.trigger) 

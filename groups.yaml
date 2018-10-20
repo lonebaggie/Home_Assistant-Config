@@ -32,11 +32,5 @@
       - media_player.k_dot
       - media_player.fr_dot
       - media_player.br_echo
-  all_lights_switches:
-    name: All lights and switches
-    view: false
-    entities:
-      - group.all_lights
-      - group.all_switches
       
       

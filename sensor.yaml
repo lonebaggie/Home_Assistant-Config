@@ -111,6 +111,45 @@
         value_template: "{{ states('sensor.dark_sky_overnight_low_temperature') | round (1) }}"
         icon_template: mdi:thermometer
         unit_of_measurement: "%"
+      lrsync:
+        friendly_name: 'Livingroom Light Sync'
+        value_template: >-
+          {% if is_state('light.lr1_2', 'unavailable') 
+          and is_state('light.lr2', 'unavailable') 
+          and is_state('light.lr3_2', 'unavailable') 
+          and is_state('light.dr1', 'unavailable') 
+          and is_state('light.dr2', 'unavailable') 
+          and is_state('light.dr3', 'unavailable')  %}
+            off
+          {% elif not is_state('light.lr1_2', 'unavailable') 
+          and not is_state('light.lr2', 'unavailable') 
+          and not is_state('light.lr3_2', 'unavailable') 
+          and not is_state('light.dr1', 'unavailable') 
+          and not is_state('light.dr2', 'unavailable') 
+          and not is_state('light.dr3', 'unavailable')  %}
+            on
+          {% else %}
+            unknown
+          {% endif %}
+      harmony:
+        friendly_name: "Harmony"
+        value_template: >-
+          {% if states.remote.harmony_hub.attributes.current_activity == "PowerOff" %}
+            Off
+          {% elif states.remote.harmony_hub.attributes.current_activity == "Speaker" %}
+            Speaker
+          {% elif states.remote.harmony_hub.attributes.current_activity == "Sony" %}
+            Sony
+          {% elif states.remote.harmony_hub.attributes.current_activity == "Watch Roku" %}
+            Ruku
+          {% elif states.remote.harmony_hub.attributes.current_activity == "L Gee" %}
+            LG
+          {% elif states.remote.harmony_hub.attributes.current_activity == "TV" %}
+            Gigablue
+          {% elif states.remote.harmony_hub.attributes.current_activity == "Blue Ray" %}
+            Blue Ray
+          {% endif %}
+          
   - platform: systemmonitor
     resources:
       - type: disk_free

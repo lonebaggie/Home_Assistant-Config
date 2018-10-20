@@ -16,8 +16,21 @@
      - K_Dot
      - FR_Dot
      - BR_Echo
-    initial: "None"
+    initial: "LR_Dot"
     icon: mdi:amazon-alexa
+  harmony_state:
+    name : Harmony State
+    options:
+      - PowerOff
+      - Speaker
+      - Sony
+      - Watch Roku
+      - L Gee
+      - TV
+      - Blue Ray
+    initial: "PowerOff"
+    icon: mdi:remote
+      
     
   
 

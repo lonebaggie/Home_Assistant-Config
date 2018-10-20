@@ -15,4 +15,3 @@ class Speakalexa(hass.Hass):
             self.log(alexa)
             self.call_service("media_player/volume_set",entity_id=alexa,volume_level=vol)
             self.call_service("media_player/alexa_tts",entity_id=alexa,message=talk)
-            self.select_option("input_select.alexa_state","None")

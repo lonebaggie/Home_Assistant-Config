@@ -12,3 +12,4 @@
     email: !secret alexa_login
     password: !secret alexa_pass
     url: amazon.co.uk
+ 
