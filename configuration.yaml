@@ -26,9 +26,10 @@ weather:
 
 # Enables the frontend
 frontend:
+
+
 # DAtabase 
 recorder:
-
 panel_iframe:
   configurator:
     title: Configurator
@@ -105,10 +106,12 @@ input_text: !include input_text.yaml
 scene: !include scene.yaml
 light: !include light.yaml
 sensor: !include sensor.yaml
+binary_sensor: !include binary_sensor.yaml
 input_boolean: !include input_boolean.yaml
 media_player: !include mediaplayer.yaml
 switch: !include switch.yaml
 notify: !include notify.yaml
+shell_command: !include shell_command.yaml
 
 remote:
   - platform: harmony
@@ -140,6 +143,19 @@ zha:
  usb_path: /dev/ttyAMA0
  database_path: zigbee.db
  baudrate: 57600
+python_script:
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 
 

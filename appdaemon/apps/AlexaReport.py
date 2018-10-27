@@ -23,9 +23,20 @@
 # "The patio door is closed"                (created by this app)
 #
 # Program requires the following parameters
+#
+# AlexaReport:
+# module: AlexaReport
+# class: Alexareport
+# trigger: "< name of dummy light >"
+# ent:
+#   - < name of sensor 1 >
+#   - < name of sensor 2 >
+#   - < etc >
+#
+# sonsor position matches dummy bulb brightness level  
 # 
 #
-# 
+# Version 1.1
 #
 #
 #
@@ -37,19 +48,31 @@ class Alexareport(hass.Hass):
     def initialize(self):
 # get vars
         self.trigger=self.args["trigger"]
-        self.alexa = self.args["device"]
 # check if dummy bulb  triggered
         self.listen_state(self.alexareport,self.trigger,new="on")
     def alexareport (self, entity, attribute, old, new, kwargs):
+        self.log(("{} triggered").format(self.trigger))
+        import subprocess
 #setup list for entities 
         ent = []
+        message  = []
+#setup call to alexa_remote_control.sh to get the alexa which is being talked to
+        cmd =['/config/alexa_remote_control_plain.sh', '-lastalexa']
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE )
+        alexa= proc.stdout.read().decode('ascii')
+        alexa = alexa.strip('\n')
+        self.log("Last Alexa is {}".format(alexa))
 # dim value of dummy light
         value = self.get_state(self.trigger, attribute = "brightness")
 # Convert brightness 0 to 255 as persentage  then -1 as python list start 0 not 1
         psent = int(round(value/255*100)) -1
 #get entity id from args and add to ent list
-        for entity in self.args["ent"]:
-            ent.append(entity)
+        for v in self.args["ent"]:
+            ent.append(v)
+# get message from args and add to message list 
+        for v in self.args["message"]:
+            message.append(v)
+
 # Test if dim value matches listnumber in  array -1 as array start at 0
         if psent > (len(ent) -1) :
 # Dim value does not match entry in list error and turn off dummy light
@@ -67,8 +90,9 @@ class Alexareport(hass.Hass):
                 uom = ""
             if dc == None :
                 dc = ""
+
 #construct alexa reply
-            mess = "The " + fname + " is " + dc + " " + state + " " + uom
+            mess = dc + " " + state + " " + uom
 # Check entity type to change on/off to appropriate values. Add as required
             mess = mess.replace("opening on","open")
             mess = mess.replace("opening off","closed")
@@ -80,6 +104,7 @@ class Alexareport(hass.Hass):
             mess = mess.replace("humidity", "")
             mess = mess.replace("pressure","") 
 # replace symbols and SI with words. Add as required  
+            mess = mess.replace("  "," ")
             mess = mess.replace("°C","Centagrade")
             mess = mess.replace("km","Kilometres")
             mess = mess.replace("GiB","Gigabytes")
@@ -89,9 +114,13 @@ class Alexareport(hass.Hass):
             mess = mess.replace("mbar","Milibar")
             mess = mess.replace("hPa","Hectopascal")
             mess = mess.replace("lm","Lumin")
-            self.log("Message {} is {}".format(psent+1,mess))
+# combine sensor details with message
+            talkmess = message[psent].format(fname,mess)
+            self.log("Message {} sent to {} is {}".format(psent+1,alexa,talkmess))
 #send message to alexa and turn off dummy bulb
-            self.call_service('media_player/alexa_tts', entity_id=self.alexa, message=mess) 
+           
+            self.log(cmd)
+            subprocess.call('/config/talk.sh','LR Dot','Testing')
             self.turn_off(self.trigger)
         
             

@@ -1,0 +1,20 @@
+  - platform: template
+    sensors:
+      alexa_lr_standby:
+        value_template: >-
+          {{ is_state('media_player.lr_dot', 'standby') }}
+  - platform: template
+    sensors:
+      alexa_k_standby:
+        value_template: >-
+          {{ is_state('media_player.k_dot', 'standby') }}
+  - platform: template
+    sensors:
+      alexa_fr_standby:
+        value_template: >-
+          {{ is_state('media_player.fr_dot', 'standby') }}
+  - platform: template
+    sensors:
+      alexa_br_standby:
+        value_template: >-
+          {{ is_state('media_player.br_echo', 'standby') }}

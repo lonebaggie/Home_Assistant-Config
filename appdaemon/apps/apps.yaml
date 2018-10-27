@@ -67,11 +67,15 @@ AlexaReport:
   module: AlexaReport
   class: Alexareport
   trigger: "light.alexa_virtual"
-  device: "media_player.lr_dot"
   ent:
     - binary_sensor.door_window_sensor_158d00019e18bf
     - sensor.temperature_158d0001b9205b
-    - sensor.cube_battery
+    - group.gupstairs
     - binary_sensor.door_window_sensor_158d00019e1738
+  message:
+    - "The {} {}"
+    - "The {} {}"
+    - "The {} {}"
+    - "The {} {}"
     
   

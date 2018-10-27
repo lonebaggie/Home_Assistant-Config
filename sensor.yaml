@@ -176,8 +176,5 @@
     name: Gigablue Power State
     select: 'e2instandby'
     value_template: '{{value.replace("true","off")|replace("false","on") }}'
-  
-    
-
-      
-      
+  - platform: command_line
+    command: 'python3 /config/alexa_wrapper.py {{ "-lastalexa" }}' 

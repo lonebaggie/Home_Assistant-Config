@@ -4,25 +4,27 @@ excluded_entities:
   - weblink.router
 views:
     # House Overall View
-  - icon: mdi:home-assistant
+  - id: 0  # Automatically created id
+    icon: mdi:home-assistant
     title: Overview
 
     theme: dark-mode
     # The cards to show on this view.
     cards:
 # who is home
-      - type: vertical-stack
+      - id: f9f9d1e91dd6477eb621c9bfd8f1b257  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entity-filter
             entities:
-            - entity: device_tracker.f6d013042725
-              name: Simon
-            - entity: device_tracker.android6c7f7b0a01e8c5c2
-              name: Francis
-            - entity: device_tracker.androidd237b1685b303ccd
-              name: Louise
-            - entity: device_tracker.androidaa6a31c8b0e2e4b6
-              name: Madeline
+              - entity: device_tracker.f6d013042725
+                name: Simon
+              - entity: device_tracker.android6c7f7b0a01e8c5c2
+                name: Francis
+              - entity: device_tracker.androidd237b1685b303ccd
+                name: Louise
+              - entity: device_tracker.androidaa6a31c8b0e2e4b6
+                name: Madeline
             state_filter:
               - home
             show_empty: false
@@ -48,12 +50,13 @@ views:
               title: Away
               show_state: false
 # House lights
-      - type: entity-filter
+      - id: 6aed2d9046b54164ad981bd4f3b710cf  # Automatically created id
+        type: entity-filter
         entities:
           - switch.wall_switch_158d00016cf4bc
           - switch.wall_switch_158d0001614701
           - light.gateway_light_34ce0081452d
-          - switch.wall_switch_158d000159a94f 
+          - switch.wall_switch_158d000159a94f
           - switch.wall_switch_158d0001a68d54
           - switch.wall_switch_left_158d0001a21f31
           - switch.wall_switch_158d00016cefdb
@@ -66,14 +69,15 @@ views:
           - switch.wall_switch_left_158d0001660d34
           - switch.wall_switch_right_158d0001a21f31
         state_filter:
-          - "on"
+          - on
         card:
           type: entities
           title: Lights left on
         show_empty: false
-          
+
 # temperature inside /outside
-      - type: glance
+      - id: d9e4d3ec9cad4a048361879a38769b14  # Automatically created id
+        type: glance
         title: Temperature
         entities:
           - entity: sensor.temperature_158d0001b9205b
@@ -81,13 +85,16 @@ views:
           - entity: sensor.dark_sky_temperature
             name: Outside
 # darksky  weather
-      - type: weather-forecast
+      - id: e58f68466bb34824bfb38d57506ae3e9  # Automatically created id
+        type: weather-forecast
         entity: weather.dark_sky
 #All lights / light switches
-  - icon: mdi:lightbulb 
+  - id: 1  # Automatically created id
+    icon: mdi:lightbulb
     title: All lights
     cards:
-      - type: entities
+      - id: cbdf81217f7848d1b0052b49296df9d0  # Automatically created id
+        type: entities
         title: Downstairs
         entities:
           - switch.wall_switch_158d00016cf4bc
@@ -95,13 +102,14 @@ views:
           - light.dining_room_lights
           - switch.wall_switch_158d0001614701
           - light.gateway_light_34ce0081452d
-          - switch.wall_switch_158d000159a94f 
+          - switch.wall_switch_158d000159a94f
           - switch.wall_switch_158d0001a68d54
           - switch.wall_switch_left_158d0001a21f31
           - switch.wall_switch_158d00016cefdb
           - switch.wall_switch_158d0001828c33
-      - type: entities
-        title: Upstairs 
+      - id: 80878e4bac0b44c68da71ef0ea637dc3  # Automatically created id
+        type: entities
+        title: Upstairs
         entities:
           - switch.wall_switch_158d0001a2424b
           - switch.wall_switch_158d00016cf458
@@ -111,49 +119,54 @@ views:
           - switch.wall_switch_left_158d0001660d34
           - switch.wall_switch_right_158d0001a21f31
 # Alexa Devices
-  - icon: mdi:amazon-alexa
+  - id: 2  # Automatically created id
+    icon: mdi:amazon-alexa
     title: Alexa Devices
     cards:
-      - type: entities
+      - id: 4f0aca6d8c064ee78d2a68ed35ee3ff6  # Automatically created id
+        type: entities
         title: Alexa Devices
         show_header_toggle: false
         entities:
           - entity: media_player.lr_dot
-            name: "Livingroom Dot"
+            name: Livingroom Dot
             secondary_info: entity-id
             icon: mdi:amazon-alexa
           - entity: media_player.k_dot
             secondary_info: entity-id
-            name: "Kitchen Dot"
+            name: Kitchen Dot
             icon: mdi:amazon-alexa
           - entity: media_player.fr_dot
-            name: "Frontroom Dot"
+            name: Frontroom Dot
             secondary_info: entity-id
             icon: mdi:amazon-alexa
           - entity: media_player.br_echo
-            name: "Bedroom Echo"
+            name: Bedroom Echo
             secondary_info: entity-id
             icon: mdi:amazon-alexa
           - entity: input_boolean.audit_light
             name: Livingroom Audit
-      - type: entities
-        title: "TTS"
+      - id: 047dc53ab4fc4d2e9ab7e62c689fc8dc  # Automatically created id
+        type: entities
+        title: TTS
         show_header_toggle: false
         entities:
           - entity: input_select.alexa_state
-            name: "Select Echo"
-      - type: conditional
+            name: Select Echo
+      - id: aea1a6335ced498a9a7898aa14ba5a42  # Automatically created id
+        type: conditional
         conditions:
           - entity: input_select.alexa_state
-            state_not: "None"
+            state_not: None
         card:
           type: entities
           entities:
             - input_number.alexa_volume
             - type: divider
             - entity: input_text.tts
-              name: "Enter Text"
-      - type: conditional
+              name: Enter Text
+      - id: 03e32403a7824bf098cb59962b432a98  # Automatically created id
+        type: conditional
         conditions:
           - entity: media_player.sony_htxt2
             state: on
@@ -161,11 +174,13 @@ views:
           type: media-control
           entity: media_player.sony_htxt2
 # All sensors
-  - icon: mdi:wrench
+  - id: 3  # Automatically created id
+    icon: mdi:wrench
     title: Room sensors
     cards:
-      - type: entities
-        title: Sensors 
+      - id: 0c8736ef4f3f405bb0471f5ecf3e09c4  # Automatically created id
+        type: entities
+        title: Sensors
         show_header_toggle: false
         entities:
           - binary_sensor.motion_sensor_158d0001655f53
@@ -179,10 +194,12 @@ views:
           - sensor.pressure_158d0001b9205b
           - sensor.temperature_158d0001b9205b
 # Raspberry Pi subsystems
-  - icon: mdi:desktop-classic
+  - id: 4  # Automatically created id
+    icon: mdi:desktop-classic
     title: Raspberry Pi System
     cards:
-      - type: entities
+      - id: 1220fa0439234bc19781777b1e043558  # Automatically created id
+        type: entities
         title: Raspberry Pi subsystems
         show_header_toggle: false
         entities:
@@ -193,10 +210,12 @@ views:
           - sensor.since_last_boot_templated
           - sensor.last_boot
 # battery levels
-  - icon: mdi:battery
-    title: Battery Levels 
+  - id: 5  # Automatically created id
+    icon: mdi:battery
+    title: Battery Levels
     cards:
-      - type: entities
+      - id: 5c2b0418500746b4adaf1fb1148624a8  # Automatically created id
+        type: entities
         title: Battery levels
         show_header_toggle: false
         entities:
@@ -214,43 +233,46 @@ views:
           - sensor.temperaure__sensor_battery
           - sensor.utility_leak_sensor_battery
 # Livingroom
-  - icon: mdi:sofa
-    title: Livingroom 
+  - id: 6  # Automatically created id
+    icon: mdi:sofa
+    title: Livingroom
     cards:
-      - type: vertical-stack
+      - id: 1d977559df7142c49ed48c152d39d6ed  # Automatically created id
+        type: vertical-stack
         cards:
-        - type: entities
-          title: Light Mode
-          show_header_toggle: false
-          entities:
-            - switch.wall_switch_158d00016cf4bc
-            - light.gateway_light_34ce0081452d
-            - input_select.light_state
-        - type: conditional
-          conditions:
-            - entity: switch.wall_switch_158d00016cf4bc
-              state: "on"
-          card:
-            type: entities
-            title: Living Room Lights
-            show_header_toggle: true
+          - type: entities
+            title: Light Mode
+            show_header_toggle: false
             entities:
-              - light.lr1_2
-              - light.lr2
-              - light.lr3_2
-        - type: conditional
-          conditions:
-            - entity: switch.wall_switch_158d00016cf4bc
-              state: "on"
-          card:
-            type: entities
-            title: Dining Room Lights
-            show_header_toggle: true
-            entities:
-              - light.dr1
-              - light.dr2
-              - light.dr3
-      - type: vertical-stack
+              - switch.wall_switch_158d00016cf4bc
+              - light.gateway_light_34ce0081452d
+              - input_select.light_state
+          - type: conditional
+            conditions:
+              - entity: switch.wall_switch_158d00016cf4bc
+                state: on
+            card:
+              type: entities
+              title: Living Room Lights
+              show_header_toggle: true
+              entities:
+                - light.lr1_2
+                - light.lr2
+                - light.lr3_2
+          - type: conditional
+            conditions:
+              - entity: switch.wall_switch_158d00016cf4bc
+                state: on
+            card:
+              type: entities
+              title: Dining Room Lights
+              show_header_toggle: true
+              entities:
+                - light.dr1
+                - light.dr2
+                - light.dr3
+      - id: 78503ddaf08742568e3581bc1bf98ffd  # Automatically created id
+        type: vertical-stack
         cards:
           - type: entities
             title: Media
@@ -260,7 +282,7 @@ views:
             conditions:
               - entity: sensor.harmony
                 state: Gigablue
-            card: 
+            card:
               type: entities
               show_header_toggle: false
               entities:
@@ -270,8 +292,8 @@ views:
           - type: conditional
             conditions:
               - entity: sensor.harmony
-                state: "Roku"
-            card: 
+                state: Roku
+            card:
               type: entities
               title: Ruko
               show_header_toggle: false
@@ -281,8 +303,8 @@ views:
           - type: conditional
             conditions:
               - entity: sensor.harmony
-                state: "Sony"
-            card: 
+                state: Sony
+            card:
               type: entities
               title: Sony
               show_header_toggle: false
@@ -291,8 +313,8 @@ views:
           - type: conditional
             conditions:
               - entity: sensor.harmony
-                state: "Speaker"
-            card: 
+                state: Speaker
+            card:
               type: entities
               title: BT Speaker
               show_header_toggle: false
@@ -302,8 +324,8 @@ views:
           - type: conditional
             conditions:
               - entity: sensor.harmony
-                state: "LG"
-            card: 
+                state: LG
+            card:
               type: entities
               title: LG TV
               show_header_toggle: false
@@ -313,14 +335,15 @@ views:
           - type: conditional
             conditions:
               - entity: input_select.harmony_state
-                state: "Blue Ray"
-            card: 
+                state: Blue Ray
+            card:
               type: entities
               title: LG BR Player
               show_header_toggle: false
               entities:
                 - media_player.sony_htxt2
-      - type: entities
+      - id: ec8f6dec3a9b482bbaedc6e5b9c25eb8  # Automatically created id
+        type: entities
         title: Switches
         show_header_toggle: false
         entities:
@@ -329,10 +352,12 @@ views:
           - switch.onoff_sonoff2
           - switch.onoff_sonoffbasic1
 # kitchen
-  - icon: mdi:food-variant
+  - id: 7  # Automatically created id
+    icon: mdi:food-variant
     title: Kitchen
     cards:
-      - type: entities
+      - id: f56aebf41cde412caf5660d539b03ee1  # Automatically created id
+        type: entities
         show_header_toggle: false
         title: Kitchen
         entities:
@@ -340,20 +365,24 @@ views:
           - entity: media_player.k_dot
             icon: mdi:amazon-alexa
 # Utility
-  - icon: mdi:washing-machine
+  - id: 8  # Automatically created id
+    icon: mdi:washing-machine
     title: Utility
     cards:
-      - type: entities
+      - id: 143fac23d10042b8b59f52a381de5eb7  # Automatically created id
+        type: entities
         title: Utility
         show_header_toggle: false
         entities:
           - switch.wall_switch_158d0001a68d54
           - binary_sensor.water_leak_sensor_158d0001c347c9
 # Hall
-  - icon: mdi:clock
+  - id: 9  # Automatically created id
+    icon: mdi:clock
     title: Hall
     cards:
-      - type: entities
+      - id: 906d0aa0ac404f37805e06e372fa3bd0  # Automatically created id
+        type: entities
         title: Hall
         show_header_toggle: false
         entities:
@@ -361,13 +390,15 @@ views:
           - binary_sensor.door_window_sensor_158d00019e1738
           - input_boolean.ms2
           - binary_sensor.motion_sensor_158d0001655f53
-          - switch.wall_switch_158d00016cefdb 
+          - switch.wall_switch_158d00016cefdb
           - binary_sensor.water_leak_sensor_158d0001c3472b
 # Frontroom
-  - icon: mdi:sofa
+  - id: 10  # Automatically created id
+    icon: mdi:sofa
     title: Frontroom
     cards:
-      - type: entities
+      - id: 7f7ea1e9970d4093af6b3d7ca2cfc523  # Automatically created id
+        type: entities
         title: Frontroom
         show_header_toggle: false
         entities:
@@ -377,10 +408,12 @@ views:
           - entity: media_player.fr_dot
             icon: mdi:amazon-alexa
 #Outside
-  - icon: mdi:flower
+  - id: 11  # Automatically created id
+    icon: mdi:flower
     title: Outside
     cards:
-      - type: entities
+      - id: 486a4f2d2ab74b4aa11d43e769c339e9  # Automatically created id
+        type: entities
         title: Outside
         show_header_toggle: false
         entities:
@@ -389,68 +422,80 @@ views:
           - binary_sensor.motion_sensor_158d0001e43e18
           - input_boolean.ms3
 # Landing
-  - icon: mdi:glassdoor
+  - id: 12  # Automatically created id
+    icon: mdi:glassdoor
     title: Landing
     cards:
-      - type: entities
+      - id: 0871354a1b89414da9f5b2c1a82e0360  # Automatically created id
+        type: entities
         title: Landing
         show_header_toggle: false
         entities:
           - switch.wall_switch_right_158d0001a21f31
 # Main Baathroom
-  -  icon: mdi:human-male-female
-     title: Main Bathroom
-     cards:
-       - type: entities
-         title: Main Bathroom
-         show_header_toggle: false
-         entities:
+  - id: 13  # Automatically created id
+    icon: mdi:human-male-female
+    title: Main Bathroom
+    cards:
+      - id: a01593ee38b44df496ccf9700487bac2  # Automatically created id
+        type: entities
+        title: Main Bathroom
+        show_header_toggle: false
+        entities:
           - switch.wall_switch_left_158d0001660d34
           - switch.wall_switch_right_158d0001660d34
 # Master Bathroom
-  - icon: mdi:hotel
+  - id: 14  # Automatically created id
+    icon: mdi:hotel
     title: Master Bedroom
     cards:
-      - type: entities
+      - id: cbfd9769ad104eb7af839bc8ba463a57  # Automatically created id
+        type: entities
         title: Master Bedroom
-        show_header_toggle: false       
+        show_header_toggle: false
         entities:
-          - switch.wall_switch_158d000159aa50 
+          - switch.wall_switch_158d000159aa50
           - switch.wall_switch_left_158d0001a6596b
           - switch.wall_switch_right_158d0001a6596b
           - entity: media_player.br_echo
             icon: mdi:amazon-alexa
 # Study
-  - icon: mdi:book-open-variant
+  - id: 15  # Automatically created id
+    icon: mdi:book-open-variant
     title: Study
     cards:
-      - type: entities
+      - id: bcc8f42fc61c4e1b8e84cd5537a4d1a8  # Automatically created id
+        type: entities
         title: Study
         show_header_toggle: false
         entities:
           - switch.wall_switch_158d0001a68cf6
 # Francis Room
-  - icon: mdi:hotel
+  - id: 16  # Automatically created id
+    icon: mdi:hotel
     title: Francis's Room
     cards:
-      - type: entities
+      - id: 5037e09eb47543a7af78d5cb25f18b49  # Automatically created id
+        type: entities
         title: Francis's Room
         show_header_toggle: false
         entities:
           - switch.wall_switch_158d00016cf458
 # Maddy room
-  - icon: mdi:hotel
+  - id: 17  # Automatically created id
+    icon: mdi:hotel
     title: Maddy Room
     cards:
-      - type: entities
+      - id: 6e4ca575ee684cce80146e2ee9427cea  # Automatically created id
+        type: entities
         title: Maddy Room
         show_header_toggle: false
         entities:
           - switch.wall_switch_158d0001a2424b
           - binary_sensor.switch_158d00018721c6
 
-        
-          
-      
-        
-      
+
+
+
+
+
