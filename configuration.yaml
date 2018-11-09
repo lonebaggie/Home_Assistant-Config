@@ -12,6 +12,9 @@ homeassistant:
   time_zone: Europe/London
   # Customization file
   customize: !include customize.yaml
+  whitelist_external_dirs:
+    - /config/alexa
+  
 
 zone:
   name: my House
@@ -144,6 +147,7 @@ zha:
  database_path: zigbee.db
  baudrate: 57600
 python_script:
+
 
 
   

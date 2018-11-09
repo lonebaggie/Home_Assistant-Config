@@ -63,19 +63,50 @@ HarmonySelect:
 LRHSelector:
   module: LRHSelector
   class: LRhselector
-AlexaReport:
-  module: AlexaReport
-  class: Alexareport
+SpeechParser:
+  module: SpeechParser
+  class: Speechparser
   trigger: "light.alexa_virtual"
-  ent:
-    - binary_sensor.door_window_sensor_158d00019e18bf
-    - sensor.temperature_158d0001b9205b
-    - group.gupstairs
-    - binary_sensor.door_window_sensor_158d00019e1738
-  message:
-    - "The {} {}"
-    - "The {} {}"
-    - "The {} {}"
-    - "The {} {}"
+  DEBUG: 1
+  entities: 
+    1: binary_sensor.door_window_sensor_158d00019e18bf #front door
+    2: sensor.temperature_158d0001b9205b #living room temp
+    3: group.gupstairs #  upstairs light
+    4: binary_sensor.door_window_sensor_158d00019e1738 #  patio door
+    5: weather.dark_sky #  weather forcast
+    6: sensor.processor_use # pi proc use
+    7: sensor.memory_free # pi mem free
+    8: sensor.memory_use # pi mem free
+    9: sensor.disk_use_percent_ # disk use 
+    10: sensor.last_boot # pi last boot
+  messages:
+    1: >
+       The {$01=FN} {$01=ST|on|is currently open}{$01=ST|off| is currently closed}
+    2: > 
+       The {$02=FN} is currently {$02=ST} centigrade
+    3: >
+       The {$03=FN} are currently {$03=ST}
+    4: > 
+       The {$04=FN} {$04=ST|on|is currently open, 
+       the sensor is [1]}{$04=ST|off|is currently closed, the sensor is [1]}
+    5: > 
+       {g} on {d} the {D} of {m} {y} at {t}, The current outside temperture is {$05=TP} degrees,
+       winspeed is {$05=wind_speed} miles per hour, {$02>ST|$05=TP|Inside temperature is [-] 
+       degrees warmer than outside}
+    6: >
+       {$02>ST|10|danger, temperatures high}
+    7: >
+       {$02>ST|$05=TP|Inside temperature [1] degrees is higher 
+       than outside temperature of [2] degress by [-] celcius}"
+    8: >
+       {$02<ST|20|Inside temperature, is lower than 20 degress, 
+       currently temperature is [1]} 
+    9: >
+       Raspberry Pi status report, current memory usage is {$08=ST} %
+       , Disk free {$09=ST} % , proccesor use {$06=ST} %
     
+AlexaCookieAlarm:
+ module: AlexaCookieAlarm
+ class: Alexacookiealarm
+
   

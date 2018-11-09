@@ -187,3 +187,7 @@ weather.dark_sky:
   friendly_name: Weather Forecast
 sensor.harmony:
   icon: mdi:monitor
+sensor.last_alexa:
+  icon: mdi:amazon-alexa
+sensor.alexa_alarm:
+  icon: mdi:amazon-alexa

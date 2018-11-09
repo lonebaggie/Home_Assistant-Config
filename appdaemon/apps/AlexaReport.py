@@ -43,6 +43,7 @@
 #
 #
 
+
 import appdaemon.plugins.hass.hassapi as hass
 class Alexareport(hass.Hass):
     def initialize(self):
@@ -53,76 +54,92 @@ class Alexareport(hass.Hass):
     def alexareport (self, entity, attribute, old, new, kwargs):
         self.log(("{} triggered").format(self.trigger))
         import subprocess
-#setup list for entities 
-        ent = []
-        message  = []
-#setup call to alexa_remote_control.sh to get the alexa which is being talked to
-        cmd =['/config/alexa_remote_control_plain.sh', '-lastalexa']
-        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE )
-        alexa= proc.stdout.read().decode('ascii')
-        alexa = alexa.strip('\n')
+
+# get last lastalexa from sensor 
+        self.call_service("homeassistant/update_entity",entity_id = "sensor.last_alexa")
+        alexa = self.get_state("sensor.last_alexa")
         self.log("Last Alexa is {}".format(alexa))
 # dim value of dummy light
         value = self.get_state(self.trigger, attribute = "brightness")
 # Convert brightness 0 to 255 as persentage  then -1 as python list start 0 not 1
         psent = int(round(value/255*100)) -1
-#get entity id from args and add to ent list
-        for v in self.args["ent"]:
-            ent.append(v)
-# get message from args and add to message list 
-        for v in self.args["message"]:
-            message.append(v)
-
+        self.log("message no {}".format(psent))
+#get ent list
+        ent = self.args["ent"]
 # Test if dim value matches listnumber in  array -1 as array start at 0
         if psent > (len(ent) -1) :
 # Dim value does not match entry in list error and turn off dummy light
             self.log("Message {} value out of range ignored".format(psent+1))
             self.turn_off(self.trigger)
-        else:
-# get entity details
-            obj = ent[psent]
-            fname = self.friendly_name(obj)
-            state = self.get_state(obj)
-            uom = self.get_state(obj, attribute = "unit_of_measurement")
-            dc = self.get_state(obj, attribute = "device_class")
-# if values are null set as blank to stop errors when concatenating strings 
-            if uom == None :
-                uom = ""
-            if dc == None :
-                dc = ""
-
-#construct alexa reply
-            mess = dc + " " + state + " " + uom
-# Check entity type to change on/off to appropriate values. Add as required
-            mess = mess.replace("opening on","open")
-            mess = mess.replace("opening off","closed")
-            mess = mess.replace("moisture on","wet")
-            mess = mess.replace("moisture off","dry")
-            mess = mess.replace("motion on","triggered")
-            mess = mess.replace("motion off","off")
-            mess = mess.replace("temperature","")
-            mess = mess.replace("humidity", "")
-            mess = mess.replace("pressure","") 
-# replace symbols and SI with words. Add as required  
-            mess = mess.replace("  "," ")
-            mess = mess.replace("°C","Centagrade")
-            mess = mess.replace("km","Kilometres")
-            mess = mess.replace("GiB","Gigabytes")
-            mess = mess.replace("MiB","Megabytes")
-            mess = mess.replace("lx","Lux")
-            mess = mess.replace("%","Percent")
-            mess = mess.replace("mbar","Milibar")
-            mess = mess.replace("hPa","Hectopascal")
-            mess = mess.replace("lm","Lumin")
-# combine sensor details with message
-            talkmess = message[psent].format(fname,mess)
-            self.log("Message {} sent to {} is {}".format(psent+1,alexa,talkmess))
+            return()
+# get time and date in words
+        num2words = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth', 5: 'fifth', \
+                    6: 'Sixth', 7: 'seventh', 8: 'eighth', 9: 'ninth', 10: 'tenth', \
+                    11: 'eleventh', 12: 'twelfth', 13: 'thirteenth', 14: 'fourteenth', \
+                    15: 'fifteenth', 16: 'seventeenth', 17: 'seventeenth', 18: 'eighteenth', \
+                    19: 'nineteenth',20:"twentieth",21:"twenty first",22:"twenty second", \
+                    23:"twenty third",24:"twenty fourth",25:"twenty fifth",26:"twenty sixth", \
+                    27:"twenty seventh",28:"twenty eighth",29:"twenty ninth",30:"thirtieth",31:"thirty-first"}
+        now = self.datetime()
+        year = now.strftime("%Y")
+        day  = now.strftime("%A")
+        dayn = (now.strftime("%d"))
+        dayw = num2words[int(dayn)]
+        month = now.strftime("%B")
+        mn = now.strftime("%M")
+        hour = now.strftime("%I")
+        am_pm = now.strftime("%p")
+        time = hour + " " + mn + " " + am_pm
+        self.log("{} {} {} {} {} {}".format(now,day,dayw,month,year,time))
+        raw = ent[psent]
+        self.log("Raw data = {}".format(raw))
+        et = []
+        for i in range(9) :
+            et.append("")
+        p1 = raw.find("(") 
+        while p1 > 0 :
+            p2 = raw.find(")") + 1
+            parse = raw[p1:p2]
+            cmd = parse[1]
+            if cmd == "e" :
+                pt = int(parse[2]) 
+                et[pt] = parse[4:(len(parse)-1)]
+                if parse[3] == "=" :
+                    fname  = self.get_state(et[pt], attribute="friendly_name")
+                else :
+                    fname = ""
+                raw = raw.replace(parse,fname)
+            if cmd == "s" :
+                pt = int(parse[2]) 
+                st = parse[4:(len(parse)-1)]
+                rp = st.find("|")
+                if rp == -1 :
+                    rp = len(st)
+                state = str(self.get_state(et[pt], attribute=(st[:rp])))
+                rep = st[rp+1:].split("|")
+                for i in range(len(rep)-1) :
+                    state = state.replace(rep[i],rep[i+1])
+                state = state.replace("."," point ")
+                raw = raw.replace(parse,state)
+                self.log("Current parse is {}".format(raw))
+            if cmd == "D" :
+                raw = raw.replace(parse,day)
+            if cmd == "d" :
+                raw = raw.replace(parse,dayw)    
+            if cmd == "m" :
+                raw = raw.replace(parse,month)
+            if cmd == "y" :
+                raw = raw.replace(parse,year)
+            if cmd == "t" :
+                raw = raw.replace(parse,time)
+            p1 = raw.find("(")
+        raw = raw.replace("  "," ")
+        raw = raw.replace("  "," ")
+        self.log("Message {} {}".format(psent,raw))
+        params = "- d " + "'" + alexa + "'" + " -e speak:" + raw
 #send message to alexa and turn off dummy bulb
-           
-            self.log(cmd)
-            subprocess.call('/config/talk.sh','LR Dot','Testing')
-            self.turn_off(self.trigger)
-        
+# self.call_service("shell_command/alexa", params = talkmess)
+        self.turn_off(self.trigger)
             
         
         

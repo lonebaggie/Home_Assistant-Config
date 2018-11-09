@@ -24,6 +24,13 @@
       - switch.wall_switch_left_158d0001a21f31
       - switch.wall_switch_158d00016cefdb
       - switch.wall_switch_158d0001828c33
+  galllights:
+    name:  All lights and light switches
+    view: false
+    icon: mdi:lightbulb
+    entities:
+      - group.gdownstairs
+      - group.gupstairs
   gallalexa:
     name: All Alexa
     view: false

@@ -1,4 +1,1 @@
-  - name: alexa_lr_dot
-    platform: command_line
-    command: "/config/alexa_wrapper.py -d 'LR Dot' -e speak:" 
- 
+
