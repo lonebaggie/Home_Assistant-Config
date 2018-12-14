@@ -1,9 +1,9 @@
   - platform: group
     name: Living Room Lights
     entities:
-      - light.lr1_2
+      - light.lr1
       - light.lr2
-      - light.lr3_2
+      - light.lr3
   - platform: group
     name: Dining Room Lights
     entities:
@@ -24,8 +24,69 @@
         turn_off:
 
         set_level:
-          
-
+  - platform: group
+    name: Upstairs lights
+    entities:
+      - light.bathroom_light
+      - light.study_light
+      - light.francis_light
+      - light.maddy_light
+      - light.master_bedroom_light
+      - light.ensuite_light
+      - light.landing_light
+  - platform: group
+    name: Downstairs lights
+    entities:
+      - light.sitting_room_light
+      - light.hall_light
+      - light.hall_toilet_light
+      - light.kitchen_light
+      - light.utility_light
+      - light.outside_light
+      - light.front_room_light
+        
+  - platform: switch
+    name: En-suite light
+    entity_id: switch.wall_switch_left_158d0001a6596b
+  - platform: switch
+    name: Front room light
+    entity_id: switch.wall_switch_158d0001828c33
+  - platform: switch
+    name: Hall toilet light
+    entity_id: switch.wall_switch_158d00016cefdb
+  - platform: switch
+    name: Kitchen light
+    entity_id: switch.wall_switch_158d000159a94f
+  - platform: switch
+    name: Landing light
+    entity_id: switch.wall_switch_right_158d0001a21f31
+  - platform: switch
+    name: Hall light
+    entity_id: switch.wall_switch_left_158d0001a21f31
+  - platform: switch
+    name: Sitting room light
+    entity_id: switch.wall_switch_158d00016cf4bc
+  - platform: switch
+    name: Master bedroom light
+    entity_id: switch.wall_switch_158d000159aa50
+  - platform: switch
+    name: Outside light
+    entity_id: switch.wall_switch_158d0001614701
+  - platform: switch
+    name: Study light
+    entity_id: switch.wall_switch_158d0001a68cf6
+  - platform: switch
+    name: Utility light
+    entity_id: switch.wall_switch_158d0001a68d54
+  - platform: switch
+    name: Francis light
+    entity_id: switch.wall_switch_158d00016cf458
+  - platform: switch
+    name: Maddy light
+    entity_id: switch.wall_switch_158d0001a2424b
+  - platform: switch
+    name: Bathroom light
+    entity_id: switch.wall_switch_left_158d0001660d34
 
 
 

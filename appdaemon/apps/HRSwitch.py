@@ -9,9 +9,9 @@ import appdaemon.plugins.hass.hassapi as hass
 class HRswitch(hass.Hass):
     def initialize(self):
 # Has wireless switch (left or right) button pressed
-        self.listen_event(self.hrswitch, "click", entity_id = "binary_sensor.wall_switch_right_158d00017110b8", click_type = "single")
-        self.listen_event(self.lrswitch, "click", entity_id = "binary_sensor.wall_switch_left_158d00017110b8", click_type = "single")
-        self.listen_event(self.hrlrswitch, "click", entity_id = "binary_sensor.wall_switch_both_158d00017110b8", click_type = "both")
+        self.listen_event(self.hrswitch, "xiaomi_aqara.click", entity_id = "binary_sensor.wall_switch_right_158d00017110b8", click_type = "single")
+        self.listen_event(self.lrswitch, "xiaomi_aqara.click", entity_id = "binary_sensor.wall_switch_left_158d00017110b8", click_type = "single")
+        self.listen_event(self.hrlrswitch, "xiaomi_aqara.click", entity_id = "binary_sensor.wall_switch_both_158d00017110b8", click_type = "both")
 # hall light on or off
     def hrswitch(self,event_name, data, kwargs):
         self.toggle("switch.wall_switch_left_158d0001a21f31")

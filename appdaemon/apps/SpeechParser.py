@@ -2,6 +2,8 @@
 #
 # Ver 1.0 
 #
+# Ver 1.1 Update Parse for removing dot from float numbers ensure did not replace full stops
+#
 # This program extracts information from entities  and converts them into a readable format
 # for devices such as Alexa or google assistant to read.
 # The program is triggered by a dummy bulb which can be then be presented to Alexa or Google.
@@ -109,12 +111,21 @@
 
 import appdaemon.plugins.hass.hassapi as hass
 class Speechparser(hass.Hass):
+    
     def initialize(self):
         self.trigger=self.args["trigger"]
         self.listen_state(self.speechparser,self.trigger,new="on")
     def debug(self, text):
         if self.args["DEBUG"] == 1:
             self.log(text)
+    def remove_dot(self, text):
+        import re
+        p = re.findall("(\d+.\d)", text)
+        for i in p :
+            t = i.replace("."," point ")
+            text = text.replace(i,t)
+        return text
+    
     def speechparser (self, entity, attribute, old, new, kwargs):
         import subprocess
         import re
@@ -222,7 +233,7 @@ class Speechparser(hass.Hass):
             self.debug("ind {} state {}".format(ind,st))
 # get state value from HA
             sval = str((self.get_state(ent[ind], attribute = st)))
-            sval = sval.replace("."," point ")
+            sval = self.remove_dot(sval)
             parse = parse.replace(i,sval)
             self.debug("short parse= {}".format(parse))
 # loop to extract extended commands {......|*|*}
@@ -251,7 +262,7 @@ class Speechparser(hass.Hass):
             s2 = s2.replace("[1]",sval)
             s2 = s2.replace("[2]",cval)
 # stop TTS saying "dot"
-            s2 =s2.replace(".", " point ")
+            s2 = self.remove_dot(s2)
             self.debug("ext output parse= {}".format(s2))
 # test operators
             self.debug("input value = {} replace Value = {}".format(s1,s2))
@@ -269,10 +280,10 @@ class Speechparser(hass.Hass):
                 s2 = s2.replace("[-]",posv)
                 s2 = s2.replace("[+]",val)
                 if float(sval) < float(cval) :
-                    s2 =s2.replace(".", " point ")
+                    s2 = self.remove_dot(s2)
                     sval = s2
                 elif float(sval) > float(cval) :
-                    s2 =s2.replace(".", " point ")
+                    s2 = self.remove_dot(s2)
                     sval = s2
                 else :
                     sval = ""
@@ -281,14 +292,15 @@ class Speechparser(hass.Hass):
             self.debug("extended parse= {}".format(parse))
 #############################################################################
 # this is the parsed message ready for reading remove extra white spaces    #
-        parse = " ".join(parse.split())                                     #
+        parse = " ".join(parse.split())
         self.log("Message {} for {} is {}".format(value,TTS_voice,parse))   #
 #############################################################################
 # this is the code for sending messagae via alexa_remote_control.sh         #
 # replace with notify or whenever command used                              #
-        params = "-d " + "'" + TTS_voice + "'" + " -e speak:'" + parse + "'"#
+        params = "-d " + "'" + TTS_voice + "'" + " -e speak:'" + parse + "'"
         self.debug("Call = {}".format(params))                              #
-        #self.call_service("shell_command/alexa", params=params)            #
+        self.call_service("shell_command/alexa", params=params)             #
 #############################################################################
 # turn off trigger bulb
         self.turn_off(self.trigger)
+    

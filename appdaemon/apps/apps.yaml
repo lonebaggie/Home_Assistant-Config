@@ -34,23 +34,6 @@ URAutolightoff:
 LeakWarning:
   module: LeakWarning
   class: Leakwarning
-AuditAlexa:
-  module: AuditAlexa
-  class: Auditalexa
-  title: "Living Room Audit"
-  trigger: "input_boolean.audit_light"
-  device: "media_player.lr_dot"
-  temp-inside: "sensor.temperature_158d0001b9205b"
-  temp-outside: "sensor.dark_sky_temperature"
-  light:
-    - light.living_room_lights
-    - light.dining_room_lights
-    - light.gateway_light_34ce0081452d
-  switch:
-    - none
-  battery:
-    - sensor.livingroom_wireless_switch_battery
-    - sensor.cube_battery
 SpeakAlexa:
   module: SpeakAlexa
   class: Speakalexa
@@ -79,6 +62,27 @@ SpeechParser:
     8: sensor.memory_use # pi mem free
     9: sensor.disk_use_percent_ # disk use 
     10: sensor.last_boot # pi last boot
+    11: sensor.since_last_boot # pi last boot
+    12: device_tracker.f6d013042725 # simon
+    13: device_tracker.android6c7f7b0a01e8c5c2 #Francis
+    14: device_tracker.androidd237b1685b303ccd # louise
+    15: device_tracker.androidaa6a31c8b0e2e4b6 # madeline
+    16: sensor.dark_sky_daily_summary # weather summary
+    17: light.living_room_lights
+    18: light.dining_room_lights
+    19: switch.wall_switch_158d000159a94f # kitchen
+    20: switch.wall_switch_158d0001a68d54 # utility
+    21: switch.wall_switch_158d0001828c33 #front room
+    22: switch.wall_switch_right_158d0001a21f31 #landing
+    23: switch.wall_switch_left_158d0001a21f31 # hall
+    24: switch.wall_switch_158d0001614701 # outside
+    25: switch.wall_switch_158d000159aa50 # main bedroom
+    26: switch.wall_switch_left_158d0001660d34 # bathroom
+    27: switch.wall_switch_right_158d0001660d34 # bathroom fan
+    28: switch.wall_switch_right_158d0001a6596b # on-suite fan
+    29: switch.wall_switch_left_158d0001a6596b # on suite light
+    30: switch.wall_switch_158d0001a2424b # maddy
+    31: switch.wall_switch_158d00016cf458 # francis
   messages:
     1: >
        The {$01=FN} {$01=ST|on|is currently open}{$01=ST|off| is currently closed}
@@ -104,9 +108,33 @@ SpeechParser:
     9: >
        Raspberry Pi status report, current memory usage is {$08=ST} %
        , Disk free {$09=ST} % , proccesor use {$06=ST} %
-    
+    10: >
+       Good {g} here is  the latest report for {d} from home assistant , the inside temperature is 
+       {$02=ST} degrees, outside temperature is {$05=TP} degrees, 
+       current weather report  is as follows, {$16=ST},
+       {$04=ST|on| Warning , The patio door is open}
+       {$01=ST|on| Warning , The front door is open}
+       The following lights are currently on,
+       {$17=ST|on|Living room,}
+       {$18=ST|on|Dining room,}
+       {$19=ST|on|Kitchen,}
+       {$20=ST|on|Utility,}
+       {$21=ST|on|Front room,}
+       {$22=ST|on|Landing,}
+       {$23=ST|on|hall,}
+       {$24=ST|on|Outside,}
+       {$25=ST|on|Master bedroom, }
+       {$26=ST|on|bathroom,}
+       {$27=ST|on|bathroom fan,}
+       {$28=ST|on|onsuite fan,}
+       {$29=ST|on|onsuite,}
+       {$30=ST|on|Madeline,}
+       {$31=ST|on|Francis,}
+TVsync:
+  module: TVsync
+  class: Tvsync
 AlexaCookieAlarm:
- module: AlexaCookieAlarm
- class: Alexacookiealarm
+  module: AlexaCookieAlarm
+  class: Alexacookiealarm
 
   

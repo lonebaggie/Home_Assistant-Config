@@ -1,46 +1,30 @@
   alexa:
     filter:
-      include_entities:
-        - group.gdownstairs
-        - group.ghouse
-        - group.gupstairs
       include_domains:
-        - switch
         - light
         - input_boolean
         - sensor
+      include_entities:
+        - switch.wall_switch_right_158d0001660d34
+        - switch.wall_switch_right_158d0001a6596b
+        - switch.onoff_sonoffbasic1
+        - switch.onoff_sonoff1
+        - switch.onoff_sonoff2
       exclude_entities:
         - input_boolean.ms1
         - input_boolean.ms2
         - input_boolean.ms3
         - input_boolean.cube_state
-        - light.gateway_light_34ce0081452d
+        - light.dr1
+        - light.dr2
+        - light.dr3
+        - light.lr1
+        - light.lr2
+        - light.lr3
     entity_config:
-      switch.wall_switch_left_158d0001660d34:
-        name: Bathroom Light
-      switch.wall_switch_158d00016cf458:
-        name: Francis Light
-      switch.wall_switch_158d0001828c33:
-        name: Frontroom Light
-      switch.wall_switch_158d00016cefdb:
-        name: Hall toilet Light
-      switch.wall_switch_left_158d0001a21f31:
-        name: Hall Light
-      switch.wall_switch_158d000159a94f:
-        name: Kitchen Light
-      switch.wall_switch_right_158d0001a21f31:
-        name: Landing Light
-      switch.wall_switch_158d0001a2424b:
-        name: Maddy Light
-      switch.wall_switch_158d000159aa50:
-        name: Master Bedroom Light
-      switch.wall_switch_left_158d0001a6596b:
-        name: En-suite Light
-      switch.wall_switch_158d0001614701:
-        name: Outside Light
-      switch.wall_switch_158d0001a68cf6:
-        name: Study Light
-      switch.wall_switch_158d0001a68d54:
-        name: Utility Light
-
+      switch.onoff_sonoff1: 
+        name: Swag
+      switch.onoff_sonoff2:
+        name: Christmas Tree
+      
         

@@ -7,9 +7,58 @@
     icon: mdi:monitor
   - platform: songpal
     name: Sony HT-XT2
-    endpoint: http://192.168.1.79:10000/sony
+    endpoint:  http://192.168.1.79:10000/sony
   - platform: alexa
     email: !secret alexa_login
     password: !secret alexa_pass
     url: amazon.co.uk
+  - platform: universal
+    name: TV
+    children:
+      - media_player.lg_tv_remote
+      - remote.harmony_hub
+      - media_player.gigablue_ultra
+    commands:
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.harmony_hub
+          activity: TV
+      turn_off:
+        service: remote.turn_off
+        data:
+          entity_id: remote.harmony_hub
+          activity: TV
+      volume_up:
+        service: media_player.volume_up
+        data:
+          entity_id: media_player.lg_tv_remote
+      volume_down:
+        service: media_player.volume_down
+        data:
+          entity_id: media_player.lg_tv_remote
+      volume_mute: 
+        service: media_player.volume_mute
+        data_template:
+          entity_id: media_player.lg_tv_remote
+          is_volume_muted: >-
+            {%- if states.media_player.lg_tv_remote.attributes.is_volume_muted  == false -%}
+            true
+            {%- else -%}
+            false
+            {%- endif -%}
+      volume_set:
+        service: media_player.volume_set
+        data_template:
+          entity_id: media_player.lg_tv_remote
+          volume_level: '{{ volume_level }}'
+      select_source:
+        service: media_player.select_source
+        data_template:
+          entity_id: media_player.gigablue_ultra
+          source: '{{ source }}'
+    attributes:
+      source: media_player.gigablue_ultra|source
+      source_list: media_player.gigablue_ultra|source_list
+      volume_level: media_player.lg_tv_remote|volume_level
  
