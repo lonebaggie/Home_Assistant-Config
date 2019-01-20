@@ -198,4 +198,3 @@ class EnigmaDevice(Entity):
     def get_opener(self):
         """Return the socket of the device."""
         return self._opener
-

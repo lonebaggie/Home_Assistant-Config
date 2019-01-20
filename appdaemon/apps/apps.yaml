@@ -25,9 +25,13 @@ LRBright:
 FRAutolight:
   module: FRAutolight
   class: FRautolight
+
 OSAutolight:
   module: OSAutolight
   class: OSautolight
+HAAutolight:
+  module: HAAutolight
+  class: HAautolight
 URAutolightoff:
   module: URAutolightoff
   class: URautolightoff

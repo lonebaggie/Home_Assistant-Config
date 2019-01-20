@@ -131,7 +131,7 @@ enigma:
       timeout: 20
       username: !secret enigma_user
       password: !secret enigma_password
-      picon: screenshot
+      picon: picon
       bouquet: 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.abm.sat_282_freesat.101.tv"
 
 remote:

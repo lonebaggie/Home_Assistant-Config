@@ -4,6 +4,8 @@
 #
 # Ver 1.1 Update Parse for removing dot from float numbers ensure did not replace full stops
 #
+# ver 1.2 remove : from final parse
+#
 # This program extracts information from entities  and converts them into a readable format
 # for devices such as Alexa or google assistant to read.
 # The program is triggered by a dummy bulb which can be then be presented to Alexa or Google.
@@ -291,8 +293,9 @@ class Speechparser(hass.Hass):
             parse = parse.replace(i,sval)
             self.debug("extended parse= {}".format(parse))
 #############################################################################
-# this is the parsed message ready for reading remove extra white spaces    #
+# this is the parsed message ready for reading.remove white spaces and :    #
         parse = " ".join(parse.split())
+        parse = parse.replace(":","")
         self.log("Message {} for {} is {}".format(value,TTS_voice,parse))   #
 #############################################################################
 # this is the code for sending messagae via alexa_remote_control.sh         #
