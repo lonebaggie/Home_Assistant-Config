@@ -22,16 +22,12 @@ LRRelaxed:
 LRBright:
   module: LRBright
   class: LRbright
-FRAutolight:
-  module: FRAutolight
-  class: FRautolight
-
+HAWay:
+  module: HAWay
+  class: HAway
 OSAutolight:
   module: OSAutolight
   class: OSautolight
-HAAutolight:
-  module: HAAutolight
-  class: HAautolight
 URAutolightoff:
   module: URAutolightoff
   class: URautolightoff
@@ -134,11 +130,9 @@ SpeechParser:
        {$29=ST|on|onsuite,}
        {$30=ST|on|Madeline,}
        {$31=ST|on|Francis,}
+ 
 TVsync:
   module: TVsync
   class: Tvsync
-AlexaCookieAlarm:
-  module: AlexaCookieAlarm
-  class: Alexacookiealarm
 
   

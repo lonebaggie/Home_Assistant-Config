@@ -6,6 +6,8 @@
 #
 # ver 1.2 remove : from final parse
 #
+# ver 2.0 added translate option
+#
 # This program extracts information from entities  and converts them into a readable format
 # for devices such as Alexa or google assistant to read.
 # The program is triggered by a dummy bulb which can be then be presented to Alexa or Google.
@@ -32,6 +34,8 @@
 #        {g} on {d} the {D} of {m} {y} at {t} the current outside  temperature is {$05=TP}
 #        degrees winspeed is {$05=wind_speed} miles per hour
 #    6: "{$02>state|18|temperature too high}{$02<state|19|temperature too low}
+#  translate:
+#    1: morning|morgan
 #
 # Each parameter of the message list matches the brightness level of the dummy bulb so 1st  parameter is 1% and so on 
 # Information inside {} is used to extract information from HA text outside of the brackets is unaltered.
@@ -67,6 +71,14 @@
 # replace value     alpha or numeric. can be another state command [1] will display
 #                   test value. [2] will diplay replace value  [+] sum the values
 #                   [-] will subtract always display positive number 
+#
+# The translate list (this is optional) is global search and replace . 
+# It will replace any text in the final parse it has the following format
+# 
+# 1:source|replace
+# 2:source|replace
+# 
+# any text before the | will be replaced with text after the | .  
 #
 # Examples 
 #
@@ -139,7 +151,7 @@ class Speechparser(hass.Hass):
 # be sent to same device. This add 1.5 sec delay to response                            #                                    #
 # If using Alexa media player replace with TTS_Voice = entity_id of alexa to respond    #
 #########################################################################################
-        self.call_service("homeassistant/update_entity",entity_id = "sensor.last_alexa")#
+        self.call_service("alexa_media/update_last_called")                             #
         TTS_voice = self.get_state("sensor.last_alexa")                                 #
 #########################################################################################        
         self.debug("{} is the talking echo".format(TTS_voice))
@@ -184,8 +196,14 @@ class Speechparser(hass.Hass):
 # load params from apps.yaml
         ent = self.args["entities"]
         mess = self.args["messages"]
+        try :
+            tran = self.args["translate"]
+        except:
+            self.debug("No Translate options")
+            tran = ""
         self.debug("{} of Entities {}".format(len(ent),ent))
         self.debug(" {} of Messages {}".format(len(mess),mess))
+        self.debug(" {} of Translates {}".format(len(tran),tran))
         self.debug("Trigger value (%) {} bulb brightness {}".format(value,v))
 # error checking
         if value > len(mess) or value == 0 or value > 99  :
@@ -296,14 +314,18 @@ class Speechparser(hass.Hass):
 # this is the parsed message ready for reading.remove white spaces and :    #
         parse = " ".join(parse.split())
         parse = parse.replace(":","")
-        self.log("Message {} for {} is {}".format(value,TTS_voice,parse))   #
-#############################################################################
-# this is the code for sending messagae via alexa_remote_control.sh         #
-# replace with notify or whenever command used                              #
-        params = "-d " + "'" + TTS_voice + "'" + " -e speak:'" + parse + "'"
-        self.debug("Call = {}".format(params))                              #
-        self.call_service("shell_command/alexa", params=params)             #
-#############################################################################
+# add any translations
+        for i in tran :
+            self.debug("translate {}".format(tran[i]))
+            scmd = re.findall("[a-zA-Z ,]*",tran[i])
+            self.debug("translate source {} replace with  {}".format(scmd[0],scmd[2]))
+            parse = parse.replace(scmd[0],scmd[2])
+        self.debug("Message {} for {} is {}".format(value,TTS_voice,parse))   
+############################################################################################
+# this is the code for sending messagae via alexa_remote_control.sh                        #
+# replace with notify or whenever command used                                             #
+#        self.call_service("media_player/alexa_tts",entity_id = TTS_voice, message = parse) #            
+############################################################################################
 # turn off trigger bulb
         self.turn_off(self.trigger)
     

@@ -16,13 +16,6 @@
       - uv_index
   - platform: template
     sensors:
-      livingroom_wireless_switch_battery:
-        entity_id: 
-          - binary_sensor.wall_switch_158d0001830c7c
-        friendly_name: 'Living Room Wireless Switch'
-        value_template: '{{ states.binary_sensor.wall_switch_158d0001830c7c.attributes.battery_level }}'
-        icon_template: mdi:battery
-        unit_of_measurement: "%"
       button_switch_battery:
         entity_id:
           - binary_sensor.switch_158d00018721c6
@@ -33,8 +26,8 @@
       cube_battery:
         friendly_name: 'Cube'
         entity_id:
-          - binary_sensor.cube_158d000103a8a5_2
-        value_template: '{{ states.binary_sensor.cube_158d000103a8a5_2.attributes.battery_level }}'
+          - binary_sensor.cube_158d000103a8a5 
+        value_template: '{{ states.binary_sensor.cube_158d000103a8a5.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
       backdoor_battery:
@@ -72,25 +65,11 @@
         value_template: '{{ states.sensor.humidity_158d0001b9205b.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
-      landing_motion_battery:
-        entity_id:
-          - binary_sensor.motion_sensor_158d000187392e
-        friendly_name: 'Landing Motion Sensor'
-        value_template: '{{ states.binary_sensor.motion_sensor_158d000187392e.attributes.battery_level }}'
-        icon_template: mdi:battery
-        unit_of_measurement: "%"
       toilet_leak_sensor_battery:
         entity_id:
           - binary_sensor.water_leak_sensor_158d0001c3472b
         friendly_name: 'Hall Toilet Leak Sensor'
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level }}'
-        icon_template: mdi:battery
-        unit_of_measurement: "%"
-      outside_motion_sensor_battery:
-        entity_id:
-          - sensor.illumination_158d0001e43e18
-        friendly_name: 'Outside Motion Sensor'
-        value_template: '{{ states.sensor.illumination_158d0001e43e18.attributes.battery_level }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
       patio_door_battery:
@@ -114,26 +93,6 @@
         value_template: '{{ states.sensor.tradfri_wireless_dimmer.attributes.battery_level | float(2) }}'
         icon_template: mdi:battery
         unit_of_measurement: "%"
-      since_last_boot_templated:
-        friendly_name: "Last reboot"
-        value_template: >-
-          {%- set slb = states.sensor.since_last_boot.state.split(' ') -%}
-          {%- set count = slb | length -%}
-          {%- set hms = slb[count - 1] -%}
-          {%- set hms_trimmed = hms.split('.')[0] -%}
-          {%- set hms_split = hms_trimmed.split(':') -%}
-          {%- set hours = hms_split[0] | int -%}
-          
-          {%- if count == 3 -%}
-            {{ slb[0] ~ ' ' ~ slb[1] ~ ' ' }}
-          {%- endif -%}
-          {%- if hours > 0 -%}
-            {%- if hours == 1 -%}
-              1 hour
-            {%- else -%}
-              {{ hours }} hours
-            {%- endif -%}
-          {%- endif -%}
       temperature_high_templated:
         entity_id:
           - sensor.dark_sky_daytime_high_temperature
@@ -151,16 +110,16 @@
       lrsync:
         friendly_name: 'Livingroom Light Sync'
         value_template: >-
-          {% if is_state('light.lr1_2', 'unavailable') 
+          {% if is_state('light.lr1', 'unavailable') 
           and is_state('light.lr2', 'unavailable') 
-          and is_state('light.lr3_2', 'unavailable') 
+          and is_state('light.lr3', 'unavailable') 
           and is_state('light.dr1', 'unavailable') 
           and is_state('light.dr2', 'unavailable') 
           and is_state('light.dr3', 'unavailable')  %}
             off
-          {% elif not is_state('light.lr1_2', 'unavailable') 
+          {% elif not is_state('light.lr1', 'unavailable') 
           and not is_state('light.lr2', 'unavailable') 
-          and not is_state('light.lr3_2', 'unavailable') 
+          and not is_state('light.lr3', 'unavailable') 
           and not is_state('light.dr1', 'unavailable') 
           and not is_state('light.dr2', 'unavailable') 
           and not is_state('light.dr3', 'unavailable')  %}
@@ -168,6 +127,13 @@
           {% else %}
             unknown
           {% endif %}
+      last_alexa:
+        entity_id:
+        - media_player.lr_dot
+        - media_player.k_dot
+        - media_player.br_echo
+        value_template: >
+          {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
       harmony:
         entity_id:
           - remote.harmony_hub
@@ -188,17 +154,17 @@
           {% elif states.remote.harmony_hub.attributes.current_activity == "Blue Ray" %}
             Blue Ray
           {% endif %}
-      alexa_alarm:
-        entity_id:
-          - sensor.alexa
-        friendly_name: "Alexa Alarm"
+      allhome:
+        friendly_name: "All Home"
         value_template: >-
-          {% set numfiles = states.sensor.alexa.attributes.number_of_files|float %}
-          {% if numfiles  == 0 %}
-            off
+          {% if is_state('device_tracker.madeline_phone', 'home')
+          and is_state('device_tracker.louise_phone', 'home')
+          and is_state('device_tracker.simon_phone', 'home') %}
+            true
           {% else %}
-            on
+            false
           {% endif %}
+          
   - platform: systemmonitor
     resources:
       - type: disk_free
@@ -224,14 +190,7 @@
     name: Gigablue Power State
     select: 'e2instandby'
     value_template: '{{value.replace("true","off")|replace("false","on") }}'
-  - platform: command_line
-    name: Last Alexa
-    scan_interval: 14400
-    command: 'python3 /config/alexa/alexa_wrapper.py {{ "-lastalexa" }}' 
-  - platform: folder
-    folder: /config/alexa
-    filter: .alexa.login
-    friendly_name: "Alexa Alarm trigger"
+
  
     
     

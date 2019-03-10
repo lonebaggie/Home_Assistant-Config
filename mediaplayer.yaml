@@ -1,17 +1,12 @@
   - platform: lg_netcast
     host: 192.168.1.89
     access_token: 292855
-    icon: mdi:monitor
   - platform: roku
     host: 192.168.1.9
     icon: mdi:monitor
   - platform: songpal
     name: Sony HT-XT2
     endpoint:  http://192.168.1.79:10000/sony
-  - platform: alexa
-    email: !secret alexa_login
-    password: !secret alexa_pass
-    url: amazon.co.uk
   - platform: universal
     name: TV
     children:

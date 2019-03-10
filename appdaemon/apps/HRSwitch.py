@@ -14,16 +14,16 @@ class HRswitch(hass.Hass):
         self.listen_event(self.hrlrswitch, "xiaomi_aqara.click", entity_id = "binary_sensor.wall_switch_both_158d00017110b8", click_type = "both")
 # hall light on or off
     def hrswitch(self,event_name, data, kwargs):
-        self.toggle("switch.wall_switch_left_158d0001a21f31")
+        self.toggle("light.hall_light")
 # Landing light on or off
     def lrswitch(self,event_name, data, kwargs):
-        self.toggle("switch.wall_switch_right_158d0001a21f31")
+        self.toggle("light.landing_light")
 # Landing light and Hall Light on or off cannot use toogle as need to sync both lights on or off.
     def hrlrswitch(self,event_name, data, kwargs):
-        if self.get_state("switch.wall_switch_left_158d0001a21f31") == "on" or self.get_state("switch.wall_switch_right_158d0001a21f31") == "on" :
-            self.turn_off("switch.wall_switch_left_158d0001a21f31")
-            self.turn_off("switch.wall_switch_right_158d0001a21f31")
+        if self.get_state("light.hall_light") == "on" or self.get_state("light.landing_light") == "on" :
+            self.turn_off("light.landing_light")
+            self.turn_off("light.hall_light")
         else :
-            self.turn_on("switch.wall_switch_left_158d0001a21f31")
-            self.turn_on("switch.wall_switch_right_158d0001a21f31")
+            self.turn_on("light.landing_light")
+            self.turn_on("light.hall_light")
             

@@ -13,7 +13,6 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
   whitelist_external_dirs:
-    - /config/alexa
     - /config/python_scripts
     
   
@@ -30,7 +29,10 @@ weather:
     api_key: !secret darksky_api
 
 # Enables the frontend
-frontend:
+frontend: 
+  themes: !include themes.yaml
+  
+system_health:
 
 
 # Database 
@@ -122,6 +124,7 @@ input_boolean: !include input_boolean.yaml
 media_player: !include mediaplayer.yaml
 switch: !include switch.yaml
 notify: !include notify.yaml
+device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
 enigma:
   devices:
@@ -138,30 +141,30 @@ remote:
   - platform: harmony
     name: Harmony Hub
     host: 192.168.1.252
+roku:
+  - host: 192.168.1.9
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
     - key: !secret xiaomi_key
 tradfri:
   host: 192.168.1.88
-  allow_tradfri_groups: true
-asuswrt: 
-    host: 192.168.1.1
-    username: !secret asuswrt_user
-    password: !secret asuswrt_password
+  allow_tradfri_groups: false
 mqtt:
   broker: core-mosquitto
   username: !secret mqtt_user
   password: !secret mqtt_password
+asuswrt: 
+    host: 192.168.1.1
+    username: !secret asuswrt_user
+    password: !secret asuswrt_password
 ifttt:
   key: !secret ifttt_key
-zha:
- usb_path: /dev/ttyAMA0
- database_path: zigbee.db
- baudrate: 57600
-python_script:
-
-
+alexa_media:
+  accounts:
+    - email: !secret alexa_login
+      password: !secret alexa_pass
+      url: amazon.co.uk
 
   
   

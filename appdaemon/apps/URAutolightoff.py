@@ -3,10 +3,10 @@
 import appdaemon.plugins.hass.hassapi as hass
 class URautolightoff(hass.Hass):
     def initialize(self):
-        self.listen_state(self.urautolightoff,"switch.wall_switch_158d000159a94f",new="off")
+        self.listen_state(self.urautolightoff,"light.kitchen_light",new="off")
     def urautolightoff (self, entity, attribute, old, new, kwargs):
-        if self.get_state("switch.wall_switch_158d0001a68d54") == "on" :
-            self.turn_off("switch.wall_switch_158d0001a68d54")
+        if self.get_state("light.utility_light") == "on" :
+            self.turn_off("light.utility_light")
             
         
             
