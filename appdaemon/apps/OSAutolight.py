@@ -5,6 +5,10 @@ import appdaemon.plugins.hass.hassapi as hass
 import datetime
 class OSautolight(hass.Hass):
     def initialize(self):
+<<<<<<< HEAD
+=======
+        time = datetime.time(22, 59, 59)
+>>>>>>> f4b966840133ddbf4c76aeb6ec8ee6e1df7554e9
         self.run_at_sunset(self.osautolight)
         self.run_at_sunrise(self.osautolight_off)
     def osautolight (self, kwargs):

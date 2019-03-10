@@ -205,5 +205,8 @@ sensor.disk_free:
   icon: mdi:sd
 sensor.processor_use:
   icon: mdi:crop-square
+<<<<<<< HEAD
 sensor.lalexa:
   icon: mdi:amazon-alexa
+=======
+>>>>>>> f4b966840133ddbf4c76aeb6ec8ee6e1df7554e9
