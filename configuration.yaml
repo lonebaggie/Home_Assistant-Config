@@ -29,13 +29,8 @@ weather:
     api_key: !secret darksky_api
 
 # Enables the frontend
-<<<<<<< HEAD
-frontend: 
-  themes: !include themes.yaml
-  
-=======
+
 frontend:
->>>>>>> f4b966840133ddbf4c76aeb6ec8ee6e1df7554e9
 system_health:
 
 
@@ -154,16 +149,6 @@ xiaomi_aqara:
 tradfri:
   host: 192.168.1.88
   allow_tradfri_groups: false
-<<<<<<< HEAD
-=======
-
-asuswrt: 
-    host: 192.168.1.1
-    username: !secret asuswrt_user
-    password: !secret asuswrt_password
-    port: 22
-    protocol: ssh
->>>>>>> f4b966840133ddbf4c76aeb6ec8ee6e1df7554e9
 mqtt:
   broker: core-mosquitto
   username: !secret mqtt_user
@@ -174,16 +159,15 @@ asuswrt:
     password: !secret asuswrt_password
 ifttt:
   key: !secret ifttt_key
-<<<<<<< HEAD
 alexa_media:
   accounts:
     - email: !secret alexa_login
       password: !secret alexa_pass
       url: amazon.co.uk
-=======
 
 
->>>>>>> f4b966840133ddbf4c76aeb6ec8ee6e1df7554e9
+
+
 
   
   
