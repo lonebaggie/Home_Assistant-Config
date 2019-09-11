@@ -8,6 +8,6 @@ class Leakwarning(hass.Hass):
         mess= "Leak Detected by " + self.friendly_name(entity)
         self.log(mess)
         self.notify(mess, title = "Leak Warning", name = "notify.gmail_alert")
-        self.call_service('media_player/alexa_tts', entity_id= "media_player.downstairs", message= mess)
-        self.call_service('media_player/alexa_tts', entity_id= "media_player.br_echo", message= mess)
+        self.call_service("notify/alexa_media",data={"type":"announce", "method":"all"},message=mess,target="group.gallalexa",title = "Leak Warning")
+        
         

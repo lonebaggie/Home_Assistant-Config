@@ -14,9 +14,6 @@ homeassistant:
   customize: !include customize.yaml
   whitelist_external_dirs:
     - /config/python_scripts
-    
-  
-
 zone:
   name: my House
   latitude: 51.852063 
@@ -33,27 +30,8 @@ weather:
 frontend:
 system_health:
 
-
 # Database 
 recorder:
-panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: https://lonebaggie.duckdns.org:3218
-  ide:
-    title: Cloud 9 IDE
-    icon: mdi:code-braces
-    url: https://lonebaggie.duckdns.org:8321/ide.html
-    
-  sonoff:    
-    title: Tasmo Admin
-    icon: mdi:power-socket-uk
-    url: https://lonebaggie.duckdns.org:9541
-  ssh:
-    title: SSH
-    icon: mdi:ssh
-    url: https://lonebaggie.duckdns.org:7681
 # Enables configuration UI
 config:
 http:
@@ -87,6 +65,7 @@ logger:
   default: critical
   logs:
     homeassistant.components: info
+    
 
 
 history:
@@ -125,16 +104,7 @@ switch: !include switch.yaml
 notify: !include notify.yaml
 device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
-enigma:
-  devices:
-    - host: 192.168.1.91
-      port: 80
-      name: Gigablue Ultra
-      timeout: 20
-      username: !secret enigma_user
-      password: !secret enigma_password
-      picon: picon
-      bouquet: 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.abm.sat_282_freesat.101.tv"
+#timer: !include timer.yaml
 
 remote:
   - platform: harmony
@@ -149,25 +119,17 @@ xiaomi_aqara:
 tradfri:
   host: 192.168.1.88
   allow_tradfri_groups: false
-mqtt:
-  broker: core-mosquitto
-  username: !secret mqtt_user
-  password: !secret mqtt_password
 asuswrt: 
-    host: 192.168.1.1
-    username: !secret asuswrt_user
-    password: !secret asuswrt_password
-ifttt:
-  key: !secret ifttt_key
+  host: 192.168.1.1
+  username: !secret asuswrt_user
+  password: !secret asuswrt_password
 alexa_media:
   accounts:
     - email: !secret alexa_login
       password: !secret alexa_pass
       url: amazon.co.uk
-
-
-
-
+      exclude_devices:
+        - "This Device"
 
   
   

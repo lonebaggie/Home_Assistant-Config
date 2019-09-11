@@ -1,3 +1,5 @@
   alexa: 'python3 /config/alexa/alexa_wrapper.py "{{ params }}"'
   speech: 'python3 /config/python_scripts/speech.py'
+  zoe_charge: !secret zoe_charge
+  zoe_precon: !secret zoe_pre
   

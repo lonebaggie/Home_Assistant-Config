@@ -6,12 +6,12 @@ class LRhselector(hass.Hass):
         hr = self.get_state("remote.harmony_hub", attribute="current activity")
         if new == "PowerOff" and hr != "PowerOff" :
             self.call_service("remote/turn_off",entity_id="remote.harmony_hub")
-            self.turn_off("media_player.gigablue_ultra")
+            self.turn_off("media_player.gigablue")
         if new == "Watch Roku" and hr != "Watch Roku":
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="30826655")
         if new == "TV" and hr != "TV":
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="25990763")
-            self.turn_on("media_player.gigablue_ultra")
+            self.turn_on("media_player.gigablue")
         if new == "Sony" and hr !="Sony" :
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="22141284")
         if new == "Blue Ray" and hr != "Blue Ray":

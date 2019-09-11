@@ -2,22 +2,24 @@
 import appdaemon.plugins.hass.hassapi as hass
 class LRsync(hass.Hass):
     def initialize(self):
-        self.handle = None
         self.listen_state(self.lrsync,"sensor.lrsync",new="on")
+        self.listen_state(self.lrsoft_off,"light.all_living_room_lights",new="off")
+    def lrsoft_off(self, entity, attribute, old, new, kwargs):
+        if self.get_state("sensor.lrsync") == "on" :
+            self.log("Lights soft off . Turn input select off")
+            self.select_option("input_select.light_state", "Off")
     def lrsync(self, entity, attribute, old, new, kwargs):
-# ensure sync only triggered if previous state was unknown ie just turned on
-        if old == "unknown" :
-            self.log("sync triggered")
+        self.log("sync triggered")
 # if triggered by switch turned on,  default lights to relaxed 
 # Also ensure Alexa is silent as not invoked by mood item select
-            if self.get_state("input_select.light_state") == "Off" :
-                self.select_option("input_select.light_state", "Relaxed")
+        if self.get_state("input_select.light_state") == "Off" :
+            self.select_option("input_select.light_state", "Relaxed")
 # run delayed option from item select now lights are in sync
-            if self.get_state("input_select.light_state") == "Dark":
-                self.dark()
-            if self.get_state("input_select.light_state") == "Relaxed" :
-                self.relaxed()
-            if self.get_state("input_select.light_state") == "Bright":
+        if self.get_state("input_select.light_state") == "Dark":
+            self.dark()
+        if self.get_state("input_select.light_state") == "Relaxed" :
+            self.relaxed()
+        if self.get_state("input_select.light_state") == "Bright":
                 self.bright()
 # default setting for dark ,relaxed and bright 
     def dark(self):

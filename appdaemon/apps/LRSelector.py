@@ -24,7 +24,9 @@ class LRselector(hass.Hass):
 #check to sse which item of the item select has been selected
         if new == "Off" :
 # resets item select and ensures all switches used by Alexa to change bulb state is off
-            self.turn_off("switch.wall_switch_158d00016cf4bc")
+            self.handle = self.run_in(self.delay_off,120)
+            self.log("Delayed timer started")
+            self.turn_off("light.all_living_room_lights")
             self.turn_off("input_boolean.dark")
             self.turn_off("input_boolean.relaxed")
             self.turn_off("input_boolean.bright")
@@ -70,7 +72,16 @@ class LRselector(hass.Hass):
     def talk_sync(self):
         self.call_service('media_player/alexa_tts', entity_id= "media_player.lr_dot", 
         message="Lights ar still syncronizing,please wait a moment before issuing further commands") 
-        
+    def delay_off(self, kwargs):    
+        if self.get_state("light.all_living_room_lights") == "off" :
+            self.turn_off("switch.wall_switch_158d00016cf4bc")
+            self.toggle("light.all_living_room_lights")
+            self.toggle("light.all_living_room_lights")
+            self.toggle("light.all_living_room_lights")
+            self.log("Trigger delay switch light off")
+        else :
+            self.log("Trigger delay switch cancelled")
+            
 
     
     

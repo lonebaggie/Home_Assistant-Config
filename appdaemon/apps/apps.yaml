@@ -83,6 +83,10 @@ SpeechParser:
     29: switch.wall_switch_left_158d0001a6596b # on suite light
     30: switch.wall_switch_158d0001a2424b # maddy
     31: switch.wall_switch_158d00016cf458 # francis
+    32: sensor.zoe_level # Zoe Battery
+    33: sensor.zoe_range # Zoe range
+    34: sensor.zoe_charge # Zoe Charging
+    35: sensor.zoe_plugged # Zoe Plugged in
   messages:
     1: >
        The {$01=FN} {$01=ST|on|is currently open}{$01=ST|off| is currently closed}
@@ -130,9 +134,28 @@ SpeechParser:
        {$29=ST|on|onsuite,}
        {$30=ST|on|Madeline,}
        {$31=ST|on|Francis,}
- 
+    11: >
+       'Zoe's current battery level is {$32=ST} percent, giving {$33=ST} miles of range. 
+        The car {$34=ST|False|is not on charge}{$34=ST|True|currently charging}
+#M5Switch:
+#  module: M5Switch
+#  class: M5switch
+
+HAStart:
+  module: HAStart
+  class: HAstart
 TVsync:
   module: TVsync
   class: Tvsync
+VolAlexa:
+  module: VolAlexa
+  class: Volalexa
+ZoeStatus:
+  module: ZoeStatus
+  class: Zoestatus
+
+
+
+
 
   

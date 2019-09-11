@@ -144,16 +144,14 @@ class Speechparser(hass.Hass):
         import subprocess
         import re
         self.log("{} triggered".format(self.trigger))
-#########################################################################################
-# change these lines for your TTS system.                                               #
-# This uses -lastaleaxa option in alexa_remote_control.sh via a cmd line sensor         #
-# uses HA 0.81 to update entity service to ensure if command issued by alexa reply will #
-# be sent to same device. This add 1.5 sec delay to response                            #                                    #
-# If using Alexa media player replace with TTS_Voice = entity_id of alexa to respond    #
-#########################################################################################
-        self.call_service("alexa_media/update_last_called")                             #
-        TTS_voice = self.get_state("sensor.last_alexa")                                 #
-#########################################################################################        
+################################################################################
+# change these lines for your TTS system.                                      #
+# This uses last_called in the alexa media player via a template sensor        #                   #
+# if only using 1 device change TTS_Voice = entity_id of alexa to respond      #
+################################################################################
+        self.call_service("alexa_media/update_last_called")                    #
+        TTS_voice = self.get_state("sensor.last_alexa")                        #
+################################################################################        
         self.debug("{} is the talking echo".format(TTS_voice))
 # setup vars
         sub_cmd = {"d":"","D":"","m":"","y":"","t":"","g":""}
@@ -194,12 +192,20 @@ class Speechparser(hass.Hass):
         value = round((v/255*100))
         self.debug("Trigger value= {}".format(value))
 # load params from apps.yaml
-        ent = self.args["entities"]
-        mess = self.args["messages"]
+        try :
+            ent = self.args["entities"]
+        except:
+            self.debug("No entities  options")
+            ent  = ""
+        try :
+            mess = self.args["messages"]
+        except:
+            self.debug("No message options")
+            return
         try :
             tran = self.args["translate"]
         except:
-            self.debug("No Translate options")
+            self.debug("No translate options")
             tran = ""
         self.debug("{} of Entities {}".format(len(ent),ent))
         self.debug(" {} of Messages {}".format(len(mess),mess))
@@ -225,9 +231,9 @@ class Speechparser(hass.Hass):
 ################################################################################
 # shortcuts add as required                                                    #
 ################################################################################
-        parse = parse.replace("FN","friendly_name").replace("TP","temperature")#
-        parse = parse.replace("BR","brightness").replace("ST","state")         #
-################################################################################
+        parse = parse.replace("FN","friendly_name").replace("TP","temperature")
+        parse = parse.replace("BR","brightness").replace("ST","state")         
+        
         self.debug("parse data = {}".format(parse))
 # extract three types of message commands simple {.} short {......}
 # and extended {......|*|*} via regex
@@ -310,8 +316,9 @@ class Speechparser(hass.Hass):
 # update parse
             parse = parse.replace(i,sval)
             self.debug("extended parse= {}".format(parse))
-#############################################################################
-# this is the parsed message ready for reading.remove white spaces and :    #
+################################################################################
+# this is the parsed message ready for reading.remove white spaces and :       #
+################################################################################        
         parse = " ".join(parse.split())
         parse = parse.replace(":","")
 # add any translations
@@ -321,11 +328,10 @@ class Speechparser(hass.Hass):
             self.debug("translate source {} replace with  {}".format(scmd[0],scmd[2]))
             parse = parse.replace(scmd[0],scmd[2])
         self.debug("Message {} for {} is {}".format(value,TTS_voice,parse))   
-############################################################################################
-# this is the code for sending messagae via alexa_remote_control.sh                        #
-# replace with notify or whenever command used                                             #
-#        self.call_service("media_player/alexa_tts",entity_id = TTS_voice, message = parse) #            
-############################################################################################
+################################################################################
+# this is the code for sending messagae via alexa_media notify                 #
+# replace with notify or whenever command used                                 #
+################################################################################
+        self.call_service("notify/alexa_media",data={"type":"tts"},message=parse,target=TTS_voice)
 # turn off trigger bulb
         self.turn_off(self.trigger)
-    

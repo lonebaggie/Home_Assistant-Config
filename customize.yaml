@@ -200,10 +200,33 @@ light.sitting_room_light:
 sensor.lrsync:
   icon: mdi:sync
 sensor.disk_use_percent:
+  friendly_name: Disk use
   icon: mdi:sd
 sensor.disk_free:
+  friendly_name: 'Disk free '
   icon: mdi:sd
 sensor.processor_use:
-  icon: mdi:crop-square
+  icon: mdi:chip
 sensor.lalexa:
   icon: mdi:amazon-alexa
+sensor.zoe_level:
+  icon: mdi:battery
+sensor.zoe_charge:
+  icon: mdi:battery-charging
+sensor.zoe_range:
+  icon: mdi:road-variant
+sensor.zoe_rtime:
+  icon: mdi:clock
+sensor.zoe_cpoint:
+  icon: mdi:battery-charging-outline
+sensor.zoe_update:
+  icon: mdi:calendar
+sensor.zoe:
+  icon: mdi:battery
+sensor.zoe_update_date:
+  icon: mdi:calendar
+sensor.zoe_update_time:
+  icon: mdi:clock
+switch.zoe_charge:
+  assumed_state: true
+sensor.zoe_clevel: {}

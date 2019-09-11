@@ -5,7 +5,6 @@
      - Dark
      - Relaxed
      - Bright
-    initial: "Off"
     icon: mdi:lightbulb
   alexa_state:
     name: Alexa State
@@ -16,6 +15,7 @@
      - K_Dot
      - FR_Dot
      - BR_Echo
+     - Fire_7
     initial: "LR_Dot"
     icon: mdi:amazon-alexa
   harmony_state:
@@ -28,13 +28,8 @@
       - L Gee
       - TV
       - Blue Ray
-    initial: "PowerOff"
     icon: mdi:remote
-      
-    
-  
 
-    
       
       
       

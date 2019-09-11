@@ -16,82 +16,181 @@
       - uv_index
   - platform: template
     sensors:
+      cube_battery:
+        entity_id:
+          - binary_sensor.cube_158d000103a8a5
+        friendly_name: 'Mi Cube'
+        unit_of_measurement: "%"
+        value_template: '{{ states.binary_sensor.cube_158d000103a8a5.attributes.battery_level }}'
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.cube_158d000103a8a5.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
       button_switch_battery:
         entity_id:
           - binary_sensor.switch_158d00018721c6
         friendly_name: 'Button Switch'
         value_template: '{{ states.binary_sensor.switch_158d00018721c6.attributes.battery_level }}'
-        icon_template: mdi:battery
-        unit_of_measurement: "%"
-      cube_battery:
-        friendly_name: 'Cube'
-        entity_id:
-          - binary_sensor.cube_158d000103a8a5 
-        value_template: '{{ states.binary_sensor.cube_158d000103a8a5.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.switch_158d00018721c6.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       backdoor_battery:
         entity_id:
           - binary_sensor.door_window_sensor_158d0002b82d0a
         friendly_name: 'Back Door Sensor'
         value_template: '{{ states.binary_sensor.door_window_sensor_158d0002b82d0a.attributes.battery_level}}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.door_window_sensor_158d0002b82d0a.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       frontdoor_battery:
         entity_id:
           - binary_sensor.door_window_sensor_158d00019e1738
         friendly_name: 'Front Door Sensor'
         value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e1738.attributes.battery_level}}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.door_window_sensor_158d00019e1738.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       hall_motion_battery:
         entity_id: 
           - binary_sensor.motion_sensor_158d0001655f53
         friendly_name: 'Hall Motion Sensor'
         value_template: '{{ states.binary_sensor.motion_sensor_158d0001655f53.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.motion_sensor_158d0001655f53.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       hall_wireless_switch_battery:
         entity_id:
           - binary_sensor.wall_switch_both_158d00017110b8
         friendly_name: 'Hall Wireless Switch'
         value_template: '{{ states.binary_sensor.wall_switch_both_158d00017110b8.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.wall_switch_both_158d00017110b8.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       temperaure_sensor_battery:
         entity_id:
           - sensor.humidity_158d0001b9205b
         friendly_name: 'Temperature Sensor'
         value_template: '{{ states.sensor.humidity_158d0001b9205b.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.sensor.humidity_158d0001b9205b.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       toilet_leak_sensor_battery:
         entity_id:
           - binary_sensor.water_leak_sensor_158d0001c3472b
         friendly_name: 'Hall Toilet Leak Sensor'
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.water_leak_sensor_158d0001c3472b.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       patio_door_battery:
         entity_id:
           - binary_sensor.door_window_sensor_158d00019e18bf
         friendly_name: 'Patio Door Sensor'
         value_template: '{{ states.binary_sensor.door_window_sensor_158d00019e18bf.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.door_window_sensor_158d00019e18bf.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       utility_leak_sensor_battery:
         entity_id:
           - binary_sensor.water_leak_sensor_158d0001c347c9
         friendly_name: 'Utility Leak Sensor'
         value_template: '{{ states.binary_sensor.water_leak_sensor_158d0001c347c9.attributes.battery_level }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.binary_sensor.water_leak_sensor_158d0001c347c9.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       tradfri_dimmer_battery:
         entity_id:
           - sensor.tradfri_wireless_dimmer
         friendly_name: 'Tradfri Dimmer'
         value_template: '{{ states.sensor.tradfri_wireless_dimmer.attributes.battery_level | float(2) }}'
-        icon_template: mdi:battery
+        icon_template: >-
+          {% set battery_level = states.sensor.tradfri_wireless_dimmer.attributes.battery_level | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %} 
         unit_of_measurement: "%"
       temperature_high_templated:
         entity_id:
@@ -125,13 +224,14 @@
           and not is_state('light.dr3', 'unavailable')  %}
             on
           {% else %}
-            unknown
+            off
           {% endif %}
       last_alexa:
         entity_id:
         - media_player.lr_dot
         - media_player.k_dot
         - media_player.br_echo
+        - media_player.fire_7
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
       harmony:
@@ -164,7 +264,46 @@
           {% else %}
             false
           {% endif %}
-          
+      zoe_clevel:
+        friendly_name: "Zoe Battery"
+        unit_of_measurement: '%'
+        value_template: "{{states.sensor.zoe.attributes.charge_level}}"
+        icon_template: >-
+          {% set battery_level = states.sensor.zoe.attributes.charge_level  | int  %}
+          {% set battery_round = (battery_level / 10) |int * 10 %}  
+          {% if battery_level >= 100 %}
+            mdi:battery
+          {% elif battery_level > 0 %}
+            mdi:battery-{{ battery_round }}
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+      zoe_range:
+        friendly_name: "Zoe Range"
+        unit_of_measurement: 'mi'
+        value_template: "{{(states.sensor.zoe.attributes.remaining_range/1.609)|round(0)}}"
+      zoe_plugged:
+        friendly_name: "Zoe plugged in"
+        value_template: "{{states.sensor.zoe.attributes.plugged}}"
+        icon_template: >-
+          {% if is_state('sensor.zoe_plugged', 'False') %}
+            mdi:power-plug-off
+          {% else %}
+            mdi:power-plug
+          {% endif %}
+      zoe_charge:
+        friendly_name: "Zoe charging"
+        value_template: "{{states.sensor.zoe.attributes.charging}}"
+      zoe_cpoint:
+        friendly_name: "Zoe charging point"
+        value_template: "{{states.sensor.zoe.attributes.charging_point}}"
+      zoe_rtime:
+        friendly_name: "Zoe Remaining Time"
+        unit_of_measurement: "mins"
+        value_template: "{{states.sensor.zoe.attributes.remaining_time}}"
+      zoe_update_time:
+        friendly_name: "Zoe Last Update time"
+        value_template: "{{(states.sensor.zoe.attributes.last_update/1000)|timestamp_custom('%d %b %Y  %H:%M:%S', true)}}"
   - platform: systemmonitor
     resources:
       - type: disk_free
@@ -190,8 +329,86 @@
     name: Gigablue Power State
     select: 'e2instandby'
     value_template: '{{value.replace("true","off")|replace("false","on") }}'
+  - platform: command_line
+    name: zoe
+    scan_interval: 1000
+    command: !secret zoe_batt
+    value_template: '{{ value_json.charge_level }}'
+    json_attributes:
+      - charging
+      - plugged
+      - charge_level
+      - remaining_range
+      - last_update
+      - charging_point
+      - remaining_time
+  - platform: command_line
+    name: zoe_mon
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh mon'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_tue
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh tue'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_wed
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh wed'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_thu
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh thu'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_fri
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh fri'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_sat
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh sat'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_sun
+    scan_interval: 1500
+    command: 'sh /config/zoe_cstate.sh sun'
+    value_template: '{{ value_json.start }}'
+    json_attributes:
+      - start
+      - duration
+  - platform: command_line
+    name: zoe_scedule
+    scan_interval: 1500
+    command: 'sh /config/zoe_schedule.sh enabled'
+    
 
- 
     
     
+  
+     
    
+      
+      
+    
