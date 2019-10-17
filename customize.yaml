@@ -229,4 +229,34 @@ sensor.zoe_update_time:
   icon: mdi:clock
 switch.zoe_charge:
   assumed_state: true
+  icon: mdi:battery-charging
 sensor.zoe_clevel: {}
+switch.zoe_precon:
+  icon: mdi:air-conditioner
+sensor.zoe_sun:
+  friendly_name: Sunday
+  icon: mdi:calendar
+sensor.zoe_fri:
+  friendly_name: Friday
+  icon: mdi:calendar
+sensor.zoe_mon:
+  friendly_name: Monday
+  icon: mdi:calendar
+sensor.zoe_sat:
+  friendly_name: Saturday
+  icon: mdi:calendar
+sensor.zoe_thu:
+  friendly_name: Thursday
+  icon: mdi:calendar
+sensor.zoe_tue:
+  friendly_name: Tuesday
+  icon: mdi:calendar
+sensor.zoe_wed:
+  friendly_name: Wednesday
+  icon: mdi:calendar
+sensor.zoe_cal:
+  icon: mdi:calendar
+sensor.zoe_schedule:
+  icon: mdi:timer
+sensor.zoe_today:
+  icon: mdi:calendar

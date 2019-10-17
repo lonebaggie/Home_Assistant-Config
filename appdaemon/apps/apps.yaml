@@ -153,6 +153,12 @@ VolAlexa:
 ZoeStatus:
   module: ZoeStatus
   class: Zoestatus
+ZoePlugChk:
+  module: ZoePlugChk
+  class: Zoeplugchk
+ZoePreCon:
+  module: ZoePreCon
+  class: Zoeprecon
 
 
 

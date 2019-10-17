@@ -22,8 +22,9 @@ zone:
   radius: 500
 weather:
   - platform: darksky
-    mode: daily
     api_key: !secret darksky_api
+    mode: daily
+    
 
 # Enables the frontend
 
@@ -105,7 +106,6 @@ notify: !include notify.yaml
 device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
 #timer: !include timer.yaml
-
 remote:
   - platform: harmony
     name: Harmony Hub
@@ -123,13 +123,7 @@ asuswrt:
   host: 192.168.1.1
   username: !secret asuswrt_user
   password: !secret asuswrt_password
-alexa_media:
-  accounts:
-    - email: !secret alexa_login
-      password: !secret alexa_pass
-      url: amazon.co.uk
-      exclude_devices:
-        - "This Device"
+
 
   
   

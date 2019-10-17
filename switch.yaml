@@ -60,10 +60,16 @@
           data:
             entity_id: input_select.harmony_state
             option: "PowerOff"
+      zoe_command:
+        value_template: off
+        turn_on:
+        turn_off:
   - platform: command_line
     switches:
       zoe_charge:
         command_on: !secret zoe_charge
+      zoe_precon:
+        command_on: !secret zoe_pre
           
       
     

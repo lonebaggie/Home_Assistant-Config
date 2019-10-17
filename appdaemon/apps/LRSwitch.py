@@ -20,24 +20,5 @@ class LRswitch(hass.Hass):
             self.toggle("light.dining_room_lights")
             self.log("Living Room Light Off")
     def talk_sync(self):
-        self.call_service('media_player/alexa_tts', entity_id= "media_player.lr_dot", 
-        message="Lights maybe in an inconsistant state, if so please switch off and wait 30 seconds before switching back on") 
-        
-            
-            
-            
-        
-
-            
-            
-            
-      
-
-        
-            
-        
-        
-        
-        
-        
-        
+        mess="Lights maybe in an inconsistant state, if so please switch off and wait 30 seconds before switching back on"
+        self.call_service("notify/alexa_media",message=mess, data={"type":"announce", "method":"speak"}, target="media_player.lr_dot")

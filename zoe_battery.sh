@@ -5,6 +5,6 @@ vin=`echo $extract|jq -r ".user.vehicle_details.VIN"`
 #charge= `curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $token" https://www.services.renault-ze.com/api/vehicle/$vin/charge`
 battery=`curl -H  "Authorization: Bearer $token" https://www.services.renault-ze.com/api/vehicle/$vin/battery`
 cstate=`curl -H  "Authorization: Bearer $token" https://www.services.renault-ze.com/api/vehicle/$vin/charge/scheduler/onboard`
-echo $cstate| jq .  > schedule.txt
+echo $cstate| jq "."   > schedule.txt
 echo $battery|jq .
 

@@ -70,8 +70,8 @@ class LRselector(hass.Hass):
         self.call_service("light/turn_on", entity_id = self.ent, brightness = 254, transition = 6 , color_temp = 250)
         self.log("bright triggered")
     def talk_sync(self):
-        self.call_service('media_player/alexa_tts', entity_id= "media_player.lr_dot", 
-        message="Lights ar still syncronizing,please wait a moment before issuing further commands") 
+        mess="Lights ar still syncronizing,please wait a moment before issuing further commands"
+        self.call_service("notify/alexa_media",message=mess, data={"type":"announce", "method":"speak"}, target="media_player.lr_dot")
     def delay_off(self, kwargs):    
         if self.get_state("light.all_living_room_lights") == "off" :
             self.turn_off("switch.wall_switch_158d00016cf4bc")
