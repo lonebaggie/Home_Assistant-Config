@@ -340,10 +340,10 @@
       zoe_rtime:
         friendly_name: "Zoe Remaining Time"
         unit_of_measurement: "mins"
-        value_template: "{{states.sensor.zoe.attributes.remaining_time.strfrime('%H')}}"
+        value_template: "{{states.sensor.zoe.attributes.remaining_time}}"
       zoe_update_time:
         friendly_name: "Zoe Last Update time"
-        value_template: "{{(states.sensor.zoe.attributes.last_update/1000)|timestamp_custom('%d %b %Y  %H:%M:%S', true)}}"
+        value_template: "{{(states.sensor.zoe.attributes.last_update/1000)|timestamp_custom('%H:%M:%S', true)}}"
   - platform: systemmonitor
     resources:
       - type: disk_free

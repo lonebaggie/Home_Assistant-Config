@@ -7,8 +7,10 @@ class LRhselector(hass.Hass):
         if new == "PowerOff" and hr != "PowerOff" :
             self.call_service("remote/turn_off",entity_id="remote.harmony_hub")
             self.turn_off("media_player.gigablue")
+            self.call_service("media_player.select_source",entity_id="media_player.living_room",source="Home")
         if new == "Watch Roku" and hr != "Watch Roku":
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="30826655")
+            self.turn_off("media_player.gigablue")
         if new == "TV" and hr != "TV":
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="25990763")
             self.turn_on("media_player.gigablue")
@@ -16,8 +18,11 @@ class LRhselector(hass.Hass):
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="22141284")
         if new == "Blue Ray" and hr != "Blue Ray":
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="22118320")
+            self.turn_off("media_player.gigablue")
         if new == "Speaker" and hr != "Speaker" :
             self.call_service("remote/turn_on",entity_id="remote.harmony_hub",activity="22125718")
+            self.turn_off("media_player.gigablue")
+            
             
             
         

@@ -257,6 +257,18 @@ sensor.zoe_wed:
 sensor.zoe_cal:
   icon: mdi:calendar
 sensor.zoe_schedule:
+  friendly_name: Schedule
   icon: mdi:timer
 sensor.zoe_today:
+  friendly_name: Today
   icon: mdi:calendar
+device_tracker.galaxy_a20e:
+  friendly_name: Louise
+device_tracker.simon_phone:
+  friendly_name: 'Simon '
+device_tracker.madeline_phone:
+  friendly_name: 'Madeline '
+media_player.sat:
+  icon: mdi:television
+media_player.tv:
+  icon: mdi:television
