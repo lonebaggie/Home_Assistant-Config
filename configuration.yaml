@@ -29,6 +29,7 @@ weather:
 # Enables the frontend
 
 frontend:
+  themes: !include_dir_merge_named themes
 system_health:
 
 # Database 
@@ -123,21 +124,20 @@ asuswrt:
   host: 192.168.1.1
   username: !secret asuswrt_user
   password: !secret asuswrt_password
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
-
+emulated_hue:
+  host_ip: 192.168.1.254
+  listen_port: 80
+  expose_by_default: false
+  entities:
+    input_boolean.relaxed:
+      name: "Relaxed"
+      hidden: false
+    input_boolean.bright:
+      name: "Bright"
+      hidden: false
+    switch.sonoff1_relay:
+      name: "Sonoff 1"
+      hidden: false
+    switch.sonoff2_relay:
+      name: "Sonoff 2"
+      hidden: false

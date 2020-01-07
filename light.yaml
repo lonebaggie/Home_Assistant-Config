@@ -1,17 +1,20 @@
   - platform: group
     name: Living Room Lights
+    scan_interval: 10
     entities:
       - light.lr1
       - light.lr2
       - light.lr3
   - platform: group
     name: Dining Room Lights
+    scan_interval: 10
     entities:
       - light.dr1
       - light.dr2
       - light.dr3
   - platform: group
     name: All Living Room Lights
+    scan_interval: 10
     entities:
       - light.living_room_lights
       - light.dining_room_lights

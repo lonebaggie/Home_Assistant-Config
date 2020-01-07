@@ -11,5 +11,5 @@ class Speakalexa(hass.Hass):
             alexa = "media_player." + alexa
         if new != "" :
             self.log("TTS called from  {} message is {}".format(alexa,new))
-            self.call_service("notify/alexa_media",message=new, data={"type":"announce", "method":"speak"}, target=alexa)
+            self.call_service("notify/alexa_media",message=new, data={"type":"tts"}, target=alexa)
             self.set_state("input_text.tts", state="")

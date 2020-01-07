@@ -13,24 +13,36 @@
             entity_id: input_select.harmony_state
             option: "PowerOff"
       roku:
-        value_template: "{{ is_state('input_select.harmony_state', 'Watch Roku')}}"
+        value_template: "{{ is_state('input_select.harmony_state', 'Roku')}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Watch Roku"
+            option: "Roku"
+        turn_off:
+          service: input_select.select_option
+          data:
+            entity_id: input_select.harmony_state
+            option: "PowerOff"
+      movies:
+        value_template: "{{ is_state('input_select.harmony_state', 'Roku')}}"
+        turn_on:
+          service: input_select.select_option
+          data:
+            entity_id: input_select.harmony_state
+            option: "Roku"
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
             option: "PowerOff"
       bluray:
-        value_template: "{{ is_state('input_select.harmony_state', 'Blue Ray')}}"
+        value_template: "{{ is_state('input_select.harmony_state', 'Bluray')}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Blue Ray"
+            option: "Bluray"
         turn_off:
           service: input_select.select_option
           data:

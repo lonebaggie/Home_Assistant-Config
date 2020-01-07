@@ -39,23 +39,26 @@ class LRselector(hass.Hass):
             if self.get_state("sensor.lrsync") == "on" :
                 self.dark()
             else :
-                self.log("talk sync")
-                self.talk_sync()
+                if old != "Off" : 
+                    self.log("talk sync")
+                    self.talk_sync()
             self.turn_on("input_boolean.dark")
         if new == "Relaxed" :
             if self.get_state("sensor.lrsync") == "on" :
                 self.relaxed()
             else :
-                self.log("talk sync")
-                self.talk_sync()
+                if old != "Off" : 
+                    self.log("talk sync")
+                    self.talk_sync()
             self.turn_on("input_boolean.relaxed")
 # Selects relaxed settings and applys to all bulbs or subset. Set switch on for Alexa 
         if new == "Bright" :
             if self.get_state("sensor.lrsync") == "on" :
                 self.bright()
             else :
-                self.log("talk sync")
-                self.talk_sync()
+                if old != "Off" : 
+                    self.log("talk sync")
+                    self.talk_sync()
             self.turn_on("input_boolean.bright")
 # Selects bright  settings and applys to all bulbs or subset. Set switch on for Alexa 
 
@@ -75,9 +78,9 @@ class LRselector(hass.Hass):
     def delay_off(self, kwargs):    
         if self.get_state("light.all_living_room_lights") == "off" :
             self.turn_off("switch.wall_switch_158d00016cf4bc")
-            self.toggle("light.all_living_room_lights")
-            self.toggle("light.all_living_room_lights")
-            self.toggle("light.all_living_room_lights")
+# force unavailiable 
+            self.toggle("light.living_room_lights")
+            self.toggle("light.dining_room_lights")
             self.log("Trigger delay switch light off")
         else :
             self.log("Trigger delay switch cancelled")

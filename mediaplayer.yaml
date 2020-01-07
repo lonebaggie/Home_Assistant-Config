@@ -17,7 +17,12 @@
     children:
       - media_player.lg_tv_remote
       - remote.harmony_hub
-      - media_player.gigablue
+    state_template: >
+      {% if is_state('input_select.harmony_state', 'LG')  %}
+        on
+      {% else %}
+        off
+      {% endif %}
     commands:
       turn_on:
         service: remote.turn_on
@@ -55,11 +60,11 @@
       select_source:
         service: media_player.select_source
         data_template:
-          entity_id: media_player.gigablue
+          entity_id: media_player.lg_tv_remote
           source: '{{ source }}'
     attributes:
-      source: media_player.gigablue|source
-      source_list: media_player.gigablue|source_list
+      source: media_player.lg_tv_remote|source
+      source_list: media_player.lg_tv_remote|source_list
       volume_level: media_player.lg_tv_remote|volume_level
   - platform: universal
     name: Sat
@@ -108,4 +113,55 @@
       source: media_player.gigablue|source
       source_list: media_player.gigablue|source_list
       volume_level: media_player.sony_htxt2|volume_level
- 
+  - platform: universal
+    name: roku
+    children:
+      - media_player.living_room
+      - media_player.sony_htxt2
+    state_template: >
+      {% if is_state('input_select.harmony_state', 'Roku') %}
+        on
+      {% else %}
+        off
+      {% endif %}
+    commands:
+      turn_on:
+        service: media_player.turn_on
+        data:
+          entity_id: media_player.living_room
+      turn_off:
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.living_room
+      volume_up:
+        service: media_player.volume_up
+        data:
+          entity_id: media_player.sony_htxt2
+      volume_down:
+        service: media_player.volume_down
+        data:
+          entity_id: media_player.sony_htxt2
+      volume_mute: 
+        service: media_player.volume_mute
+        data_template:
+          entity_id: media_player.sony_htxt2
+          is_volume_muted: >-
+            {%- if states.media_player.sony_htxt2.attributes.is_volume_muted  == false -%}
+            true
+            {%- else -%}
+            false
+            {%- endif -%}
+      volume_set:
+        service: media_player.volume_set
+        data_template:
+          entity_id: media_player.sony_htxt2
+          volume_level: '{{ volume_level }}'
+      select_source:
+        service: media_player.select_source
+        data_template:
+          entity_id: media_player.living_room
+          source: '{{ source }}'
+    attributes:
+      source: media_player.living_room|source
+      source_list: media_player.living_room|source_list
+      volume_level: media_player.sony_htxt2|volume_level

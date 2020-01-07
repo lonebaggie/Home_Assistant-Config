@@ -9,8 +9,8 @@ class Zoeplugchk(hass.Hass):
         w0 = self.get_state("sensor.bad_weather")
         w8 = self.get_state("sensor.bad_weather_8")
         self.log("Zoe Checking temperature. Frost warning is {} and in 8 hours is {} ".format(w0,w8))
-        if w0 != "clear" or w8 != "clear" :
-            mess = "There is a frost warning for tomorrow morning, Do you need to Plug in Zoe ? "   
+        if w0 != "clear" or w8 != "clear" and self.get_state("sensor.zoe") < 80 :
+            mess = "There is a frost warning for tomorrow morning, Do you need to Plug in Zoe ? "
             self.log(mess)
-            if self.get_state("device_tracker.simon_phone") == "home":
-               self.call_service("notify/alexa_media",data={"type":"announce", "method":"all"},message=mess,target="group.gallalexa",title = "Zoe Low Temperature")
+            if self.get_state("device_tracker.simon_phone") == "home" :
+               self.call_service("notify/alexa_media",data={"type":"tts"},message=mess,target="media_player.lr_dot")

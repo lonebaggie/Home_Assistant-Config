@@ -272,3 +272,7 @@ media_player.sat:
   icon: mdi:television
 media_player.tv:
   icon: mdi:television
+sensor.vibration_battery:
+  friendly_name: ' Vibration Sensor'
+device_tracker.maddy_phone:
+  friendly_name: Maddy

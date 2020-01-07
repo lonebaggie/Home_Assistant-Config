@@ -1,2 +1,3 @@
-    - platform: alexa_media
-      name: alexa_media
+    - name: alexa_media
+      platform: alexa_media
+    
