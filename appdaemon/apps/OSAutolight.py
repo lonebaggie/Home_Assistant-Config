@@ -1,4 +1,4 @@
-# Turns porch light on after sunset
+# Turns porch light on after sunset if not all at home
 # Turns porch light off after midnight
 #
 import appdaemon.plugins.hass.hassapi as hass
@@ -14,3 +14,4 @@ class OSautolight(hass.Hass):
     def osautolight_off (self, kwargs):
         self.log("Auto Outside light off")
         self.turn_off("light.outside_light")
+    

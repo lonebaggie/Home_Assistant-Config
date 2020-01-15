@@ -40,9 +40,6 @@ SpeakAlexa:
 #AllLights:
 #  module: AllLights
 #  class: Alllights
-HarmonySelect:
-  module: HarmonySelect
-  class: Harmonyselect
 LRHSelector:
   module: LRHSelector
   class: LRhselector
@@ -140,7 +137,9 @@ SpeechParser:
 #M5Switch:
 #  module: M5Switch
 #  class: M5switch
-
+AUTooff:
+  module: AUTooff
+  class: AUtooff
 HAStart:
   module: HAStart
   class: HAstart
