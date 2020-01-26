@@ -40,12 +40,12 @@ SpeakAlexa:
 #AllLights:
 #  module: AllLights
 #  class: Alllights
-HarmonySelect:
-  module: HarmonySelect
-  class: Harmonyselect
 LRHSelector:
   module: LRHSelector
   class: LRhselector
+LRHsync:
+  module: LRHsync
+  class: LRhsync
 SpeechParser:
   module: SpeechParser
   class: Speechparser
@@ -140,19 +140,18 @@ SpeechParser:
 #M5Switch:
 #  module: M5Switch
 #  class: M5switch
-
+AUTooff:
+  module: AUTooff
+  class: AUtooff
 HAStart:
   module: HAStart
   class: HAstart
-TVsync:
-  module: TVsync
-  class: Tvsync
 VolAlexa:
   module: VolAlexa
   class: Volalexa
-ZoeStatus:
-  module: ZoeStatus
-  class: Zoestatus
+#ZoeStatus:
+#  module: ZoeStatus
+#  class: Zoestatus
 ZoePlugChk:
   module: ZoePlugChk
   class: Zoeplugchk

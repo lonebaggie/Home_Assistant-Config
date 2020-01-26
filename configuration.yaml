@@ -107,6 +107,13 @@ notify: !include notify.yaml
 device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
 #timer: !include timer.yaml
+camera:
+  - platform: onvif
+    host: 192.168.1.75
+    port: 8899
+    profile: 1
+    username: !secret camera_user
+    password: !secret camera_pass
 remote:
   - platform: harmony
     name: Harmony Hub

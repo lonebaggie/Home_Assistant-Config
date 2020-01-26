@@ -1,17 +1,14 @@
 secrets: /config/secrets.yaml
-log:
-  logfile: STDOUT
-  errorfile: STDERR
 appdaemon:
-  threads: 10
-  app_dir: /config/appdaemon/apps
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  latitude: 51.852063
+  longitude: -2.20192
+  elevation: 38
+  time_zone: Europe/London
   plugins:
     HASS:
       type: hass
-      ha_url: http://hassio/homeassistant
-      token: d2889095ff7c8eb91007601786a3eb09738a9781a900d9868fdf357d0afefae4d033468e0a2cc49e5aee27b27a63ed96f2fd5c76aedf92fe
+http:
+  url: http://127.0.0.1:5050
+admin:
+api:
 hadashboard:
-  dash_url: http://127.0.0.1:5050
-  dash_dir: /config/appdaemon/dashboards

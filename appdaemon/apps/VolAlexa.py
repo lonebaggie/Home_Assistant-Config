@@ -1,3 +1,4 @@
+# change volume of alexa via input number on UI
 import appdaemon.plugins.hass.hassapi as hass
 class Volalexa(hass.Hass):
     def initialize(self):

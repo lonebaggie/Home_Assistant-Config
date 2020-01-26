@@ -1,5 +1,5 @@
 #
-# Program to allow teanage daughter to turn off lights without getting out of bed
+# Allow teanage daughter to turn off lights without getting out of bed
 #
 
 import appdaemon.plugins.hass.hassapi as hass

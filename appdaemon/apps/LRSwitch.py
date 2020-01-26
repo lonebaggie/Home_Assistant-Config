@@ -6,7 +6,6 @@ class LRswitch(hass.Hass):
     def lrswitch(self, entity, attribute, old, new, kwargs):
         if new == "on" :
 # if switch turned on ensure light group is turn on .There is a bug if lights are turned off and on quickly group is still off so lights appear off
-            self.select_option("input_select.light_state","Relaxed")
             self.log("Living Room Light on ")
             if self.get_state("sensor.lrsync") == "on" :
                 self.log("lights are toggle too quickly for sync")

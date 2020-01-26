@@ -1,3 +1,4 @@
+# if everyone is home turn off outside light
 import appdaemon.plugins.hass.hassapi as hass
 class HAway(hass.Hass):
     def initialize(self):

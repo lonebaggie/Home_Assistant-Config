@@ -1,3 +1,6 @@
     - name: alexa_media
       platform: alexa_media
+    - name: enigma
+      platform: command_line
+      command: "/config/enigma_send.sh"
     

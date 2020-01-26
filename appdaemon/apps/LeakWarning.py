@@ -1,4 +1,4 @@
-# smtp and Alexa warning of Water Leak
+# TV and Alexa warning of Water Leak
 import appdaemon.plugins.hass.hassapi as hass
 class Leakwarning(hass.Hass):
     def initialize(self):
@@ -7,7 +7,7 @@ class Leakwarning(hass.Hass):
     def leakwarning (self, entity, attribute, old, new, kwargs):
         mess= "Leak Detected by " + self.friendly_name(entity)
         self.log(mess)
-        self.notify(mess, title = "Leak Warning", name = "notify.gmail_alert")
+        self.notify(mess, name = "notify.enigma")
         self.call_service("notify/alexa_media",data={"type":"announce", "method":"all"},message=mess,target="group.gallalexa",title = "Leak Warning")
         
         
