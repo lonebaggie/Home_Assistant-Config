@@ -7,13 +7,8 @@ appdaemon:
   plugins:
     HASS:
       type: hass
-<<<<<<< HEAD
 http:
   url: http://127.0.0.1:5050
 admin:
 api:
-=======
-      ha_url: http://hassio/homeassistant
-      token: 6f38cc01b83380bd20995f49cb6997fbefb2386bc198e3b3b730d88096044f9664e5c1face256766ac4178c98a4ea27067a452f0986190ea
->>>>>>> 10a5cd055071eb6a690c1ad1ccb8ac9f1932cf2e
 hadashboard:
