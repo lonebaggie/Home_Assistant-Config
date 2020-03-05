@@ -1,21 +1,24 @@
-# Program to sync Tradfri lights to Physical switch
+# Program to sync Tradfri lights to Physical switch 
 import appdaemon.plugins.hass.hassapi as hass
 class LRswitch(hass.Hass):
     def initialize(self):
-        self.listen_state(self.lrswitch,"switch.wall_switch_158d00016cf4bc")
-    def lrswitch(self, entity, attribute, old, new, kwargs):
-        if new == "on" :
-# if switch turned on ensure light group is turn on .There is a bug if lights are turned off and on quickly group is still off so lights appear off
-            self.log("Living Room Light on ")
-            if self.get_state("sensor.lrsync") == "on" :
-                self.log("lights are toggle too quickly for sync")
-                self.talk_sync()
-                
+        self.listen_state(self.lrswitch,"switch.livingroom")
+    def lrswitch(self, entity, attribute, old, new, kwargs): 
+        lrm = self.get_state("input_select.light_state")
         if new == "off" :
-# if switch is off . Turn off light group and ensure timer is turned off in case light switched toggled quickly 
+            self.log("Living room off")
+            self.turn_off("light.tradfri")
             self.select_option("input_select.light_state","Off")
-            
-            self.log("Sitting room lights Off")
-    def talk_sync(self):
-        mess="Lights maybe in an inconsistant state, if so please switch off and wait 30 seconds before switching back on"
-        self.call_service("notify/alexa_media",message=mess, data={"type":"announce", "method":"speak"}, target="media_player.lr_dot")
+        if new == "on" :
+            self.log("Living room on")
+            self.turn_on("light.tradfri")
+            self.handle = self.run_in(self.delay_on,20)
+    def delay_on(self,kwargs) :
+        lrs = self.get_state("input_select.light_state")
+        if lrs == "Off" or lrs == "Unknown" :
+            lrs = "Relaxed"
+        if self.get_state("switch.livingroom") == "on" :
+            self.log("Set delayed room mood to {}".format(lrs))
+            self.select_option("input_select.light_state","Unknown")
+            self.select_option("input_select.light_state",lrs)
+  

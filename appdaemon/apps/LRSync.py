@@ -1,33 +1,23 @@
-# Program to sync Tradfri lights when power restored
+# Program to sync Tradfri lights to Physical switch 
 import appdaemon.plugins.hass.hassapi as hass
 class LRsync(hass.Hass):
     def initialize(self):
-        self.listen_state(self.lrsync,"sensor.lrsync",new="on")
-        self.listen_state(self.lrsoft_off,"light.all_living_room_lights",new="off")
-    def lrsoft_off(self, entity, attribute, old, new, kwargs):
-        if self.get_state("sensor.lrsync") == "on" :
-            self.log("Lights soft off . Turn input select off")
-            self.select_option("input_select.light_state", "Off")
+        self.listen_state(self.lrsync,"light.dinning_room")
+        self.listen_state(self.lrsync,"light.living_room")
     def lrsync(self, entity, attribute, old, new, kwargs):
-        self.log("sync triggered")
-# if triggered by switch turned on,  default lights to relaxed 
-# Also ensure Alexa is silent as not invoked by mood item select
-        if self.get_state("input_select.light_state") == "Off" :
-            self.select_option("input_select.light_state", "Relaxed")
-# run delayed option from item select now lights are in sync
-        if self.get_state("input_select.light_state") == "Dark":
-            self.dark()
-        if self.get_state("input_select.light_state") == "Relaxed" :
-            self.relaxed()
-        if self.get_state("input_select.light_state") == "Bright":
-                self.bright()
-# default setting for dark ,relaxed and bright 
-    def dark(self):
-        self.call_service("light/turn_on", entity_id = "light.all_living_room_lights", brightness = 25, transition = 6 , color_temp = 450)
-        self.log("dark triggered")
-    def relaxed(self):
-        self.call_service("light/turn_on", entity_id = "light.all_living_room_lights", brightness = 203, transition = 6 , color_temp = 367)
-        self.log("relaxed triggered")
-    def bright(self):
-        self.call_service("light/turn_on", entity_id = "light.all_living_room_lights", brightness = 254, transition = 6 , color_temp = 250)
-        self.log("bright triggered")
+        na = self.get_state(entity,attribute="friendly_name")
+        ls = self.get_state("switch.livingroom")
+        self.log("{} triggered {}".format(na,new))
+        if new == "on" and ls == "off" :
+            self.log("Living room switch is off")
+            self.turn_on("switch.livingroom")
+            self.log("Living room switch is synced on")
+        if new == "off" :
+            dr = self.get_state("light.dinning_room")
+            lr = self.get_state("light.living_room")
+            if dr == "off" and lr == "off" and ls == "on" :
+                self.log("Living room switch is on")
+                self.turn_off("switch.livingroom")
+                self.log("Living room switch is synced off")
+                
+            

@@ -1,7 +1,7 @@
 LRSelector:
   module: LRSelector
   class: LRselector
-LRswitch:
+LRSwitch:
   module: LRSwitch
   class: LRswitch
 LRSync:
@@ -13,15 +13,6 @@ MRswitch:
 HRswitch:
   module: HRSwitch
   class: HRswitch
-LRDark:
-  module: LRDark
-  class: LRdark
-LRRelaxed:
-  module: LRRelaxed
-  class: LRrelaxed
-LRBright:
-  module: LRBright
-  class: LRbright
 HAWay:
   module: HAWay
   class: HAway
@@ -37,12 +28,12 @@ LeakWarning:
 SpeakAlexa:
   module: SpeakAlexa
   class: Speakalexa
-#AllLights:
-#  module: AllLights
-#  class: Alllights
 LRHSelector:
   module: LRHSelector
   class: LRhselector
+LRDimmer:
+  module: LRDimmer
+  class: LRdimmer
 LRHsync:
   module: LRHsync
   class: LRhsync
@@ -140,9 +131,7 @@ SpeechParser:
 #M5Switch:
 #  module: M5Switch
 #  class: M5switch
-AUTooff:
-  module: AUTooff
-  class: AUtooff
+
 HAStart:
   module: HAStart
   class: HAstart

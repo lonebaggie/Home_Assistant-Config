@@ -72,6 +72,42 @@
           data:
             entity_id: input_select.harmony_state
             option: "PowerOff"
+      dark:
+        value_template: "{{ is_state('input_select.light_state', 'Dark')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Dark"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Off"
+      relaxed:
+        value_template: "{{ is_state('input_select.light_state', 'Relaxed')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Relaxed"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Off"
+      bright:
+        value_template: "{{ is_state('input_select.light_state', 'Bright')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Bright"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.light_state
+              option: "Off"
       zoe_command:
         value_template: off
         turn_on:

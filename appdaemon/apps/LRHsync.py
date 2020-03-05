@@ -1,4 +1,4 @@
-# Sync Item Select when harmony remote triggered and ensure devices
+# Sync Item Select when harmony remote triggered and ensure enigma and sony
 # are in the correct state
 import appdaemon.plugins.hass.hassapi as hass
 class LRhsync(hass.Hass):
@@ -7,34 +7,25 @@ class LRhsync(hass.Hass):
     def lrhsync (self, entity, attribute, old, new, kwargs):
         self.log("Harmony Sensor {} triggered".format(new))
         self.select_option("input_select.harmony_state",new)
-        if new == "PowerOff" :
-            self.log("{} Triggered".format(new))
-            self.turn_off("media_player.gigablue")
-            self.turn_off("media_player.sony_htxt2")
-            self.turn_off("media_player.living_room")
-        if new == "Roku" :
-            self.log("{} commands sent".format(new))
-            self.turn_off("media_player.gigablue")
-            self.turn_on("media_player.sony_htxt2")
-        if new == "LG" :
-            self.log("{} commands sent".format(new))
-            self.turn_off("media_player.gigablue")
-            self.turn_off("media_player.living_room")
+        sony = self.get_state("media_player.sony_htxt2")
         if new == "TV" :
             self.log("{} commands sent".format(new))
-            self.turn_on("media_player.gigablue")
-            self.turn_on("media_player.sony_htxt2")
-            self.turn_off("media_player.living_room")
-        if new == "Sony" :
-            self.log("{} commands sent".format(new))
-            self.turn_off("media_player.gigablue")
-            self.turn_off("media_player.living_room")
-        if new == "Bluray" :
-            self.log("{} commands sent".format(new))
-            self.turn_on("media_player.sony_htxt2")
-            self.turn_off("media_player.gigablue")
-            self.turn_off("media_player.living_room")
-        if new == "Speaker" :
-            self.log("{} commands sent".format(new))
-            self.turn_off("media_player.gigablue")
-            self.turn_off("media_player.living_room")
+            self.log("enigma 2 on")
+            self.call_service("media_player/turn_on",entity_id ="media_player.enigma_2")
+        else:
+            self.log("enigma 2 off")
+            self.call_service("media_player/turn_off",entity_id ="media_player.enigma_2")
+            
+        if new == "PowerOff" :
+            self.log("{} Triggered".format(new))
+            if sony == "on" :
+                self.log("Sony off")
+                self.call_service("media_player/turn_off",entity_id ="media_player.sony_htxt2")
+        else:
+            if sony == "off" :
+                self.log("Sony on")
+                self.call_service("media_player/turn_on",entity_id ="media_player.sony_htxt2")
+            
+
+        
+            

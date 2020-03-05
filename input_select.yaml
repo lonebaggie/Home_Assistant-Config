@@ -5,6 +5,7 @@
      - Dark
      - Relaxed
      - Bright
+     - Unknown
     icon: mdi:lightbulb
   alexa_state:
     name: Alexa State

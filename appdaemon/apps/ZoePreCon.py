@@ -7,15 +7,10 @@ class Zoeprecon(hass.Hass):
         handle = self.run_once(self.zoeprecon, runtime)
     def zoeprecon (self, kwargs):
         self.log("Zoe Precon triggered")
-        if self.get_state("sensor.zoe_plugged") == "True" :
+        if self.get_state("sensor.zoe_plugged") == "true" :
             self.log("Zoe plugged in")
-        
-            w0 = self.get_state("sensor.bad_weather")
-            if w0  == "snow" or w0 == "frost" :
-                self.log("Frost Zoe Precon triggered" )
+            if self.get_state("sensor.outside_temp") < 4 :
+                self.log("Cold Zoe Precon triggered" )
                 self.turn_on("switch.zoe_precon")
-            else :
-                self.log("No frost NO Precon")
-                
         else:
             self.log("Zoe not plugged in NO Precon")

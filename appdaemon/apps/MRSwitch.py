@@ -5,6 +5,11 @@
 import appdaemon.plugins.hass.hassapi as hass
 class MRswitch(hass.Hass):
     def initialize(self):
-        self.listen_event(self.mrswitch, "xiaomi_aqara.click", entity_id = "binary_sensor.switch_158d00018721c6", click_type = "single")
+        self.listen_event(self.mrswitch, "deconz_event")
     def mrswitch(self,event_name, data, kwargs):
-        self.toggle("light.maddy_light")
+        if data["id"] == "maddy_switch":
+            swi = data["event"]
+            self.log("{} triggered".format(swi))
+            if swi == 1002 :
+                self.log("toggle light")
+                self.toggle("light.maddy_light")

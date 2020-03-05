@@ -178,7 +178,7 @@ binary_sensor.cube_158d000103a8a5_2:
 weather.yweather:
   friendly_name: Yahoo Weather
 input_select.light_state:
-  friendly_name: Living Room Mood
+  friendly_name: Room Mood
   icon: mdi:ceiling-light
 input_boolean.audit_light:
   friendly_name: Audit trigger
@@ -188,7 +188,7 @@ switch.onoff_sonoffbasic1:
 weather.dark_sky:
   friendly_name: Weather Forecast
 sensor.harmony:
-  icon: mdi:monitor
+  icon: mdi:remote
 sensor.last_alexa:
   icon: mdi:amazon-alexa
 sensor.alexa_alarm:
@@ -269,10 +269,42 @@ device_tracker.simon_phone:
 device_tracker.madeline_phone:
   friendly_name: 'Madeline '
 media_player.sat:
+  friendly_name: Gigablue
   icon: mdi:television
 media_player.tv:
+  friendly_name: LG TV
   icon: mdi:television
 sensor.vibration_battery:
   friendly_name: ' Vibration Sensor'
 device_tracker.maddy_phone:
   friendly_name: Maddy
+person.simon:
+  icon: mdi:account
+person.louise:
+  icon: mdi:account
+person.maddy:
+  icon: mdi:account
+binary_sensor.patio_door:
+  icon: mdi:door
+binary_sensor.back_door:
+  icon: mdi:door
+binary_sensor.front_door:
+  icon: mdi:door
+media_player.roku_player:
+  friendly_name: Roku
+switch.livingroom:
+  icon: mdi:light-switch
+switch.sonoff1_relay:
+  icon: mdi:power-plug
+switch.sonoff2_relay:
+  icon: mdi:power-plug
+device_tracker.moto_g_7_play:
+  icon: mdi:cellphone
+remote.harmony_hub:
+  icon: mdi:remote
+input_select.harmony_state:
+  icon: mdi:format-list-bulleted
+switch.bathroom_fan:
+  icon: mdi:fan
+switch.en_suite_fan:
+  icon: mdi:fan

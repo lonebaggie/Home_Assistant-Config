@@ -6,11 +6,14 @@ class Zoeplugchk(hass.Hass):
         runtime = datetime.time(21, 50, 0)
         handle = self.run_once(self.zoeplugchk, runtime)
     def zoeplugchk (self, kwargs):
-        w0 = self.get_state("sensor.bad_weather")
-        w8 = self.get_state("sensor.bad_weather_8")
-        self.log("Zoe Checking temperature. Frost warning is {} and in 8 hours is {} ".format(w0,w8))
-        if w0 != "clear" or w8 != "clear" and self.get_state("sensor.zoe") < 80 :
+        zch = self.get_state("sensor.zoe_clevel")
+        if zch < 20 :
+            mess = "Zoe Checking Charge,  warning less than 20 percent remaining" 
+            self.log(mess)
+            if self.get_state("person.simon") == "Home" :
+                self.call_service("notify/alexa_media",data={"type":"tts"},message=mess,target="media_player.lr_dot")
+        if self.get_state("sensor.outside_temp") < 2
             mess = "There is a frost warning for tomorrow morning, Do you need to Plug in Zoe ? "
             self.log(mess)
-            if self.get_state("device_tracker.simon_phone") == "home" :
+            if self.get_state("pesson.simon") == "Home" :
                self.call_service("notify/alexa_media",data={"type":"tts"},message=mess,target="media_player.lr_dot")
