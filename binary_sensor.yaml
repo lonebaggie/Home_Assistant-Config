@@ -3,18 +3,43 @@
       alexa_lr_standby:
         value_template: >-
           {{ is_state('media_player.lr_dot', 'standby') }}
-  - platform: template
-    sensors:
       alexa_k_standby:
         value_template: >-
           {{ is_state('media_player.k_dot', 'standby') }}
-  - platform: template
-    sensors:
       alexa_fr_standby:
         value_template: >-
           {{ is_state('media_player.fr_dot', 'standby') }}
-  - platform: template
-    sensors:
       alexa_br_standby:
         value_template: >-
           {{ is_state('media_player.br_echo', 'standby') }}
+      zoe_plugged:
+        value_template: "{{ state_attr('sensor.zoe' , 'plugged') }}"
+        friendly_name: "Zoe Plugged"
+        device_class: plug
+      zoe_charging:
+        value_template: "{{ state_attr('sensor.zoe' , 'charging') }}"
+        friendly_name: "Zoe Charging"
+        device_class: power
+      allhome:
+        friendly_name: "All Home"
+        value_template: >-
+          {% if is_state('person.simon', 'home')
+          and is_state('person.maddy', 'home')
+          and is_state('person.louise', 'home') %}
+            true
+          {% else %}
+            false
+          {% endif %}
+      lrsync:
+        friendly_name: 'Livingroom Light Sync'
+        value_template: >-
+          {% if is_state('light.lr1', 'on') 
+          and is_state('light.lr2', 'on') 
+          and is_state('light.lr3', 'on') 
+          and is_state('light.dr1', 'on') 
+          and is_state('light.dr2', 'on') 
+          and is_state('light.dr3', 'on')  %}
+            true
+          {% else %}
+            false
+          {% endif %}

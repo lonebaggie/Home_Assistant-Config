@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hassio homeassistant check
+ha core check
 
 git add .
 git status

@@ -9,34 +9,58 @@ class LRselector(hass.Hass):
     def initialize(self):
 # Triggered if Item select is changed
         self.listen_state(self.lrselect,"input_select.light_state")
+    
+    def bri(self,kwargs):
+        bri= kwargs["b"]
+        time = kwargs["time"]
+        self.call_service("light/turn_on", entity_id = "light.living_room_2", brightness = bri, transition = time)
+    def fade (self, kwargs):
+        col = kwargs["col"]
+        time = kwargs["time"]
+        self.call_service("light/turn_on", entity_id = "light.living_room", color_temp = col, transition = time)
+
     def lrselect (self, entity, attribute, old, new, kwargs):
-        self.ent = "light.tradfri"
-        if new != "Off" and self.get_state("switch.livingroom") == "off" :
-            self.turn_on("switch.livingroom")
+        lr = self.get_state("switch.living_room")
+        
+        
+
         if new == "Dark" :
-            self.call_service("light/turn_on", entity_id = self.ent, color_temp = 500)
-            self.log("dark colour triggered")
-            self.run_in(self.dark_b,1)
+            if lr == "off":
+                self.turn_on("switch.living_room")
+                
+            else :
+                self.h1= self.run_in(self.bri,0,b=1,time=6)
+                self.h2 = self.run_in(self.fade,7, col=454,time=2)
+                self.log("dark colour triggered")
+            
         if new == "Relaxed" :
-            self.call_service("light/turn_on", entity_id = self.ent, color_temp = 420)
-            self.log("relaxed colour triggered")
-            self.run_in(self.relaxed_b,1)
+            if lr == "off":
+                self.turn_on("switch.living_room")
+                
+            else :
+                self.h1 = self.run_in(self.bri,0,b=170,time=2)
+                self.h2 = self.run_in(self.fade,3, col=400, time=2)
+                self.log("relaxed colour triggered")
         if new == "Bright" :
-            self.call_service("light/turn_on", entity_id = self.ent, color_temp = 154)
-            self.log("bright colour triggered")
-            self.run_in(self.bright_b,1)
+            if lr == "off":
+                self.turn_on("switch.living_room")
+                
+            else :
+                self.h1= self.run_in(self.bri,0,b=254,time=2)
+                self.h2 = self.run_in(self.fade,3, col=250,time=2)
+                self.log("bright colour triggered")
+            
         if new == "Off" :
-            self.turn_off(self.ent)
-            self.turn_off("switch.livingroom")
-    def dark_b(self,kwargs):
-        self.call_service("light/turn_on", entity_id = self.ent, brightness = 20)
-        self.log("dark  brightness triggered")
-    def relaxed_b(self,kwargs):
-        self.call_service("light/turn_on", entity_id = self.ent, brightness = 170)
-        self.log("relaxed brightness triggered")
-    def bright_b(self,kwargs):
-        self.call_service("light/turn_on", entity_id = self.ent, brightness = 254)
-        self.log("bright brightness triggered")
+            
+            self.turn_off("light.living_room")
+            self.turn_off("light.living_room_2")
+            
+            
+            self.log("Off triggered")
+            
+    
+        
+        
     
 
     

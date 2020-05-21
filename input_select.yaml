@@ -1,35 +1,64 @@
   light_state:
     name: Living Room Light State
     options:
-     - "Off"
-     - Dark
-     - Relaxed
-     - Bright
-     - Unknown
+      - "Off"
+      - Dark
+      - Relaxed
+      - Bright
+      - Unknown
     icon: mdi:lightbulb
   alexa_state:
     name: Alexa State
     options:
-     - None
-     - All
-     - LR_Dot
-     - K_Dot
-     - FR_Dot
-     - BR_Echo
-     - Fire_7
-    initial: "LR_Dot"
+      - None
+      - All
+      - Echo_Show_5
+      - K_Dot
+      - LR_Echo
+      - Fire_7
+    initial: "LR_Echo"
     icon: mdi:amazon-alexa
   harmony_state:
     name : Harmony State
     options:
       - PowerOff
-      - Speaker
-      - Sony
-      - Roku
-      - LG
       - TV
+      - Roku
+      - Radio
+      - Speaker
       - Bluray
+      - LG
+      - Sony
+
     icon: mdi:remote
+  radio_state:
+    name : Radio State
+    options:
+      - 'Off'
+      - Radio 1
+      - Radio 2
+      - Radio 3
+      - Radio 4
+    initial: "Off"
+    icon: mdi:radio
+  entity_list:
+    name : Entity List
+    options:
+      - binary_sensor.front_door
+      - binary_sensor.patio_door
+      - sensor.home_temperature
+      - binary_sensor.hall_motion
+      - light.living_room
+  speak_list:
+    name: Speak List
+    options:
+      - do not use
+      - The current time is (tt) 
+      - The current date is (td)
+      - The current temperature of (e02f) is (e02s)
+      - The battery level of (e03f) is (e03l)
+      - The (e04f) is at (e04b) % brightness
+
 
       
       

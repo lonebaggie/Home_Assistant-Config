@@ -2,8 +2,8 @@
 import appdaemon.plugins.hass.hassapi as hass
 class Leakwarning(hass.Hass):
     def initialize(self):
-        self.listen_state(self.leakwarning,"binary_sensor.hall_toilet_water_sensor",new="on")
-        self.listen_state(self.leakwarning,"binary_sensor.utility_water_sensor",new="on")
+        self.listen_state(self.leakwarning,"binary_sensor.hall_toilet_leak",new="on")
+        self.listen_state(self.leakwarning,"binary_sensor.utility_leak_sensor",new="on")
     def leakwarning (self, entity, attribute, old, new, kwargs):
         mess= "Leak Detected by " + self.friendly_name(entity)
         self.log(mess)

@@ -1,2 +1,6 @@
   tts:
     name: Alexa TTS
+  entity_edit:
+    name: Entity Edit
+  speak_edit:
+    name: Speak Edit

@@ -1,39 +1,25 @@
   - platform: lg_netcast
     host: 192.168.1.166
     access_token: 292855
-  - platform: roku
-    host: 192.168.1.9
-    icon: mdi:monitor
-  - platform: songpal
-    name: Sony HTXT2
-    endpoint:  http://192.168.1.79:10000/sony
-  - platform: enigma2 
-    name: Enigma 2
+  - platform: enigma2
     host: 192.168.1.91
-    source_bouquet: "1:7:1:0:0:0:0:0:0:0:FROM BOUQUET \"userbouquet.abm.sat_282_freesat.101.tv\" ORDER BY bouquet"
-    use_channel_icon: true
+    name: Enigma 2
   - platform: universal
-    name: TV
+    name: Sat
     children:
+      - media_player.enigma_2
       - media_player.lg_tv_remote
-      - remote.harmony_hub
     state_template: >
-      {% if is_state('input_select.harmony_state', 'LG')  %}
-        on
-      {% else %}
-        off
-      {% endif %}
+      {{states.media_player.enigma_2.state}}
     commands:
       turn_on:
-        service: remote.turn_on
+        service: media_player.turn_on
         data:
-          entity_id: remote.harmony_hub
-          activity: LG
+          entity_id: media_player.enigma_2
       turn_off:
-        service: remote.turn_off
+        service: media_player.turn_off
         data:
-          entity_id: remote.harmony_hub
-          activity: LG
+          entity_id: media_player.enigma_2
       volume_up:
         service: media_player.volume_up
         data:
@@ -48,69 +34,14 @@
           entity_id: media_player.lg_tv_remote
           is_volume_muted: >-
             {%- if states.media_player.lg_tv_remote.attributes.is_volume_muted  == false -%}
-            true
+              true
             {%- else -%}
-            false
+              false
             {%- endif -%}
       volume_set:
         service: media_player.volume_set
         data_template:
           entity_id: media_player.lg_tv_remote
-          volume_level: '{{ volume_level }}'
-      select_source:
-        service: media_player.select_source
-        data_template:
-          entity_id: media_player.lg_tv_remote
-          source: '{{ source }}'
-    attributes:
-      source: media_player.lg_tv_remote|source
-      source_list: media_player.lg_tv_remote|source_list
-      volume_level: media_player.lg_tv_remote|volume_level
-  - platform: universal
-    name: Sat
-    children:
-      - media_player.enigma_2
-      - remote.harmony_hub
-      - media_player.sony_htxt2
-    state_template: >
-      {% if is_state('input_select.harmony_state', 'TV')  %}
-        on
-      {% else %}
-        off
-      {% endif %}
-    commands:
-      turn_on:
-        service: remote.turn_on
-        data:
-          entity_id: remote.harmony_hub
-          activity: TV
-      turn_off:
-        service: remote.turn_off
-        data:
-          entity_id: remote.harmony_hub
-          activity: TV
-      volume_up:
-        service: media_player.volume_up
-        data:
-          entity_id: media_player.sony_htxt2
-      volume_down:
-        service: media_player.volume_down
-        data:
-          entity_id: media_player.sony_htxt2
-      volume_mute: 
-        service: media_player.volume_mute
-        data_template:
-          entity_id: media_player.sony_htxt2
-          is_volume_muted: >-
-            {%- if states.media_player.sony_htxt2.attributes.is_volume_muted  == false -%}
-            true
-            {%- else -%}
-            false
-            {%- endif -%}
-      volume_set:
-        service: media_player.volume_set
-        data_template:
-          entity_id: media_player.sony_htxt2
           volume_level: '{{ volume_level }}'
       select_source:
         service: media_player.select_source
@@ -121,59 +52,5 @@
       state: media_player.enigma_2
       source: media_player.enigma_2|source
       source_list: media_player.enigma_2|source_list
-      volume_level: media_player.sony_htxt2|volume_level
-  - platform: universal
-    name: Roku-Player
-    children:
-      - media_player.living_room
-      - remote.harmony_hub
-      - media_player.sony_htxt2
-    state_template: >
-      {% if is_state('input_select.harmony_state', 'Roku') %}
-        on
-      {% else %}
-        off
-      {% endif %}
-    commands:
-      turn_on:
-        service: remote.turn_on
-        data:
-          entity_id: remote.harmony_hub
-          activity: Roku
-      turn_off:
-        service: remote.turn_off
-        data:
-          entity_id: remote.harmony_hub
-          activity: Roku
-      volume_up:
-        service: media_player.volume_up
-        data:
-          entity_id: media_player.sony_htxt2
-      volume_down:
-        service: media_player.volume_down
-        data:
-          entity_id: media_player.sony_htxt2
-      volume_mute: 
-        service: media_player.volume_mute
-        data_template:
-          entity_id: media_player.sony_htxt2
-          is_volume_muted: >-
-            {%- if states.media_player.sony_htxt2.attributes.is_volume_muted  == false -%}
-            true
-            {%- else -%}
-            false
-            {%- endif -%}
-      volume_set:
-        service: media_player.volume_set
-        data_template:
-          entity_id: media_player.sony_htxt2
-          volume_level: '{{ volume_level }}'
-      select_source:
-        service: media_player.select_source
-        data_template:
-          entity_id: media_player.living_room
-          source: '{{ source }}'
-    attributes:
-      source: media_player.living_room|source
-      source_list: media_player.living_room|source_list
-      volume_level: media_player.sony_htxt2|volume_level
+      volume_level: media_player.lg_tv_remote|volume_level
+  

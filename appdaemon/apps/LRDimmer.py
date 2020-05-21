@@ -9,7 +9,7 @@ class LRdimmer(hass.Hass):
             
             if swi == 1002 :
                 
-                self.call_service("light/turn_on", entity_id = "light.tradfri",brightness_step = 2 )
+                self.call_service("light/turn_on", entity_id = "light.tradfri",brightness_step = 10 )
                 
             if swi == 4002 :
                 
@@ -20,5 +20,5 @@ class LRdimmer(hass.Hass):
                 
             if swi == 3002 :
                 
-                self.call_service("light/turn_on", entity_id = "light.tradfri", brightness_step = -2)
+                self.call_service("light/turn_on", entity_id = "light.tradfri", brightness_step = -10)
             

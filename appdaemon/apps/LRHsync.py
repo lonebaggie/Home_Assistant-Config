@@ -9,23 +9,32 @@ class LRhsync(hass.Hass):
         self.select_option("input_select.harmony_state",new)
         sony = self.get_state("media_player.sony_htxt2")
         if new == "TV" :
-            self.log("{} commands sent".format(new))
-            self.log("enigma 2 on")
             self.call_service("media_player/turn_on",entity_id ="media_player.enigma_2")
+            self.log("Enigma 2 on")
+            if sony == "off" :
+                self.call_service("media_player/turn_on",entity_id ="media_player.sony_htxt2")
+                self.log("Sony on")
+            self.call_service("media_player/select_source",entity_id ="media_player.sony_htxt2", source = "TV")
         else:
-            self.log("enigma 2 off")
-            self.call_service("media_player/turn_off",entity_id ="media_player.enigma_2")
-            
+            self.call_service("media_player/turn_off",entity_id ="media_player.enigma_2") 
+            self.log("Enigma 2 off")
+        if new == "Speaker" :
+            if sony == "off" :
+                self.call_service("media_player/turn_on", entity_id ="media_player.sony_htxt2")
+                self.log("Sony on")
+            self.call_service("media_player/select_source",entity_id ="media_player.sony_htxt2", source = "Bluetooth Audio")    
+            self.log("Bluetooth on")
+        if new == "Sony" :
+            if sony == "off" :
+                self.call_service("media_player/turn_on",entity_id ="media_player.sony_htxt2")
+                self.log("Sony on")
+        if new == "Radio" :
+            if sony == "off" :
+                self.call_service("media_player/turn_on", entity_id ="media_player.sony_htxt2")
+                self.log("Sony on")
         if new == "PowerOff" :
-            self.log("{} Triggered".format(new))
             if sony == "on" :
                 self.log("Sony off")
-                self.call_service("media_player/turn_off",entity_id ="media_player.sony_htxt2")
-        else:
-            if sony == "off" :
-                self.log("Sony on")
-                self.call_service("media_player/turn_on",entity_id ="media_player.sony_htxt2")
+                self.call_service("media_player/turn_off", entity_id ="media_player.sony_htxt2")
             
-
-        
-            
+          

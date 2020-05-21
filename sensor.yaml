@@ -8,11 +8,21 @@
       - 'time_date'
       - 'time_utc'
       - 'beat'
+  - platform: openweathermap
+    api_key: !secret owm_api 
+    monitored_conditions:
+      - weather
+      - temperature
+  - platform: renaultze
+    name: Zoe
+    scan_interval: 900
+    username: !secret zoe_user
+    password: !secret zoe_pass
+    vin: !secret zoe_vin
+    android_lng: en_GB
+      
   - platform: template
     sensors:
-      outside_temp:
-        friendly_name: "Outside temperature"
-        value_template: "{{states.weather.dark_sky.attributes.temperature}}"
       last_alexa:
         entity_id:
         - media_player.lr_dot
@@ -26,64 +36,21 @@
           - remote.harmony_hub
         friendly_name: "Harmony"
         value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
-      allhome:
-        friendly_name: "All Home"
-        value_template: >-
-          {% if is_state('person.simon', 'home')
-          and is_state('person.maddy', 'home')
-          and is_state('person.louise', 'home') %}
-            true
-          {% else %}
-            false
-          {% endif %}
-      hacs_txt:
-        value_template: >-
-          {% if is_state('sensor.hacs','0') %}
-            false
-          {% else %}
-            true
-          {% endif %}
-          
-      zoe_clevel:
+      zoe_battery:
+        value_template: "{{ states('sensor.zoe') }}"
+        unit_of_measurement: "%"
+        device_class: battery
         friendly_name: "Zoe Battery"
-        unit_of_measurement: '%'
-        value_template: "{{states.sensor.zoe.attributes.charge_level}}"
-        icon_template: >-
-          {% set battery_level = states.sensor.zoe.attributes.charge_level  | int  %}
-          {% set battery_round = (battery_level / 10) |int * 10 %}  
-          {% if battery_level >= 100 %}
-            mdi:battery
-          {% elif battery_level > 0 %}
-            mdi:battery-{{ battery_round }}
-          {% else %}
-            mdi:battery-alert
-          {% endif %}
-      zoe_range:
+      zoe_remaining_range:
+        value_template: "{{ (state_attr('sensor.zoe' , 'remaining_range')* 0.62137)|round(0)}}"
         friendly_name: "Zoe Range"
-        unit_of_measurement: 'mi'
-        value_template: "{{(states.sensor.zoe.attributes.remaining_range/1.609)|round(0)}}"
-      zoe_plugged:
-        friendly_name: "Zoe plugged in"
-        value_template: "{{states.sensor.zoe.attributes.plugged|lower}}"
-        icon_template: >-
-          {% if is_state('sensor.zoe_plugged', 'false') %}
-            mdi:power-plug-off
-          {% else %}
-            mdi:power-plug
-          {% endif %}
-      zoe_charge:
-        friendly_name: "Zoe charging"
-        value_template: "{{states.sensor.zoe.attributes.charging|lower}}"
-      zoe_cpoint:
-        friendly_name: "Zoe charging point"
-        value_template: "{{states.sensor.zoe.attributes.charging_point|lower}}"
-      zoe_rtime:
-        friendly_name: "Zoe Remaining Time"
-        unit_of_measurement: "mins"
-        value_template: "{{states.sensor.zoe.attributes.remaining_time}}"
-      zoe_update_time:
-        friendly_name: "Zoe Last Update time"
-        value_template: "{{(states.sensor.zoe.attributes.last_update/1000)|timestamp_custom('%H:%M:%S', true)}}"
+        unit_of_measurement: "mi"
+  
+      zoe_mileage:
+        value_template: "{{ state_attr('sensor.zoe' , 'mileage')}}"
+        friendly_name: "Zoe Mileage"
+        unit_of_measurement: "mi"
+              
   - platform: systemmonitor
     resources:
       - type: disk_free
@@ -96,84 +63,5 @@
       - type: swap_free
       - type: processor_use
       - type: last_boot
-  - platform: command_line
-    name: zoe
-    scan_interval: 1000
-    command: !secret zoe_batt
-    value_template: '{{ value_json.charge_level }}'
-    json_attributes:
-      - charging
-      - plugged
-      - charge_level
-      - remaining_range
-      - last_update
-      - charging_point
-      - remaining_time
-  - platform: command_line
-    name: zoe_schedule
-    scan_interval: 1500
-    command: 'sh /config/zoe_schedule.sh'
-    value_template: "{{value_json.enabled}}"
-  - platform: command_line
-    name: zoe_Mon
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh mon'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Tue
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh tue'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Wed
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh wed'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Thu
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh thu'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Fri
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh fri'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Sat
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh sat'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_Sun
-    scan_interval: 1500
-    command: 'sh /config/zoe_cstate.sh sun'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
-  - platform: command_line
-    name: zoe_today
-    command: 'sh /config/zoe_cstate.sh now'
-    value_template: '{{ value_json.day }}'
-    json_attributes:
-      - start
-      - duration
+
+    

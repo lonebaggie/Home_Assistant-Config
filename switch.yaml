@@ -1,77 +1,89 @@
   - platform: template
     switches: 
       tv:
-        value_template: "{{ is_state('input_select.harmony_state', 'TV')}}"
-        turn_on:
+        value_template: "{{states.sensor.harmony.state == 'TV'}}"
+        turn_on: 
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "TV"
+            option: TV
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff
       roku:
-        value_template: "{{ is_state('input_select.harmony_state', 'Roku')}}"
+        value_template: "{{states.sensor.harmony.state == 'Roku'}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Roku"
+            option: Roku
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff
       movies:
-        value_template: "{{ is_state('input_select.harmony_state', 'Roku')}}"
+        value_template: "{{states.sensor.harmony.state == 'Roku'}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Roku"
+            option: Roku
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff
       bluray:
-        value_template: "{{ is_state('input_select.harmony_state', 'Bluray')}}"
+        value_template: "{{states.sensor.harmony.state == 'Bluray'}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Bluray"
+            option: Bluray
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff    
       speaker:
-        value_template: "{{ is_state('input_select.harmony_state', 'Speaker')}}"
+        value_template: "{{states.sensor.harmony.state == 'Speaker'}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Speaker"
+            option: Speaker
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff
       sony:
-        value_template: "{{ is_state('input_select.harmony_state', 'Sony')}}"
+        value_template: "{{states.sensor.harmony.state == 'Sony'}}"
         turn_on:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "Sony"
+            option: Sony
         turn_off:
           service: input_select.select_option
           data:
             entity_id: input_select.harmony_state
-            option: "PowerOff"
+            option: PowerOff
+      lg:
+        value_template: "{{states.sensor.harmony.state == 'LG'}}"
+        turn_on:
+          service: input_select.select_option
+          data:
+            entity_id: input_select.harmony_state
+            option: LG
+        turn_off:
+          service: input_select.select_option
+          data:
+            entity_id: input_select.harmony_state
+            option: PowerOff
       dark:
         value_template: "{{ is_state('input_select.light_state', 'Dark')}}"
         turn_on:
@@ -79,11 +91,11 @@
             data:
               entity_id: input_select.light_state
               option: "Dark"
-        turn_off:
+        turn_off: 
           - service: input_select.select_option
             data:
               entity_id: input_select.light_state
-              option: "Off"
+              option: "Off"              
       relaxed:
         value_template: "{{ is_state('input_select.light_state', 'Relaxed')}}"
         turn_on:
@@ -96,6 +108,7 @@
             data:
               entity_id: input_select.light_state
               option: "Off"
+              
       bright:
         value_template: "{{ is_state('input_select.light_state', 'Bright')}}"
         turn_on:
@@ -108,16 +121,51 @@
             data:
               entity_id: input_select.light_state
               option: "Off"
-      zoe_command:
-        value_template: off
+      tv_radio_1:
+        value_template: "{{ is_state('input_select.radio_state', 'Radio 1')}}"
         turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Radio 1"
         turn_off:
-  - platform: command_line
-    switches:
-      zoe_charge:
-        command_on: !secret zoe_charge
-      zoe_precon:
-        command_on: !secret zoe_pre
-          
-      
-    
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Off"
+      tv_radio_2:
+        value_template: "{{ is_state('input_select.radio_state', 'Radio 2')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Radio 2"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Off"
+      tv_radio_3:
+        value_template: "{{ is_state('input_select.radio_state', 'Radio 3')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Radio 3"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Off"
+      tv_radio_4:
+        value_template: "{{ is_state('input_select.radio_state', 'Radio 4')}}"
+        turn_on:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Radio 4"
+        turn_off:
+          - service: input_select.select_option
+            data:
+              entity_id: input_select.radio_state
+              option: "Off"

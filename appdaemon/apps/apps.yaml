@@ -7,36 +7,30 @@ LRSwitch:
 LRSync:
   module: LRSync
   class: LRsync
-MRswitch:
-  module: MRSwitch
-  class: MRswitch
-HRswitch:
-  module: HRSwitch
-  class: HRswitch
 HAWay:
   module: HAWay
   class: HAway
-OSAutolight:
-  module: OSAutolight
-  class: OSautolight
-URAutolightoff:
-  module: URAutolightoff
-  class: URautolightoff
+#KUSync:
+#  module: KUSync
+#  class: KUsync
+#OSCamera:
+#  module: OSCamera
+#  class: OScamera
 LeakWarning:
   module: LeakWarning
   class: Leakwarning
 SpeakAlexa:
   module: SpeakAlexa
   class: Speakalexa
-LRHSelector:
-  module: LRHSelector
-  class: LRhselector
-LRDimmer:
-  module: LRDimmer
-  class: LRdimmer
-LRHsync:
-  module: LRHsync
-  class: LRhsync
+#LRHSelector:
+#  module: LRHSelector
+#  class: LRhselector
+#LRDimmer:
+#  module: LRDimmer
+#  class: LRdimmer
+#LRHsync:
+#  module: LRHsync
+#  class: LRhsync
 SpeechParser:
   module: SpeechParser
   class: Speechparser
@@ -132,22 +126,18 @@ SpeechParser:
 #  module: M5Switch
 #  class: M5switch
 
-HAStart:
-  module: HAStart
-  class: HAstart
+#HAStart:
+#  module: HAStart
+#  class: HAstart
 VolAlexa:
   module: VolAlexa
   class: Volalexa
-#ZoeStatus:
-#  module: ZoeStatus
-#  class: Zoestatus
+ZoeStatus:
+  module: ZoeStatus
+  class: Zoestatus
 ZoePlugChk:
   module: ZoePlugChk
   class: Zoeplugchk
-ZoePreCon:
-  module: ZoePreCon
-  class: Zoeprecon
-
 
 
 

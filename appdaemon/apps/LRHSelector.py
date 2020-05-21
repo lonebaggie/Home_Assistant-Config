@@ -8,4 +8,4 @@ class LRhselector(hass.Hass):
         self.log("{} Triggered".format(new))
         if self.get_state("sensor.harmony") != new :
             self.log("{} service called".format(new))
-            self.call_service("remote/turn_on",entity_id = "remote.harmony_hub", activity = new)
+            self.call_service("remote/turn_on",entity_id = "remote.harmony_hub", activity = new) 

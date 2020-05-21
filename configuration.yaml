@@ -16,9 +16,9 @@ homeassistant:
     - /config/python_scripts
 
 weather:
-  - platform: darksky
-    api_key: !secret darksky_api
-    mode: daily
+  - platform: openweathermap
+    api_key: !secret owm_api
+    mode: freedaily
     
 
 # Enables the frontend
@@ -38,7 +38,6 @@ http:
   #api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running 
   # in Docker container, etc.
-  base_url: https://lonebaggie.duckdns.org:8123
   cors_allowed_origins:
     - https://lonebaggie.duckdns.org:7080
   ssl_certificate: /ssl/fullchain.pem
@@ -61,10 +60,14 @@ conversation:
 
 # Enables support for tracking state changes over time
 logger:
-  default: critical
+  default: warn
   logs:
-    homeassistant.components: info
-    
+    homeassistant.components.automation: debug
+    homeassistant.components.scripts: debug
+# lovelace 
+lovelace:
+  mode: yaml
+  
 
 
 history:
@@ -85,9 +88,10 @@ sun:
 
 # include yaml scripts
 cover: !include cover.yaml
-cloud: !include cloud.yaml        
+cloud: !include cloud.yaml     
+automation old: !include_dir_list automation/
 automation: !include automations.yaml
-automation old: !include_dir_merge_list automations
+
 script: !include scripts.yaml
 input_select: !include input_select.yaml
 input_number: !include input_number.yaml
@@ -103,21 +107,16 @@ notify: !include notify.yaml
 device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
 #timer: !include timer.yaml
-camera:
-  - platform: onvif
-    host: 192.168.1.75
-    port: 8899
-    profile: 1
-    username: !secret camera_user
-    password: !secret camera_pass
-remote:
-  - platform: harmony
-    name: Harmony Hub
-    host: 192.168.1.252
-roku:
-  - host: 192.168.1.9
 asuswrt: 
   host: 192.168.1.1
   username: !secret asuswrt_user
   password: !secret asuswrt_password
+tradfri:
+  host: 192.168.1.88
+  allow_tradfri_groups: true
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - mac: 7C49EB88B73C
+      key: !secret xiaomi_key1
 

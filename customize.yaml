@@ -178,7 +178,7 @@ binary_sensor.cube_158d000103a8a5_2:
 weather.yweather:
   friendly_name: Yahoo Weather
 input_select.light_state:
-  friendly_name: Room Mood
+  friendly_name: Light Mood
   icon: mdi:ceiling-light
 input_boolean.audit_light:
   friendly_name: Audit trigger
@@ -307,4 +307,30 @@ input_select.harmony_state:
 switch.bathroom_fan:
   icon: mdi:fan
 switch.en_suite_fan:
+  icon: mdi:fan
+binary_sensor.utility_water_sensor:
+  device_class: motion
+  icon: mdi:water
+binary_sensor.hall_toilet_water_sensor:
+  device_class: motion
+  icon: mdi:water
+sensor.vibration_sensor_battery:
+  icon: mdi:waves
+binary_sensor.vibration:
+  icon: mdi:waves
+binary_sensor.hall_motion:
+  icon: mdi:motion-sensor
+sensor.hall_motion_sensor_battery:
+  icon: mdi:motion-sensor
+sensor.zoe_remaining_range:
+  icon: mdi:road
+sensor.zoe_charging:
+  icon: mdi:power-plug
+light.lr3:
+  friendly_name: LR3
+light.dr2:
+  friendly_name: DR2
+light.dr3:
+  friendly_name: DR3
+switch.ensuite_fan:
   icon: mdi:fan
