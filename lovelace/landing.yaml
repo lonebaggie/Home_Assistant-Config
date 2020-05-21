@@ -1,0 +1,17 @@
+  title: Landing
+  path: landing
+  icon: 'mdi:airport'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Landing
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.landing
+              name: Light 
+              tap_action:
+                action: toggle     
+        - type: 'custom:gap-card' 
+      

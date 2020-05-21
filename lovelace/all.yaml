@@ -1,0 +1,82 @@
+  title: All
+  path: all
+  icon: 'mdi:grid'
+  badges: []
+  cards:
+        - type: 'custom:gui-sandbox'
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            title: Binary Sensors
+          filter:
+            include:
+              - entity_id: binary_sensor.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            title: Sensors
+          filter:
+            include:
+              - entity_id: sensor.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            show_header_toggle: false
+            title: Lights
+          filter:
+            include:
+              - entity_id: light.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            show_header_toggle: false
+            title: Switches
+          filter:
+            include:
+              - entity_id: switch.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            show_header_toggle: false
+            title: Media
+          filter:
+            include:
+              - entity_id: media_player.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            show_header_toggle: false
+            title: Camera
+          filter:
+            include:
+              - entity_id: camera.*
+            sort:
+              - method: name
+        - type: 'custom:auto-entities'
+          card:
+            type: entities
+            show_header_toggle: false
+            title: Input
+          filter:
+            include:
+              - entity_id: 'input*'
+            sort:
+              - method: name
+          
+
+
+
+
+
+
+

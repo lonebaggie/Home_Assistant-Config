@@ -1,0 +1,16 @@
+  title: Francis
+  path: francis
+  icon: 'mdi:hotel'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Francis
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.francis
+              name: Light 
+              tap_action:
+                action: toggle     
+        - type: 'custom:gap-card' 

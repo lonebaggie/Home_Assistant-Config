@@ -1,0 +1,21 @@
+  title: Current Location
+  path: currentlocation
+  icon: 'mdi:account'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Current location
+      cards:
+        - type: glance
+          entities:
+            - entity: person.simon
+              name: Simon
+            - entity: person.louise
+              name: Louise
+        - type: glance
+          entities:
+            - entity: person.francis
+              name: Francis
+            - entity: person.maddy
+              name: Maddy
+

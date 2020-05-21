@@ -1,0 +1,20 @@
+  title: Car
+  path: car
+  icon: 'mdi:car'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Zoe
+      cards:
+        - type: glance
+          entities:
+            - entity: sensor.zoe_battery
+              name: Battery
+            - entity: sensor.zoe_remaining_range
+              name: Range
+        - type: glance
+          entities:
+            - entity: binary_sensor.zoe_plugged
+              name: Plugged in
+            - entity: binary_sensor.zoe_charging
+              name: Charging

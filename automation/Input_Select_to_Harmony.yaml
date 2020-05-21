@@ -1,0 +1,45 @@
+alias: Item Select to Harmony
+description: Trigger remote from Item select menu
+trigger:
+  entity_id: input_select.harmony_state
+  platform: state
+condition:
+  - condition: template
+    value_template: >
+      {% if states.input_select.harmony_state.state == states.sensor.harmony.state %}
+        false
+      {% else %}
+        true
+      {% endif %}
+action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.radio_state
+      option: >
+        {% if trigger.from_state.state == "Radio" %}
+          Off
+        {% else %}
+          {{states.input_select.radio_state.state}}
+        {% endif %}
+  - condition: template
+    value_template: >
+      {% if states.input_select.harmony_state.state == 'Radio' %}
+        false
+      {% else %}
+        true
+      {% endif %}
+  - service: remote.turn_on
+    data_template: 
+      entity_id: remote.harmony_hub
+      activity: '{{states.input_select.harmony_state.state}}'
+  - condition: state
+    entity_id: input_select.harmony_state
+    state:  PowerOff
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.radio_state
+      option: 'Off'
+    
+
+
+        

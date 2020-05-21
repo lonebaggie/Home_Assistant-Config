@@ -1,0 +1,31 @@
+  title: Alexa 
+  path: alexa
+  icon: 'mdi:amazon-alexa'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Alexa
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: media_player.lr_echo
+              name: Living Room
+            - entity: media_player.k_dot
+              name: Kitchen
+        - type: glance
+          columns: 2
+          entities:
+            - entity: media_player.echo_show_5
+              name: Bedroom
+    - type: horizontal-stack
+      cards:
+        - type: entities
+          entities:
+            - entity: input_select.alexa_state
+              name: Alexa devices
+            - entity: input_number.alexa_volume
+              name: Volume
+            - entity: input_text.tts
+              name: Text to voice
+        

@@ -1,0 +1,57 @@
+  title: CoronaVirus
+  path: coronavirus
+  icon: 'mdi:skull'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Corona Virus
+      cards:
+          - type: 'custom:mini-graph-card'
+            entities:
+              - entity: sensor.worldwide_coronavirus_confirmed
+                name: Confirmed
+                color: green
+              - entity: sensor.worldwide_coronavirus_current
+                name: Current
+                color: pink
+              - entity: sensor.worldwide_coronavirus_recovered
+                name: Recovered
+                color: red
+              - entity: sensor.worldwide_coronavirus_deaths
+                name: Deaths
+                color: black
+            extrema: true
+            font_size: 100
+            font_size_header: 15
+            hour24: true
+            hours_to_show: 240
+            icon: 'mdi:allergy'
+            line_color: '#E53935'
+            name: Worldwide Corona
+            points_per_hour: 5
+            show:
+              fill: fade
+              points: false
+          - type: 'custom:mini-graph-card'
+            entities:
+              - entity: sensor.united_kingdom_coronavirus_confirmed
+                name: Confirmed
+                color: green
+              - entity: sensor.united_kingdom_coronavirus_current
+                name: Current
+                color: pink
+              - entity: sensor.united_kingdom_coronavirus_recovered
+                name: Recovered
+                color: red
+              - entity: sensor.united_kingdom_coronavirus_deaths
+                name: Deaths
+                color: black
+            extrema: true
+            font_size: 100
+            font_size_header: 15
+            hour24: true
+            hours_to_show: 240
+            icon: 'mdi:allergy'
+            line_color: '#E53935'
+            name: UK Corona
+            points_per_hour: 5

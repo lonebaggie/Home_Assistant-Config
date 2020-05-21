@@ -1,0 +1,34 @@
+  title: Hall 
+  path: hall
+  icon: 'mdi:clock'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Hall
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.hall
+              name: Hall
+              tap_action:
+                action: toggle
+            - entity: light.hall_toilet
+              name: Hall Toilet
+              tap_action:
+                action: toggle
+        - type: glance
+          columns: 2
+          entities:
+            - entity: binary_sensor.hall_toilet_leak
+              name: Hall Leak
+            - entity: binary_sensor.hall_motion
+              name: Motion Detector
+    - type: horizontal-stack
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: binary_sensor.front_door
+              name: Front Door
+        - type: 'custom:gap-card'    

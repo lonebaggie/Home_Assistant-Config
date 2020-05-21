@@ -1,0 +1,17 @@
+  title: Maddy
+  path: maddy
+  icon: 'mdi:hotel'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Maddy
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.maddy
+              name: Light 
+              tap_action:
+                action: toggle     
+        - type: 'custom:gap-card' 
+      

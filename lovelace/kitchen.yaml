@@ -1,0 +1,17 @@
+  title: Kitchen
+  path: kitchen
+  icon: 'mdi:food-variant'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Kitchen
+      cards:
+        - type: glance
+          entities:
+            - entity: light.kitchen
+              name: Kitchen
+              tap_action:
+                action: toggle
+            - entity: media_player.k_dot
+              name: Echo Dot
+        - type: 'custom:gap-card'

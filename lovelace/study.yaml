@@ -1,0 +1,17 @@
+  title: Study
+  path: study
+  icon: 'mdi:book-open-variant'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Study
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.study
+              name: Light 
+              tap_action:
+                action: toggle     
+        - type: 'custom:gap-card' 
+      

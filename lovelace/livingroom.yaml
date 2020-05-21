@@ -1,0 +1,117 @@
+  title: Living Room
+  path: livingroom
+  icon: 'mdi:sofa'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Living Room
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: sensor.home_temperature
+              name: Temperature 
+            - entity: binary_sensor.patio_door
+              name: Patio
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.gateway
+              name: Gateway
+              tap_action:
+                action: toggle
+            - entity: switch.sonoff2_relay
+              name: PLug 2
+              tap_action:
+                action: toggle
+    - type: horizontal-stack
+      cards: 
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: input_select.light_state
+              name: Light Mood  
+        - type: conditional
+          conditions:
+            - entity: switch.living_room
+              state: 'off'
+          card:
+            type: 'custom:gap-card'
+        - type: conditional
+          conditions:
+            - entity: switch.living_room
+              state_not: 'off'
+          card:
+            type: glance
+            entities:
+              - entity: light.sitting_room
+                tap_action:
+                  action: toggle
+              - entity: light.dining_room
+                tap_action:
+                  action: toggle
+    - type: horizontal-stack
+      cards: 
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: input_select.harmony_state
+              name: Media Select 
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'PowerOff'
+          card:
+            type: 'custom:gap-card'
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'TV'
+          card:
+            type: media-control
+            entity: media_player.sat
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'LG'
+          card:
+            type: media-control
+            entity: media_player.lg_tv_remote
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'Roku'
+          card:
+            type: media-control
+            entity: media_player.living_room
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'Sony'
+          card:
+            type: media-control
+            entity: media_player.sony_htxt2
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'Speaker'
+          card:
+            type: media-control
+            entity: media_player.sony_htxt2
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'Bluray'
+          card:
+            type: media-control
+            entity: media_player.lg_tv_remote
+        - type: conditional
+          conditions:
+            - entity: input_select.harmony_state
+              state: 'Radio'
+          card:
+            type: entities
+            show_header_toggle: false
+            entities:
+              - entity: input_select.radio_state
+                name: Radio Select  

@@ -1,0 +1,19 @@
+  title: Bathroom 
+  path: outsidebathroom
+  icon: 'mdi:human-male-female'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Bathroom
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.bathroom_light
+              name: Light 
+              tap_action:
+                action: toggle
+            - entity: switch.bathroom_fan
+              name: Fan    
+        - type: 'custom:gap-card' 
+      

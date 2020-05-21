@@ -1,0 +1,23 @@
+  title: Weather
+  path: weather
+  icon: 'mdi:cloud'
+  badges: []
+  cards:
+    - type: vertical-stack
+      title: Weather
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: sensor
+              name: Inside Temperature
+              entity: sensor.home_temperature
+              graph: line
+            - type: sensor
+              name: Outside temperature
+              entity: sensor.owm_temperature
+              graph: line
+        - type: weather-forecast
+          entity: weather.openweathermap
+
+
+      

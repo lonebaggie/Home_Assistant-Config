@@ -1,0 +1,50 @@
+alias: Input Select to Radio
+description: Turn on BBC radio via Input Select 
+trigger:
+  platform: state
+  entity_id: input_select.radio_state
+action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.harmony_state
+      option: >
+        {% if states.input_select.radio_state.state == "Off" %}
+          {{states.input_select.harmony_state.state}}
+        {% else %}
+          TV
+        {% endif %}
+  - wait_template: "{{is_state('sensor.harmony','TV')}}"
+    timeout: '00:00:25'
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.harmony_state
+      option: >
+        {% if states.input_select.radio_state.state == "Off" %}
+          {{states.input_select.harmony_state.state}}
+        {% else %}
+          Radio
+        {% endif %}
+  - service_template: > 
+      {% if states.input_select.radio_state.state == "Radio 1" %}
+        shell_command.radio1
+      {% elif states.input_select.radio_state.state == "Radio 2" %}
+        shell_command.radio2
+      {% elif states.input_select.radio_state.state == "Radio 3" %}
+        shell_command.radio3
+      {% elif states.input_select.radio_state.state == "Radio 4" %}
+        shell_command.radio4
+      {% elif states.input_select.radio_state.state == "Off" %}
+        shell_command.bbc1
+      {% endif %}
+  - condition: state
+    entity_id: input_select.radio_state
+    state: 'Off'
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.harmony_state
+      option: >
+        {% if states.input_select.harmony_state.state == "Radio" %}
+          TV
+        {% else %}
+          {{states.input_select.harmony_state.state}}
+        {% endif %}

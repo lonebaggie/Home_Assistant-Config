@@ -1,0 +1,28 @@
+  title: Master Bedroom
+  path: masterbedroom
+  icon: 'mdi:hotel'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Mater Bedroom
+      cards:
+        - type: glance
+          entities:
+            - entity: light.master_bedroom
+              name: Light
+              tap_action:
+                action: toggle
+            - entity: media_player.echo_show_5
+              name: Echo Show
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.en_suite_light
+              name: En-Suite
+              tap_action:
+                action: toggle
+            - entity: switch.ensuite_fan
+              name: En-Suite Fan
+              tap_action:
+                action: toggle
+           

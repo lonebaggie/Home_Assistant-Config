@@ -1,0 +1,6 @@
+  title: Sandbox
+  path: sandbox
+  icon: 'mdi:box'
+  badges: []
+  cards:
+    - type: custom:gui-sandbox

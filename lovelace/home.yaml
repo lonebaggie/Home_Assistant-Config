@@ -1,0 +1,81 @@
+  title: Home
+  path: home
+  icon: 'mdi:home-assistant'
+  badges: []
+  cards:
+    - type: vertical-stack
+      title: Alerts & Status
+      cards:
+        - type: horizontal-stack
+          cards:
+            - type: 'custom:auto-entities'
+              show_empty: true
+              card:
+                  type: glance
+                  columns: 4
+              filter:
+                include:
+                  - domain: light
+                    state: 'on'
+                    options:
+                      tap_action:
+                        action: toggle
+                  - state: unknown
+                  - state: none
+                  - domain: media_player
+                    state: 'on'
+                  - entity_id: binary_sensor.*_door
+                    state: 'on'
+                  - entity_id: binary_sensor.hall_toilet_leak_sensor
+                    state: 'on'
+                  - entity_id: binary_sensor.utility_leak_sensor
+                    state: 'on'
+                  - entity_id: binary_sensor.*_motion
+                    state: 'on'
+                  - attributes:
+                      battery_level: < 15
+          
+                exclude:
+                  - entity_id: light.lr*
+                  - entity_id: light.dr*
+                  - entity_id: light.downstairs
+                  - entity_id: light.upstairs
+                  - entity_id: light.all  
+                  - entity_id: light.tradfri
+                  - entity_id: light.dining_room
+                    state: unavailable
+                  - entity_id: light.sitting_room    
+                    state: unavailable
+                  - entity_id: light.living_room
+                    state: unavailable
+                  - entity_id: sensor.tilt_angle
+                  - entity_id: sensor.zoe_battery_temperature
+                  - entity_id: media_player.enigma_2
+                  - entity_id: switch.*shuffle*
+                  - entity_id: switch.*repeat*
+                  - entity_id: switch.*disturb*
+                  - entity_id: sensor.*timer*
+                  - entity_id: sensor.*alarm*
+                  - entity_id: sensor.*reminder*
+                sort:
+                  method: domain
+        - type: conditional
+          conditions:
+            - entity: sensor.hacs
+              state: '1'
+          card:
+            type: markdown
+            content: >
+                ## Community updates alert 
+                See HACs Community addin
+        
+        - type: conditional
+          conditions:
+            - entity: binary_sensor.snapshots_stale
+              state: 'True'
+          card:
+            type: markdown
+            content: >
+                ## Snapshots are stale
+                See Google Drive Backup
+        

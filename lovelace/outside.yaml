@@ -1,0 +1,19 @@
+  title: Outside 
+  path: outside
+  icon: 'mdi:flower'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Outside
+      cards:
+        - type: glance
+          columns: 2
+          entities:
+            - entity: light.outside
+              name: Light 
+              tap_action:
+                action: toggle
+            - entity: camera.blink_front_door
+              name: Camera     
+        - type: 'custom:gap-card' 
+      

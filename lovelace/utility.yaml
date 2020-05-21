@@ -1,0 +1,24 @@
+  title: Utility
+  path: utility
+  icon: 'mdi:washing-machine'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Utility
+      cards:
+        - type: glance
+          entities:
+            - entity: light.utility
+              name: Light
+              tap_action:
+                action: toggle
+            - entity: binary_sensor.vibration
+              name: Vibration
+        - type: glance
+          columns: 2
+          entities:
+            - entity: binary_sensor.utility_leak_sensor
+              name: Leak
+            - entity: binary_sensor.back_door
+              name: Back door
+           

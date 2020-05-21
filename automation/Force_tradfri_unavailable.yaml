@@ -1,0 +1,33 @@
+alias: Force tradfri to unavailable
+description: tradfri lights take a long time to become unavailiable  when power removed. 
+trigger:
+  entity_id: switch.living_room
+  platform: state
+  from : 'on'
+  to: 'off'
+  for:
+    seconds: '30'
+action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.light_state
+      option: 'Off'
+  - delay: '00:00:05'
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room_2
+  - service: light.toggle
+    data:
+      entity_id: light.living_room
+  - service: light.toggle
+    data:
+      entity_id: light.living_room
+  - service: light.toggle
+    data:
+      entity_id: light.living_room
+  - service: light.toggle
+    data:
+      entity_id: light.living_room
+    
+  
+    
