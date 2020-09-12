@@ -2,6 +2,7 @@
 !*.yaml
 !*.py
 !*.sh
+!script
 !scenes
 !automations
 !appdaemon
