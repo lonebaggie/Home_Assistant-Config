@@ -334,3 +334,39 @@ light.dr3:
   friendly_name: DR3
 switch.ensuite_fan:
   icon: mdi:fan
+sensor.christmas_day:
+  unit_of_measurement: days
+sensor.boxing_day:
+  unit_of_measurement: days
+sensor.early_may_bank_holiday_ve_day:
+  unit_of_measurement: days
+sensor.easter_sunday:
+  unit_of_measurement: days
+sensor.father_s_day:
+  unit_of_measurement: days
+sensor.guy_fawkes_day:
+  unit_of_measurement: days
+sensor.halloween:
+  unit_of_measurement: days
+sensor.mothering_sunday:
+  unit_of_measurement: days
+sensor.st_george_s_day:
+  unit_of_measurement: days
+sensor.summer_bank_holiday:
+  unit_of_measurement: days
+sensor.valentine_s_day:
+  unit_of_measurement: days
+sensor.spring_bank_holiday:
+  unit_of_measurement: days
+sensor.agile_1hr:
+  icon: mdi:clock
+sensor.agile_2hr:
+  icon: mdi:clock
+sensor.agile_cost_gas_month:
+  icon: mdi:receipt
+sensor.agile_cost_gas_year:
+  icon: mdi:receipt
+sensor.agile_cost_month:
+  icon: mdi:receipt
+sensor.agile_cost_year:
+  icon: mdi:receipt

@@ -14,4 +14,9 @@
                 action: toggle
             - entity: media_player.k_dot
               name: Echo Dot
-        - type: 'custom:gap-card'
+        - type: glance
+          entities:
+            - entity: sensor.household_waste
+              name: Household 
+            - entity: sensor.food_waste
+              name: Food 

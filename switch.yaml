@@ -85,42 +85,84 @@
             entity_id: input_select.harmony_state
             option: PowerOff
       dark:
-        value_template: "{{ is_state('input_select.light_state', 'Dark')}}"
+        value_template: >
+          {% if is_state('input_select.light_state','Dark') %}
+            true
+          {% else %}
+            false
+          {% endif %}
         turn_on:
           - service: input_select.select_option
             data:
               entity_id: input_select.light_state
               option: "Dark"
+          - service: script.turn_on
+            data:
+              entity_id: script.moodlight
         turn_off: 
           - service: input_select.select_option
-            data:
+            data_template:
               entity_id: input_select.light_state
-              option: "Off"              
+              option: >
+                {% if is_state('switch.dark','on') %}
+                  Dark
+                {% else %}
+                  Off
+                {% endif %}
+                     
       relaxed:
-        value_template: "{{ is_state('input_select.light_state', 'Relaxed')}}"
+        value_template: >
+          {% if is_state('input_select.light_state','Relaxed') %}
+            true
+          {% else %}
+            false
+          {% endif %}
         turn_on:
           - service: input_select.select_option
             data:
               entity_id: input_select.light_state
               option: "Relaxed"
+          - service: script.turn_on
+            data:
+              entity_id: script.moodlight
+              
         turn_off:
           - service: input_select.select_option
-            data:
+            data_template:
               entity_id: input_select.light_state
-              option: "Off"
+              option: >
+                {% if is_state('switch.relaxed','on') %}
+                  Relaxed
+                {% else %}
+                  Off
+                {% endif %}
               
       bright:
-        value_template: "{{ is_state('input_select.light_state', 'Bright')}}"
+        value_template: >
+          {% if is_state('input_select.light_state','Bright') %}
+            true
+          {% else %}
+            false
+          {% endif %}
         turn_on:
           - service: input_select.select_option
             data:
               entity_id: input_select.light_state
               option: "Bright"
+          - service: script.turn_on
+            data:
+              entity_id: script.moodlight
         turn_off:
           - service: input_select.select_option
-            data:
+            data_template:
               entity_id: input_select.light_state
-              option: "Off"
+              option: >
+                {% if is_state('switch.bright','on') %}
+                  Bright
+                {% else %}
+                  Off
+                {% endif %}
+
       tv_radio_1:
         value_template: "{{ is_state('input_select.radio_state', 'Radio 1')}}"
         turn_on:

@@ -1,20 +1,35 @@
   title: Car
   path: car
-  icon: 'mdi:car'
+  icon: 'mdi:car-electric'
   badges: []
   cards:
     - type: horizontal-stack
       title: Zoe
       cards:
-        - type: glance
-          entities:
-            - entity: sensor.zoe_battery
-              name: Battery
-            - entity: sensor.zoe_remaining_range
-              name: Range
+        - type: gauge
+          name: Battery
+          entity: sensor.zoe_battery
+          min: 0
+          max: 100
+          severity:
+            green: 80
+            yellow: 40
+            red: 15
+        - type: gauge
+          name: Range
+          entity: sensor.zoe_remaining_range
+          min: 0
+          max: 210
+          severity:
+            green: 160
+            yellow: 100
+            red: 15
+    - type: horizontal-stack
+      cards:
         - type: glance
           entities:
             - entity: binary_sensor.zoe_plugged
               name: Plugged in
             - entity: binary_sensor.zoe_charging
               name: Charging
+        - type: 'custom:gap-card'

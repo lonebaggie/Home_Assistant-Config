@@ -1,5 +1,5 @@
   title: Bathroom 
-  path: outsidebathroom
+  path: bathroom
   icon: 'mdi:human-male-female'
   badges: []
   cards:
@@ -13,7 +13,7 @@
               name: Light 
               tap_action:
                 action: toggle
-            - entity: switch.bathroom_fan
+            - entity: switch.wall_switch_right_158d0001660d34
               name: Fan    
         - type: 'custom:gap-card' 
       

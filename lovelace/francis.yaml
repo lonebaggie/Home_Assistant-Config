@@ -1,6 +1,6 @@
   title: Francis
   path: francis
-  icon: 'mdi:hotel'
+  icon: 'mdi:bed'
   badges: []
   cards:
     - type: horizontal-stack

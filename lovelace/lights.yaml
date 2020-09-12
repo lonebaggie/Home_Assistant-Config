@@ -3,100 +3,18 @@
   icon: 'mdi:lightbulb'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Upstatirs Lights
+    - type: vertical-stack
+      title: Lights
       cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.bathroom_light
-              name: Bathroom
-              tap_action:
-                action: toggle
-            - entity: light.study
-              name: Study
-              tap_action:
-                action: toggle
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.francis
-              name: Francis
-              tap_action:
-                action: toggle
-            - entity: light.maddy
-              name: Maddy
-              tap_action:
-                action: toggle
-    - type: horizontal-stack
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.master_bedroom
-              name: Master Bedroom
-              tap_action:
-                action: toggle
-            - entity: light.en_suite_light
-              name: En-Suite 
-              tap_action:
-                action: toggle
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.landing
-              name: Landing
-              tap_action:
-                action: toggle
-    
-    - type: horizontal-stack
-      title: Downstatirs Lights
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.living_room
-              name: Living Room
-              tap_action:
-                action: toggle
-            - entity: light.front_room
-              name: Front Room
-              tap_action:
-                action: toggle
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.hall
-              name: Hall 
-              tap_action:
-                action: toggle
-            - entity: light.hall_toilet
-              name: Hall Toilet
-              tap_action:
-                action: toggle
-    - type: horizontal-stack
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.kitchen
-              name: Kitchen
-              tap_action:
-                action: toggle
-            - entity: light.utility
-              name: Utility
-              tap_action:
-                action: toggle
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.outside
-              name: Outside
-              tap_action:
-                action: toggle
-            - entity: light.gateway
-              name: Gateway
-              tap_action:
-                action: toggle
-            
-            
+        - type: 'custom:auto-entities'
+          card:
+            type: glance
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: light.*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true

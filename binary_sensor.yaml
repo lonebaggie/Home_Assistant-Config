@@ -20,6 +20,9 @@
         value_template: "{{ state_attr('sensor.zoe' , 'charging') }}"
         friendly_name: "Zoe Charging"
         device_class: power
+      zoe_aircon:
+        value_template: "{{ state_attr('sensor.zoe' , 'hvac_status')}}"
+        friendly_name: "Zoe Aircon"
       allhome:
         friendly_name: "All Home"
         value_template: >-

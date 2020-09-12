@@ -46,9 +46,13 @@
     options:
       - binary_sensor.front_door
       - binary_sensor.patio_door
-      - sensor.home_temperature
-      - binary_sensor.hall_motion
+      - sensor.zoe_remaining_range
+      - sensor.zoe_battery
       - light.living_room
+      - sensor.agile_rate_now
+      - sensor.agile_alert
+      - sensor.agile_1hr
+      - sensor.agile_2hr
   speak_list:
     name: Speak List
     options:
@@ -56,14 +60,41 @@
       - The current time is (tt) 
       - The current date is (td)
       - The current temperature of (e02f) is (e02s)
-      - The battery level of (e03f) is (e03l)
+      - Battery level is (e03s) giving a range of (e02s)
       - The (e04f) is at (e04b) % brightness
-
-
-      
-      
-      
-      
-     
-    
-
+      - The % current electricity price is (e05$) pence per kilowatt hour. This price is (e06s)
+      - The best one hour time starts at {{states.sensor.agile_1hr.attributes.hour}} at (e07$) pence per kilowatt hour
+      - The best two hour time starts at {{states.sensor.agile_2hr.attributes.hour}} at (e08$) pence per kilowatt hour
+  echo_sounds:
+    name: Echo sound effects
+    initial: ' '
+    options:
+      - ' '
+      - Air Horn
+      - Aircraft
+      - Applause
+      - Bells
+      - Boing 1
+      - Boing 2
+      - Buzzer
+      - Camera
+      - Cat Meow
+      - Cheer
+      - Church Bell
+      - Dog Bark
+      - Doorbell 1
+      - Doorbell 2
+      - Doorbell 3
+      - Engines
+      - Halloween Door
+      - Lion Roar
+      - Red Alert
+      - Rooster
+      - Shields
+      - Sirens
+      - Squeaky Door
+      - Ticking Clock
+      - Trumpet
+      - Wolf Howl
+      - Xmas Bells
+      - Zap

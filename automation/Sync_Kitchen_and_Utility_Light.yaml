@@ -1,15 +1,15 @@
 alias: Sync Kitchen and Utility Light
 description: Turn off utility light when Kitchen off
 trigger:
-  entity_id: switch.kitchen
+  entity_id: light.kitchen
   platform: state
   from: 'on'
   to: 'off'
 condition:
-  entity_id: switch.utility
+  entity_id: light.utility
   condition: state
   state: 'on'
 action:
-  service: switch.turn_off
+  service: light.turn_off
   data:
-    entity_id: switch.utility
+    entity_id: light.utility

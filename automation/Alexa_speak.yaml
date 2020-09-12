@@ -1,12 +1,19 @@
 alias: Alexa Speak
 description: Allows interactive tts to alexa via input_text
 trigger:
-  entity_id: input_text.tts
-  platform: state
+  - platform: state
+    entity_id: input_text.tts
+  - platform: state  
+    entity_id: input_number.alexa_volume
 action:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: 'media_player.{{states.input_select.alexa_state.state}}'
+      volume_level: '{{states.input_number.alexa_volume.state}}'
   - service_template: 'notify.alexa_media_{{states.input_select.alexa_state.state}}'
     data_template:
-      data: {"type":"announce", "method":"all"}
+      data:
+        type: tts
       message: '{{states.input_text.tts.state}}'
   - service: input_text.set_value
     data: 

@@ -1,1 +1,24 @@
-[]
+- id: '1599205550600'
+  name: Dark
+  entities:
+    light.delete:
+      brightness: 0
+      friendly_name: Living Room
+      state: 'on'
+      supported_features: 33
+- id: '1599205639205'
+  name: Relaxed
+  entities:
+    light.delete:
+      brightness: 0
+      friendly_name: Living Room
+      state: 'on'
+      supported_features: 33
+- id: '1599205674039'
+  name: Bright
+  entities:
+    light.delete:
+      brightness: 0
+      friendly_name: Living Room
+      state: 'on'
+      supported_features: 33

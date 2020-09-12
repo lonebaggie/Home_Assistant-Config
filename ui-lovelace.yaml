@@ -9,7 +9,8 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-gui-sandbox/gui-sandbox.js
     type: module
-  
+  - url: /hacsfiles/custom-header/custom-header.js
+    type: module 
 background: var(--background-image)
 excluded_entities:
   - weblink.router
@@ -18,14 +19,29 @@ preload:
   - gauge
   - conditional
 title: Main 
+custom_header:
+  compact_mode: false
+  hidden_tab_redirect: false
+  default_tab: 0
+  hide_tabs:
+    - 7 to 27
+  
 views:
+  - !include '/config/lovelace/alert.yaml'
   - !include '/config/lovelace/home.yaml'
-  - !include '/config/lovelace/currentlocation.yaml'
+  - !include '/config/lovelace/octopus.yaml'
   - !include '/config/lovelace/car.yaml'
   - !include '/config/lovelace/weather.yaml'
-  - !include '/config/lovelace/lights.yaml'
   - !include '/config/lovelace/alexa.yaml'
+  - !include '/config/lovelace/all.yaml'  
+  - !include '/config/lovelace/sandbox.yaml'
+  - !include '/config/lovelace/battery.yaml'
+  - !include '/config/lovelace/input.yaml'
+  - !include '/config/lovelace/switches.yaml'
+  - !include '/config/lovelace/lights.yaml'
+  - !include '/config/lovelace/media.yaml'
   - !include '/config/lovelace/sensors.yaml'
+  - !include '/config/lovelace/bsensors.yaml'
   - !include '/config/lovelace/livingroom.yaml'
   - !include '/config/lovelace/kitchen.yaml'
   - !include '/config/lovelace/utility.yaml'
@@ -38,7 +54,5 @@ views:
   - !include '/config/lovelace/bathroom.yaml'
   - !include '/config/lovelace/francis.yaml'
   - !include '/config/lovelace/maddy.yaml'
-  - !include '/config/lovelace/all.yaml'  
-  - !include '/config/lovelace/sandbox.yaml'
-  
+  - !include '/config/lovelace/currentlocation.yaml'
   

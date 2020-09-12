@@ -17,7 +17,7 @@
         - type: glance
           columns: 2
           entities:
-            - entity: binary_sensor.utility_leak_sensor
+            - entity: binary_sensor.utility_leak
               name: Leak
             - entity: binary_sensor.back_door
               name: Back door

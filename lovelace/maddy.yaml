@@ -1,6 +1,6 @@
   title: Maddy
   path: maddy
-  icon: 'mdi:hotel'
+  icon: 'mdi:bed'
   badges: []
   cards:
     - type: horizontal-stack

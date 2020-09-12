@@ -12,4 +12,10 @@ action:
     data_template:
       entity_id: input_select.harmony_state
       option: '{{states.sensor.harmony.state}}'
+  - condition: state
+    entity_id: sensor.harmony
+    state:  PowerOff
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.enigma_2
   

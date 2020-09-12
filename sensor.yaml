@@ -13,9 +13,8 @@
     monitored_conditions:
       - weather
       - temperature
-  - platform: renaultze
+  - platform: renaultze 
     name: Zoe
-    scan_interval: 900
     username: !secret zoe_user
     password: !secret zoe_pass
     vin: !secret zoe_vin
@@ -25,12 +24,35 @@
     sensors:
       last_alexa:
         entity_id:
-        - media_player.lr_dot
+        - media_player.lr_echo
         - media_player.k_dot
-        - media_player.br_echo
-        - media_player.fire_7
+        - media_player.echo_show_5
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+      light_state:
+        friendly_name: "living room Light state"
+        value_template: >
+            {% if states.light.living_room.state == 'off' %}
+                Off
+            {% elif states.light.dining_room.state == 'off' %}
+                Unknown
+            {% elif states.light.sitting_room.state == 'off' %}
+                Unknown
+            {% elif (is_state_attr('light.all_living_room','color_temp',454))
+            and (is_state_attr('light.all_living_room','brightness',1))
+            %}
+                Dark
+            {% elif (is_state_attr('light.all_living_room','color_temp',420))
+            and (is_state_attr('light.all_living_room','brightness',170))
+            %}
+                Relaxed
+            {% elif (is_state_attr('light.all_living_room','color_temp',250))
+            and (is_state_attr('light.all_living_room','brightness',254))
+            %}
+                Bright
+            {% else %}
+                Unknown
+            {% endif %}
       harmony:
         entity_id:
           - remote.harmony_hub
@@ -45,12 +67,91 @@
         value_template: "{{ (state_attr('sensor.zoe' , 'remaining_range')* 0.62137)|round(0)}}"
         friendly_name: "Zoe Range"
         unit_of_measurement: "mi"
-  
-      zoe_mileage:
-        value_template: "{{ state_attr('sensor.zoe' , 'mileage')}}"
-        friendly_name: "Zoe Mileage"
-        unit_of_measurement: "mi"
-              
+      agile_alert:
+        entity_id:
+          - sensor.octopus_current_price
+        value_template: >
+          {% if states.sensor.octopus_current_price.state|float < 5 %}
+            Very Low
+          {% elif states.sensor.octopus_current_price.state|float < 9 %}
+            Low 
+          {% elif states.sensor.octopus_current_price.state|float < 13 %}
+            Below Average
+          {% elif states.sensor.octopus_current_price.state|float < 17 %}
+            Average
+          {% elif states.sensor.octopus_current_price.state|float < 21 %}
+            Above Average
+          {% elif states.sensor.octopus_current_price.state|float < 25 %}
+            High
+          {% elif states.sensor.octopus_current_price.state|float < 36 %}
+            Very High
+          {% else %}
+            Unknown
+          {% endif %}
+      agile_1hr:
+        entity_id:
+          - sensor.octopus_1hour_price
+          - sensor.octopus_1hour_time
+        value_template: >
+          {{ states.sensor.octopus_1hour_price.state|round(2)}}
+        unit_of_measurement: "p/kWh"
+        attribute_templates:
+          time: >
+            {{states.sensor.octopus_1hour_time.state}}
+          hour: >
+            {{states.sensor.octopus_1hour_time.state[11:16]}}
+      agile_2hr:
+        entity_id:
+          - sensor.octopus_2hour_price
+          - sensor.octopus_2hour_time
+        value_template: >
+          {{ states.sensor.octopus_2hour_price.state|round(2)}}
+        unit_of_measurement: "p/kWh"
+        attribute_templates:
+          time: >
+            {{states.sensor.octopus_2hour_time.state}}
+          hour: >
+            {{states.sensor.octopus_2hour_time.state[11:16]}}
+      agile_rate_now:
+        entity_id:
+          - sensor.octopus_current_price
+        value_template: >
+          {{ states.sensor.octopus_current_price.state|round(2)}}
+        unit_of_measurement: "p/kWh"
+      agile_cost_year:
+        entity_id:
+          - sensor.octopus_yearly_cost
+          - sensor.octopus_yearly_usage
+        value_template: '{{ states.sensor.octopus_yearly_cost.state }}'
+        unit_of_measurement: '£'
+        attribute_templates:
+          usage: '{{states.sensor.octopus_yearly_usage.state}}'
+      agile_cost_month:
+        entity_id:
+          - sensor.octopus_monthly_cost
+          - sensor.octopus_monthly_usage
+        value_template: '{{ states.sensor.octopus_monthly_cost.state }}'
+        attribute_templates:
+          usage: '{{states.sensor.octopus_monthly_usage.state}}'
+          unit_of_measurement: '£'
+      agile_cost_gas_year:
+        entity_id:
+          - sensor.octopus_yearly_gas_cost
+          - sensor.octopus_yearly_gas_usage
+        value_template: '{{ states.sensor.octopus_yearly_gas_cost.state }}'
+        attribute_templates:
+          usage: '{{states.sensor.octopus_yearly_gas_usage.state}}'
+          unit_of_measurement: '£'
+      agile_cost_gas_month:
+        entity_id:
+          - sensor.octopus_monthly_gas_cost
+          - sensor.octopus_monthly_gas_usage
+        value_template: '{{ states.sensor.octopus_monthly_gas_cost.state }}'
+        unit_of_measurement: '£'
+        attribute_templates:
+          usage: '{{states.sensor.octopus_monthly_gas_usage.state}}'
+          
+          
   - platform: systemmonitor
     resources:
       - type: disk_free
@@ -63,5 +164,7 @@
       - type: swap_free
       - type: processor_use
       - type: last_boot
-
+  
+        
     
+  

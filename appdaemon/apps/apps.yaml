@@ -1,144 +1,36 @@
-LRSelector:
-  module: LRSelector
-  class: LRselector
-LRSwitch:
-  module: LRSwitch
-  class: LRswitch
-LRSync:
-  module: LRSync
-  class: LRsync
-HAWay:
-  module: HAWay
-  class: HAway
-#KUSync:
-#  module: KUSync
-#  class: KUsync
-#OSCamera:
-#  module: OSCamera
-#  class: OScamera
-LeakWarning:
-  module: LeakWarning
-  class: Leakwarning
-SpeakAlexa:
-  module: SpeakAlexa
-  class: Speakalexa
-#LRHSelector:
-#  module: LRHSelector
-#  class: LRhselector
-#LRDimmer:
-#  module: LRDimmer
-#  class: LRdimmer
-#LRHsync:
-#  module: LRHsync
-#  class: LRhsync
-SpeechParser:
-  module: SpeechParser
-  class: Speechparser
-  trigger: "light.alexa_virtual"
-  DEBUG: 1
-  entities: 
-    1: binary_sensor.door_window_sensor_158d00019e18bf #front door
-    2: sensor.temperature_158d0001b9205b #living room temp
-    3: group.gupstairs #  upstairs light
-    4: binary_sensor.door_window_sensor_158d00019e1738 #  patio door
-    5: weather.dark_sky #  weather forcast
-    6: sensor.processor_use # pi proc use
-    7: sensor.memory_free # pi mem free
-    8: sensor.memory_use # pi mem free
-    9: sensor.disk_use_percent_ # disk use 
-    10: sensor.last_boot # pi last boot
-    11: sensor.since_last_boot # pi last boot
-    12: device_tracker.f6d013042725 # simon
-    13: device_tracker.android6c7f7b0a01e8c5c2 #Francis
-    14: device_tracker.androidd237b1685b303ccd # louise
-    15: device_tracker.androidaa6a31c8b0e2e4b6 # madeline
-    16: sensor.dark_sky_daily_summary # weather summary
-    17: light.living_room_lights
-    18: light.dining_room_lights
-    19: switch.wall_switch_158d000159a94f # kitchen
-    20: switch.wall_switch_158d0001a68d54 # utility
-    21: switch.wall_switch_158d0001828c33 #front room
-    22: switch.wall_switch_right_158d0001a21f31 #landing
-    23: switch.wall_switch_left_158d0001a21f31 # hall
-    24: switch.wall_switch_158d0001614701 # outside
-    25: switch.wall_switch_158d000159aa50 # main bedroom
-    26: switch.wall_switch_left_158d0001660d34 # bathroom
-    27: switch.wall_switch_right_158d0001660d34 # bathroom fan
-    28: switch.wall_switch_right_158d0001a6596b # on-suite fan
-    29: switch.wall_switch_left_158d0001a6596b # on suite light
-    30: switch.wall_switch_158d0001a2424b # maddy
-    31: switch.wall_switch_158d00016cf458 # francis
-    32: sensor.zoe_level # Zoe Battery
-    33: sensor.zoe_range # Zoe range
-    34: sensor.zoe_charge # Zoe Charging
-    35: sensor.zoe_plugged # Zoe Plugged in
-  messages:
-    1: >
-       The {$01=FN} {$01=ST|on|is currently open}{$01=ST|off| is currently closed}
-    2: > 
-       The {$02=FN} is currently {$02=ST} centigrade
-    3: >
-       The {$03=FN} are currently {$03=ST}
-    4: > 
-       The {$04=FN} {$04=ST|on|is currently open, 
-       the sensor is [1]}{$04=ST|off|is currently closed, the sensor is [1]}
-    5: > 
-       {g} on {d} the {D} of {m} {y} at {t}, The current outside temperture is {$05=TP} degrees,
-       winspeed is {$05=wind_speed} miles per hour, {$02>ST|$05=TP|Inside temperature is [-] 
-       degrees warmer than outside}
-    6: >
-       {$02>ST|10|danger, temperatures high}
-    7: >
-       {$02>ST|$05=TP|Inside temperature [1] degrees is higher 
-       than outside temperature of [2] degress by [-] celcius}"
-    8: >
-       {$02<ST|20|Inside temperature, is lower than 20 degress, 
-       currently temperature is [1]} 
-    9: >
-       Raspberry Pi status report, current memory usage is {$08=ST} %
-       , Disk free {$09=ST} % , proccesor use {$06=ST} %
-    10: >
-       Good {g} here is  the latest report for {d} from home assistant , the inside temperature is 
-       {$02=ST} degrees, outside temperature is {$05=TP} degrees, 
-       current weather report  is as follows, {$16=ST},
-       {$04=ST|on| Warning , The patio door is open}
-       {$01=ST|on| Warning , The front door is open}
-       The following lights are currently on,
-       {$17=ST|on|Living room,}
-       {$18=ST|on|Dining room,}
-       {$19=ST|on|Kitchen,}
-       {$20=ST|on|Utility,}
-       {$21=ST|on|Front room,}
-       {$22=ST|on|Landing,}
-       {$23=ST|on|hall,}
-       {$24=ST|on|Outside,}
-       {$25=ST|on|Master bedroom, }
-       {$26=ST|on|bathroom,}
-       {$27=ST|on|bathroom fan,}
-       {$28=ST|on|onsuite fan,}
-       {$29=ST|on|onsuite,}
-       {$30=ST|on|Madeline,}
-       {$31=ST|on|Francis,}
-    11: >
-       'Zoe's current battery level is {$32=ST} percent, giving {$33=ST} miles of range. 
-        The car {$34=ST|False|is not on charge}{$34=ST|True|currently charging}
-#M5Switch:
-#  module: M5Switch
-#  class: M5switch
-
-#HAStart:
-#  module: HAStart
-#  class: HAstart
-VolAlexa:
-  module: VolAlexa
-  class: Volalexa
-ZoeStatus:
-  module: ZoeStatus
-  class: Zoestatus
-ZoePlugChk:
-  module: ZoePlugChk
-  class: Zoeplugchk
-
+octocost:
+  module: octocost 
+  class: OctoCost 
+  region: E
+  mpan: 1419306422005
+  serial: 19L2037876
+  auth: sk_live_4ujZWemRnu9FoOMG1uwOfGDx
+  startdate: 2020-08-19
+  gas:
+    mprn: 7400036208
+    gasserial: E6S13785691961
+    gas_tariff: FIX-12M-20-02-12
+    gas_startdate: 2020-08-19
+octoblock:
+  module: octoblock
+  class: OctoBlock
+  region: E
+  use_timezone: True
+  blocks:
+    - hour: 0
+      start_period: now
+    - hour: 1
+      start_period: now
+      name: octopus_1hour
+    - hour: 2
+      start_period: now
+      name: octopus_2hour
+  lookaheads:
+    - price: 3.0
+      operation: below
+      and_equal: True
+      duration_ahead: 12
+      name: hw_via_electric_not_gas
 
 
 

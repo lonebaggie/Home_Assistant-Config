@@ -1,27 +1,13 @@
-
   - platform: template
     lights:
       alexa_virtual:
-        friendly_name: "Alexa Dummy Light"
+        friendly_name: "Dummy Light"
         turn_on:
 
         turn_off:
 
         set_level:
-      tv_volume:
-        friendly_name: "TV Volume"
-        value_template: >
-            {% if is_state_attr("media_player.lg_tv_remote","is_volume_muted") %}
-              'on'
-            {% else %}
-              'off'
-            {% endif %}
-        turn_on:
-
-        turn_off:
-
-        set_level:
-        
+      
   - platform: group
     name: Sitting Room
     entities:
@@ -35,62 +21,53 @@
       - light.dr2
       - light.dr3
   - platform: group
-    name: Living Room
+    name: All Living Room
     entities:
       - light.lr1
       - light.lr2
       - light.lr3
       - light.dr1
       - light.dr2
-      - light.dr3
-      
-  
+      - light.dr3    
   - platform: switch
     name: Front room
-    entity_id: switch.front_room
+    entity_id: switch.wall_switch_158d0001828c33
   - platform: switch
     name: Hall toilet
-    entity_id: switch.hall_toilet
+    entity_id: switch.wall_switch_158d00016cefdb
   - platform: switch
     name: Kitchen
-    entity_id: switch.kitchen
+    entity_id: switch.wall_switch_158d000159a94f
   - platform: switch
     name: Master bedroom
-    entity_id: switch.bedroom
+    entity_id: switch.wall_switch_158d000159aa50
   - platform: switch
     name: Outside
-    entity_id: switch.outside
+    entity_id: switch.wall_switch_158d0001614701
   - platform: switch
     name: Study 
-    entity_id: switch.study
+    entity_id: switch.wall_switch_158d0001a68cf6
   - platform: switch
     name: Utility
-    entity_id: switch.utility
+    entity_id: switch.wall_switch_158d0001a68d54
   - platform: switch
     name: Francis 
-    entity_id: switch.francis
+    entity_id: switch.wall_switch_158d00016cf458
   - platform: switch
     name: Maddy 
-    entity_id: switch.maddy
+    entity_id: switch.wall_switch_158d0001a2424b
   - platform: switch
     name: Hall
-    entity_id: switch.hall_light
+    entity_id: switch.wall_switch_left_158d0001a21f31
   - platform: switch
     name: Landing
-    entity_id: switch.landing_light
+    entity_id: switch.wall_switch_right_158d0001a21f31
   - platform: switch
     name: Bathroom Light
-    entity_id: switch.bathroom_light
+    entity_id: switch.wall_switch_left_158d0001660d34
   - platform: switch
     name: En-Suite Light
-    entity_id: switch.ensuite_light
-    
-    
-    
-    
-  
-  
-    
-        
-  
-  
+    entity_id: switch.wall_switch_left_158d0001a6596b
+  - platform: switch
+    name: Living room
+    entity_id: switch.wall_switch_158d00016cf4bc

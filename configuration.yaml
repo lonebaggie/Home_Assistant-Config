@@ -91,8 +91,7 @@ cover: !include cover.yaml
 cloud: !include cloud.yaml     
 automation old: !include_dir_list automation/
 automation: !include automations.yaml
-
-script: !include scripts.yaml
+script: !include_dir_merge_named script
 input_select: !include input_select.yaml
 input_number: !include input_number.yaml
 input_text: !include input_text.yaml
@@ -114,9 +113,14 @@ asuswrt:
 tradfri:
   host: 192.168.1.88
   allow_tradfri_groups: true
-xiaomi_aqara:
-  discovery_retry: 5
-  gateways:
-    - mac: 7C49EB88B73C
-      key: !secret xiaomi_key1
-
+calendarific:
+  api_key: !secret calendarific_api
+  country: GB
+  state: GB-ENG
+browser_mod:
+  devices:
+    d1aa60f1-d3f6d029:
+      name: lenovo
+      disable:
+        - light
+        - media_player

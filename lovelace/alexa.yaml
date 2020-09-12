@@ -28,4 +28,6 @@
               name: Volume
             - entity: input_text.tts
               name: Text to voice
+            - entity: input_select.echo_sounds
+              name: Sound effects
         

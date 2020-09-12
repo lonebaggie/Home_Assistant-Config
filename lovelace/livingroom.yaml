@@ -2,6 +2,7 @@
   path: livingroom
   icon: 'mdi:sofa'
   badges: []
+  visable: false
   cards:
     - type: horizontal-stack
       title: Living Room
@@ -16,7 +17,7 @@
         - type: glance
           columns: 2
           entities:
-            - entity: light.gateway
+            - entity: light.gateway_light_7c49eb88b73c
               name: Gateway
               tap_action:
                 action: toggle
@@ -33,13 +34,13 @@
               name: Light Mood  
         - type: conditional
           conditions:
-            - entity: switch.living_room
+            - entity: light.living_room
               state: 'off'
           card:
             type: 'custom:gap-card'
         - type: conditional
           conditions:
-            - entity: switch.living_room
+            - entity: light.living_room
               state_not: 'off'
           card:
             type: glance

@@ -1,81 +1,126 @@
-  title: Home
-  path: home
-  icon: 'mdi:home-assistant'
-  badges: []
-  cards:
-    - type: vertical-stack
-      title: Alerts & Status
-      cards:
-        - type: horizontal-stack
-          cards:
-            - type: 'custom:auto-entities'
-              show_empty: true
-              card:
-                  type: glance
-                  columns: 4
-              filter:
-                include:
-                  - domain: light
-                    state: 'on'
-                    options:
-                      tap_action:
-                        action: toggle
-                  - state: unknown
-                  - state: none
-                  - domain: media_player
-                    state: 'on'
-                  - entity_id: binary_sensor.*_door
-                    state: 'on'
-                  - entity_id: binary_sensor.hall_toilet_leak_sensor
-                    state: 'on'
-                  - entity_id: binary_sensor.utility_leak_sensor
-                    state: 'on'
-                  - entity_id: binary_sensor.*_motion
-                    state: 'on'
-                  - attributes:
-                      battery_level: < 15
+title: Home
+path: home
+icon: 'mdi:home-assistant'
+badges: []
+cards:
+  - type: vertical-stack
+    title: Downstairs
+    cards:
+      - type: glance 
+        columns: 4
+        entities:
+          - entity: input_boolean.icon
+            name: Living Room
+            show_state: false
+            icon: mdi:sofa
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/livingroom
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Hall
+            icon: mdi:clock
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/hall
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Kitchen
+            show_state: false
+            icon: mdi:food-variant
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/kitchen
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Utility
+            show_state: false
+            icon: mdi:washing-machine
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/utility
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Front Room
+            icon: mdi:sofa
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/frontroom
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Outside
+            show_state: false
+            icon: mdi:flower
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/outside
+            hold_action:
+              action: none
+  - type: vertical-stack
+    title: Upstairs
+    cards:      
+      - type: glance
+        columns: 4
+        entities:
+          - entity: input_boolean.icon
+            name: Landing
+            icon: mdi:airport
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/landing
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Master Bedroom
+            icon: mdi:bunk-bed
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/masterbedroom
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Study
+            icon: mdi:desk-lamp
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/study
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Francis
+            icon: mdi:bed
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/francis
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Maddy
+            icon: mdi:bed
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/maddy
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Bathroom
+            icon: mdi:human-male-female
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/bathroom
+            hold_action:
+              action: none
           
-                exclude:
-                  - entity_id: light.lr*
-                  - entity_id: light.dr*
-                  - entity_id: light.downstairs
-                  - entity_id: light.upstairs
-                  - entity_id: light.all  
-                  - entity_id: light.tradfri
-                  - entity_id: light.dining_room
-                    state: unavailable
-                  - entity_id: light.sitting_room    
-                    state: unavailable
-                  - entity_id: light.living_room
-                    state: unavailable
-                  - entity_id: sensor.tilt_angle
-                  - entity_id: sensor.zoe_battery_temperature
-                  - entity_id: media_player.enigma_2
-                  - entity_id: switch.*shuffle*
-                  - entity_id: switch.*repeat*
-                  - entity_id: switch.*disturb*
-                  - entity_id: sensor.*timer*
-                  - entity_id: sensor.*alarm*
-                  - entity_id: sensor.*reminder*
-                sort:
-                  method: domain
-        - type: conditional
-          conditions:
-            - entity: sensor.hacs
-              state: '1'
-          card:
-            type: markdown
-            content: >
-                ## Community updates alert 
-                See HACs Community addin
-        
-        - type: conditional
-          conditions:
-            - entity: binary_sensor.snapshots_stale
-              state: 'True'
-          card:
-            type: markdown
-            content: >
-                ## Snapshots are stale
-                See Google Drive Backup
-        

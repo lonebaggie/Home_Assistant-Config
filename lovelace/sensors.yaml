@@ -6,50 +6,17 @@
     - type: horizontal-stack
       title: Sensors
       cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: sensor.home_temperature
-              name: Temperature
-            - entity: sensor.home_pressure
-              name: Pressure
-        - type: glance
-          columns: 2
-          entities:
-            - entity: sensor.home_humidity
-              name: Humidity
-            - entity: sensor.owm_temperature
-              name: Outside Temperture
-    - type: horizontal-stack
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.hall_motion
-              name: Motion
-            - entity: binary_sensor.vibration
-              name: Vibration
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.hall_toilet_leak
-              name: Hall Leak
-            - entity: binary_sensor.utility_leak_sensor
-              name: Utility Leak
-
-    - type: horizontal-stack
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.front_door
-              name: Front Door 
-            - entity: binary_sensor.back_door
-              name: Back Room
-              
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.patio_door
-              name: Patio Door  
-            
+        - type: 'custom:auto-entities'
+          card:
+            type: glance  
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: sensor.*
+            exclude:
+              - entity_id: sensor.battery*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true

@@ -1,20 +1,13 @@
 alias: Lights to input select
-description: Updates input select with light state
+description: Turn off Item select if lights off
 trigger:
-  entity_id: switch.living_room
+  entity_id: light.living_room
   platform: state
-  from : 'off'
-  to: 'on'
+  from: 'on'
+  to: 'off'
 action:
-  - condition: template
-    value_template: >
-      {% if states.input_select.light_state.state == "Off" %}
-        true
-      {% else %}
-        false
-      {% endif %}
   - service: input_select.select_option
     data:
       entity_id: input_select.light_state
-      option: 'Relaxed'
-      
+      option: 'Off'
+  

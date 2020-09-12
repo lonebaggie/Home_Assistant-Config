@@ -1,30 +1,14 @@
 alias: Check Light Mood
-description: If lights not on default (Dark, Relaxed or Bright) set to Unknown
+description: keep item select in sync 
 trigger:
     platform: time_pattern
-    seconds: '/50'
-
+    minutes: "/1"
 condition:
-  - condition: state
-    entity_id: switch.living_room
+    condition: state
+    entity_id: light.living_room
     state: 'on'
 action:
   - service: input_select.select_option
     data_template:
       entity_id: input_select.light_state
-      option: > 
-        {% if (is_state_attr('light.living_room','color_temp',454))
-          and (is_state_attr('light.living_room','brightness',1))
-        %}
-            Dark
-        {% elif (is_state_attr('light.living_room','color_temp',400))
-          and (is_state_attr('light.living_room','brightness',170))
-        %}   
-            Relaxed
-        {% elif (is_state_attr('light.living_room','color_temp',250))
-          and (is_state_attr('light.living_room','brightness',254))
-        %}
-            Bright
-        {% else %}
-            Unknown
-        {% endif %}
+      option: '{{states.sensor.light_state.state}}'

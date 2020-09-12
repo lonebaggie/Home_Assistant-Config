@@ -14,12 +14,12 @@ condition:
 action:
   - service_template: >
       {% if states.input_select.light_state.state == "Off" %}
-        switch.turn_off
+        light.turn_off
       {% else %}
-        switch.turn_on
+        light.turn_on
       {% endif %}
     data:
-      entity_id: switch.living_room
+      entity_id: light.living_room
   - condition: template
     value_template: >
       {% if states.input_select.light_state.state == "Off" %}
@@ -34,28 +34,9 @@ action:
         {% else %}
             0
         {% endif %}
-  - service: light.turn_on
+  - service:
+      switch.turn_on
     data_template:
-      entity_id: light.living_room
-      transition: 3
-      brightness: >
-        {% if states.input_select.light_state.state == "Dark" %}
-          1
-        {% elif states.input_select.light_state.state == "Relaxed" %}
-          170
-        {% elif states.input_select.light_state.state == "Bright" %}
-          254
-        {% endif %}
-  - delay: 00:00:04
-  - service: light.turn_on
-    data_template:
-      entity_id: light.living_room
-      transition: 3
-      color_temp: >
-        {% if states.input_select.light_state.state == "Dark" %}
-          454
-        {% elif states.input_select.light_state.state == "Relaxed" %}
-          400
-        {% elif states.input_select.light_state.state == "Bright" %}
-          200
-        {% endif %}
+      entity_id: >
+        switch.{{states.input_select.light_state.state}}
+    

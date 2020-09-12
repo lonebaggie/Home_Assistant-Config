@@ -3,80 +3,94 @@
   icon: 'mdi:grid'
   badges: []
   cards:
-        - type: 'custom:gui-sandbox'
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            title: Binary Sensors
-          filter:
-            include:
-              - entity_id: binary_sensor.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            title: Sensors
-          filter:
-            include:
-              - entity_id: sensor.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            show_header_toggle: false
-            title: Lights
-          filter:
-            include:
-              - entity_id: light.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            show_header_toggle: false
-            title: Switches
-          filter:
-            include:
-              - entity_id: switch.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            show_header_toggle: false
-            title: Media
-          filter:
-            include:
-              - entity_id: media_player.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            show_header_toggle: false
-            title: Camera
-          filter:
-            include:
-              - entity_id: camera.*
-            sort:
-              - method: name
-        - type: 'custom:auto-entities'
-          card:
-            type: entities
-            show_header_toggle: false
-            title: Input
-          filter:
-            include:
-              - entity_id: 'input*'
-            sort:
-              - method: name
+  - type: vertical-stack
+    title: All Entities
+    cards:
+      - type: glance 
+        columns: 4
+        entities:
+          - entity: input_boolean.icon
+            name: Battery
+            show_state: false
+            icon: mdi:battery
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/battery
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Binary Sensor
+            show_state: false
+            icon: mdi:circle-double
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/bsensors
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Lights
+            show_state: false
+            icon: mdi:lightbulb
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/lights
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Location
+            show_state: false
+            icon: mdi:account-multiple
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/currentlocation
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Inputs
+            show_state: false
+            icon: mdi:import
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/input
+            hold_action:
+              action: none
           
-
-
-
-
-
-
-
+          - entity: input_boolean.icon
+            name: Media
+            icon: mdi:video
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/media
+            hold_action:
+              action: none
+          
+          - entity: input_boolean.icon
+            name: Sand box
+            show_state: false
+            icon: mdi:spade
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/sandbox
+            hold_action:
+              action: noneS
+          - entity: input_boolean.icon
+            name: Sensors
+            icon: mdi:radar
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/sensors
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Switches
+            show_state: false
+            icon: mdi:toggle-switch
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/switches
+            hold_action:
+              action: none
+          
+          

@@ -8,9 +8,12 @@ condition:
     value_template: '{{states.input_select.speak_list.state != "do not use"  }}'
     
 action:
-  - service: notify.alexa_media_lr_echo
+  - service_template: >
+        {% set name = states('sensor.last_alexa').split('.') %}
+        notify.alexa_media_{{name[-1]}}
     data_template:
-      data: {"type":"announce", "method":"all"}
+      data:
+        type: tts
       message: >
         {% set elist = state_attr("input_select.entity_list","options") %}
         {% set slist = states.input_select.speak_list.state %}
@@ -55,6 +58,9 @@ action:
             {% endif %}
             {% if obj[4:5] == "s" %}
               {% set obj = state ~ " " ~ uom %}
+            {% endif %}
+            {% if obj[4:5] == "$" %}
+              {% set obj = state  %}
             {% endif %}
             {% if obj[4:5] == "f" %}
               {% set obj = fname %}

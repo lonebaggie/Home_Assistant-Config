@@ -1,6 +1,6 @@
   title: Sandbox
   path: sandbox
-  icon: 'mdi:box'
+  icon: mdi:spade
   badges: []
   cards:
     - type: custom:gui-sandbox

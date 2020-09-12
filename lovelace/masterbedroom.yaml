@@ -1,10 +1,10 @@
   title: Master Bedroom
   path: masterbedroom
-  icon: 'mdi:hotel'
+  icon: 'mdi:bed'
   badges: []
   cards:
     - type: horizontal-stack
-      title: Mater Bedroom
+      title: Master Bedroom
       cards:
         - type: glance
           entities:
@@ -21,7 +21,7 @@
               name: En-Suite
               tap_action:
                 action: toggle
-            - entity: switch.ensuite_fan
+            - entity: switch.wall_switch_right_158d0001a6596b
               name: En-Suite Fan
               tap_action:
                 action: toggle
