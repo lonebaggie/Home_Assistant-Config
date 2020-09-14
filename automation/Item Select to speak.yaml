@@ -44,16 +44,19 @@ action:
             {% if devtype == None %}
               {% set devtype = "" %}
             {% endif %}
-            {% if obj[4:5] == "s" %}
+            {% if obj[4:5]|regex_search('[0-9]') %}
+              {% set alist =states[ent]['attributes']|list %}
+              {% set num = obj[4:5]|int %}
+              {% set obj = state_attr(ent,alist[num])|string  %}
+              {% set devtype = "" %}
+            {% elif obj[4:5] == "s" %}
               {% set obj = state ~ " " ~ uom %}
-            {% endif %}
-            {% if obj[4:5] == "$" %}
+            {% elif obj[4:5] == "$" %}
               {% set obj = state  %}
-            {% endif %}
-            {% if obj[4:5] == "f" %}
+            {% elif obj[4:5] == "f" %}
               {% set obj = state_attr(ent,"friendly_name")  %}
-            {% endif %}
-            {% if obj[4:5] in ["b","B"] %}
+              {% set devtype = "" %}
+            {% elif obj[4:5] in ["b","B"] %}
               {% set bri = state_attr(ent,"brightness") %}
               {% if bri == None %}
                 {% set bri = 0 %}
@@ -63,11 +66,6 @@ action:
               {% else %}
                 {% set obj = ((100*bri/254)|int)|string %}
               {% endif %}
-            {% endif %}
-            {% if obj[4:5]|regex_search('[0-9]') %}
-              {% set alist =states[ent]['attributes']|list %}
-              {% set num = obj[4:5]|int %}
-              {% set obj = state_attr(ent,alist[num])|string  %}
             {% endif %}
             {% if devtype in ["opening","window","door","garage-door"] %}
               {% set obj = obj|replace('off','closed') %}
