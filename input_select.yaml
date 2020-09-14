@@ -48,7 +48,7 @@
       - binary_sensor.patio_door
       - sensor.zoe_remaining_range
       - sensor.zoe_battery
-      - light.living_room
+      - light.lr3
       - sensor.agile_rate_now
       - sensor.agile_alert
       - sensor.agile_1hr
@@ -59,12 +59,12 @@
       - do not use
       - The current time is (tt) 
       - The current date is (td)
-      - The current temperature of (e02f) is (e02s)
       - Battery level is (e03s) giving a range of (e02s)
-      - The (e04f) is at (e04b) % brightness
-      - The % current electricity price is (e05$) pence per kilowatt hour. This price is (e06s)
-      - The best one hour time starts at {{states.sensor.agile_1hr.attributes.hour}} at (e07$) pence per kilowatt hour
-      - The best two hour time starts at {{states.sensor.agile_2hr.attributes.hour}} at (e08$) pence per kilowatt hour
+      - The (e04f) is currently at (e04b) % or (e04B) level
+      - The current electricity price is (e05$) pence per kilowatt hour. This price is (e06s)
+      - The best one hour time starts at (e071) at (e07$) pence per kilowatt hour
+      - The best two hour time starts at (e081) at (e08$) pence per kilowatt hour
+      
   echo_sounds:
     name: Echo sound effects
     initial: ' '

@@ -3,16 +3,14 @@ description: Trigger item select from dummy light
 trigger:
   entity_id: light.alexa_virtual
   platform: state
-condition: 
-  - condition: state
-    entity_id: light.alexa_virtual
-    state: 'on'
+  from: 'off'
+  to: 'on'
 action:
   - service: input_select.select_option
     data_template:  
       entity_id: input_select.speak_list
       option: >
-        {% set slist = state_attr("input_select.speak_list","options") %}
+        {% set slist = state_attr('input_select.speak_list','options') %}
         {% set opt = state_attr('light.alexa_virtual','brightness') %}
         {% set opt = (opt | float / 255  * 100+0.5)|int %}
         {% if opt|int > slist|length %}
