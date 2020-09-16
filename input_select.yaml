@@ -58,8 +58,8 @@
     name: Speak List
     options:
       - do not use
-      - The current time is (tt) 
-      - The current date is (td)
+      - (gr) The current time is (tt) 
+      - (gr) The current date is (td)
       - The Patio door is (e09s)
       - Battery level is (e03s) giving a range of (e02s)
       - The (e04f) is currently at (e04b) % or (e04B) level

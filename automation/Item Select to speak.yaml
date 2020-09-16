@@ -28,11 +28,20 @@ action:
           {% endif %}
           {% if obj == "(td)" %}
             {% set obj = now().strftime("%A, %d. %B %Y") %}
-          {% endif %}  
+          {% endif %}
+          {% if obj == "(gr)" %}
+            {% if now().hour < 12 %}
+              {% set obj = "Good Morning" %}
+            {% elif now().hour < 17 %}
+              {% set obj = "Good Afternoon" %}
+            {% else %}
+              {% set obj = "Good Evening" %}
+            {% endif %}
+          {% endif %}
           {% if obj[:2] == "(e" %}
             {% set enum = obj[2:4]|int %}
             {% set ent = elist[enum] %}
-            {% set state = states(ent) %}
+            {% set state = states(ent)|round(1) %}
             {% if state == None %}
               {% set state = "unknown" %}
             {% endif %}
@@ -54,7 +63,7 @@ action:
             {% elif obj[4:5] == "$" %}
               {% set obj = state  %}
             {% elif obj[4:5] == "f" %}
-              {% set obj = state_attr(ent,"friendly_name")  %}
+              {% set obj = state_attr(ent,"friendly_name")|regex_replace("[(/[\W_]+/g," ")]") %}
               {% set devtype = "" %}
             {% elif obj[4:5] in ["b","B"] %}
               {% set bri = state_attr(ent,"brightness") %}
