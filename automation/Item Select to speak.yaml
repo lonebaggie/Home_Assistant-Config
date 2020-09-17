@@ -76,7 +76,7 @@ action:
                 {% set obj = ((100*bri/254)|int)|string %}
               {% endif %}
             {% endif %}
-            {% if devtype in ["opening","window","door","garage-door"] %}
+            {% if devtype in ["opening","window","door","garage_door"] %}
               {% set obj = obj|replace('off','closed') %}
               {% set obj = obj|replace('on','open') %}
             {% endif %}
