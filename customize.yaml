@@ -370,3 +370,4 @@ sensor.agile_cost_month:
   icon: mdi:receipt
 sensor.agile_cost_year:
   icon: mdi:receipt
+sensor.zoe_battery: {}

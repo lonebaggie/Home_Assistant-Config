@@ -23,10 +23,6 @@
   - platform: template
     sensors:
       last_alexa:
-        entity_id:
-        - media_player.lr_echo
-        - media_player.k_dot
-        - media_player.echo_show_5
         value_template: >
           {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
       light_state:
@@ -59,12 +55,11 @@
         friendly_name: "Harmony"
         value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
       zoe_battery:
-        value_template: "{{ states('sensor.zoe') }}"
+        value_template: "{{states('sensor.zoe')}}"
         unit_of_measurement: "%"
-        device_class: battery
         friendly_name: "Zoe Battery"
       zoe_remaining_range:
-        value_template: "{{ (state_attr('sensor.zoe' , 'remaining_range')* 0.62137)|round(0)}}"
+        value_template: "{{(state_attr('sensor.zoe','remaining_range')*0.62137)|round }}"
         friendly_name: "Zoe Range"
         unit_of_measurement: "mi"
       agile_alert:

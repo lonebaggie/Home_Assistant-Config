@@ -14,96 +14,65 @@ action:
       data:
         type: tts
       message: >
-        {% set elist = state_attr("input_select.entity_list","options") %}
-        {% set slist = states.input_select.speak_list.state %}
-        {% set slist = slist.split() %}
-        {% set ns=namespace(state = "") %}
-        {% for obj in slist %}
-          {% if obj == "(tt)" %}
-            {% set obj = now().strftime("%-I %M %p") %}
-            {% set mn = now().strftime("%M") %}
-            {% if mn|int < 10 %}
-              {% set obj = obj[:2] ~ obj[2:]|replace('0','oh ') %}
-            {% endif %}
+        {% set ns=namespace(speak = "") %}
+        {% set ns.speak = states.input_select.speak_list.state %}
+        {% for ps in range(1,10) if ns.speak.find(')') > -1 %}
+          {% set dy = 
+          {'opening': ('closed','open'),'window':('closed','open'),
+          'door': ('closed','open'),'garage_door':('closed','open'),
+          'lock':('locked','unlocked'),'presence':('home','away'),
+          'connectivity':('connected','not connected'),
+          'vibration':('detected','clear'),
+          'smoke':('detected','clear'),'sound':('detected','clear'),
+          'motion':('detected','clear'),'battery':('off','on'),
+          'occupancy':('detected','clear')
+          } %}      
+          {% set bn = ns.speak.find('(') %}
+          {% set ed = ns.speak.find(')')+1 %}
+          {% set tn = ns.speak[bn:ed] %}
+          {% set gr = ['Morning','Afternoon','Evening'] %}
+          {% set hr = (now().hour/12)|int + (now().hour > 17)%}
+          {% set td = now().strftime("%A, %d. %B %Y") %}
+          {% set ti = now().strftime("%-I %M %p") %}  
+          {% set et = state_attr("input_select.entity_list","options") %}
+          {% set et = et[tn[2:4]|int] %}
+          {% set fn = state_attr(et,"friendly_name") %}
+          {% set st = states(et) %}
+          {% set dt = state_attr(et,"device_class")|string %}
+          {% if (dt != "None") and (st in ['off','on'])  %} 
+            {% set st = dy[dt][st|int] %}
           {% endif %}
-          {% if obj == "(td)" %}
-            {% set obj = now().strftime("%A, %d. %B %Y") %}
+          {% set al = states[et]['attributes']|list %}
+          {% set al = state_attr(et,al[tn[4:5]|int]) %}
+          {% set um = state_attr(et,"unit_of_measurement") %}  
+          {% set br = state_attr(et,"brightness")|int %}
+          {% set bl = ((100*br/254)|int)|string %}
+          {% set br = br|string %} 
+          {% set rp = "" %}
+          {% if tn == "(gr)" %}
+            {% set rp = gr[hr] %}
+          {% elif tn == "(tt)" %}
+            {% set rp = ti %}
+          {% elif tn == "(td)" %}
+            {% set rp = td %}
           {% endif %}
-          {% if obj == "(gr)" %}
-            {% if now().hour < 12 %}
-              {% set obj = "Good Morning" %}
-            {% elif now().hour < 17 %}
-              {% set obj = "Good Afternoon" %}
-            {% else %}
-              {% set obj = "Good Evening" %}
-            {% endif %}
+          {% if tn|regex_search('\(e..f\)')%}
+            {% set rp = fn %}
+          {% elif tn|regex_search('\(e..s\)') %}
+            {% set rp = st ~ " " ~ um %}
+            {% set rp = rp.replace('None','') %}
+          {% elif tn|regex_search('\(e..\$\)') %}
+            {% set rp = st %}
+          {% elif tn|regex_search('\(e..b\)')%}
+            {% set rp = bl %}
+          {% elif tn|regex_search('\(e..B\)')%}
+            {% set rp = br %}
+          {% elif tn|regex_search('\(e..[0-9]\)') %}
+            {% set rp = al %}
           {% endif %}
-          {% if obj[:2] == "(e" %}
-            {% set enum = obj[2:4]|int %}
-            {% set ent = elist[enum] %}
-            {% set state = states(ent)|round(1) %}
-            {% if state == None %}
-              {% set state = "unknown" %}
-            {% endif %}
-            {% set uom = state_attr(ent,"unit_of_measurement") %}
-            {% if uom == None %}
-              {% set uom = "" %}
-            {% endif %}
-            {% set devtype = state_attr(ent,"device_class") %}
-            {% if devtype == None %}
-              {% set devtype = "" %}
-            {% endif %}
-            {% if obj[4:5]|regex_search('[0-9]') %}
-              {% set alist =states[ent]['attributes']|list %}
-              {% set num = obj[4:5]|int %}
-              {% set obj = state_attr(ent,alist[num])|string  %}
-              {% set devtype = "" %}
-            {% elif obj[4:5] == "s" %}
-              {% set obj = state ~ " " ~ uom %}
-            {% elif obj[4:5] == "$" %}
-              {% set obj = state  %}
-            {% elif obj[4:5] == "f" %}
-              {% set obj = state_attr(ent,"friendly_name")|regex_replace("[(/[\W_]+/g," ")]") %}
-              {% set devtype = "" %}
-            {% elif obj[4:5] in ["b","B"] %}
-              {% set bri = state_attr(ent,"brightness") %}
-              {% if bri == None %}
-                {% set bri = 0 %}
-              {% endif %}
-              {% if obj[4:5] == "B" %}
-                {% set obj = bri|string %}
-              {% else %}
-                {% set obj = ((100*bri/254)|int)|string %}
-              {% endif %}
-            {% endif %}
-            {% if devtype in ["opening","window","door","garage_door"] %}
-              {% set obj = obj|replace('off','closed') %}
-              {% set obj = obj|replace('on','open') %}
-            {% endif %}
-            {% if devtype in ["lock"] %}
-              {% set obj = obj|replace('off','unlocked') %}
-              {% set obj = obj|replace('on','locked') %}
-            {% endif %}
-            {% if devtype in ["battery_charging"] %}
-              {% set obj = obj|replace('off','not charging') %}
-              {% set obj = obj|replace('on','charging') %}
-            {% endif %}
-            {% if devtype in  ["presence"] %}
-              {% set obj = obj|replace('off','away') %}
-              {% set obj = obj|replace('on','home') %}
-            {% endif %}
-            {% if devtype in ["connectivity"] %}
-              {% set obj = obj|replace('off','not connected') %}
-              {% set obj = obj|replace('on','connected') %}
-            {% endif %}
-            {% if devtype in ["vibration","smoke","sound","motion","occupancy",] %}
-              {% set obj = obj|replace('off','clear') %}
-              {% set obj = obj|replace('on','detected') %}
-            {% endif %}
-          {% endif %}
-          {% set ns.state = ns.state + " " ~ obj  %}
-        {% endfor %}
-        {{ns.state}}
+          {% set ns.speak = ns.speak.replace(tn,rp) %}  
+        {%endfor%}
+        {{ns.speak}}
   - service: input_select.select_option
     data:
       entity_id: input_select.speak_list

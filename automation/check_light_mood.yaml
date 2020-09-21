@@ -2,7 +2,7 @@ alias: Check Light Mood
 description: keep item select in sync 
 trigger:
     platform: time_pattern
-    minutes: "/1"
+    minutes: "/3"
 condition:
     condition: state
     entity_id: light.living_room
