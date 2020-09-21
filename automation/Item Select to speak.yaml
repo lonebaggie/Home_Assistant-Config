@@ -16,6 +16,7 @@ action:
       message: >
         {% set ns=namespace(speak = "") %}
         {% set ns.speak = states.input_select.speak_list.state %}
+
         {% for ps in range(1,10) if ns.speak.find(')') > -1 %}
           {% set dy = 
           {'opening': ('closed','open'),'window':('closed','open'),
@@ -30,49 +31,53 @@ action:
           {% set bn = ns.speak.find('(') %}
           {% set ed = ns.speak.find(')')+1 %}
           {% set tn = ns.speak[bn:ed] %}
-          {% set gr = ['Morning','Afternoon','Evening'] %}
-          {% set hr = (now().hour/12)|int + (now().hour > 17)%}
-          {% set td = now().strftime("%A, %d. %B %Y") %}
-          {% set ti = now().strftime("%-I %M %p") %}  
           {% set et = state_attr("input_select.entity_list","options") %}
           {% set et = et[tn[2:4]|int] %}
-          {% set fn = state_attr(et,"friendly_name") %}
-          {% set st = states(et) %}
-          {% set dt = state_attr(et,"device_class")|string %}
-          {% if (dt != "None") and (st in ['off','on'])  %} 
-            {% set st = dy[dt][st|int] %}
-          {% endif %}
-          {% set al = states[et]['attributes']|list %}
-          {% set al = state_attr(et,al[tn[4:5]|int]) %}
-          {% set um = state_attr(et,"unit_of_measurement") %}  
-          {% set br = state_attr(et,"brightness")|int %}
-          {% set bl = ((100*br/254)|int)|string %}
-          {% set br = br|string %} 
           {% set rp = "" %}
           {% if tn == "(gr)" %}
+            {% set gr = ['Morning','Afternoon','Evening'] %}
+            {% set hr = (now().hour/12)|int + (now().hour > 17)%}
             {% set rp = gr[hr] %}
           {% elif tn == "(tt)" %}
+            {% set ti = now().strftime("%-I %M %p") %}
             {% set rp = ti %}
           {% elif tn == "(td)" %}
+            {% set td = now().strftime("%A, %d. %B %Y") %}
             {% set rp = td %}
-          {% endif %}
-          {% if tn|regex_search('\(e..f\)')%}
+          {% elif tn|regex_search('\(e..f\)') %}
+            {% set fn = state_attr(et,"friendly_name") %}
             {% set rp = fn %}
-          {% elif tn|regex_search('\(e..s\)') %}
-            {% set rp = st ~ " " ~ um %}
-            {% set rp = rp.replace('None','') %}
-          {% elif tn|regex_search('\(e..\$\)') %}
-            {% set rp = st %}
-          {% elif tn|regex_search('\(e..b\)')%}
-            {% set rp = bl %}
-          {% elif tn|regex_search('\(e..B\)')%}
-            {% set rp = br %}
+          {% elif tn|regex_search('\(e..[s$]\)') %}
+            {% set st = states(et) %}
+            {% set dt = state_attr(et,"device_class")|string %}
+              {% if (dt != "None") and (st =='off' or st == 'on')  %} 
+                {% set st = dy[dt][st|int] %}
+              {% endif %}
+            {% if tn[4:5] == "s" %}
+              {% set um = state_attr(et,"unit_of_measurement") %}  
+              {% set rp = st ~ " " ~ um %}
+              {% set rp = rp.replace('None','') %}
+            {% else %}
+              {% set rp = st %}
+            {% endif %}
+          {% elif tn|regex_search('\(e..[bB]\)') %}
+            {% set br = state_attr(et,"brightness")|int %}
+            {% if tn[4:5] == 'b' %}
+              {% set bl = ((100*br/254)|int)|string %}
+              {% set rp = bl %}
+            {% else %}
+              {% set br = br|string %} 
+              {% set rp = br %}
+            {% endif %}
           {% elif tn|regex_search('\(e..[0-9]\)') %}
+            {% set al = states[et]['attributes']|list %}
+            {% set al = state_attr(et,al[tn[4:5]|int]) %}
             {% set rp = al %}
           {% endif %}
           {% set ns.speak = ns.speak.replace(tn,rp) %}  
         {%endfor%}
         {{ns.speak}}
+
   - service: input_select.select_option
     data:
       entity_id: input_select.speak_list
