@@ -16,68 +16,54 @@ action:
       message: >
         {% set ns=namespace(speak = "") %}
         {% set ns.speak = states.input_select.speak_list.state %}
-
         {% for ps in range(1,10) if ns.speak.find(')') > -1 %}
-          {% set dy = 
-          {'opening': ('closed','open'),'window':('closed','open'),
+          {% set dy = {'opening': ('closed','open'),'window':('closed','open'),
           'door': ('closed','open'),'garage_door':('closed','open'),
           'lock':('locked','unlocked'),'presence':('home','away'),
           'connectivity':('connected','not connected'),
           'vibration':('detected','clear'),
           'smoke':('detected','clear'),'sound':('detected','clear'),
-          'motion':('detected','clear'),'battery':('off','on'),
-          'occupancy':('detected','clear')
-          } %}      
-          {% set bn = ns.speak.find('(') %}
-          {% set ed = ns.speak.find(')')+1 %}
-          {% set tn = ns.speak[bn:ed] %}
-          {% set et = state_attr("input_select.entity_list","options") %}
-          {% set et = et[tn[2:4]|int] %}
-          {% set rp = "" %}
+          'motion':('detected','clear'),'battery':('on','off'),
+          'occupancy':('detected','clear') } %} 
+          {% set tn = ns.speak[ns.speak.find("("):ns.speak.find(")")+1] %}
+          {% set rp = tn %}
           {% if tn == "(gr)" %}
             {% set gr = ['Morning','Afternoon','Evening'] %}
-            {% set hr = (now().hour/12)|int + (now().hour > 17)%}
-            {% set rp = gr[hr] %}
+            {% set rp = gr[(now().hour/12)|int + (now().hour > 17)]%}
           {% elif tn == "(tt)" %}
-            {% set ti = now().strftime("%-I %M %p") %}
-            {% set rp = ti %}
+            {% set rp = now().strftime("%-I %M %p") %}
           {% elif tn == "(td)" %}
-            {% set td = now().strftime("%A, %d. %B %Y") %}
-            {% set rp = td %}
-          {% elif tn|regex_search('\(e..f\)') %}
-            {% set fn = state_attr(et,"friendly_name") %}
-            {% set rp = fn %}
-          {% elif tn|regex_search('\(e..[s$]\)') %}
-            {% set st = states(et) %}
-            {% set dt = state_attr(et,"device_class")|string %}
-              {% if (dt != "None") and (st =='off' or st == 'on')  %} 
-                {% set st = dy[dt][st|int] %}
+            {% set rp = now().strftime("%A, %d. %B %Y") %}
+          {% else %}
+            {% set et = state_attr("input_select.entity_list","options") %}
+            {% set et = et[tn[2:4]|int] %}
+            {% if tn|regex_search('\(e..f\)') %}
+              {% set rp = state_attr(et,"friendly_name") %}
+            {% elif tn|regex_search('\(e..[s$]\)') %}
+              {% if tn[4:5] == "$" %}
+                {% set st = states(et) %}
+              {% else %}
+                {% set st = states[et].state_with_unit %}
+                {% set dt = state_attr(et,"device_class")|string %}
+                  {% if (dt != "None") and (st =='off' or st == 'on')  %} 
+                    {% set st = dy[dt][st|int] %}
+                  {% endif %}              
               {% endif %}
-            {% if tn[4:5] == "s" %}
-              {% set um = state_attr(et,"unit_of_measurement") %}  
-              {% set rp = st ~ " " ~ um %}
-              {% set rp = rp.replace('None','') %}
-            {% else %}
               {% set rp = st %}
+            {% elif tn|regex_search('\(e..[bB]\)') %}
+              {% set br = state_attr(et,"brightness")|int %}
+              {% set rp = br|string %} 
+              {% if tn[4:5] == 'b' %}
+                {% set rp = ((100*br/254)|int)|string %}
+              {% endif %}
+            {% elif tn|regex_search('\(e..[0-9]\)') %}
+              {% set al = states[et]['attributes']|list %}
+              {% set rp = state_attr(et,al[tn[4:5]|int]) %}
             {% endif %}
-          {% elif tn|regex_search('\(e..[bB]\)') %}
-            {% set br = state_attr(et,"brightness")|int %}
-            {% if tn[4:5] == 'b' %}
-              {% set bl = ((100*br/254)|int)|string %}
-              {% set rp = bl %}
-            {% else %}
-              {% set br = br|string %} 
-              {% set rp = br %}
-            {% endif %}
-          {% elif tn|regex_search('\(e..[0-9]\)') %}
-            {% set al = states[et]['attributes']|list %}
-            {% set al = state_attr(et,al[tn[4:5]|int]) %}
-            {% set rp = al %}
           {% endif %}
-          {% set ns.speak = ns.speak.replace(tn,rp) %}  
+            {% set ns.speak = ns.speak.replace(tn,rp) %}  
         {%endfor%}
         {{ns.speak}}
-
   - service: input_select.select_option
     data:
       entity_id: input_select.speak_list
