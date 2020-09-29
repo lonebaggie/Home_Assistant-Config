@@ -58,7 +58,7 @@ action:
               {% endif %}
             {% elif tn|regex_search('\(e..[0-9]\)') %}
               {% set al = states[et]['attributes']|list %}
-              {% set rp = state_attr(et,al[tn[4:5]|int]) %}
+              {% set rp = state_attr(et,al[tn[4:5]|int])|string %}
             {% endif %}
           {% endif %}
             {% set ns.speak = ns.speak.replace(tn,rp) %}  

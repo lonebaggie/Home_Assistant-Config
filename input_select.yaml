@@ -46,8 +46,7 @@
     options:
       - binary_sensor.front_door
       - binary_sensor.patio_door
-      - sensor.zoe_remaining_range
-      - sensor.zoe_battery
+      - sensor.zoe
       - light.lr3
       - sensor.agile_rate_now
       - sensor.agile_alert
@@ -61,11 +60,11 @@
       - (gr) The current time is (tt) 
       - (gr) The current date is (td)
       - The Patio door is (e09s)
-      - Battery level is (e03s) giving a range of (e02s)
+      - Battery level is (e02s), the current range is (e027) miles 
       - The (e04f) is currently at (e04b) % or (e04B) level
-      - The current electricity price is (e05$) pence per kilowatt hour. This price is (e06s)
-      - The best one hour time starts at (e071) at (e07$) pence per kilowatt hour
-      - The best two hour time starts at (e081) at (e08$) pence per kilowatt hour
+      - The current electricity price is (e04$) pence per kilowatt hour. This price is (e05s)
+      - The best one hour time starts at (e061) at (e06$) pence per kilowatt hour
+      - The best two hour time starts at (e071) at (e07$) pence per kilowatt hour
       - this message is split (c10)
       - into two messages 
       
