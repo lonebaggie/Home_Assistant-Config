@@ -92,5 +92,14 @@
               navigation_path: /lovelace/switches
             hold_action:
               action: none
+          - entity: input_boolean.icon
+            name: Timers
+            icon: mdi:clock
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/timers
+              
+            
           
           

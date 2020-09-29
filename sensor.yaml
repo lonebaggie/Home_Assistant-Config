@@ -24,16 +24,12 @@
     sensors:
       last_alexa:
         value_template: >
-          {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+          {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
       light_state:
         friendly_name: "living room Light state"
         value_template: >
             {% if states.light.living_room.state == 'off' %}
                 Off
-            {% elif states.light.dining_room.state == 'off' %}
-                Unknown
-            {% elif states.light.sitting_room.state == 'off' %}
-                Unknown
             {% elif (is_state_attr('light.all_living_room','color_temp',454))
             and (is_state_attr('light.all_living_room','brightness',1))
             %}
@@ -54,14 +50,6 @@
           - remote.harmony_hub
         friendly_name: "Harmony"
         value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
-      zoe_battery:
-        value_template: "{{states('sensor.zoe')}}"
-        unit_of_measurement: "%"
-        friendly_name: "Zoe Battery"
-      zoe_remaining_range:
-        value_template: "{{(state_attr('sensor.zoe','remaining_range')*0.62137)|round }}"
-        friendly_name: "Zoe Range"
-        unit_of_measurement: "mi"
       agile_alert:
         entity_id:
           - sensor.octopus_current_price

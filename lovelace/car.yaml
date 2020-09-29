@@ -7,29 +7,25 @@
       title: Zoe
       cards:
         - type: gauge
-          name: Battery
-          entity: sensor.zoe_battery
-          min: 0
-          max: 100
+          name: battery
+          unit: '%'
+          entity: sensor.zoe
           severity:
             green: 80
             yellow: 40
             red: 15
-        - type: gauge
+        - type: entity
+          entity: 'sensor.zoe'
+          attribute: remaining_range
           name: Range
-          entity: sensor.zoe_remaining_range
-          min: 0
-          max: 210
-          severity:
-            green: 160
-            yellow: 100
-            red: 15
+          unit: 'mi'
+          icon: mdi:highway
     - type: horizontal-stack
       cards:
-        - type: glance
-          entities:
-            - entity: binary_sensor.zoe_plugged
-              name: Plugged in
-            - entity: binary_sensor.zoe_charging
-              name: Charging
-        - type: 'custom:gap-card'
+        
+        - type: entity
+          entity: sensor.zoe
+          attribute: charge_status
+          name: Charging
+          icon: mdi:power-plug
+        

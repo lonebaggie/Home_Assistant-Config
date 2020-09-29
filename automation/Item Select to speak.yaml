@@ -16,8 +16,7 @@ action:
       message: >
         {% set ns=namespace(speak = "") %}
         {% set ns.speak = states.input_select.speak_list.state %}
-        {% for ps in range(1,10) if ns.speak.find(')') > -1 %}
-          {% set dy = {'opening': ('closed','open'),'window':('closed','open'),
+        {% set dy = {'opening': ('closed','open'),'window':('closed','open'),
           'door': ('closed','open'),'garage_door':('closed','open'),
           'lock':('locked','unlocked'),'presence':('home','away'),
           'connectivity':('connected','not connected'),
@@ -25,6 +24,7 @@ action:
           'smoke':('detected','clear'),'sound':('detected','clear'),
           'motion':('detected','clear'),'battery':('on','off'),
           'occupancy':('detected','clear') } %} 
+        {% for ps in range(1,10) if ns.speak.find(')') > -1 %}
           {% set tn = ns.speak[ns.speak.find("("):ns.speak.find(")")+1] %}
           {% set rp = tn %}
           {% if tn == "(gr)" %}

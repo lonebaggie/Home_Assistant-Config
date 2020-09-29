@@ -1,0 +1,6 @@
+echos:
+    name: All Amazon Echo's
+    entities:
+      - media_player.lr_echo
+      - media_player.echo_show_5
+      - media_player.k_dot

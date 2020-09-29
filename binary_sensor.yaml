@@ -1,28 +1,24 @@
   - platform: template
     sensors:
-      alexa_lr_standby:
-        value_template: >-
-          {{ is_state('media_player.lr_dot', 'standby') }}
-      alexa_k_standby:
-        value_template: >-
-          {{ is_state('media_player.k_dot', 'standby') }}
-      alexa_fr_standby:
-        value_template: >-
-          {{ is_state('media_player.fr_dot', 'standby') }}
-      alexa_br_standby:
-        value_template: >-
-          {{ is_state('media_player.br_echo', 'standby') }}
-      zoe_plugged:
-        value_template: "{{ state_attr('sensor.zoe' , 'plugged') }}"
-        friendly_name: "Zoe Plugged"
-        device_class: plug
-      zoe_charging:
-        value_template: "{{ state_attr('sensor.zoe' , 'charging') }}"
-        friendly_name: "Zoe Charging"
-        device_class: power
-      zoe_aircon:
-        value_template: "{{ state_attr('sensor.zoe' , 'hvac_status')}}"
-        friendly_name: "Zoe Aircon"
+      vibration:
+        friendly_name: "Vibration"
+        value_template: >
+            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "vibrate"
+                  and states("timer.xiaomi_move") == "active"
+            }}
+      tilt:
+        friendly_name: "tilt"
+        value_template: >
+            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "tilt"
+                  and states("timer.xiaomi_move") == "active"
+            }}
+      free_fall:
+        friendly_name: "free fall"
+        value_template: >
+            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "free_fall"
+                  and states("timer.xiaomi_move") == "active"
+            }}
+            
       allhome:
         friendly_name: "All Home"
         value_template: >-
@@ -41,7 +37,9 @@
           and is_state('light.lr3', 'on') 
           and is_state('light.dr1', 'on') 
           and is_state('light.dr2', 'on') 
-          and is_state('light.dr3', 'on')  %}
+          and is_state('light.dr3', 'on') 
+          and is_state('switch.wall_switch_158d00016cf4bc', 'on')
+          %}
             true
           {% else %}
             false

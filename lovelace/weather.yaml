@@ -10,7 +10,7 @@
           cards:
             - type: sensor
               name: Inside Temperature
-              entity: sensor.home_temperature
+              entity: sensor.temperature_158d00054087ae
               graph: line
             - type: sensor
               name: Outside temperature

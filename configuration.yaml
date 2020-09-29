@@ -105,7 +105,7 @@ switch: !include switch.yaml
 notify: !include notify.yaml
 device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
-#timer: !include timer.yaml
+timer: !include timer.yaml
 asuswrt: 
   host: 192.168.1.1
   username: !secret asuswrt_user
@@ -113,14 +113,3 @@ asuswrt:
 tradfri:
   host: 192.168.1.88
   allow_tradfri_groups: true
-calendarific:
-  api_key: !secret calendarific_api
-  country: GB
-  state: GB-ENG
-browser_mod:
-  devices:
-    d1aa60f1-d3f6d029:
-      name: lenovo
-      disable:
-        - light
-        - media_player

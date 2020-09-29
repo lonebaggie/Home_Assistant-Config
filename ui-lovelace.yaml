@@ -11,6 +11,10 @@ resources:
     type: module
   - url: /hacsfiles/custom-header/custom-header.js
     type: module 
+  - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
+    type: module
+  - url: /hacsfiles/gauge-card/gauge-card.js
+    type: module
 background: var(--background-image)
 excluded_entities:
   - weblink.router
@@ -25,7 +29,7 @@ custom_header:
   fit_tabs: true
   default_tab: 0
   hide_tabs:
-    - 7 to 27
+    - 7 to 28
   
 views:
   - !include '/config/lovelace/alert.yaml'
@@ -56,4 +60,5 @@ views:
   - !include '/config/lovelace/francis.yaml'
   - !include '/config/lovelace/maddy.yaml'
   - !include '/config/lovelace/currentlocation.yaml'
+  - !include '/config/lovelace/timers.yaml'
   
