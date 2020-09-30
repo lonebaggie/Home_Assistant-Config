@@ -26,6 +26,6 @@
         - type: entity
           entity: sensor.zoe
           attribute: charge_status
-          name: Charging
+          name: Status
           icon: mdi:power-plug
         

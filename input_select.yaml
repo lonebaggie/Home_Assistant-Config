@@ -63,10 +63,11 @@
       - Battery level is (e02s), the current range is (e027) miles 
       - The (e04f) is currently at (e04b) % or (e04B) level
       - The current electricity price is (e04$) pence per kilowatt hour. This price is (e05s)
-      - The best one hour time starts at (e061) at (e06$) pence per kilowatt hour
-      - The best two hour time starts at (e071) at (e07$) pence per kilowatt hour
+      - The best one hour time starts at (e061) and the price is  (e06$) pence per kilowatt hour
+      - The best two hour time starts at (e071) and the price is  (e07$) pence per kilowatt hour
       - this message is split (c10)
-      - into two messages 
+      - into two messages maybe (c11)
+      - now im looping (c09)
       
   echo_sounds:
     name: Echo sound effects

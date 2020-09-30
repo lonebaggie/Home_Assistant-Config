@@ -3,6 +3,11 @@ description: Trigger Alexa from Item Select
 trigger:
   entity_id: input_select.speak_list
   platform: state
+variables:
+  opt: >
+    {% set sp = states.input_select.speak_list.state %}
+    {% set no = sp[sp.find("(c")+2:sp.find(")")]|int %}
+    {{no}}
 condition:
   - condition: template
     value_template: '{{states.input_select.speak_list.state != "do not use"  }}'
@@ -34,6 +39,8 @@ action:
             {% set rp = now().strftime("%-I %M %p") %}
           {% elif tn == "(td)" %}
             {% set rp = now().strftime("%A, %d. %B %Y") %}
+          {% elif tn|regex_search('\(c[0-9][0-9]\)') %}
+            {% set rp = "" %}
           {% else %}
             {% set et = state_attr("input_select.entity_list","options") %}
             {% set et = et[tn[2:4]|int] %}
@@ -68,3 +75,11 @@ action:
     data:
       entity_id: input_select.speak_list
       option: "do not use"
+  - delay:
+      seconds: 1
+  - service: light.turn_on
+    data:
+      entity_id: light.alexa_virtual
+      brightness_pct: "{{opt}}"
+    
+  
