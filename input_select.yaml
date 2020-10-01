@@ -53,22 +53,22 @@
       - sensor.agile_1hr
       - sensor.agile_2hr
       - binary_sensor.patio_door
+      - sensor.temperature_158d00054087ae
   speak_list:
     name: Speak List
     options:
       - do not use
-      - (gr) The current time is (tt) 
-      - (gr) The current date is (td)
-      - The Patio door is (e09s)
-      - Battery level is (e02s), the current range is (e027) miles 
-      - The (e04f) is currently at (e04b) % or (e04B) level
-      - The current electricity price is (e04$) pence per kilowatt hour. This price is (e05s)
-      - The best one hour time starts at (e061) and the price is  (e06$) pence per kilowatt hour
-      - The best two hour time starts at (e071) and the price is  (e07$) pence per kilowatt hour
-      - this message is split (c10)
-      - into two messages maybe (c11)
-      - now im looping (c09)
-      
+      - Good (gr) today is (td)
+      - Good (gr) the time is (tt) 
+      - The Patio door is (e01s)
+      - Battery level is (e02s) (c05) 
+      - the current range is (e027) miles 
+      - The (e03f) is currently at (e03b) % or (e03B) level
+      - The current electricity price is {{(e04$)|float|round(1)}} pence per kilowatt hour. This price is (e05s)
+      - The best 1 hour time slot is (e061) with a price of (e06$) pence
+      - The best 2 hour rime slot is (e071) with a price of (e07$) pence
+      - The (e09f) is {{(e09$)|float|round(0)}} degree centergrade
+      - The (e03f) is currently at (e03b) % or (e03B) level
   echo_sounds:
     name: Echo sound effects
     initial: ' '
