@@ -52,7 +52,7 @@ action:
               {% elif tn|regex_search('\(e..[s$S]\)') %}
                 {% if tn[4:5] == "S" %}
                   {% set st = states(et)|float|round(1)|string %}
-                  {% set st = st ~ " " ~ state_attr(et,"unit_of_measurement")  %}
+                  {% set st = st ~ " " ~ state_attr(et,"unit_of_measurement")|replace('None','') %}
                 {% endif %}
                 {% if tn[4:5] == "$" %}
                   {% set st = states(et) %}

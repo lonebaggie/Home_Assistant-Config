@@ -55,6 +55,7 @@
       - sensor.agile_2hr
       - binary_sensor.patio_door
       - sensor.temperature_158d00054087ae
+      -  media_player.lr_dot
   speak_list:
     name: Speak List
     options:
@@ -69,6 +70,7 @@
       - The best 2 hour rime slot is (e071) with a price of (e07$) pence
       - The (e09f) is (e09S) 
       - The (e03f) is currently at (e03b) % or (e03B) level
+      - Test testing (e10S)
   echo_sounds:
     name: Echo sound effects
     initial: ' '
