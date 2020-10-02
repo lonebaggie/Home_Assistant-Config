@@ -360,6 +360,7 @@ sensor.spring_bank_holiday:
   unit_of_measurement: days
 sensor.agile_1hr:
   icon: mdi:clock
+  unit_of_measurement: kWh
 sensor.agile_2hr:
   icon: mdi:clock
 sensor.agile_cost_gas_month:
