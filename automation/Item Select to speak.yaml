@@ -49,16 +49,21 @@ action:
               {% set et = et[tn[2:4]|int] %}
               {% if tn|regex_search('\(e..f\)') %}
                 {% set rp = state_attr(et,"friendly_name") %}
-              {% elif tn|regex_search('\(e..[s$]\)') %}
+              {% elif tn|regex_search('\(e..[s$S]\)') %}
+                {% if tn[4:5] == "S" %}
+                  {% set st = states(et)|float|round(1)|string %}
+                  {% set st = states[et].state_with_unit %}
+                {% endif %}
                 {% if tn[4:5] == "$" %}
                   {% set st = states(et) %}
-                {% else %}
+                {% endif %}
+                {% if tn[4:5] == "s" %}
                   {% set st = states[et].state_with_unit %}
-                  {% set dt = state_attr(et,"device_class")|string %}
-                  {% if (dt != "None") and (st =='off' or st == 'on')  %} 
-                    {% set st = dy[dt][st|int] %}
-                  {% endif %}
-                {%endif%} 
+                {% endif %}
+                {% set dt = state_attr(et,"device_class")|string %}
+                {% if (dt != "None") and (st =='off' or st == 'on')  %} 
+                  {% set st = dy[dt][st|int] %}
+                {% endif %}
                 {% set rp = st %} 
               {% elif tn|regex_search('\(e..[bB]\)') %}
                 {% set br = state_attr(et,"brightness")|int %}

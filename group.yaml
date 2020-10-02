@@ -4,3 +4,4 @@ echos:
       - media_player.lr_echo
       - media_player.echo_show_5
       - media_player.k_dot
+      - media_player.lr_dot

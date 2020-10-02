@@ -15,8 +15,9 @@
       - Echo_Show_5
       - K_Dot
       - LR_Echo
+      - LR_Dot
       - Fire_7
-    initial: "LR_Echo"
+    initial: "LR_Dot"
     icon: mdi:amazon-alexa
   harmony_state:
     name : Harmony State
@@ -63,11 +64,10 @@
       - The Patio door is (e01s)
       - Battery level is (e02s) (c05) 
       - the current range is (e027) miles 
-      - The (e03f) is currently at (e03b) % or (e03B) level
-      - The current electricity price is {{(e04$)|float|round(1)}} pence per kilowatt hour. This price is (e05s)
+      - The current electricity price is (e04S) pence per kilowatt hour. This price is (e05s)
       - The best 1 hour time slot is (e061) with a price of (e06$) pence
       - The best 2 hour rime slot is (e071) with a price of (e07$) pence
-      - The (e09f) is {{(e09$)|float|round(0)}} degree centergrade
+      - The (e09f) is (e09S) 
       - The (e03f) is currently at (e03b) % or (e03B) level
   echo_sounds:
     name: Echo sound effects
