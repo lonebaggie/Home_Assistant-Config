@@ -51,8 +51,6 @@
         friendly_name: "Harmony"
         value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
       agile_alert:
-        entity_id:
-          - sensor.octopus_current_price
         value_template: >
           {% if states.sensor.octopus_current_price.state|float < 5 %}
             Very Low
@@ -71,70 +69,6 @@
           {% else %}
             Unknown
           {% endif %}
-      agile_1hr:
-        entity_id:
-          - sensor.octopus_1hour_price
-          - sensor.octopus_1hour_time
-        value_template: >
-          {{ states.sensor.octopus_1hour_price.state|round(2)}}
-        unit_of_measurement: "p/kWh"
-        attribute_templates:
-          time: >
-            {{states.sensor.octopus_1hour_time.state}}
-          hour: >
-            {{states.sensor.octopus_1hour_time.state[11:16]}}
-      agile_2hr:
-        entity_id:
-          - sensor.octopus_2hour_price
-          - sensor.octopus_2hour_time
-        value_template: >
-          {{ states.sensor.octopus_2hour_price.state|round(2)}}
-        unit_of_measurement: "p/kWh"
-        attribute_templates:
-          time: >
-            {{states.sensor.octopus_2hour_time.state}}
-          hour: >
-            {{states.sensor.octopus_2hour_time.state[11:16]}}
-      agile_rate_now:
-        entity_id:
-          - sensor.octopus_current_price
-        value_template: >
-          {{ states.sensor.octopus_current_price.state|round(2)}}
-        unit_of_measurement: "p/kWh"
-      agile_cost_year:
-        entity_id:
-          - sensor.octopus_yearly_cost
-          - sensor.octopus_yearly_usage
-        value_template: '{{ states.sensor.octopus_yearly_cost.state }}'
-        unit_of_measurement: '£'
-        attribute_templates:
-          usage: '{{states.sensor.octopus_yearly_usage.state}}'
-      agile_cost_month:
-        entity_id:
-          - sensor.octopus_monthly_cost
-          - sensor.octopus_monthly_usage
-        value_template: '{{ states.sensor.octopus_monthly_cost.state }}'
-        attribute_templates:
-          usage: '{{states.sensor.octopus_monthly_usage.state}}'
-          unit_of_measurement: '£'
-      agile_cost_gas_year:
-        entity_id:
-          - sensor.octopus_yearly_gas_cost
-          - sensor.octopus_yearly_gas_usage
-        value_template: '{{ states.sensor.octopus_yearly_gas_cost.state }}'
-        attribute_templates:
-          usage: '{{states.sensor.octopus_yearly_gas_usage.state}}'
-          unit_of_measurement: '£'
-      agile_cost_gas_month:
-        entity_id:
-          - sensor.octopus_monthly_gas_cost
-          - sensor.octopus_monthly_gas_usage
-        value_template: '{{ states.sensor.octopus_monthly_gas_cost.state }}'
-        unit_of_measurement: '£'
-        attribute_templates:
-          usage: '{{states.sensor.octopus_monthly_gas_usage.state}}'
-          
-          
   - platform: systemmonitor
     resources:
       - type: disk_free

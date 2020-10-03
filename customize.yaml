@@ -372,3 +372,5 @@ sensor.agile_cost_month:
 sensor.agile_cost_year:
   icon: mdi:receipt
 sensor.zoe_battery: {}
+sensor.octopus_current_price:
+  unit_of_measurement: kwh

@@ -1,0 +1,20 @@
+  title: Input
+  path: input
+  icon: mdi:insert
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Input's
+      cards:
+        - type: custom:auto-entities
+          card:
+            type: glance
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: input.*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true

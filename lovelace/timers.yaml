@@ -1,0 +1,20 @@
+  title: Timers
+  path: timers
+  icon: 'mdi:clock'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Timers
+      cards:
+        - type: 'custom:auto-entities'
+          card:
+            type: glance  
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: timer.*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true

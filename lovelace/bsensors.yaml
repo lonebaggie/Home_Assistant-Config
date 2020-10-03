@@ -1,0 +1,20 @@
+  title: Binary Sensors
+  path: bsensors
+  icon: mdi:circle-double
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Binary Sensors
+      cards:
+        - type: custom:auto-entities
+          card:
+            type: glance
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: binary_sensor.*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true

@@ -49,28 +49,23 @@
       - binary_sensor.patio_door
       - sensor.zoe
       - light.lr3
-      - sensor.agile_rate_now
+      - sensor.octopus_current_price
       - sensor.agile_alert
-      - sensor.agile_1hr
-      - sensor.agile_2hr
-      - binary_sensor.patio_door
-      - sensor.temperature_158d00054087ae
-      -  media_player.lr_dot
+      - sensor.octopus_1hour_time
+      - sensor.octopus_1hour_price
+      - sensor.octopus_2hour_time
+      - sensor.octopus_2hour_price
   speak_list:
     name: Speak List
     options:
       - do not use
-      - Good (gr) today is (td)
-      - Good (gr) the time is (tt) 
+      - Good (gr), today is (td)
+      - Good (gr), the time is (tt) 
       - The Patio door is (e01s)
-      - Battery level is (e02s) (c05) 
-      - the current range is (e027) miles 
-      - The current electricity price is (e04S) pence per kilowatt hour. This price is (e05s)
-      - The best 1 hour time slot is (e061) with a price of (e06$) pence
-      - The best 2 hour rime slot is (e071) with a price of (e07$) pence
-      - The (e09f) is (e09S) 
-      - The (e03f) is currently at (e03b) % or (e03B) level
-      - Test testing (e10S)
+      - Battery level is (e02s), the current range is (e027) miles 
+      - The current electricity price is £(e04$)
+      - The best 1 hour time slot is (e06$) with a price of (e07$) pence
+      - The best 2 hour rime slot is (e08$) with a price of (e09$) pence
   echo_sounds:
     name: Echo sound effects
     initial: ' '

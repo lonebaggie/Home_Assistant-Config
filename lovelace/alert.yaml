@@ -1,0 +1,81 @@
+title: Alert
+path: alert
+icon: 'mdi:alert-circle-outline'
+badges: []
+cards:
+  - type: vertical-stack
+    title: Alerts & Status
+    cards:
+      - type: 'custom:auto-entities'
+        show_empty: true
+        card:
+          type: glance
+          columns: 4
+        filter:
+          include:
+            - domain: light
+              state: 'on'
+              options:
+                tap_action:
+                  action: toggle
+            - state: unknown
+            - state: none
+            - state: 'tomorrow'
+            - state: 'today'
+            - state: '2 days'
+            - domain: media_player
+              state: 'on'
+            - entity_id: binary_sensor.*_door
+              state: 'on'
+            - entity_id: binary_sensor.hall_toilet_leak_sensor
+              state: 'on'
+            - entity_id: binary_sensor.utility_leak_sensor
+              state: 'on'
+            - entity_id: binary_sensor.*_motion
+              state: 'on'
+            - attributes:
+                battery_level: < 15
+            - attributes:
+                no_of_days: < 8
+          exclude:
+            - entity_id: light.lr*
+            - entity_id: light.dr*
+            - entity_id: light.downstairs
+            - entity_id: light.upstairs
+            - entity_id: light.all_living_room
+            - entity_id: light.tradfri
+            - entity_id: light.dining_room
+            - entity_id: light.sitting_room    
+            - entity_id: sensor.tilt_angle
+            - entity_id: sensor.zoe_battery_temperature
+            - entity_id: media_player.enigma_2
+            - entity_id: switch.*shuffle*
+            - entity_id: switch.*repeat*
+            - entity_id: switch.*disturb*
+            - entity_id: sensor.*timer*
+            - entity_id: sensor.*alarm*
+            - entity_id: sensor.*reminder*
+            - entity_id: sensor.bed_activity_158d00031ce0c7
+            - entity_id: sensor.coordination_158d00031ce0c7
+            - entity_id: sensor.tilt_angle_158d00031ce0c7    
+          sort:
+            method: domain
+      - type: conditional
+        conditions:
+          - entity: sensor.hacs
+            state_not: '0'
+        card:
+          type: markdown
+          content: >
+            ## Hacs updates alert 
+            {{states.sensor.hacs.state}} update(s) avaliable
+  
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.snapshots_stale
+            state: 'True'
+        card:
+          type: markdown
+          content: >
+            ## Snapshots are stale
+            See Google Drive Backup

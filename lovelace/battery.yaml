@@ -1,0 +1,20 @@
+  title: Battery
+  path: battery
+  icon: 'mdi:battery'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: Battery
+      cards:
+        - type: 'custom:auto-entities'
+          card:
+            type: glance  
+            columns: 4
+            show_header_toggle: false
+          filter:
+            include:
+              - entity_id: sensor.battery*
+          sort:
+            method: attribute
+            attribute: friendly_name
+            ignore_case: true
