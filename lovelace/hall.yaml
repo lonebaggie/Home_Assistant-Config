@@ -1,4 +1,5 @@
   title: Hall 
+  visible: false
   path: hall
   icon: 'mdi:clock'
   badges: []

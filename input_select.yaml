@@ -62,10 +62,11 @@
       - Good (gr), today is (td)
       - Good (gr), the time is (tt) 
       - The Patio door is (e01s)
-      - Battery level is (e02s), the current range is (e027) miles 
-      - The current electricity price is £(e04$)
-      - The best 1 hour time slot is (e06$) with a price of (e07$) pence
-      - The best 2 hour rime slot is (e08$) with a price of (e09$) pence
+      - Zoe is currently (e022), Battery level is (e02s) and the current range is (e027) miles 
+      - The Patio door is (e01s)
+      - The current electricity price is (e04$) pence, this is (e05$)
+      - The best 1 hour time slot is {{'(e06$)'[11:16]}}, with a price of (e07$) pence
+      - The best 2 hour time slot is {{'(e08$)'[11:16]}},with a price of (e09$) pence
   echo_sounds:
     name: Echo sound effects
     initial: ' '

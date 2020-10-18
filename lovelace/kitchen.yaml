@@ -1,4 +1,5 @@
   title: Kitchen
+  visible: false
   path: kitchen
   icon: 'mdi:food-variant'
   badges: []

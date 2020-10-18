@@ -1,4 +1,5 @@
   title: Front Room 
+  visible: false
   path: frontroom
   icon: 'mdi:sofa'
   badges: []

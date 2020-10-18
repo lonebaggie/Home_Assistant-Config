@@ -1,4 +1,5 @@
   title: Input
+  visible: false
   path: input
   icon: mdi:insert
   badges: []

@@ -1,4 +1,5 @@
   title: Battery
+  visible: false
   path: battery
   icon: 'mdi:battery'
   badges: []

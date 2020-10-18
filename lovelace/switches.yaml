@@ -1,4 +1,5 @@
   title: Switches
+  visible: false
   path: switches
   icon: mdi:toggle-switch
   badges: []

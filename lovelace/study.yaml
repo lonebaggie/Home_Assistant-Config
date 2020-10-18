@@ -1,4 +1,5 @@
   title: Study
+  visible: false
   path: study
   icon: 'mdi:book-open-variant'
   badges: []

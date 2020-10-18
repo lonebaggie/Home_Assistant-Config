@@ -1,4 +1,5 @@
   title: Francis
+  visible: false
   path: francis
   icon: 'mdi:bed'
   badges: []

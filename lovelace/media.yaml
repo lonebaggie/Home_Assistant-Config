@@ -1,4 +1,5 @@
   title: Media
+  visible: false
   path: media
   icon: mdi:video
   badges: []

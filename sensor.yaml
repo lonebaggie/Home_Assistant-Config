@@ -28,23 +28,23 @@
       light_state:
         friendly_name: "living room Light state"
         value_template: >
-            {% if states.light.living_room.state == 'off' %}
-                Off
-            {% elif (is_state_attr('light.all_living_room','color_temp',454))
-            and (is_state_attr('light.all_living_room','brightness',1))
-            %}
-                Dark
-            {% elif (is_state_attr('light.all_living_room','color_temp',420))
-            and (is_state_attr('light.all_living_room','brightness',170))
-            %}
-                Relaxed
-            {% elif (is_state_attr('light.all_living_room','color_temp',250))
-            and (is_state_attr('light.all_living_room','brightness',254))
-            %}
-                Bright
-            {% else %}
-                Unknown
-            {% endif %}
+          {% if states.light.living_room.state == 'off' %}
+              Off
+          {% elif (is_state_attr('light.all_living_room','color_temp',454))
+          and (is_state_attr('light.all_living_room','brightness',1))
+          %}
+              Dark
+          {% elif (is_state_attr('light.all_living_room','color_temp',420))
+          and (is_state_attr('light.all_living_room','brightness',170))
+          %}
+              Relaxed
+          {% elif (is_state_attr('light.all_living_room','color_temp',250))
+          and (is_state_attr('light.all_living_room','brightness',254))
+          %}
+              Bright
+          {% else %}
+              Unknown
+          {% endif %}
       harmony:
         entity_id:
           - remote.harmony_hub
@@ -69,6 +69,30 @@
           {% else %}
             Unknown
           {% endif %}
+      plug1_voltage:
+        value_template: >-
+          {{ states.switch.plug1.attributes.voltage }}
+        unit_of_measurement: 'V' 
+      plug1_current:
+        value_template: >-     
+          {{ states.switch.plug1.attributes.current }}
+        unit_of_measurement: 'mA'      
+      plug1_current_consumption:
+        value_template: >-
+          {{ states.switch.plug1.attributes.current_consumption }}
+        unit_of_measurement: 'W' 
+      plug2_voltage:
+        value_template: >-
+          {{ states.switch.plug2.attributes.voltage }}
+        unit_of_measurement: 'V' 
+      plug2_current:
+        value_template: >-     
+          {{ states.switch.plug2.attributes.current }}
+        unit_of_measurement: 'mA'      
+      plug2_current_consumption:
+        value_template: >-
+          {{ states.switch.plug2.attributes.current_consumption }}
+        unit_of_measurement: 'W'
   - platform: systemmonitor
     resources:
       - type: disk_free

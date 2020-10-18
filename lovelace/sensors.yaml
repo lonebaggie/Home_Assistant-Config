@@ -1,4 +1,5 @@
   title: Sensors
+  visible: false
   path: sensors
   icon: 'mdi:radar'
   badges: []

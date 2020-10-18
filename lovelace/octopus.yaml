@@ -21,14 +21,12 @@ cards:
         entities:
           - entity: sensor.octopus_1hour_price
             name: 1 Hour Rate
-            secondary_info:
-              entity_id: sensor.octopus_1hour_time
-              prefix: 'Time ' 
+            secondary_info: "Time: {{states('sensor.octopus_1hour_time')[11:16]}}"
+            
           - entity: sensor.octopus_2hour_price
             name: 2 Hour Rate
-            secondary_info:
-              entity_id: sensor.octopus_2hour_time
-              prefix: 'Time ' 
+            secondary_info: "Time: {{states('sensor.octopus_2hour_time')[11:16]}}"
+            
   - type: horizontal-stack
     cards:
       - type: entities
@@ -36,25 +34,25 @@ cards:
           - entity: sensor.octopus_monthly_cost
             name: Electric cost per month
             secondary_info:
-              entity_id: sensor.octopus_monthly_usage
+              entity: sensor.octopus_monthly_usage
               prefix: 'usage '
               postfix: ' kwh'
           - entity: sensor.octopus_yearly_cost
             name: Electric cost per year
             secondary_info:
-              entity_id: sensor.octopus_yearly_usage
+              entity: sensor.octopus_yearly_usage
               prefix: 'usage '
               postfix: ' kwh'
           - entity: sensor.octopus_monthly_gas_cost
             name: Gas cost per month
             secondary_info:
-              entity_id: sensor.octopus_monthly_gas_usage
+              entity: sensor.octopus_monthly_gas_usage
               prefix: 'usage '
               postfix: ' m3'
           - entity: sensor.octopus_yearly_gas_cost
             name: Gas cost per year
             secondary_info:
-              entity_id: sensor.octopus_yealy_gas_usage
+              entity: sensor.octopus_yearly_gas_usage
               prefix: 'usage '
               postfix: ' m3'
             

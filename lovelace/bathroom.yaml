@@ -1,4 +1,5 @@
   title: Bathroom 
+  visible: false
   path: bathroom
   icon: 'mdi:human-male-female'
   badges: []

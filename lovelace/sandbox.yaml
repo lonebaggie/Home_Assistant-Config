@@ -1,4 +1,5 @@
   title: Sandbox
+  visible: false
   path: sandbox
   icon: mdi:spade
   badges: []

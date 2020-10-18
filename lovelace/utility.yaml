@@ -1,4 +1,5 @@
   title: Utility
+  visible: false
   path: utility
   icon: 'mdi:washing-machine'
   badges: []

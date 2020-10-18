@@ -1,5 +1,6 @@
 alias: Check Light Mood
 description: keep item select in sync 
+
 trigger:
     platform: time_pattern
     minutes: "/3"

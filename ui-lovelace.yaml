@@ -9,8 +9,6 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-gui-sandbox/gui-sandbox.js
     type: module
-  - url: /hacsfiles/custom-header/custom-header.js
-    type: module 
   - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
     type: module
   - url: /hacsfiles/gauge-card/gauge-card.js
@@ -22,15 +20,7 @@ preload:
   - markdown
   - gauge
   - conditional
-title: Main 
-custom_header:
-  compact_mode: false
-  hidden_tab_redirect: false
-  fit_tabs: true
-  default_tab: 0
-  hide_tabs:
-    - 7 to 28
-  
+title: Home
 views:
   - !include '/config/lovelace/alert.yaml'
   - !include '/config/lovelace/home.yaml'

@@ -1,4 +1,5 @@
   title: Lights
+  visible: false
   path: lights
   icon: 'mdi:lightbulb'
   badges: []

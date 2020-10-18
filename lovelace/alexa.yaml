@@ -7,15 +7,12 @@
       title: Alexa
       cards:
         - type: glance
-          columns: 2
+          columns: 4
           entities:
             - entity: media_player.lr_dot
               name: Living Room
             - entity: media_player.k_dot
               name: Kitchen
-        - type: glance
-          columns: 2
-          entities:
             - entity: media_player.lr_echo
               name: Living Room
             - entity: media_player.echo_show_5

@@ -1,4 +1,5 @@
   title: Binary Sensors
+  visible: false
   path: bsensors
   icon: mdi:circle-double
   badges: []

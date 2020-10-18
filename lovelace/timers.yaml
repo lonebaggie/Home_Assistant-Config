@@ -1,4 +1,5 @@
   title: Timers
+  visible: false
   path: timers
   icon: 'mdi:clock'
   badges: []

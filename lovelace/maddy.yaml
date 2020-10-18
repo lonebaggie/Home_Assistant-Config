@@ -1,4 +1,5 @@
   title: Maddy
+  visible: false
   path: maddy
   icon: 'mdi:bed'
   badges: []

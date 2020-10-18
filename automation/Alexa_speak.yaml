@@ -1,5 +1,6 @@
 alias: Alexa Speak
 description: Allows interactive tts to alexa via input_text
+
 trigger:
   - platform: state
     entity_id: input_text.tts

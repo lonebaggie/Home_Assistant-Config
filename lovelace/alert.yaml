@@ -18,6 +18,11 @@ cards:
               options:
                 tap_action:
                   action: toggle
+            - entity_id: switch.plug*
+              state: 'on'
+              options:
+                tap_action:
+                  action: toggle
             - state: unknown
             - state: none
             - state: 'tomorrow'
@@ -38,6 +43,7 @@ cards:
             - attributes:
                 no_of_days: < 8
           exclude:
+            - domain: group
             - entity_id: light.lr*
             - entity_id: light.dr*
             - entity_id: light.downstairs
@@ -58,6 +64,7 @@ cards:
             - entity_id: sensor.bed_activity_158d00031ce0c7
             - entity_id: sensor.coordination_158d00031ce0c7
             - entity_id: sensor.tilt_angle_158d00031ce0c7    
+            - state: none
           sort:
             method: domain
       - type: conditional
