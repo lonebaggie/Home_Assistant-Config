@@ -1,0 +1,91 @@
+{% set elist = state_attr("input_select.entity_list","options") %}
+{% set slist = states.input_select.speak_list.state %}
+{% set slist = slist.split() %}
+{% set ns=namespace(state = "") %}
+{% for obj in slist %}
+  {% if obj == "(tt)" %}
+    {% set obj = now().strftime("%-I %M %p") %}
+    {% set mn = now().strftime("%M") %}
+    {% if mn|int < 10 %}
+      {% set obj = obj[:2] ~ obj[2:]|replace('0','oh ') %}
+    {% endif %}
+  {% endif %}
+  {% if obj == "(td)" %}
+    {% set obj = now().strftime("%A, %d. %B %Y") %}
+  {% endif %}  
+  {% if obj[:2] == "(e" %}
+    {% set enum = obj[2:4]|int %}
+    {% set ent = elist[enum] %}
+    {% set state = states(ent) %}
+    {% if state == None %}
+      {% set state = "unknown" %}
+    {% endif %}
+    {% set fname = state_attr(ent,"friendly_name") %}
+    {% if fname == None %}
+      {% set fname = "" %}
+    {% endif %}
+    {% set bri = state_attr(ent,"brightness")|string %} 
+    {% if bri == None %}
+      {% set bri = "unknown" %}
+    {% endif %}
+    {% set blevel = state_attr(ent,"battery_level") %}
+    {% if blevel == None %}
+      {% set blevel = "unknown" %}
+    {% endif %}
+    {% set uom = state_attr(ent,"unit_of_measurement") %}
+    {% if uom == None %}
+      {% set uom = "" %}
+    {% endif %}
+    {% set devtype = state_attr(ent,"device_class") %}
+    {% if devtype == None %}
+      {% set devtype = "" %}
+    {% endif %}
+    {% if obj[4:5] == "s" %}
+      {% set obj = state ~ " " ~ uom %}
+    {% endif %}
+    {% if obj[4:5] == "$" %}
+      {% set obj = state  %}
+    {% endif %}
+    {% if obj[4:5] == "f" %}
+      {% set obj = fname %}
+    {% endif %}
+    {% if obj[4:5] == "b" %}
+      {% set obj = bri %}
+    {% endif %}
+    {% if obj[4:5] == "l" %}
+      {% set obj = blevel %}
+    {% endif %}
+    {% if devtype == "opening" or devtype == "window"
+      or devtype == "door" or devtype == "garage-door"
+    %}
+      {% set obj = obj|replace('off','closed') %}
+      {% set obj = obj|replace('on','open') %}
+    {% endif %}
+    {% if devtype == "motion" %}
+      {% set obj = obj|replace('off','clear') %}
+      {% set obj = obj|replace('on','detected') %}
+    {% endif %}
+    {% if devtype == "lock" %}
+      {% set obj = obj|replace('off','unlocked') %}
+      {% set obj = obj|replace('on','locked') %}
+    {% endif %}
+    {% if devtype == "battery_charging" %}
+      {% set obj = obj|replace('off','not charging') %}
+      {% set obj = obj|replace('on','charging') %}
+    {% endif %}
+    {% if devtype == "battery_charging" %}
+      {% set obj = obj|replace('off','not charging') %}
+      {% set obj = obj|replace('on','charging') %}
+    {% endif %}
+    {% if devtype == "connectivity" %}
+      {% set obj = obj|replace('off','not connected') %}
+      {% set obj = obj|replace('on','connected') %}
+    {% endif %}
+    {% if devtype == "vibration" %}
+      {% set obj = obj|replace('off','clear') %}
+      {% set obj = obj|replace('on','detected') %}
+    {% endif %}
+  {% endif %}
+  {% set ns.state = ns.state + " " ~ obj  %}
+{% endfor %}
+{{ns.state}}

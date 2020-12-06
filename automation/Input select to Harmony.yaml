@@ -1,0 +1,48 @@
+alias: Item Select to Harmony
+description: Trigger remote from Item select menu
+trigger:
+  entity_id: input_select.harmony_state
+  platform: state
+condition:
+  condition: template
+  value_template: >
+      {% if not states('sensor.harmony') == states('input_select.harmony_state') %}
+        true
+      {% else %}
+        false
+      {% endif %}
+action:
+  - service: remote.turn_on
+    data_template: 
+      entity_id: remote.harmony_hub
+      activity: '{{states.input_select.harmony_state.state}}'
+  - service_template: >
+      {% if states('input_select.harmony_state') == 'Ruku' %}
+        media_player.turn_off
+      {% elif states('input_select.harmony_state') == 'PowerOff' %}
+        media_player.turn_off
+      {% else %}
+        media_player.turn_on
+      {% endif %}
+    data:
+      entity_id: media_player.enigma_2
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.radio_state
+      option: >
+        {% if states('input_select.harmony_state') == 'Radio' %}
+          {% if states('input_select.radio_state','Off') %}
+            Radio 4
+          {% else %}
+            {{states('input_select.radio_state')}}
+          {% endif %}
+        {% else %}
+          'Off'
+        {% endif %}
+      
+      
+  
+    
+
+
+        

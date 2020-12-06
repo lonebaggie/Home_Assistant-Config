@@ -1,0 +1,21 @@
+alias: Harmony to Item Select
+description: Update item select menu to match remote
+trigger:
+  entity_id: sensor.harmony
+  platform: state
+action:
+  - condition: template
+    value_template: >
+      {{ states.sensor.harmony.state != states.input_select.harmony_state.state }}
+  - delay: '00:00:10'
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.harmony_state
+      option: '{{states.sensor.harmony.state}}'
+  - condition: state
+    entity_id: sensor.harmony
+    state:  PowerOff
+  - service: media_player.turn_off
+    data:
+      entity_id: media_player.enigma_2
+  

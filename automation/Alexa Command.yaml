@@ -1,0 +1,23 @@
+alias: Alexa Command
+description: Allows interactive tts to alexa via input_text
+
+trigger:
+  - platform: state
+    entity_id: input_text.cmd_text
+  - platform: state  
+    entity_id: input_number.alexa_volume
+action:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: 'media_player.{{states.input_select.alexa_state.state}}'
+      volume_level: '{{states.input_number.alexa_volume.state}}'
+  - service: media_player.play_media
+    data:
+      entity_id: 'media_player.{{states.input_select.alexa_state.state}}'
+      media_content_id: '{{states.input_text.cmd_text.state}}'
+      media_content_type: custom
+  - service: input_text.set_value
+    data: 
+      entity_id: input_text.cmd_text
+      value: ''
+

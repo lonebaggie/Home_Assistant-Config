@@ -1,0 +1,40 @@
+alias: Alexa Sound effects
+description: Allows sound effects to alexa via input_text
+trigger:
+  - platform: state
+    entity_id: input_select.echo_sounds
+condition:
+  condition: not
+  conditions:
+    - condition: state
+      entity_id: input_select.echo_sounds
+      state: ' '
+action:
+  - service: media_player.volume_set
+    data_template:
+      entity_id: 'media_player.{{states.input_select.alexa_state.state}}'
+      volume_level: '{{states.input_number.alexa_volume.state}}'
+  - service: media_player.play_media
+    data_template:
+      entity_id: 'media_player.{{states.input_select.alexa_state.state}}'
+      media_content_type: sound
+      media_content_id: >
+       {% set snd = [' ','air_horn_03','futuristic_10','amzn_sfx_crowd_applause_01',
+       'bell_02','boing_01','boing_03','buzzers_pistols_01',
+       'camera_01','amzn_sfx_cat_meow_1x_01','amzn_sfx_large_crowd_cheer_01',
+       'amzn_sfx_church_bell_1x_02','amzn_sfx_dog_med_bark_1x_02',
+       'amzn_sfx_doorbell_01','amzn_sfx_doorbell_chime_01',
+       'amzn_sfx_doorbell_chime_02','amzn_sfx_scifi_engines_on_02',
+       'horror_10','amzn_sfx_lion_roar_02','amzn_sfx_scifi_alarm_04',
+       'amzn_sfx_rooster_crow_01','amzn_sfx_scifi_sheilds_up_01',
+       'amzn_sfx_scifi_alarm_01','squeaky_12','clock_01',
+       'amzn_sfx_trumpet_bugle_04','amzn_sfx_wolf_howl_02',
+       'christmas_05','zap_01' ] %}
+        {% set ost = states.input_select.echo_sounds.attributes.options %}
+        {% set st = states.input_select.echo_sounds.state %}
+        {% set opt = ost.index(st) %}
+        {{snd[opt]}}
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.echo_sounds
+      option: ' '

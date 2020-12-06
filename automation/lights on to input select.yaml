@@ -1,0 +1,13 @@
+alias: Lights on to input select
+description: Turn off Item select if lights off
+trigger:
+  entity_id: light.living_room
+  platform: state
+  from: 'off'
+  to: 'on'
+action:
+  - delay: 10
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.light_state
+      option: '{{states.sensor.light_state.state}}'
