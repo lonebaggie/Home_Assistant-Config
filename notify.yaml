@@ -1,6 +1,6 @@
     - name: alexa_media
       platform: alexa_media
-    - name: enigma
-      platform: command_line
-      command: "/config/enigma_send.sh"
-    
+    - platform: enigma
+      host: 192.168.1.91
+      port: 80
+      name: gigablue

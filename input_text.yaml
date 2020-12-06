@@ -4,3 +4,5 @@
     name: Entity Edit
   speak_edit:
     name: Speak Edit
+  cmd_text:
+    name: Command Edit

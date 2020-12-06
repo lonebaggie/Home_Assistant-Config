@@ -1,25 +1,22 @@
   - platform: lg_netcast
     host: 192.168.1.166
     access_token: 292855
-  - platform: enigma2
-    host: 192.168.1.91
-    name: Enigma 2
   - platform: universal
     name: Sat
     children:
-      - media_player.enigma_2
+      - media_player.gigablue
       - media_player.lg_tv_remote
     state_template: >
-      {{states.media_player.enigma_2.state}}
+      {{states.media_player.gigablue.state}}
     commands:
       turn_on:
         service: media_player.turn_on
         data:
-          entity_id: media_player.enigma_2
+          entity_id: media_player.gigablue
       turn_off:
         service: media_player.turn_off
         data:
-          entity_id: media_player.enigma_2
+          entity_id: media_player.gigablue
       volume_up:
         service: media_player.volume_up
         data:
@@ -46,11 +43,11 @@
       select_source:
         service: media_player.select_source
         data_template:
-          entity_id: media_player.enigma_2
+          entity_id: media_player.gigablue
           source: '{{ source }}'
     attributes:
-      state: media_player.enigma_2
-      source: media_player.enigma_2|source
-      source_list: media_player.enigma_2|source_list
+      state: media_player.gigablue
+      source: media_player.gigablue|source
+      source_list: media_player.gigablue|source_list
       volume_level: media_player.lg_tv_remote|volume_level
   

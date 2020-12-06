@@ -11,63 +11,64 @@
   - platform: group
     name: Sitting Room
     entities:
-      - light.lr1
-      - light.lr2
-      - light.lr3
+      - light.0x90fd9ffffe8715c9_light
+      - light.0x90fd9ffffe89fcf4_light
+      - light.0x90fd9ffffe8b10c2_light
   - platform: group
     name: Dining Room
     entities:
-      - light.dr1
-      - light.dr2
-      - light.dr3
+      - light.0x90fd9ffffe8ef806_light
+      - light.0x90fd9ffffe748cba_light
+      - light.0x90fd9ffffe92d75b_light
   - platform: group
     name: All Living Room
     entities:
-      - light.lr1
-      - light.lr2
-      - light.lr3
-      - light.dr1
-      - light.dr2
-      - light.dr3    
+      - light.0x90fd9ffffe8715c9_light
+      - light.0x90fd9ffffe89fcf4_light
+      - light.0x90fd9ffffe8b10c2_light
+      - light.0x90fd9ffffe8ef806_light
+      - light.0x90fd9ffffe748cba_light
+      - light.0x90fd9ffffe92d75b_light
+          
   - platform: switch
     name: Front room
-    entity_id: switch.wall_switch_158d0001828c33
+    entity_id: switch.0x158d0001828c33_switch
   - platform: switch
     name: Hall toilet
-    entity_id: switch.wall_switch_158d00016cefdb
+    entity_id: switch.0x158d00016cefdb_switch
   - platform: switch
     name: Kitchen
-    entity_id: switch.wall_switch_158d000159a94f
+    entity_id: switch.0x158d000159a94f_switch
   - platform: switch
     name: Master bedroom
-    entity_id: switch.wall_switch_158d000159aa50
+    entity_id: switch.0x158d000159aa50_switch
   - platform: switch
     name: Outside
-    entity_id: switch.wall_switch_158d0001614701
+    entity_id: switch.0x158d0001614701_switch
   - platform: switch
     name: Study 
-    entity_id: switch.wall_switch_158d0001a68cf6
+    entity_id: switch.0x158d0001a68cf6_switch
   - platform: switch
     name: Utility
-    entity_id: switch.wall_switch_158d0001a68d54
+    entity_id: switch.0x158d0001a68d54_switch
   - platform: switch
     name: Francis 
-    entity_id: switch.wall_switch_158d00016cf458
+    entity_id: switch.0x158d00016cf458_switch
   - platform: switch
     name: Maddy 
-    entity_id: switch.wall_switch_158d0001a2424b
+    entity_id: switch.0x158d0001a2424b_switch
   - platform: switch
     name: Hall
-    entity_id: switch.wall_switch_left_158d0001a21f31
+    entity_id: switch.0x158d0001a21f31_channel_1
   - platform: switch
     name: Landing
-    entity_id: switch.wall_switch_right_158d0001a21f31
+    entity_id: switch.0x158d0001a21f31_channel_2
   - platform: switch
     name: Bathroom Light
-    entity_id: switch.wall_switch_left_158d0001660d34
+    entity_id: switch.0x158d0001660d34_channel_1
   - platform: switch
     name: En-Suite Light
-    entity_id: switch.wall_switch_left_158d0001a6596b
+    entity_id: switch.0x158d0001a6596b_channel_1
   - platform: switch
     name: Living room
-    entity_id: switch.wall_switch_158d00016cf4bc
+    entity_id: switch.0x158d00016cf4bc_switch

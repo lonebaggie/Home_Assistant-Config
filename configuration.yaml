@@ -15,12 +15,6 @@ homeassistant:
   whitelist_external_dirs:
     - /config/python_scripts
 
-weather:
-  - platform: openweathermap
-    api_key: !secret owm_api
-    mode: freedaily
-    
-
 # Enables the frontend
 
 frontend:
@@ -38,8 +32,6 @@ http:
   #api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running 
   # in Docker container, etc.
-  cors_allowed_origins:
-    - https://lonebaggie.duckdns.org:7080
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
 # Checks for available updates
@@ -88,7 +80,7 @@ sun:
 
 # include yaml scripts
 cover: !include cover.yaml
-cloud: !include cloud.yaml     
+cloud: !include cloud.yaml 
 automation old: !include_dir_list automation/
 automation: !include automations.yaml
 group: !include group.yaml
@@ -111,6 +103,11 @@ asuswrt:
   host: 192.168.1.1
   username: !secret asuswrt_user
   password: !secret asuswrt_password
-tradfri:
-  host: 192.168.1.88
-  allow_tradfri_groups: true
+enigma: 
+  devices:
+    - host: 192.168.1.91
+      port: 80
+      name: Gigablue
+      timeout: 20
+      bouquet: '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.abm.sat_282_freesat.101.tv" ORDER BY bouquet'
+      picon: screenshot

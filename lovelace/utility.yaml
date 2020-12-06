@@ -13,13 +13,13 @@
               name: Light
               tap_action:
                 action: toggle
-            - entity: binary_sensor.vibration
+            - entity: sensor.0x158d00031ce0c7_action
               name: Vibration
         - type: glance
           columns: 2
           entities:
-            - entity: binary_sensor.utility_leak
+            - entity: binary_sensor.0x158d0001c3472b_moisture
               name: Leak
-            - entity: binary_sensor.back_door
+            - entity: binary_sensor.0x158d0002b82d0a_contact
               name: Back door
            

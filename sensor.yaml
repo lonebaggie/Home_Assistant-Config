@@ -8,20 +8,11 @@
       - 'time_date'
       - 'time_utc'
       - 'beat'
-  - platform: openweathermap
-    api_key: !secret owm_api 
-    monitored_conditions:
-      - weather
-      - temperature
-  - platform: renaultze 
-    name: Zoe
-    username: !secret zoe_user
-    password: !secret zoe_pass
-    vin: !secret zoe_vin
-    android_lng: en_GB
-      
   - platform: template
     sensors:
+      zoe_range_ml:
+        value_template: >
+          {{(states.sensor.vf1ag000662787757_battery_autonomy.state|float*0.621)|round|string}}
       last_alexa:
         value_template: >
           {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
@@ -30,24 +21,24 @@
         value_template: >
           {% if states.light.living_room.state == 'off' %}
               Off
-          {% elif (is_state_attr('light.all_living_room','color_temp',454))
-          and (is_state_attr('light.all_living_room','brightness',1))
+          {% elif (is_state_attr('light.all_living_room','color_temp',500))
+          or (is_state_attr('light.all_living_room','color_temp',454))
+          and (is_state_attr('light.all_living_room','brightness',10))
           %}
               Dark
-          {% elif (is_state_attr('light.all_living_room','color_temp',420))
-          and (is_state_attr('light.all_living_room','brightness',170))
+          {% elif (is_state_attr('light.all_living_room','color_temp',423))
+          and (is_state_attr('light.all_living_room','brightness',160))
           %}
               Relaxed
-          {% elif (is_state_attr('light.all_living_room','color_temp',250))
-          and (is_state_attr('light.all_living_room','brightness',254))
+          {% elif (is_state_attr('light.all_living_room','color_temp',153))
+          or (is_state_attr('light.all_living_room','color_temp',250))
+          and (is_state_attr('light.all_living_room','brightness',255))
           %}
               Bright
           {% else %}
               Unknown
           {% endif %}
       harmony:
-        entity_id:
-          - remote.harmony_hub
         friendly_name: "Harmony"
         value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
       agile_alert:

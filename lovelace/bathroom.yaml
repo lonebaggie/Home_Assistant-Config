@@ -14,7 +14,6 @@
               name: Light 
               tap_action:
                 action: toggle
-            - entity: switch.wall_switch_right_158d0001660d34
+            - entity: switch.0x158d0001660d34_channel_2
               name: Fan    
         - type: 'custom:gap-card' 
-      

@@ -21,15 +21,15 @@
         - type: glance
           columns: 2
           entities:
-            - entity: binary_sensor.hall_toilet_leak
+            - entity: binary_sensor.0x158d0001c347c9_moisture
               name: Hall Leak
-            - entity: binary_sensor.hall_motion
+            - entity: binary_sensor.0x158d0001655f53_motion
               name: Motion Detector
     - type: horizontal-stack
       cards:
         - type: glance
           columns: 2
           entities:
-            - entity: binary_sensor.front_door
+            - entity: binary_sensor.0x158d0004a04770_contact
               name: Front Door
         - type: 'custom:gap-card'    

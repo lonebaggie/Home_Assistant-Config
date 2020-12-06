@@ -10,14 +10,14 @@
           cards:
             - type: sensor
               name: Inside Temperature
-              entity: sensor.temperature_158d00054087ae
+              entity: sensor.0x158d00054087ae_temperature
               graph: line
             - type: sensor
-              name: Outside temperature
-              entity: sensor.openweathermap_temperature
+              name: Outside Tempeature
+              entity: sensor.blink_front_door_temperature
               graph: line
         - type: weather-forecast
-          entity: weather.openweathermap
+          entity: weather.home_hourly
 
 
       

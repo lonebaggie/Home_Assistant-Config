@@ -11,26 +11,36 @@
         - type: glance
           columns: 2
           entities:
-            - entity: light.gateway_light_7c49eb88b73c
-              name: Gateway
-              tap_action:
-                action: toggle
-            - entity: sensor.illumination_7c49eb88b73c
-              name: light level
+            - entity: binary_sensor.0x158d00019e18bf_contact
+              name: Patio Door
+            - entity: sensor.0x158d00054087ae_temperature
         - type: glance
           columns: 2
           entities:
-            - entity: binary_sensor.patio_door
-              name: Patio Door
-            - entity: sensor.temperature_158d00054087ae
-              name: Temperature 
-    - type: horizontal-stack
+            - entity: sensor.light_state
+              name: Light state
+            - entity: light.all_living_room
+              name: Living room 
+              tap_action:
+                  action: toggle
+        
+    - type: custom:layout-card
+      layout: vertical
+      column_num: 2
       cards: 
+        - break
+        - break
         - type: entities
-          show_header_toggle: false
+          show_header_toggle: true
           entities:
             - entity: input_select.light_state
               name: Light Mood  
+            - type: divider
+              style:
+                visibility: hidden
+        - break
+        - type: custom:gap-card
+          height: 0
         - type: conditional
           conditions:
             - entity: light.living_room
@@ -43,6 +53,7 @@
               state_not: 'off'
           card:
             type: glance
+            show_state: false
             entities:
               - entity: light.sitting_room
                 tap_action:
@@ -50,13 +61,17 @@
               - entity: light.dining_room
                 tap_action:
                   action: toggle
-    - type: horizontal-stack
-      cards: 
+        - break
         - type: entities
-          show_header_toggle: false
+          show_header_toggle: true
           entities:
             - entity: input_select.harmony_state
               name: Media Select 
+            - type: divider
+              style:
+                visibility: hidden
+                
+        - break
         - type: conditional
           conditions:
             - entity: input_select.harmony_state
@@ -115,3 +130,6 @@
             entities:
               - entity: input_select.radio_state
                 name: Radio Select  
+              - type: divider
+                style:
+                  visibility: hidden

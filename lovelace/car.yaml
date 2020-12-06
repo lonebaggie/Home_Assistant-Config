@@ -9,23 +9,31 @@
         - type: gauge
           name: battery
           unit: '%'
-          entity: sensor.zoe
+          entity: sensor.vf1ag000662787757_battery_level
           severity:
             green: 80
             yellow: 40
             red: 15
-        - type: entity
-          entity: 'sensor.zoe'
-          attribute: remaining_range
+        - type: gauge
           name: Range
-          unit: 'mi'
-          icon: mdi:highway
+          unit: 'ml'
+          entity: sensor.zoe_range_ml
+          min: 0
+          max: 184
+          severity:
+            green: 150
+            yellow: 100
+            red: 15
+        
     - type: horizontal-stack
       cards:
-        
         - type: entity
-          entity: sensor.zoe
-          attribute: charge_status
+          entity: sensor.vf1ag000662787757_plug_state
           name: Status
           icon: mdi:power-plug
+        - type: entity
+          entity: binary_sensor.vf1ag000662787757_charging
+
+          name: Charging
+          icon: mdi:flash
         

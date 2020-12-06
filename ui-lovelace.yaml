@@ -11,7 +11,7 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
     type: module
-  - url: /hacsfiles/gauge-card/gauge-card.js
+  - url: /hacsfiles/lovelace-layout-card/layout-card.js
     type: module
 background: var(--background-image)
 excluded_entities:

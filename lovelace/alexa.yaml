@@ -13,8 +13,6 @@
               name: Living Room
             - entity: media_player.k_dot
               name: Kitchen
-            - entity: media_player.lr_echo
-              name: Living Room
             - entity: media_player.echo_show_5
               name: Bedroom
     - type: horizontal-stack
@@ -27,6 +25,8 @@
               name: Volume
             - entity: input_text.tts
               name: Text to voice
+            - entity: input_text.cmd_text
+              name: Text to Command
             - entity: input_select.echo_sounds
               name: Sound effects
         

@@ -1,5 +1,16 @@
   - platform: template
     switches: 
+      gateway:
+        value_template: > 
+            {% if is_state('switch.gateway','on') %}
+              false
+            {% endif %}
+        turn_on: 
+          service: remote.send_command
+          data:
+            entity_id: remote.0x588e81fffedac58f_pair
+            command: reboot
+        turn_off:
       tv:
         value_template: "{{states.sensor.harmony.state == 'TV'}}"
         turn_on: 
@@ -100,15 +111,6 @@
             data:
               entity_id: script.moodlight
         turn_off: 
-          - service: input_select.select_option
-            data_template:
-              entity_id: input_select.light_state
-              option: >
-                {% if is_state('switch.dark','on') %}
-                  Dark
-                {% else %}
-                  Off
-                {% endif %}
                      
       relaxed:
         value_template: >
@@ -125,18 +127,7 @@
           - service: script.turn_on
             data:
               entity_id: script.moodlight
-              
         turn_off:
-          - service: input_select.select_option
-            data_template:
-              entity_id: input_select.light_state
-              option: >
-                {% if is_state('switch.relaxed','on') %}
-                  Relaxed
-                {% else %}
-                  Off
-                {% endif %}
-              
       bright:
         value_template: >
           {% if is_state('input_select.light_state','Bright') %}
@@ -153,16 +144,6 @@
             data:
               entity_id: script.moodlight
         turn_off:
-          - service: input_select.select_option
-            data_template:
-              entity_id: input_select.light_state
-              option: >
-                {% if is_state('switch.bright','on') %}
-                  Bright
-                {% else %}
-                  Off
-                {% endif %}
-
       tv_radio_1:
         value_template: "{{ is_state('input_select.radio_state', 'Radio 1')}}"
         turn_on:

@@ -14,7 +14,6 @@
       - All
       - Echo_Show_5
       - K_Dot
-      - LR_Echo
       - LR_Dot
       - Fire_7
     initial: "LR_Dot"
@@ -47,8 +46,8 @@
     options:
       - binary_sensor.front_door
       - binary_sensor.patio_door
-      - sensor.zoe
-      - light.lr3
+      - sensor.vf1ag000662787757_battery_level
+      - sensor.zoe_range_ml
       - sensor.octopus_current_price
       - sensor.agile_alert
       - sensor.octopus_1hour_time
@@ -62,7 +61,7 @@
       - Good (gr), today is (td)
       - Good (gr), the time is (tt) 
       - The Patio door is (e01s)
-      - Zoe is currently (e022), Battery level is (e02s) and the current range is (e027) miles 
+      - Zoe's Battery level is (e02s), and the current range is (e03s) miles 
       - The Patio door is (e01s)
       - The current electricity price is (e04$) pence, this is (e05$)
       - The best 1 hour time slot is {{'(e06$)'[11:16]}}, with a price of (e07$) pence

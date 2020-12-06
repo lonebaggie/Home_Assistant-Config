@@ -5,7 +5,7 @@
   badges: []
   cards:
     - type: horizontal-stack
-      title: switches
+      title: Switches
       cards:
         - type: custom:auto-entities
           card:

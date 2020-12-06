@@ -4,68 +4,8 @@ icon: 'mdi:home-assistant'
 badges: []
 cards:
   - type: vertical-stack
-    title: Downstairs
+    title: Home
     cards:
-      - type: glance 
-        columns: 4
-        entities:
-          - entity: input_boolean.icon
-            name: Living Room
-            show_state: false
-            icon: mdi:sofa
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/livingroom
-            hold_action:
-              action: none
-          - entity: input_boolean.icon
-            name: Hall
-            icon: mdi:clock
-            show_state: false
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/hall
-            hold_action:
-              action: none
-          - entity: input_boolean.icon
-            name: Kitchen
-            show_state: false
-            icon: mdi:food-variant
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/kitchen
-            hold_action:
-              action: none
-          - entity: input_boolean.icon
-            name: Utility
-            show_state: false
-            icon: mdi:washing-machine
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/utility
-            hold_action:
-              action: none
-          - entity: input_boolean.icon
-            name: Front Room
-            icon: mdi:sofa
-            show_state: false
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/frontroom
-            hold_action:
-              action: none
-          - entity: input_boolean.icon
-            name: Outside
-            show_state: false
-            icon: mdi:flower
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/outside
-            hold_action:
-              action: none
-  - type: vertical-stack
-    title: Upstairs
-    cards:      
       - type: glance
         columns: 4
         entities:
@@ -123,4 +63,60 @@ cards:
               navigation_path: /lovelace/bathroom
             hold_action:
               action: none
-          
+      - type: glance
+        columns: 4
+        entities:
+          - entity: input_boolean.icon
+            name: Living Room
+            show_state: false
+            icon: mdi:sofa
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/livingroom
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Hall
+            icon: mdi:clock
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/hall
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Kitchen
+            show_state: false
+            icon: mdi:food-variant
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/kitchen
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Utility
+            show_state: false
+            icon: mdi:washing-machine
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/utility
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Front Room
+            icon: mdi:sofa
+            show_state: false
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/frontroom
+            hold_action:
+              action: none
+          - entity: input_boolean.icon
+            name: Outside
+            show_state: false
+            icon: mdi:flower
+            tap_action: 
+              action: navigate
+              navigation_path: /lovelace/outside
+            hold_action:
+              action: none

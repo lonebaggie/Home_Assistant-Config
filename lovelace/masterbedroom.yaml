@@ -17,22 +17,12 @@
               name: Echo Show
         - type: glance
           entities:
-            - entity: sensor.bedroom_temperature
-              name: Temperature
-            - entity: sensor.bedroom_humidity
-              name: humidity
-    - type: horizontal-stack
-      cards:    
-        - type: glance
-          columns: 2
-          entities:
             - entity: light.en_suite_light
               name: En-Suite
               tap_action:
                 action: toggle
-            - entity: switch.wall_switch_right_158d0001a6596b
+            - entity: switch.0x158d0001a6596b_channel_2
               name: En-Suite Fan
               tap_action:
                 action: toggle
-        - type: 'custom:gap-card' 
-           
+        

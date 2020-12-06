@@ -2,14 +2,26 @@ alias: Check Light Mood
 description: keep item select in sync 
 
 trigger:
-    platform: time_pattern
-    minutes: "/3"
+    platform: state
+    entity_id: sensor.light_state
+    
 condition:
-    condition: state
-    entity_id: light.living_room
-    state: 'on'
+  condition: template
+  value_template: >
+    (% if states.sensor.light_state.state == 'Off' 
+       or states.sensor.light_state.state == states.sensor.light_state.state
+    %)
+        false
+    (% else %)
+        true
+    ( % endif %)
 action:
   - service: input_select.select_option
     data_template:
       entity_id: input_select.light_state
-      option: '{{states.sensor.light_state.state}}'
+      option: > 
+        {% if states("switch.0x158d00016cf4bc_switch") == 'off' %}
+          Off
+        {% else %}
+          {{states.sensor.light_state.state}}
+        {% endif %}

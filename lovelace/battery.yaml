@@ -14,7 +14,7 @@
             show_header_toggle: false
           filter:
             include:
-              - entity_id: sensor.battery*
+              - entity_id: sensor.*_battery
           sort:
             method: attribute
             attribute: friendly_name

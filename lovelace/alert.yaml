@@ -23,7 +23,6 @@ cards:
               options:
                 tap_action:
                   action: toggle
-            - state: unknown
             - state: none
             - state: 'tomorrow'
             - state: 'today'
@@ -44,8 +43,7 @@ cards:
                 no_of_days: < 8
           exclude:
             - domain: group
-            - entity_id: light.lr*
-            - entity_id: light.dr*
+            - entity_id: light.0x*
             - entity_id: light.downstairs
             - entity_id: light.upstairs
             - entity_id: light.all_living_room
@@ -54,7 +52,7 @@ cards:
             - entity_id: light.sitting_room    
             - entity_id: sensor.tilt_angle
             - entity_id: sensor.zoe_battery_temperature
-            - entity_id: media_player.enigma_2
+            - entity_id: media_player.gigablue
             - entity_id: switch.*shuffle*
             - entity_id: switch.*repeat*
             - entity_id: switch.*disturb*
@@ -74,8 +72,7 @@ cards:
         card:
           type: markdown
           content: >
-            ## Hacs updates alert 
-            {{states.sensor.hacs.state}} update(s) avaliable
+            ## Community updates avaliable
   
       - type: conditional
         conditions:

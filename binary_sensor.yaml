@@ -1,45 +1,11 @@
   - platform: template
     sensors:
-      vibration:
-        friendly_name: "Vibration"
-        value_template: >
-            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "vibrate"
-                  and states("timer.xiaomi_move") == "active"
-            }}
-      tilt:
-        friendly_name: "tilt"
-        value_template: >
-            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "tilt"
-                  and states("timer.xiaomi_move") == "active"
-            }}
-      free_fall:
-        friendly_name: "free fall"
-        value_template: >
-            {{state_attr("binary_sensor.vibration_158d00031ce0c7","last_action") == "free_fall"
-                  and states("timer.xiaomi_move") == "active"
-            }}
-            
       allhome:
         friendly_name: "All Home"
         value_template: >-
           {% if is_state('person.simon', 'home')
           and is_state('person.maddy', 'home')
           and is_state('person.louise', 'home') %}
-            true
-          {% else %}
-            false
-          {% endif %}
-      lrsync:
-        friendly_name: 'Livingroom Light Sync'
-        value_template: >-
-          {% if is_state('light.lr1', 'on') 
-          and is_state('light.lr2', 'on') 
-          and is_state('light.lr3', 'on') 
-          and is_state('light.dr1', 'on') 
-          and is_state('light.dr2', 'on') 
-          and is_state('light.dr3', 'on') 
-          and is_state('switch.wall_switch_158d00016cf4bc', 'on')
-          %}
             true
           {% else %}
             false

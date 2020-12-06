@@ -374,3 +374,13 @@ sensor.agile_cost_year:
 sensor.zoe_battery: {}
 sensor.octopus_current_price:
   unit_of_measurement: kwh
+switch.0x158d0001a6596b_channel_2:
+  icon: mdi:fan
+switch.0x158d0001660d34_channel_2:
+  icon: mdi:fan
+light.all_living_room:
+  icon: mdi:lightbulb
+light.dining_room:
+  icon: mdi:lightbulb
+light.sitting_room:
+  icon: mdi:lightbulb

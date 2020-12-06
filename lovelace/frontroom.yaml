@@ -14,9 +14,5 @@
               name: Light 
               tap_action:
                 action: toggle 
-            - entity: switch.sonoff1_relay
-              name: Plug 1
-              tap_action:
-                action: toggle 
               
         - type: custom:gap-card

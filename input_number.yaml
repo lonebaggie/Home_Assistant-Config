@@ -1,6 +1,6 @@
   alexa_volume:
     name: Volume
-    initial: 0.4
+    initial: 0.3
     min: 0
     max: 1
     step: 0.01
