@@ -384,3 +384,7 @@ light.dining_room:
   icon: mdi:lightbulb
 light.sitting_room:
   icon: mdi:lightbulb
+switch.plug_2:
+  icon: mdi:pine-tree
+switch.plug_1:
+  icon: mdi:star

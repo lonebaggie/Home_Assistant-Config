@@ -14,13 +14,16 @@
             - entity: binary_sensor.0x158d00019e18bf_contact
               name: Patio Door
             - entity: sensor.0x158d00054087ae_temperature
+              name: Temperature 
         - type: glance
           columns: 2
           entities:
-            - entity: sensor.light_state
-              name: Light state
-            - entity: light.all_living_room
-              name: Living room 
+            - entity: switch.plug_1
+              name: Swag
+              tap_action:
+                  action: toggle
+            - entity: switch.plug_2
+              name: Christmas Tree
               tap_action:
                   action: toggle
         

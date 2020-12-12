@@ -56,6 +56,7 @@ logger:
   logs:
     homeassistant.components.automation: debug
     homeassistant.components.scripts: debug
+    homeassistant.components.xiaomi_gateway3: debug
 # lovelace 
 lovelace:
   mode: yaml
@@ -103,6 +104,8 @@ asuswrt:
   host: 192.168.1.1
   username: !secret asuswrt_user
   password: !secret asuswrt_password
+xiaomi_gateway3:
+  debug: true
 enigma: 
   devices:
     - host: 192.168.1.91
