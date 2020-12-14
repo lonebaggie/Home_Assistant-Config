@@ -8,7 +8,7 @@ Home Assistant was updated from Domoticz and before that LightwaveRf so I have a
 
 Update : Managed to combine everything onto one Xiaomi v3 hub so Tradri and Xiaomi all linked and Tradfri hub is ebayed 
 
-![](/video/Lovelacefrontend.gif)
+![Home Assistant Frontend  Demo](Video/Lovelacefrontend.gif)
 
 
 
