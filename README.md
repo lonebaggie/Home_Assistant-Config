@@ -1,4 +1,4 @@
-#Home_Assistant-Config
+# Home_Assistant-Config
 
 Currently home automation config consist of Alexa Echo (1),Dots(2), Xiaoma switches(14) and sensors(10), Harmony Hub(1) and Tradfri bulbs (6). I have resently updated all automations to use Appdeamon 3.0 as I was struggling to understand the automation syntax and Jinja2 code.
 
@@ -9,7 +9,7 @@ Home Assistant was updated from Domoticz and before that LightwaveRf so I have a
 **Update : Managed to combine everything onto one Xiaomi v3 hub so Tradri and Xiaomi all linked and Tradfri hub is ebayed**
 
 
-##Home Assistant Demo
+## Home Assistant Demo
 
 ![Home Assistant Frontend  Demo](Video/Lovelacefrontend.gif)
 
