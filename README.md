@@ -1,4 +1,4 @@
-# Home_Assistant-Config
+# Home Assistant Config
 
 Currently home automation config consist of Alexa Echo (1), Dots(2), Xiaomi switches(14) and sensors(10), Harmony Hub(1) and Tradfri bulbs (6). I have recently updated all automations to use Appdeamon 3.0 as I was struggling to understand the automation syntax and Jinja2 code.
 
