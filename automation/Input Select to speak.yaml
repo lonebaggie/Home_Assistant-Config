@@ -1,0 +1,94 @@
+alias: Item Select to speak
+description: Trigger Alexa from Item Select
+trigger:
+  entity_id: input_select.speak_list
+  platform: state
+variables:
+  opt: >
+    {% set sp = states.input_select.speak_list.state %}
+    {% set no = sp.find("(c")+2 %}
+    {{sp[no:no+2]|int}}
+condition:
+  - condition: template
+    value_template: '{{states.input_select.speak_list.state != "do not use"  }}'
+action:
+  - service_template: >
+        {% set name = states('sensor.last_alexa').split('.') %}
+        notify.alexa_media_{{name[-1]}}
+    data_template:
+      data:
+        type: tts
+      message: >
+        {% set ns=namespace(speak = "") %}
+        {% set ns.speak = states.input_select.speak_list.state %}
+        {% set dy = {'opening': ('closed','open'),'window':('closed','open'),
+          'door': ('closed','open'),'garage_door':('closed','open'),
+          'lock':('locked','unlocked'),'presence':('home','away'),
+          'connectivity':('connected','not connected'),
+          'vibration':('detected','clear'),
+          'smoke':('detected','clear'),'sound':('detected','clear'),
+          'motion':('detected','clear'),'battery':('on','off'),
+          'occupancy':('detected','clear') } %} 
+        {% set word = ns.speak.split() %}
+        {% for ps in word %}
+          {% set tn = ps[ps.find("("):ps.find(")")+1] %}
+          {% set rp = "" %}
+          {% if tn|count > 0 %}
+            {% set rp = tn %}
+            {% if tn == "(gr)" %}
+              {% set gr = ['Morning','Afternoon','Evening'] %}
+              {% set rp = gr[(now().hour/12)|int + (now().hour > 17)]%}
+            {% elif tn == "(tt)" %}
+              {% set rp = now().strftime("%-I %M %p") %}
+            {% elif tn == "(td)" %}
+              {% set rp = now().strftime("%A the %dth of %B %Y") %}
+            {% elif tn|regex_search('\(c[0-9][0-9]\)') %}
+              {% set rp = "" %}
+            {% else %}
+              {% set et = state_attr("input_select.entity_list","options") %}
+              {% set et = et[tn[2:4]|int] %}
+              {% if tn|regex_search('\(e..f\)') %}
+                {% set rp = state_attr(et,"friendly_name") %}
+              {% elif tn|regex_search('\(e..[s$S]\)') %}
+                {% if tn[4:5] == "S" %}
+                  {% set st = states(et)|float|round(1)|string %}
+                  {% set st = st ~ " " ~ state_attr(et,"unit_of_measurement")|replace('None','') %}
+                {% endif %}
+                {% if tn[4:5] == "$" %}
+                  {% set st = states(et) %}
+                {% endif %}
+                {% if tn[4:5] == "s" %}
+                  {% set st = states[et].state_with_unit %}
+                {% endif %}
+                {% set dt = state_attr(et,"device_class")|string %}
+                {% if (dt != "None") and (st =='off' or st == 'on')  %} 
+                  {% set st = dy[dt][st|int] %}
+                {% endif %}
+                {% set rp = st %} 
+              {% elif tn|regex_search('\(e..[bB]\)') %}
+                {% set br = state_attr(et,"brightness")|int %}
+                {% set rp = br|string %} 
+                {% if tn[4:5] == 'b' %}
+                  {% set rp = ((100*br/254)|int)|string %}
+                {% endif %}
+              {% elif tn|regex_search('\(e..[0-9]\)') %}
+                {% set al = states[et]['attributes']|list %}
+                {% set rp = state_attr(et,al[tn[4:5]|int])|string %}
+              {% endif %}
+            {% endif %}
+          {%endif %}
+          {% set ns.speak = ns.speak.replace(tn,rp) %}
+        {% endfor %}
+        {{ns.speak}}
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.speak_list
+      option: "do not use"
+  - delay:
+      seconds: 2
+  - service: light.turn_on
+    data:
+      entity_id: light.alexa_virtual
+      brightness_pct: "{{opt}}"
+    
+  
