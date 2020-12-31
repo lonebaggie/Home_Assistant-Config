@@ -46,14 +46,14 @@
           height: 0
         - type: conditional
           conditions:
-            - entity: light.living_room
-              state: 'off'
+            - entity: input_select.light_state
+              state: 'Off'
           card:
             type: 'custom:gap-card'
         - type: conditional
           conditions:
-            - entity: light.living_room
-              state_not: 'off'
+            - entity: input_select.light_state
+              state_not: 'Off'
           card:
             type: glance
             show_state: false

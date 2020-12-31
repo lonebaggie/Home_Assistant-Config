@@ -1,17 +1,7 @@
 # restart HA to keep it fresh
 alias: Restart HA
-trigger: 
-  platform: time
-  at: "02:00:00"  
-condition:
-  condition: time
-  weekday:
-    - sun
-    - mon
-    - tue
-    - wed
-    - thu
-    - fri
-    - sat
+trigger:
+  - platform: time_pattern
+    hours: '/8'
 action:
   - service: homeassistant.restart

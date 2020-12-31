@@ -53,7 +53,7 @@
     entity_id: switch.0x158d0001a68d54_switch
   - platform: switch
     name: Francis 
-    entity_id: switch.0x158d00016cf458_switch
+    entity_id: switch.0x158d0005340aa8_switch
   - platform: switch
     name: Maddy 
     entity_id: switch.0x158d0001a2424b_switch

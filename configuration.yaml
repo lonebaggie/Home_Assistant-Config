@@ -25,6 +25,7 @@ mobile_app:
 
 # Database 
 recorder:
+  
 # Enables configuration UI
 config:
 http:

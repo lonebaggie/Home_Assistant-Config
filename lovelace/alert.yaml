@@ -77,9 +77,18 @@ cards:
       - type: conditional
         conditions:
           - entity: binary_sensor.snapshots_stale
-            state: 'True'
+            state: 'on'
         card:
           type: markdown
           content: >
             ## Snapshots are stale
             See Google Drive Backup
+      - type: conditional
+        conditions:
+          - entity: binary_sensor.updater
+            state: 'on'
+        card:
+          type: markdown
+          content: >
+            ## HA update  
+            {{states.binary_sensor.updater.attributes.newest_version}} ready

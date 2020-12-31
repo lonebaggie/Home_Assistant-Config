@@ -1,4 +1,6 @@
 resources:
+  - url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
+    type: module
   - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
     type: module
   - url: /hacsfiles/lovelace-canary/canary.js
@@ -13,6 +15,7 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-layout-card/layout-card.js
     type: module
+  
 background: var(--background-image)
 excluded_entities:
   - weblink.router
@@ -20,14 +23,16 @@ preload:
   - markdown
   - gauge
   - conditional
+  - entities
 title: Home
 views:
   - !include '/config/lovelace/alert.yaml'
   - !include '/config/lovelace/home.yaml'
+  - !include '/config/lovelace/alexa.yaml'
   - !include '/config/lovelace/octopus.yaml'
   - !include '/config/lovelace/car.yaml'
   - !include '/config/lovelace/weather.yaml'
-  - !include '/config/lovelace/alexa.yaml'
+  - !include '/config/lovelace/rocket.yaml'
   - !include '/config/lovelace/all.yaml'  
   - !include '/config/lovelace/sandbox.yaml'
   - !include '/config/lovelace/battery.yaml'

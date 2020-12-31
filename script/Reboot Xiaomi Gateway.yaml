@@ -1,0 +1,6 @@
+reboot_gateway:
+  sequence:
+  - service: remote.send_command
+    entity_id: remote.0x588e81fffedac58f_pair 
+    data:
+      command: reboot

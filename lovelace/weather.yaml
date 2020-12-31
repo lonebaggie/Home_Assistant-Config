@@ -17,7 +17,8 @@
               entity: sensor.blink_front_door_temperature
               graph: line
         - type: weather-forecast
-          entity: weather.home_hourly
+          entity: weather.home
+        
 
 
       
