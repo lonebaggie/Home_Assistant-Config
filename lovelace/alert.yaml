@@ -4,7 +4,7 @@ icon: 'mdi:alert-circle-outline'
 badges: []
 cards:
   - type: vertical-stack
-    title: Alerts & Status
+    title: Alerts
     cards:
       - type: 'custom:auto-entities'
         show_empty: true

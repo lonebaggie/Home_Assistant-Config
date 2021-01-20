@@ -19,11 +19,11 @@
           columns: 2
           entities:
             - entity: switch.plug_1
-              name: Swag
+              name: Plug 1
               tap_action:
                   action: toggle
             - entity: switch.plug_2
-              name: Christmas Tree
+              name: Plug 2
               tap_action:
                   action: toggle
         

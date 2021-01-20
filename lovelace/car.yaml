@@ -17,14 +17,13 @@
         - type: gauge
           name: Range
           unit: 'ml'
-          entity: sensor.zoe_range_ml
+          entity: sensor.vf1ag000662787757_battery_autonomy
           min: 0
           max: 184
           severity:
-            green: 150
-            yellow: 100
-            red: 15
-        
+            green: 100
+            yellow: 50
+            red: 20
     - type: horizontal-stack
       cards:
         - type: entity

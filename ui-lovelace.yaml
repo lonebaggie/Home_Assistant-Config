@@ -15,6 +15,8 @@ resources:
     type: module
   - url: /hacsfiles/lovelace-layout-card/layout-card.js
     type: module
+  - url: /hacsfiles/flex-table-card/flex-table-card.js
+    type: module
   
 background: var(--background-image)
 excluded_entities:
@@ -33,6 +35,7 @@ views:
   - !include '/config/lovelace/car.yaml'
   - !include '/config/lovelace/weather.yaml'
   - !include '/config/lovelace/rocket.yaml'
+  - !include '/config/lovelace/zigbee.yaml'
   - !include '/config/lovelace/all.yaml'  
   - !include '/config/lovelace/sandbox.yaml'
   - !include '/config/lovelace/battery.yaml'
