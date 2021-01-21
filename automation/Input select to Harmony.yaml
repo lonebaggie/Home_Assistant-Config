@@ -1,5 +1,5 @@
-alias: Item Select to Harmony
-description: Trigger remote from Item select menu
+alias: Input Select to Harmony
+description: Trigger remote from Input select menu
 trigger:
   entity_id: input_select.harmony_state
   platform: state

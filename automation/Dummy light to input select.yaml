@@ -1,5 +1,5 @@
-alias: Dummy light to item select
-description: Trigger item select from dummy light
+alias: Dummy light to input select
+description: Trigger input select from dummy light
 trigger:
   entity_id: light.alexa_virtual
   platform: state
