@@ -1,5 +1,5 @@
-alias: Item Select to speak
-description: Trigger Alexa from Item Select
+alias: Input Select to speak
+description: Trigger Alexa from Input Select
 trigger:
   entity_id: input_select.speak_list
   platform: state
