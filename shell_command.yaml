@@ -1,5 +1,16 @@
-  radio1: "/usr/bin/wget -q -O - http://192.168.1.91/web/zap?sRef=1:0:2:1932:7FF:2:11A0000:0:0:0:"
-  radio2: "/usr/bin/wget -q -O - http://192.168.1.91/web/zap?sRef=1:0:2:1934:7FF:2:11A0000:0:0:0:"
-  radio3: "/usr/bin/wget -q -O - http://192.168.1.91/web/zap?sRef=1:0:2:288C:7FE:2:11A0000:0:0:0:"
-  radio4: "/usr/bin/wget -q -O - http://192.168.1.91/web/zap?sRef=1:0:2:288D:7FE:2:11A0000:0:0:0:"
-  bbc1: "/usr/bin/wget -q -O - http://192.168.1.91/web/zap?sRef=1:0:19:1B1D:802:2:11A0000:0:0:0:"
+audio: >
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"clearAudio", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+music: >
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"music", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+movie: >
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"movie", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+default: >
+    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"standard", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+sports: >
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"sports", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+game: >
+    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"game", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+
+
+
+  

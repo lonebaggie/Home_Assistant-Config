@@ -1,0 +1,8 @@
+tvchannel:
+  sequence:
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.lg_webos_smart_tv
+      data:
+        media_content_id: "{{channel}}"
+        media_content_type: "channel" 

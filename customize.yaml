@@ -388,3 +388,49 @@ switch.plug_2:
   icon: mdi:power
 switch.plug_1:
   icon: mdi:power
+media_player.ht_xt2:
+  icon: mdi:speaker
+media_player.lg_webos_smart_tv:
+  icon: mdi:television
+media_player.echo_show_5:
+  icon: mdi:amazon-alexa
+media_player.k_dot:
+  icon: mdi:amazon-alexa
+media_player.lr_dot:
+  icon: mdi:amazon-alexa
+media_player.downstairs:
+  icon: mdi:amazon-alexa
+switch.bbc1:
+  entity_picture: /local/png/bbc1.png
+switch.bbc2:
+  entity_picture: /local/png/bbc2.png
+switch.itv:
+  entity_picture: '"/local/png/itv1 hd.png"'
+switch.itv1:
+  entity_picture: /local/png/itv1.png
+switch.ch_4:
+  entity_picture: /local/png/ch4.png
+switch.ch_5:
+  entity_picture: /local/png/five.png
+switch.bbc4:
+  entity_picture: /local/png/bbc4.png
+switch.bbc_news:
+  entity_picture: /local/png/bbcnews24.png
+switch.quest:
+  entity_picture: /local/png/quest.png
+switch.you_tube:
+  icon: mdi:youtube
+switch.browser:
+  icon: mdi:web
+switch.dvd:
+  icon: mdi:disc-player
+switch.netflix:
+  icon: mdi:netflix
+switch.live_tv:
+  icon: mdi:television
+switch.now:
+  icon: mdi:alpha-h-box-outline
+switch.prime:
+  icon: mdi:amazon
+switch.iplayer:
+  icon: mdi:television-play

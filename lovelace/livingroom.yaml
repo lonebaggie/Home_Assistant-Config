@@ -3,136 +3,97 @@
   path: livingroom
   icon: 'mdi:sofa'
   badges: []
-  visable: false
   cards:
-    - type: horizontal-stack
+    - type: vertical-stack
       title: Living Room
       cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.0x158d00019e18bf_contact
-              name: Patio Door
-            - entity: sensor.0x158d00054087ae_temperature
-              name: Temperature 
-        - type: glance
-          columns: 2
-          entities:
-            - entity: switch.plug_1
-              name: Plug 1
-              tap_action:
-                  action: toggle
-            - entity: switch.plug_2
-              name: Plug 2
-              tap_action:
-                  action: toggle
-        
-    - type: custom:layout-card
-      layout: vertical
-      column_num: 2
-      cards: 
-        - break
-        - break
-        - type: entities
-          show_header_toggle: true
-          entities:
-            - entity: input_select.light_state
-              name: Light Mood  
-            - type: divider
-              style:
-                visibility: hidden
-        - break
-        - type: custom:gap-card
-          height: 0
-        - type: conditional
-          conditions:
-            - entity: input_select.light_state
-              state: 'Off'
-          card:
-            type: 'custom:gap-card'
-        - type: conditional
-          conditions:
-            - entity: input_select.light_state
-              state_not: 'Off'
-          card:
-            type: glance
-            show_state: false
-            entities:
-              - entity: light.sitting_room
-                tap_action:
-                  action: toggle
-              - entity: light.dining_room
-                tap_action:
-                  action: toggle
-        - break
-        - type: entities
-          show_header_toggle: true
-          entities:
-            - entity: input_select.harmony_state
-              name: Media Select 
-            - type: divider
-              style:
-                visibility: hidden
+        - type: custom:layout-card
+          layout: horizontal
+          title: Living Room
+          column_num: 3
+          cards:
+            - type: glance
+              columns: 3
+              entities:
+                - entity: media_player.lg_webos_smart_tv
+                  name: TV
+                  icon: mdi:television
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/TV
+                  hold_action:
+                    action: none
+                - entity: binary_sensor.0x158d00019e18bf_contact
+                  name: Patio 
+                - entity: sensor.0x158d00054087ae_temperature
+                  name: Inside
                 
-        - break
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'PowerOff'
-          card:
-            type: 'custom:gap-card'
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'TV'
-          card:
-            type: media-control
-            entity: media_player.sat
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'LG'
-          card:
-            type: media-control
-            entity: media_player.lg_tv_remote
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'Roku'
-          card:
-            type: media-control
-            entity: media_player.living_room
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'Sony'
-          card:
-            type: media-control
-            entity: media_player.sony_htxt2
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'Speaker'
-          card:
-            type: media-control
-            entity: media_player.sony_htxt2
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'Bluray'
-          card:
-            type: media-control
-            entity: media_player.lg_tv_remote
-        - type: conditional
-          conditions:
-            - entity: input_select.harmony_state
-              state: 'Radio'
-          card:
-            type: entities
-            show_header_toggle: false
-            entities:
-              - entity: input_select.radio_state
-                name: Radio Select  
-              - type: divider
-                style:
-                  visibility: hidden
+            - type: entity-filter
+              entities:
+                - entity: switch.0x158d00016cf4bc_switch
+                  name: Switch
+                  icon: mdi:light-switch
+                  tap_action:
+                    action: toggle
+                - entity: switch.plug_1
+                  name: Plug 1
+                  icon: mdi:power-socket-uk
+                  tap_action:
+                    action: toggle
+                - entity: switch.plug_2
+                  name: Plug 2
+                  icon: mdi:power-socket-uk
+                  tap_action:
+                    action: toggle
+              
+              state_filter:
+                - 'on'
+                - 'off'
+              card:
+                type: glance
+                columns: 3
+            - break
+            - type: glance
+              coloums: 3
+              entities:
+                - entity: switch.dark
+                  name: Dark 
+                  icon: mdi:lightbulb-multiple
+                  tap_action:
+                      action: toggle
+                - entity: switch.relaxed
+                  name: Relaxed 
+                  icon: mdi:lightbulb-multiple
+                  tap_action:
+                      action: toggle
+                - entity: switch.bright
+                  name: Bright 
+                  icon: mdi:lightbulb-multiple
+                  tap_action:
+                    action: toggle
+            
+            - type: conditional
+              conditions:
+                - entity: light.living_room
+                  state: "on"
+              card:
+                 type: glance
+                 coloums: 3
+                 entities:
+                    - entity: light.all_living_room
+                      name: Living
+                      icon: mdi:lightbulb
+                      tap_action:
+                        action: toggle
+                    - entity: light.sitting_room
+                      name: Sitting
+                      icon: mdi:lightbulb
+                      tap_action:
+                        action: toggle
+                    - entity: light.dining_room
+                      name: Dining
+                      icon: mdi:lightbulb
+                      tap_action:
+                        action: toggle 
+        
+           

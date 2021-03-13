@@ -1,12 +1,3 @@
-  light_state:
-    name: Living Room Light State
-    options:
-      - "Off"
-      - Dark
-      - Relaxed
-      - Bright
-      - Unknown
-    icon: mdi:lightbulb
   alexa_state:
     name: Alexa State
     options:
@@ -18,29 +9,6 @@
       - Fire_7
     initial: "LR_Dot"
     icon: mdi:amazon-alexa
-  harmony_state:
-    name : Harmony State
-    options:
-      - PowerOff
-      - TV
-      - Roku
-      - Radio
-      - Speaker
-      - Bluray
-      - LG
-      - Sony
-
-    icon: mdi:remote
-  radio_state:
-    name : Radio State
-    options:
-      - 'Off'
-      - Radio 1
-      - Radio 2
-      - Radio 3
-      - Radio 4
-    initial: "Off"
-    icon: mdi:radio
   entity_list:
     name : Entity List
     options:

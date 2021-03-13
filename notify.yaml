@@ -1,6 +1,2 @@
     - name: alexa_media
       platform: alexa_media
-    - platform: enigma
-      host: 192.168.1.91
-      port: 80
-      name: gigablue

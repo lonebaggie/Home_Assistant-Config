@@ -1,0 +1,26 @@
+relaxed:
+  sequence:
+    - service: light.turn_on
+      data:
+        kelvin: 2400
+      target:
+        device_id:
+          - 0891dfdc156511eb86d189cc0f192b15
+          - 3582579a156511ebbbc5d1b439a8fd80
+          - 5daadc77156511eb9bf6adfc4d5e7ded
+          - 6f7e7d64156611ebb6f2e96f160c490e
+          - 4f79a373156611eb8d3065479a4e8341
+          - 2a1aaec3156611eb909c094627c5722e
+    - delay: 00:00:01
+    - service: light.turn_on
+      data:
+        brightness_pct: 41
+      target:
+        device_id:
+          - 0891dfdc156511eb86d189cc0f192b15
+          - 3582579a156511ebbbc5d1b439a8fd80
+          - 5daadc77156511eb9bf6adfc4d5e7ded
+          - 6f7e7d64156611ebb6f2e96f160c490e
+          - 4f79a373156611eb8d3065479a4e8341
+          - 2a1aaec3156611eb909c094627c5722e
+    

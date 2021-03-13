@@ -1,1 +1,36 @@
-{}
+'1614436259187':
+  alias: New Script
+  sequence:
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.lg_webos_smart_tv
+  mode: single
+'1614436361221':
+  alias: New Script
+  sequence:
+  - service: media_player.turn_on
+    data:
+      entity_id: media_player.lg_webos_smart_tv
+    entity_id: media_player.lg_webos_smart_tv
+  mode: single
+name:
+  alias: name
+  sequence:
+  - service: media_player.turn_on
+    data: {}
+    entity_id: media_player.lg_webos_smart_tv
+  mode: single
+'1614436837618':
+  alias: New Script
+  sequence:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.hall
+  mode: single
+'1614436886194':
+  alias: New Script
+  sequence:
+  - service: light.turn_on
+    data: {}
+    entity_id: light.kitchen
+  mode: single

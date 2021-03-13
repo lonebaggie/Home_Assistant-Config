@@ -25,7 +25,7 @@ mobile_app:
 
 # Database 
 recorder:
-  
+discovery:  
 # Enables configuration UI
 config:
 http:
@@ -61,7 +61,28 @@ logger:
 # lovelace 
 lovelace:
   mode: yaml
-  
+  resources:
+    - url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
+      type: module
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: module
+    - url: /hacsfiles/lovelace-canary/canary.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/lovelace-gap-card/gap-card.js
+      type: module
+    - url: /hacsfiles/lovelace-gui-sandbox/gui-sandbox.js
+      type: module
+    - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/flex-table-card/flex-table-card.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+
 
 
 history:
@@ -98,20 +119,33 @@ input_boolean: !include input_boolean.yaml
 media_player: !include mediaplayer.yaml
 switch: !include switch.yaml
 notify: !include notify.yaml
-device_tracker: !include device_tracker.yaml
 shell_command: !include shell_command.yaml
 timer: !include timer.yaml
-asuswrt: 
-  host: 192.168.1.1
-  username: !secret asuswrt_user
-  password: !secret asuswrt_password
 xiaomi_gateway3:
   debug: true
-enigma: 
-  devices:
-    - host: 192.168.1.91
-      port: 80
-      name: Gigablue
-      timeout: 20
-      bouquet: '1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "userbouquet.abm.sat_282_freesat.101.tv" ORDER BY bouquet'
-      picon: screenshot
+wake_on_lan: # enables `wake_on_lan` domain
+webostv:
+  host: 192.168.1.38
+  #other settings
+  turn_on_action:
+    service: wake_on_lan.send_magic_packet
+    data:
+      mac: 64:95:6C:FD:0D:5F
+      broadcast_address: 192.168.1.255
+  customize:
+    sources:
+      - AV
+      - Amazon Music
+      - Amazon Prime Video
+      - BBC Sounds
+      - BBC iPlayer
+      - Blu-ray Player
+      - Disney+
+      - HDMI 1
+      - HDMI 2
+      - HDMI 3
+      - Live TV
+      - NOW TV
+      - Netflix
+      - Web Browser
+      - YouTube

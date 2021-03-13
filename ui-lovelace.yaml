@@ -1,22 +1,4 @@
-resources:
-  - url: /hacsfiles/lovelace-template-entity-row/template-entity-row.js
-    type: module
-  - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
-    type: module
-  - url: /hacsfiles/lovelace-canary/canary.js
-    type: module
-  - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-    type: module
-  - url: /hacsfiles/lovelace-gap-card/gap-card.js
-    type: module
-  - url: /hacsfiles/lovelace-gui-sandbox/gui-sandbox.js
-    type: module
-  - url: /hacsfiles/lovelace-card-templater/lovelace-card-templater.js
-    type: module
-  - url: /hacsfiles/lovelace-layout-card/layout-card.js
-    type: module
-  - url: /hacsfiles/flex-table-card/flex-table-card.js
-    type: module
+
   
 background: var(--background-image)
 excluded_entities:
@@ -30,6 +12,7 @@ title: Home
 views:
   - !include '/config/lovelace/alert.yaml'
   - !include '/config/lovelace/home.yaml'
+  - !include '/config/lovelace/TV.yaml'
   - !include '/config/lovelace/alexa.yaml'
   - !include '/config/lovelace/octopus.yaml'
   - !include '/config/lovelace/car.yaml'

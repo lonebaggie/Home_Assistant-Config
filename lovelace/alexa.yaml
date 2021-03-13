@@ -7,14 +7,19 @@
       title: Alexa
       cards:
         - type: glance
-          columns: 4
+          columns: 2
           entities:
             - entity: media_player.lr_dot
               name: Living Room
             - entity: media_player.k_dot
               name: Kitchen
+        - type: glance
+          columns: 2
+          entities:
             - entity: media_player.echo_show_5
               name: Bedroom
+        
+            
     - type: horizontal-stack
       cards:
         - type: entities
@@ -29,4 +34,7 @@
               name: Text to Command
             - entity: input_select.echo_sounds
               name: Sound effects
-        
+              
+              
+              
+            

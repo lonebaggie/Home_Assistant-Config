@@ -1,5 +1,4 @@
 moodlight:
   sequence:
-    - service: scene.turn_on
-      data_template:
-        entity_id: 'scene.{{states.input_select.light_state.state}}'
+    - service_template: 'script.{{states.input_select.light_state.state}}'
+      

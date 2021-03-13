@@ -12,9 +12,9 @@
       - 'beat'
   - platform: template
     sensors:
-      last_alexa:
+      media_source:
         value_template: >
-          {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+          {{state_attr('media_player.lg_webos_smart_tv','source')}}
       light_state:
         friendly_name: "living room Light state"
         value_template: >
@@ -22,11 +22,11 @@
               Off
           {% elif (is_state_attr('light.all_living_room','color_temp',500))
           or (is_state_attr('light.all_living_room','color_temp',454))
-          and (is_state_attr('light.all_living_room','brightness',10))
+          and (is_state_attr('light.all_living_room','brightness',12))
           %}
               Dark
-          {% elif (is_state_attr('light.all_living_room','color_temp',423))
-          and (is_state_attr('light.all_living_room','brightness',160))
+          {% elif (is_state_attr('light.all_living_room','color_temp',416))
+          and (is_state_attr('light.all_living_room','brightness',104))
           %}
               Relaxed
           {% elif (is_state_attr('light.all_living_room','color_temp',153))
@@ -37,9 +37,10 @@
           {% else %}
               Unknown
           {% endif %}
-      harmony:
-        friendly_name: "Harmony"
-        value_template: "{{states.remote.harmony_hub.attributes.current_activity}}"
+      last_alexa:
+        value_template: >
+          {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+      
       agile_alert:
         value_template: >
           {% if states.sensor.octopus_current_price.state|float < 5 %}
