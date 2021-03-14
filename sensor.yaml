@@ -22,7 +22,7 @@
               Off
           {% elif (is_state_attr('light.all_living_room','color_temp',500))
           or (is_state_attr('light.all_living_room','color_temp',454))
-          and (is_state_attr('light.all_living_room','brightness',12))
+          and (is_state_attr('light.all_living_room','brightness',2))
           %}
               Dark
           {% elif (is_state_attr('light.all_living_room','color_temp',416))

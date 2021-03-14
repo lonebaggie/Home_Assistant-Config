@@ -1,0 +1,29 @@
+  title: LG TV
+  visible: true
+  path: TV
+  icon: 'mdi:television'
+  badges: []
+  cards:
+    - type: horizontal-stack
+      title: TV
+      cards:
+        - type: 'custom:lg-remote-control'
+          entity: media_player.lg_webos_smart_tv
+          colors:
+            background: rgba(0, 51, 0)
+          sources:
+            - icon: 'mdi:netflix'
+              name: "Netflix"
+            - icon: 'mdi:amazon'
+              name: "Amazon Prime Video"
+            - icon: 'mdi:youtube'
+              name: "YouTube"
+            - icon: 'mdi:alpha-n-box-outline'
+              name: "NOW TV"
+          channels:
+            - image: /local/png/bbc1.png
+              number: '106'
+            - image: /local/png/bbc2.png
+              number: '102'
+            - image: /local/png/itv1.png
+              number: '103'
