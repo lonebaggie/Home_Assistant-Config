@@ -10,7 +10,7 @@ dark:
             - service: light.turn_on
               target:
                 entity_id: light.living_room
-            - delay: 00:00:02
+            - delay: 00:00:08
     - service: light.turn_on
       data:
         color_temp: 500
@@ -18,7 +18,7 @@ dark:
       target:
         entity_id:
           - light.all_living_room
-    - delay: 00:00:01
+    - delay: 00:00:03
     - service: light.turn_on
       data:
         brightness_pct: 2

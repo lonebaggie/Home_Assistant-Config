@@ -1,15 +1,15 @@
 audio: >
-  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"clearAudio", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"clearAudio", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 music: >
-  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"music", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"music", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 movie: >
-  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"movie", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"movie", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 default: >
-    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"standard", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"standard", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 sports: >
-  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"sports", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+  curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"sports", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 game: >
-    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"game", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.1.79:10000/sony/audio
+    curl -i -d '{ "method":"setSoundSettings", "id":5, "params":[ { "settings":[ { "value":"game", "target":"soundField" } ] } ], "version":"1.1" }' http://192.168.0.20:10000/sony/audio
 
 
 

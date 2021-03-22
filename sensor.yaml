@@ -26,7 +26,7 @@
           %}
               Dark
           {% elif (is_state_attr('light.all_living_room','color_temp',416))
-          and (is_state_attr('light.all_living_room','brightness',104))
+          and (is_state_attr('light.all_living_room','brightness',102))
           %}
               Relaxed
           {% elif (is_state_attr('light.all_living_room','color_temp',153))

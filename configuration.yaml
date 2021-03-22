@@ -28,7 +28,6 @@ recorder:
 discovery:  
 # Enables configuration UI
 config:
-browser_mod:
 http:
   # Secrets are defined in the file secrets.yaml
   #api_password: !secret http_password
@@ -124,18 +123,18 @@ media_player: !include mediaplayer.yaml
 switch: !include switch.yaml
 notify: !include notify.yaml
 shell_command: !include shell_command.yaml
-timer: !include timer.yaml
+
 xiaomi_gateway3:
   debug: true
 wake_on_lan: # enables `wake_on_lan` domain
 webostv:
-  host: 192.168.1.38
+  host: 192.168.0.19
   #other settings
   turn_on_action:
     service: wake_on_lan.send_magic_packet
     data:
       mac: 64:95:6C:FD:0D:5F
-      broadcast_address: 192.168.1.255
+      broadcast_address: 192.168.0.255
   customize:
     sources:
       - AV
@@ -145,9 +144,6 @@ webostv:
       - BBC iPlayer
       - Blu-ray Player
       - Disney+
-      - HDMI 1
-      - HDMI 2
-      - HDMI 3
       - Live TV
       - NOW TV
       - Netflix

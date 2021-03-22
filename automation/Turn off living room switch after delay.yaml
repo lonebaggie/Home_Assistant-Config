@@ -1,0 +1,13 @@
+alias: Turn off Living room switch with delay  when light off
+description: Turn off Living room switch after delay
+trigger:
+  entity_id: light.all_living_room
+  platform: state
+  to: 'off'
+  for: "00:00:30"
+
+
+action:
+  - service: light.turn_off
+    data:
+      entity_id: light.living_room

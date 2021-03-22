@@ -9,6 +9,8 @@ preload:
   - conditional
   - entities
 title: Home
+layout:
+      width: 300
 views:
   - !include '/config/lovelace/alert.yaml'
   - !include '/config/lovelace/home.yaml'

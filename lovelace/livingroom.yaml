@@ -1,99 +1,99 @@
-  title: Living Room
-  visible: false
-  path: livingroom
-  icon: 'mdi:sofa'
-  badges: []
-  cards:
-    - type: vertical-stack
-      title: Living Room
-      cards:
-        - type: custom:layout-card
-          layout: horizontal
-          title: Living Room
-          column_num: 3
-          cards:
-            - type: glance
+title: Living Room
+visible: false
+path: livingroom
+icon: 'mdi:sofa'
+badges: []
+cards:
+  - type: vertical-stack
+    title: Living Room
+    cards:
+      - type: custom:layout-card
+        layout_type: horizontal
+        layout_options:
+          width: 180
+          max_cols: 2
+        title: Living Room
+        column_num: 3
+        cards:
+          - type: glance
+            columns: 3
+            entities:
+              - entity: media_player.lg_webos_smart_tv
+                name: TV
+                icon: mdi:television
+                tap_action: 
+                  action: navigate
+                  navigation_path: /lovelace/TV
+                hold_action:
+                  action: none
+              - entity: binary_sensor.0x158d00019e18bf_contact
+                name: Patio 
+              - entity: sensor.0x158d00054087ae_temperature
+                name: Inside
+          - type: entity-filter
+            entities:
+              - entity: switch.0x158d00016cf4bc_switch
+                name: Switch
+                icon: mdi:light-switch
+                tap_action:
+                  action: toggle
+              - entity: switch.plug_1
+                name: Plug 1
+                icon: mdi:power-socket-uk
+                tap_action:
+                  action: toggle
+              - entity: switch.plug_2
+                name: Plug 2
+                icon: mdi:power-socket-uk
+                tap_action:
+                  action: toggle
+            state_filter:
+              - 'on'
+              - 'off'
+            card:
+              type: glance
               columns: 3
-              entities:
-                - entity: media_player.lg_webos_smart_tv
-                  name: TV
-                  icon: mdi:television
-                  tap_action: 
-                    action: navigate
-                    navigation_path: /lovelace/TV
-                  hold_action:
-                    action: none
-                - entity: binary_sensor.0x158d00019e18bf_contact
-                  name: Patio 
-                - entity: sensor.0x158d00054087ae_temperature
-                  name: Inside
-                
-            - type: entity-filter
-              entities:
-                - entity: switch.0x158d00016cf4bc_switch
-                  name: Switch
-                  icon: mdi:light-switch
-                  tap_action:
+          - type: glance
+            coloums: 3
+            entities:
+              - entity: switch.dark
+                name: Dark 
+                icon: mdi:lightbulb-multiple
+                tap_action:
                     action: toggle
-                - entity: switch.plug_1
-                  name: Plug 1
-                  icon: mdi:power-socket-uk
-                  tap_action:
+              - entity: switch.relaxed
+                name: Relaxed 
+                icon: mdi:lightbulb-multiple
+                tap_action:
                     action: toggle
-                - entity: switch.plug_2
-                  name: Plug 2
-                  icon: mdi:power-socket-uk
-                  tap_action:
-                    action: toggle
-              
-              state_filter:
-                - 'on'
-                - 'off'
-              card:
+              - entity: switch.bright
+                name: Bright 
+                icon: mdi:lightbulb-multiple
+                tap_action:
+                  action: toggle
+          
+          - type: conditional
+            conditions:
+              - entity: light.living_room
+                state: "on"
+            card:
                 type: glance
-                columns: 3
-            - break
-            - type: glance
-              coloums: 3
-              entities:
-                - entity: switch.dark
-                  name: Dark 
-                  icon: mdi:lightbulb-multiple
-                  tap_action:
+                coloums: 3
+                entities:
+                  - entity: light.all_living_room
+                    name: Living
+                    icon: mdi:lightbulb
+                    tap_action:
                       action: toggle
-                - entity: switch.relaxed
-                  name: Relaxed 
-                  icon: mdi:lightbulb-multiple
-                  tap_action:
+                  - entity: light.sitting_room
+                    name: Sitting
+                    icon: mdi:lightbulb
+                    tap_action:
                       action: toggle
-                - entity: switch.bright
-                  name: Bright 
-                  icon: mdi:lightbulb-multiple
-                  tap_action:
-                    action: toggle
-            
-            - type: conditional
-              conditions:
-                - entity: light.living_room
-                  state: "on"
-              card:
-                 type: glance
-                 coloums: 3
-                 entities:
-                    - entity: light.all_living_room
-                      name: Living
-                      icon: mdi:lightbulb
-                      tap_action:
-                        action: toggle
-                    - entity: light.sitting_room
-                      name: Sitting
-                      icon: mdi:lightbulb
-                      tap_action:
-                        action: toggle
-                    - entity: light.dining_room
-                      name: Dining
-                      icon: mdi:lightbulb
-                      tap_action:
-                        action: toggle 
-        
-           
+                  - entity: light.dining_room
+                    name: Dining
+                    icon: mdi:lightbulb
+                    tap_action:
+                      action: toggle 
+      
+          

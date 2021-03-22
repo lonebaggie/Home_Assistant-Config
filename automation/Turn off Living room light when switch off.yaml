@@ -1,0 +1,12 @@
+alias: Turn off Living room light when switch off
+description: Turn  off All Living room light when switch off
+trigger:
+  entity_id: switch.0x158d00016cf4bc_switch
+  platform: state
+  from: 'on'
+  to: 'off'
+
+action:
+  service: light.turn_off
+  data:
+    entity_id: light.all_living_room

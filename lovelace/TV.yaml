@@ -3,27 +3,116 @@
   path: TV
   icon: 'mdi:television'
   badges: []
+  panel: false
   cards:
-    - type: horizontal-stack
+    - type: grid
       title: TV
+      columns: 2
+      square: false
       cards:
-        - type: 'custom:lg-remote-control'
+        - type: custom:mini-media-player
+          volume_stateless: true
+          hide:
+            source: true
+            prev: true
+            next: true
+            play_pause: true
+            play_stop: true
+            
           entity: media_player.lg_webos_smart_tv
-          colors:
-            background: rgba(0, 51, 0)
-          sources:
-            - icon: 'mdi:netflix'
-              name: "Netflix"
-            - icon: 'mdi:amazon'
-              name: "Amazon Prime Video"
-            - icon: 'mdi:youtube'
-              name: "YouTube"
-            - icon: 'mdi:alpha-n-box-outline'
-              name: "NOW TV"
-          channels:
-            - image: /local/png/bbc1.png
-              number: '106'
-            - image: /local/png/bbc2.png
-              number: '102'
-            - image: /local/png/itv1.png
-              number: '103'
+          shortcuts:
+            columns: 4
+            buttons:
+              - icon: mdi:television
+                name: Live TV
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.live_tv
+              - icon: mdi:netflix
+                name: Netflix
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.netflix
+              - icon: mdi:amazon
+                name: Prime
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.prime
+              - icon: mdi:alpha-n-box
+                name: NOW TV
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.now
+              - icon: mdi:disc-player
+                name: Blu-Ray
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.dvd
+              - icon: mdi:youtube
+                name: YouTube
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.you_tube
+              - icon: mdi:television-play
+                name: iPlayer
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.iplayer
+              - icon: mdi:web
+                name: Web
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.browser
+              
+                
+                 
+        - type: custom:mini-media-player
+          volume_stateless: true
+          hide:
+            source: true
+          entity: media_player.ht_xt2
+          shortcuts:
+            columns: 4
+            buttons:
+              - icon: mdi:television
+                name: Televison
+                type: source
+                id: "TV"
+              - icon: mdi:bluetooth
+                name: Audio
+                type: source
+                id: "Bluetooth Audio"
+              - icon: mdi:television
+                name: Televison
+                type: source
+                id: "TV"
+              - icon: mdi:bluetooth
+                name: Audio
+                type: source
+                id: "Bluetooth Audio"
+              - icon: mdi:television
+                name: Televison
+                type: source
+                id: "TV"
+              - icon: mdi:bluetooth
+                name: Audio
+                type: source
+                id: "Bluetooth Audio"
+              - icon: mdi:television
+                name: Televison
+                type: source
+                id: "TV"
+              - icon: mdi:bluetooth
+                name: Audio
+                type: source
+                id: "Bluetooth Audio"
+                
+                 

@@ -1,0 +1,16 @@
+alias: Sync living room light with switch
+description: Sync living room light with switch
+trigger:
+  entity_id: light.all_living_room
+  platform: state
+  from: 'off'
+  to: 'on'
+condition:
+  entity_id: switch.0x158d00016cf4bc_switch
+  condition: state
+  state: 'off'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: light.living_room
+  
