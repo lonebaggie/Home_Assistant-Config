@@ -40,7 +40,11 @@ cards:
             - state: '2 days'
             - domain: media_player
               state: 'on'
-            - entity_id: binary_sensor.*_door
+            - entity_id: binary_sensor.0x158d00019e18bf_contact
+              state: 'on'
+            - entity_id: binary_sensor.0x158d0002b82d0a_contact
+              state: 'on'
+            - entity_id: binary_sensor.0x158d0004a04770_contact
               state: 'on'
             - entity_id: binary_sensor.*_leak_sensor
               state: 'on'
