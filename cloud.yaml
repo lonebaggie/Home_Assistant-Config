@@ -1,5 +1,0 @@
-  alexa:
-    entity_config:
-      switch.roku:
-        name: "movies"
-        

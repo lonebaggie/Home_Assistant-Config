@@ -4,8 +4,10 @@
   icon: mdi:circle-double
   badges: []
   cards:
-    - type: horizontal-stack
+    - type: grid
       title: Binary Sensors
+      columns: 1
+      square: false
       cards:
         - type: custom:auto-entities
           card:

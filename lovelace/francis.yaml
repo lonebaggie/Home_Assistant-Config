@@ -4,8 +4,10 @@
   icon: 'mdi:bed'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Francis
+    - type: grid
+      title: Francis room 
+      columns: 2
+      square: false
       cards:
         - type: glance
           columns: 2

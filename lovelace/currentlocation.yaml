@@ -4,8 +4,10 @@
   icon: 'mdi:account'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Current location
+    - type: grid
+      title: Location 
+      columns: 2
+      square: false
       cards:
         - type: glance
           entities:

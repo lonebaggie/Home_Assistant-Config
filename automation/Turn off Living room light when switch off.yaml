@@ -1,3 +1,4 @@
+id: turn_off_living_room_light_when_switched_off
 alias: Turn off Living room light when switch off
 description: Turn  off All Living room light when switch off
 trigger:

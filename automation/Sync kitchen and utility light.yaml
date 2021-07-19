@@ -1,3 +1,5 @@
+
+id: sync_kitchen_and_utility_light
 alias: Sync Kitchen and Utility Light
 description: Turn off utility light when Kitchen off
 trigger:

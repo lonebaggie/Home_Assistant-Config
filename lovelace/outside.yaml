@@ -4,21 +4,25 @@
   icon: 'mdi:flower'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Outside
-      cards:
-        - type: glance
-          columns: 2
-          entities:
-            - entity: light.outside
-              name: Light 
-              tap_action:
-                action: toggle
-            - entity: camera.blink_front_door
-              name: Camera     
-        - type: glance
-          columns: 2
-          entities:
-            - entity: sensor.garden_waste
-              name: Garden
-              
+  - type: grid
+    title: Outside
+    columns: 2
+    square: false
+    cards:
+      - type: glance
+        columns: 2
+        entities:
+          - entity: light.outside
+            name: Light 
+            tap_action:
+              action: toggle
+          - entity: camera.blink_front_door
+            name: Camera     
+      - type: glance
+        columns: 2
+        entities:
+          - entity: sensor.garden_waste
+            name: Garden
+          - entity: sensor.outside_temp
+            name: Temperature
+            

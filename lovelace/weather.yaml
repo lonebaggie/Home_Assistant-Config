@@ -14,11 +14,7 @@
               graph: line
             - type: sensor
               name: Outside Tempeature
-              entity: sensor.blink_front_door_temperature
+              entity: sensor.outside_temp
               graph: line
         - type: weather-forecast
           entity: weather.home
-        
-
-
-      

@@ -4,8 +4,10 @@
   icon: 'mdi:airport'
   badges: []
   cards:
-    - type: horizontal-stack
+    - type: grid
       title: Landing
+      columns: 2
+      square: false
       cards:
         - type: glance
           columns: 2

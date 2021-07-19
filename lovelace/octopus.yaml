@@ -3,13 +3,25 @@ path: octopus
 icon: 'mdi:flash'
 badges: []
 cards:
-  - type: horizontal-stack
+  - type: grid
     title: Octopus Energy
+    columns: 2
+    square: false
     cards:
       - type: gauge
-        name: Octopus Agile rate
+        name: Current rate
         unit: 'p/kWh'
-        entity: sensor.octopus_current_price
+        entity: sensor.octopus_agile_current_rate
+        min: -5
+        max: 35
+        severity:
+          green: 0
+          yellow: 11
+          red: 16
+      - type: gauge
+        name: Next rate
+        unit: 'p/kWh'
+        entity: sensor.octopus_agile_next_rate
         min: -5
         max: 35
         severity:
@@ -17,42 +29,21 @@ cards:
           yellow: 11
           red: 16
       - type: entities
-        title: Best hourly rates
         entities:
-          - entity: sensor.octopus_1hour_price
-            name: 1 Hour Rate
-            secondary_info: "Time: {{states('sensor.octopus_1hour_time')[11:16]}}"
-            
-          - entity: sensor.octopus_2hour_price
-            name: 2 Hour Rate
-            secondary_info: "Time: {{states('sensor.octopus_2hour_time')[11:16]}}"
-            
-  - type: horizontal-stack
-    cards:
+          - type: custom:template-entity-row
+            entity: octopusagile.monthly_cost
+            name: Cost per month
+            secondary:  >
+              {{states.octopusagile.monthly_usage.state}} kWh
       - type: entities
         entities:
-          - entity: sensor.octopus_monthly_cost
-            name: Electric cost per month
-            secondary_info:
-              entity: sensor.octopus_monthly_usage
-              prefix: 'usage '
-              postfix: ' kwh'
-          - entity: sensor.octopus_yearly_cost
-            name: Electric cost per year
-            secondary_info:
-              entity: sensor.octopus_yearly_usage
-              prefix: 'usage '
-              postfix: ' kwh'
-          - entity: sensor.octopus_monthly_gas_cost
-            name: Gas cost per month
-            secondary_info:
-              entity: sensor.octopus_monthly_gas_usage
-              prefix: 'usage '
-              postfix: ' m3'
-          - entity: sensor.octopus_yearly_gas_cost
-            name: Gas cost per year
-            secondary_info:
-              entity: sensor.octopus_yearly_gas_usage
-              prefix: 'usage '
-              postfix: ' m3'
+          - type: custom:template-entity-row   
+            entity: octopusagile.yearly_cost
+            name: Cost per year
+            secondary:  >
+              {{states.octopusagile.yearly_usage.state}} kWh
             
+     
+      
+        
+     

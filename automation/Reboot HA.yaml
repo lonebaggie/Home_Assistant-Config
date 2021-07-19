@@ -1,3 +1,4 @@
+id: restart_ha
 # restart HA to keep it fresh
 alias: Restart HA
 trigger:

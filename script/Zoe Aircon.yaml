@@ -1,6 +1,0 @@
-zoe_aircon:
-  sequence:
-    - service: renault.ac_start
-      data:
-        vin: vf1ag000662787757
-        temperature: 21

@@ -1,3 +1,4 @@
+id: alexa_sound_effects
 alias: Alexa Sound effects
 description: Allows sound effects to alexa via input_text
 trigger:

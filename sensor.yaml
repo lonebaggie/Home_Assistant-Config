@@ -1,3 +1,33 @@
+  - platform: rest
+    name: Quote of the Day
+    resource: https://quotes.rest/qod?language=en
+    scan_interval: 43200
+    json_attributes_path: '$.contents.quotes[0]'
+    json_attributes:
+      - quote
+      - author
+      - category
+    value_template: 'OK'
+  - platform: rest
+    name: corsa
+    resource: !secret psa_url1
+    scan_interval: 60
+    timeout: 30
+    value_template: 'OK'
+    json_attributes:
+     - energy
+     - timed_odometer
+     - battery
+  - platform: rest
+    name: corsa_charge_control
+    resource: !secret psa_url2
+    scan_interval: 60
+    timeout: 30
+    value_template: 'OK'
+    json_attributes:
+     - _next_stop_hour
+     - percentage_threshold
+      
   - platform: uptime
     name: HA up-time
   - platform: moon
@@ -12,9 +42,48 @@
       - 'beat'
   - platform: template
     sensors:
+      corsa_stop_hour:
+        friendly_name: "Next Stop Time"
+        value_template: '{{ states.sensor.corsa_charge_control.attributes["_next_stop_hour"]}}'
+      corsa_threshold:
+        friendly_name: "Threshold"
+        unit_of_measurement: "%"
+        value_template: '{{ states.sensor.corsa_charge_control.attributes["percentage_threshold"] }}'
+      corsa_battery_voltage:
+        friendly_name: "Battery Voltage"
+        unit_of_measurement: "V"
+        value_template: '{{ states.sensor.corsa.attributes["battery"]["voltage"] * 4 }}'
+      corsa_battery_level:
+        friendly_name: "Battery"
+        unit_of_measurement: "%"
+        value_template: '{{ states.sensor.corsa.attributes["energy"][0]["level"] }}'
+      corsa_battery_autonomy:
+        friendly_name: "Autonomy"
+        unit_of_measurement: "mi"
+        value_template: '{{ (states.sensor.corsa.attributes["energy"][0]["autonomy"]*0.62137)|round(0)}}'
+      corsa_charging_status:
+        friendly_name: "Charging Status"
+        value_template: '{{ states.sensor.corsa.attributes["energy"][0]["charging"]["status"] }}'
+      corsa_charging_speed:
+        friendly_name: "Charging Speed"
+        value_template: '{{ states.sensor.corsa.attributes["energy"][0]["charging"]["charging_rate"] }}'
+      corsa_charging_mode:
+        friendly_name: "Charging Mode"
+        value_template: '{{ states.sensor.corsa.attributes["energy"][0]["charging"]["charging_mode"] }}'
+      corsa_mileage:
+        friendly_name: "Mileage"
+        unit_of_measurement: "mi"
+        value_template: '{{ (states.sensor.corsa.attributes["timed_odometer"]["mileage"]* 0.62137)| round(0) }}'
+      outside_temp:
+        unit_of_measurement: "°C"
+        value_template: >
+          {{state_attr('weather.home','temperature')|float|round(2)}}
       media_source:
         value_template: >
           {{state_attr('media_player.lg_webos_smart_tv','source')}}
+      media_channel:
+        value_template: >
+          {{state_attr('media_player.lg_webos_smart_tv','media_title')}}
       light_state:
         friendly_name: "living room Light state"
         value_template: >
@@ -41,62 +110,5 @@
         value_template: >
           {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
       
-      agile_alert:
-        value_template: >
-          {% if states.sensor.octopus_current_price.state|float < 5 %}
-            Very Low
-          {% elif states.sensor.octopus_current_price.state|float < 9 %}
-            Low 
-          {% elif states.sensor.octopus_current_price.state|float < 13 %}
-            Below Average
-          {% elif states.sensor.octopus_current_price.state|float < 17 %}
-            Average
-          {% elif states.sensor.octopus_current_price.state|float < 21 %}
-            Above Average
-          {% elif states.sensor.octopus_current_price.state|float < 25 %}
-            High
-          {% elif states.sensor.octopus_current_price.state|float < 36 %}
-            Very High
-          {% else %}
-            Unknown
-          {% endif %}
-      plug1_voltage:
-        value_template: >-
-          {{ states.switch.plug1.attributes.voltage }}
-        unit_of_measurement: 'V' 
-      plug1_current:
-        value_template: >-     
-          {{ states.switch.plug1.attributes.current }}
-        unit_of_measurement: 'mA'      
-      plug1_current_consumption:
-        value_template: >-
-          {{ states.switch.plug1.attributes.current_consumption }}
-        unit_of_measurement: 'W' 
-      plug2_voltage:
-        value_template: >-
-          {{ states.switch.plug2.attributes.voltage }}
-        unit_of_measurement: 'V' 
-      plug2_current:
-        value_template: >-     
-          {{ states.switch.plug2.attributes.current }}
-        unit_of_measurement: 'mA'      
-      plug2_current_consumption:
-        value_template: >-
-          {{ states.switch.plug2.attributes.current_consumption }}
-        unit_of_measurement: 'W'
-  - platform: systemmonitor
-    resources:
-      - type: disk_free
-        arg: /
-      - type: disk_use_percent
-        arg: /
-      - type: memory_free
-      - type: memory_use
-      - type: swap_use
-      - type: swap_free
-      - type: processor_use
-      - type: last_boot
-  
-        
     
   

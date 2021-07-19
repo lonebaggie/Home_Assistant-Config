@@ -1,3 +1,4 @@
+id: dummy_light_to_input_select
 alias: Dummy light to input select
 description: Trigger input select from dummy light
 trigger:

@@ -4,22 +4,24 @@
   icon: 'mdi:washing-machine'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Utility
-      cards:
-        - type: glance
-          entities:
-            - entity: light.utility
-              name: Light
-              tap_action:
-                action: toggle
-            - entity: sensor.0x158d00031ce0c7_action
-              name: Vibration
-        - type: glance
-          columns: 2
-          entities:
-            - entity: binary_sensor.0x158d0001c3472b_moisture
-              name: Leak
-            - entity: binary_sensor.0x158d0002b82d0a_contact
-              name: Back door
-           
+  - type: grid
+    title: Utility
+    columns: 2
+    square: false
+    cards:
+      - type: glance
+        entities:
+          - entity: light.utility
+            name: Light
+            tap_action:
+              action: toggle
+          - entity: sensor.0x158d00031ce0c7_action
+            name: Vibration
+      - type: glance
+        columns: 2
+        entities:
+          - entity: binary_sensor.0x158d0001c3472b_moisture
+            name: Leak
+          - entity: binary_sensor.0x158d0002b82d0a_contact
+            name: Back door
+         

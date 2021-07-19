@@ -4,17 +4,19 @@
   icon: mdi:toggle-switch
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Switches
-      cards:
-        - type: custom:auto-entities
-          card:
-            type: glance
-            columns: 4
-            show_header_toggle: false
-          filter:
-            include:
-              - entity_id: switch.*
-          sort:
-            method: attribute
-            attribute: friendly_name
+  - type: grid
+    title: Switches
+    columns: 1
+    square: false
+    cards:
+      - type: custom:auto-entities
+        card:
+          type: glance
+          columns: 4
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: switch.*
+        sort:
+          method: attribute
+          attribute: friendly_name

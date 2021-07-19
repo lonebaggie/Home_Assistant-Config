@@ -18,10 +18,11 @@
             next: true
             play_pause: true
             play_stop: true
-            
           entity: media_player.lg_webos_smart_tv
+          icon: mdi:television
           shortcuts:
-            columns: 4
+            columns: 2
+            hide_when_off: true
             buttons:
               - icon: mdi:television
                 name: Live TV
@@ -42,7 +43,7 @@
                 data:
                   entity_id: switch.prime
               - icon: mdi:alpha-n-box
-                name: NOW TV
+                name: NOW 
                 type: service
                 id: switch.turn_on
                 data:
@@ -71,48 +72,69 @@
                 id: switch.turn_on
                 data:
                   entity_id: switch.browser
-              
-                
-                 
+              - icon: mdi:television
+                name: Screen
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.tv_screen
+              - icon: mdi:television-off
+                name: Screen
+                type: service
+                id: switch.turn_off
+                data:
+                  entity_id: switch.tv_screen
         - type: custom:mini-media-player
           volume_stateless: true
           hide:
             source: true
           entity: media_player.ht_xt2
+          icon: mdi:speaker
           shortcuts:
-            columns: 4
+            hide_when_off: true
+            columns: 2
             buttons:
               - icon: mdi:television
-                name: Televison
+                name: TV
                 type: source
                 id: "TV"
               - icon: mdi:bluetooth
                 name: Audio
                 type: source
                 id: "Bluetooth Audio"
-              - icon: mdi:television
-                name: Televison
-                type: source
-                id: "TV"
-              - icon: mdi:bluetooth
-                name: Audio
-                type: source
-                id: "Bluetooth Audio"
-              - icon: mdi:television
-                name: Televison
-                type: source
-                id: "TV"
-              - icon: mdi:bluetooth
-                name: Audio
-                type: source
-                id: "Bluetooth Audio"
-              - icon: mdi:television
-                name: Televison
-                type: source
-                id: "TV"
-              - icon: mdi:bluetooth
-                name: Audio
-                type: source
-                id: "Bluetooth Audio"
-                
-                 
+              - icon: mdi:speaker
+                name: Default
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_default
+              - icon: mdi:speaker
+                name: Clear
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_clear
+              - icon: mdi:speaker
+                name: Movie
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_movie
+              - icon: mdi:speaker
+                name: Music
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_game
+              - icon: mdi:speaker
+                name: Game
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_sports
+              - icon: mdi:speaker
+                name: Sports
+                type: service
+                id: switch.turn_on
+                data:
+                  entity_id: switch.audio_game

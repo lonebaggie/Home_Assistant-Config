@@ -4,8 +4,10 @@
   icon: 'mdi:clock'
   badges: []
   cards:
-    - type: horizontal-stack
+    - type: grid
       title: Timers
+      columns: 1
+      square: false
       cards:
         - type: 'custom:auto-entities'
           card:

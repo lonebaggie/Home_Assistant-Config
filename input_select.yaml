@@ -12,28 +12,18 @@
   entity_list:
     name : Entity List
     options:
-      - binary_sensor.front_door
-      - binary_sensor.patio_door
-      - sensor.vf1ag000662787757_battery_level
-      - sensor.zoe_range_ml
-      - sensor.octopus_current_price
-      - sensor.agile_alert
-      - sensor.octopus_1hour_time
-      - sensor.octopus_1hour_price
-      - sensor.octopus_2hour_time
-      - sensor.octopus_2hour_price
+      - binary_sensor.0x158d0004a04770_contact
+      - binary_sensor.0x158d00019e18bf_contact
+      - sensor.corsa_battery_level
+      - sensor.corsa_battery_autonomy
   speak_list:
     name: Speak List
     options:
       - do not use
       - Good (gr), today is (td)
       - Good (gr), the time is (tt) 
-      - The Patio door is (e01s)
-      - Zoe's Battery level is (e02s), and the current range is (e03s) miles 
-      - The Patio door is (e01s)
-      - The current electricity price is (e04$) pence, this is (e05$)
-      - The best 1 hour time slot is {{'(e06$)'[11:16]}}, with a price of (e07$) pence
-      - The best 2 hour time slot is {{'(e08$)'[11:16]}},with a price of (e09$) pence
+      - The (e01f) is (e01$)
+      - The Corsa's (e02f) is (e02s) and range is (e03s)
   echo_sounds:
     name: Echo sound effects
     initial: ' '

@@ -4,8 +4,10 @@
   icon: 'mdi:clock'
   badges: []
   cards:
-    - type: horizontal-stack
+    - type: grid
       title: Hall
+      columns: 2
+      square: false
       cards:
         - type: glance
           columns: 2
@@ -25,8 +27,6 @@
               name: Hall Leak
             - entity: binary_sensor.0x158d0001655f53_motion
               name: Motion Detector
-    - type: horizontal-stack
-      cards:
         - type: glance
           columns: 2
           entities:

@@ -3,11 +3,13 @@
   icon: 'mdi:grid'
   badges: []
   cards:
-  - type: vertical-stack
+  - type: grid
     title: All Entities
+    columns: 2
+    square: false
     cards:
       - type: glance 
-        columns: 4
+        columns: 2
         entities:
           - entity: input_boolean.icon
             name: Battery
@@ -64,7 +66,9 @@
               navigation_path: /lovelace/media
             hold_action:
               action: none
-          
+      - type: glance 
+        columns: 2
+        entities:
           - entity: input_boolean.icon
             name: Sand box
             show_state: false
@@ -99,14 +103,4 @@
             tap_action: 
               action: navigate
               navigation_path: /lovelace/timers
-          - entity: input_boolean.icon
-            name: Zigbee
-            icon: mdi:zigbee
-            show_state: false
-            tap_action: 
-              action: navigate
-              navigation_path: /lovelace/zigbee
-              
-            
-          
           

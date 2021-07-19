@@ -3,36 +3,44 @@
   icon: 'mdi:car-electric'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Zoe
-      cards:
-        - type: gauge
-          name: battery
-          unit: '%'
-          entity: sensor.vf1ag000662787757_battery_level
-          severity:
-            green: 80
-            yellow: 40
-            red: 15
-        - type: gauge
-          name: Range
-          unit: 'ml'
-          entity: sensor.vf1ag000662787757_battery_autonomy
-          min: 0
-          max: 184
-          severity:
-            green: 100
-            yellow: 50
-            red: 20
-    - type: horizontal-stack
-      cards:
-        - type: entity
-          entity: sensor.vf1ag000662787757_plug_state
-          name: Status
-          icon: mdi:power-plug
-        - type: entity
-          entity: binary_sensor.vf1ag000662787757_charging
-
-          name: Charging
-          icon: mdi:flash
+   - type: grid
+     title: Corsa-E
+     columns: 2
+     square: false
+     cards:
+      - type: gauge
+        name: battery
+        entity: sensor.corsa_battery_level
+        severity:
+          green: 80
+          yellow: 40
+          red: 15
+      - type: gauge
+        name: Range
+        entity: sensor.corsa_battery_autonomy
+        min: 0
+        max: 230
+        severity:
+          green: 160
+          yellow: 90
+          red: 40
+      - type: glance
+        columns: 2
+        entities:
+         - entity: sensor.corsa_mileage
+           name: Mileage
+         - entity: sensor.corsa_charging_status
+           name: Cable
+      - type: conditional
+        conditions:
+          - entity: sensor.corsa_charging_status
+            state_not: Disconnected
+        card:
+          - type: glance
+            columns: 2
+            entities:
+             - entity: sensor.corsa_charging_mode
+               name: Mode
+             - entity: sensor.corsa_charging_speed
+               name: Speed
         

@@ -268,12 +268,6 @@ device_tracker.simon_phone:
   friendly_name: 'Simon '
 device_tracker.madeline_phone:
   friendly_name: 'Madeline '
-media_player.sat:
-  friendly_name: Gigablue
-  icon: mdi:television
-media_player.tv:
-  friendly_name: LG TV
-  icon: mdi:television
 sensor.vibration_battery:
   friendly_name: ' Vibration Sensor'
 device_tracker.maddy_phone:
@@ -390,8 +384,6 @@ switch.plug_1:
   icon: mdi:power
 media_player.ht_xt2:
   icon: mdi:speaker
-media_player.lg_webos_smart_tv:
-  icon: mdi:television
 media_player.echo_show_5:
   icon: mdi:amazon-alexa
 media_player.k_dot:
@@ -434,3 +426,27 @@ switch.prime:
   icon: mdi:amazon
 switch.iplayer:
   icon: mdi:television-play
+sensor.outside_temp:
+  icon: mdi:thermometer
+sensor.food_waste:
+  icon: mdi:delete
+sensor.household_waste:
+  icon: mdi:delete
+sensor.garden_waste:
+  icon: mdi:delete
+media_player.lg_webos_smart_tv:
+  icon: mdi:television
+sensor.corsa_battery_autonomy:
+  icon: mdi:gauge
+  device_class: power_factor
+sensor.corsa_battery_voltage:
+  icon: mdi:flash
+sensor.corsa_charging_speed:
+  icon: mdi:ev-station
+sensor.corsa_charging_status:
+  icon: mdi:cable-data
+sensor.corsa_mileage:
+  icon: mdi:counter
+sensor.corsa_battery_level:
+  icon: mdi:battery
+  device_class: battery

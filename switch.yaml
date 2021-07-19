@@ -19,25 +19,18 @@
             false
           {% endif %}
         turn_on:
-          
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
               source: Netflix
         turn_off:
-      prime:
-        value_template: >
-          {% if is_state('sensor.media_source','Amazon Prime Video') %}
-             true
-          {% else %}
-            false
-          {% endif %}
-        turn_on:
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
-              source: 'Amazon Prime Video'
-        turn_off:
+              source: 'Live TV'
       live_tv:
         value_template: >
           {% if is_state('sensor.media_source','Live TV') %}
@@ -46,26 +39,60 @@
             false
           {% endif %}
         turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
               source: 'Live TV'
         turn_off:
-      now:
+          - service: media_player.turn_off
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+          
+          
+      prime:
         value_template: >
-          {% if is_state('sensor.media_source','NOW TV') %}
+          {% if is_state('sensor.media_source','Amazon Prime Video') %}
              true
           {% else %}
             false
           {% endif %}
         turn_on:
-          
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
-              source: 'NOW TV'
+              source: 'Amazon Prime Video'
         turn_off:
-      you_tube:
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'Live TV'
+      now:
+        value_template: >
+          {% if is_state('sensor.media_source','NOW') %}
+             true
+          {% else %}
+            false
+          {% endif %}
+        turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'NOW'
+        turn_off:
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'Live TV'
+      tube:
         value_template: >
           {% if is_state('sensor.media_source','YouTube') %}
              true
@@ -73,11 +100,18 @@
             false
           {% endif %}
         turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
               source: 'YouTube'
         turn_off:
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'Live TV'
       browser:
         value_template: >
           {% if is_state('sensor.media_source','Web Browser') %}
@@ -86,34 +120,72 @@
             false
           {% endif %}
         turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
               source: 'Web Browser'
         turn_off:
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'Live TV'
       iplayer:
         value_template: >
-          {% if is_state('switch.iplayer','on') %}
+          {% if is_state('sensor.media_source','BBC iPlayer') %}
+            true
+          {% else %}
             false
           {% endif %}
         turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
               source: 'BBC iPlayer'
         turn_off:
-      
-      dvd:
-        value_template: >
-          {% if is_state('switch.dvd','on') %}
-            false
-          {% endif %}
-        turn_on:
           - service: media_player.select_source
             data:
               entity_id: media_player.lg_webos_smart_tv
-              source: 'Blu-ray Player'
+              source: 'Live TV'
+      
+      dvd:
+        value_template: >
+          {% if is_state('sensor.media_source','LG') %}
+             true
+          {% else %}
+            false
+          {% endif %}
+        turn_on:
+          - service: media_player.turn_on
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'LG'
         turn_off:
+          - service: media_player.select_source
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              source: 'Live TV'
+      tv_screen:
+        
+        turn_on:
+          - service: webostv.command
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              command: com.webos.service.tvpower/power/turnOnScreen
+        turn_off:
+          - service: webostv.command
+            data:
+              entity_id: media_player.lg_webos_smart_tv
+              command: com.webos.service.tvpower/power/turnOffScreen
+          
       dark:
         value_template: >
           {% if is_state('sensor.light_state','Dark') %}
@@ -235,6 +307,61 @@
             data:
               channel: "QUEST HD"
         turn_off:
+      audio_clear:
+        friendly_name: Audio Clear 
+        value_template: >
+          {% if is_state('switch.audio_clear','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.audio 
+        turn_off:
+      audio_movie:
+        friendly_name: Audio Movie 
+        value_template: >
+          {% if is_state('switch.audio_movie','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.movie
+        turn_off:
+      audio_music:
+        friendly_name: Audio Music 
+        value_template: >
+          {% if is_state('switch.audio_music','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.music
+        turn_off:
+      audio_delault:
+        friendly_name: Audio Default
+        value_template: >
+          {% if is_state('switch.audio_default','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.default
+        turn_off:
+      audio_game:
+        friendly_name: Audio Game
+        value_template: >
+          {% if is_state('switch.audio_game','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.game
+        turn_off:
+      audio_sports:
+        friendly_name: Audio Game
+        value_template: >
+          {% if is_state('switch.audio_sports','on') %}
+            false
+          {% endif %} 
+        turn_on:
+          - service: shell_command.sports
+        turn_off:
+        
       
       
         

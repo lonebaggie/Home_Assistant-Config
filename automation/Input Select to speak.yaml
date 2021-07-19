@@ -61,8 +61,12 @@ action:
                   {% set st = states[et].state_with_unit %}
                 {% endif %}
                 {% set dt = state_attr(et,"device_class")|string %}
-                {% if (dt != "None") and (st =='off' or st == 'on')  %} 
-                  {% set st = dy[dt][st|int] %}
+                {% if (dt != "None") and (st =='off' or st == 'on')  %}
+                  {% set bt = 0 %}
+                  {% if st == "on" %}
+                    {% set bt = 1 %}
+                  {% endif %}
+                  {% set st = dy[dt][bt] %}
                 {% endif %}
                 {% set rp = st %} 
               {% elif tn|regex_search('\(e..[bB]\)') %}
@@ -90,5 +94,3 @@ action:
     data:
       entity_id: light.alexa_virtual
       brightness_pct: "{{opt}}"
-    
-

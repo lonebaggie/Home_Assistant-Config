@@ -1,3 +1,4 @@
+id: alexa_command
 alias: Alexa Command
 description: Allows interactive tts to alexa via input_text
 

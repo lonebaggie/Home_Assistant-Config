@@ -4,25 +4,27 @@
   icon: 'mdi:bed'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Master Bedroom
-      cards:
-        - type: glance
-          entities:
-            - entity: light.master_bedroom
-              name: Light
-              tap_action:
-                action: toggle
-            - entity: media_player.echo_show_5
-              name: Echo Show
-        - type: glance
-          entities:
-            - entity: light.en_suite_light
-              name: En-Suite
-              tap_action:
-                action: toggle
-            - entity: switch.0x158d0001a6596b_channel_2
-              name: En-Suite Fan
-              tap_action:
-                action: toggle
-        
+  - type: grid
+    title: Master bedroom
+    columns: 2
+    square: false
+    cards:
+      - type: glance
+        entities:
+          - entity: light.master_bedroom
+            name: Light
+            tap_action:
+              action: toggle
+          - entity: media_player.echo_show_5
+            name: Echo Show
+      - type: glance
+        entities:
+          - entity: light.en_suite_light
+            name: En-Suite
+            tap_action:
+              action: toggle
+          - entity: switch.0x158d0001a6596b_channel_2
+            name: En-Suite Fan
+            tap_action:
+              action: toggle
+      

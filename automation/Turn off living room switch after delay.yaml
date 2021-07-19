@@ -1,3 +1,4 @@
+id: turn_off_living_room_switch_with_delay_when_light_off
 alias: Turn off Living room switch with delay  when light off
 description: Turn off Living room switch after delay
 trigger:

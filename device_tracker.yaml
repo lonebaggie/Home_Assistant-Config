@@ -1,3 +1,7 @@
-  - platform: asuswrt
-    interval_seconds: 100
+  - platform: arris_tg2492lg
+    host: 192.168.0.1
+    password: !secret virgin_password
+    interval_seconds: 10
     consider_home: 180
+    new_device_defaults:
+      track_new_devices: true

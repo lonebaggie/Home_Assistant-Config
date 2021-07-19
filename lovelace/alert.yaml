@@ -3,11 +3,22 @@ path: alert
 icon: 'mdi:alert-circle-outline'
 badges: []
 cards:
-  - type: vertical-stack
+  - type: grid
     title: Alerts
+    columns: 1
+    square: false
     cards:
+      - type: markdown
+        
+        content: >
+            **Quote of the day**  
+            
+            ## {{ state_attr("sensor.quote_of_the_day","quote") }}  
+            
+            *{{ state_attr("sensor.quote_of_the_day","author") }}* 
+            
       - type: 'custom:auto-entities'
-        show_empty: true
+        show_empty: false
         card:
           type: glance
           columns: 4
@@ -31,9 +42,7 @@ cards:
               state: 'on'
             - entity_id: binary_sensor.*_door
               state: 'on'
-            - entity_id: binary_sensor.hall_toilet_leak_sensor
-              state: 'on'
-            - entity_id: binary_sensor.utility_leak_sensor
+            - entity_id: binary_sensor.*_leak_sensor
               state: 'on'
             - entity_id: binary_sensor.*_motion
               state: 'on'
@@ -47,12 +56,10 @@ cards:
             - entity_id: light.downstairs
             - entity_id: light.upstairs
             - entity_id: light.all_living_room
-            - entity_id: light.tradfri
             - entity_id: light.dining_room
             - entity_id: light.sitting_room    
             - entity_id: sensor.tilt_angle
             - entity_id: sensor.zoe_battery_temperature
-            - entity_id: media_player.gigablue
             - entity_id: switch.*shuffle*
             - entity_id: switch.*repeat*
             - entity_id: switch.*disturb*
@@ -73,6 +80,9 @@ cards:
           type: markdown
           content: >
             ## Community updates avaliable
+            % for repo in states.sensor.hacs.attributes.repositories %}
+              {{ repo.display_name }} new version {{ repo["available_version"] }}
+            {% endfor %}
   
       - type: conditional
         conditions:
@@ -90,5 +100,6 @@ cards:
         card:
           type: markdown
           content: >
-            ## HA update  
-            {{states.binary_sensor.updater.attributes.newest_version}} ready
+            ## Home Assistant {{states.binary_sensor.updater.attributes.newest_version}} ready 
+            
+            <{{states.binary_sensor.updater.attributes.release_notes}}>

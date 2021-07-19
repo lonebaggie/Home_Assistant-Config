@@ -3,117 +3,117 @@
   icon: 'mdi:rocket'
   badges: []
   cards:
-    - type: vertical-stack
-      title: Rockets
-      cards:
-        - type: horizontal-stack
-          cards:
-            - type: entities
-              entities:
-              - type: custom:template-entity-row
-                entity: sensor.rocket_launch_1
-                name: "{{states.sensor.rocket_launch_1.attributes.name}}"
-                state: >
-                  {% if states.sensor.rocket_launch_1.attributes.launch_24h_warning == 'true' or
-                        states.sensor.rocket_launch_1.attributes.launch_20m_warning == 'true' %}
-                     {% set time = states.sensor.rocket_launch_1.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
-                     {% set hours = ((time % 86400) // 3600) %}
-                     {% set minutes = ((time % 3600) // 60) %}
-                     {% if states.sensor.rocket_launch_1.attributes.launch_24h_warning == 'true' %}
-                       {{hours|int}} hrs {{minutes|int}} mins
-                     {% endif %}
-                     {% if states.sensor.rocket_launch_1.attributes.launch_20m_warning == 'true' %}
-                        {{minutes|int}} mins
-                     {% endif %}
-                  {% else %}
-                     {{states.sensor.rocket_launch_1.attributes.launch_date_target}}
-                   {% endif %} 
-                secondary: >
-                  {{states.sensor.rocket_launch_1.attributes.provider}} 
-                  {{states.sensor.rocket_launch_1.attributes.vehicle}}
-              - type: custom:template-entity-row
-                entity: sensor.rocket_launch_2
-                name: "{{states.sensor.rocket_launch_2.attributes.name}}"
-                state: >
-                  {% if states.sensor.rocket_launch_2.attributes.launch_24h_warning == 'true' or
-                        states.sensor.rocket_launch_2.attributes.launch_20m_warning == 'true' %}
-                     {% set time = states.sensor.rocket_launch_2.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
-                     {% set hours = ((time % 86400) // 3600) %}
-                     {% set minutes = ((time % 3600) // 60) %}
-                     {% if states.sensor.rocket_launch_2.attributes.launch_24h_warning == 'true' %}
-                       {{hours|int}} hrs {{minutes|int}} mins
-                     {% endif %}
-                     {% if states.sensor.rocket_launch_2.attributes.launch_20m_warning == 'true' %}
-                        {{minutes|int}} mins
-                     {% endif %}
-                  {% else %}
-                     {{states.sensor.rocket_launch_2.attributes.launch_date_target}}
-                   {% endif %} 
-                secondary: >
-                  {{states.sensor.rocket_launch_2.attributes.provider}} 
-                  {{states.sensor.rocket_launch_2.attributes.vehicle}}
-              - type: custom:template-entity-row
-                entity: sensor.rocket_launch_3
-                name: "{{states.sensor.rocket_launch_3.attributes.name}}"
-                state: >
-                  {% if states.sensor.rocket_launch_3.attributes.launch_24h_warning == 'true' or
-                        states.sensor.rocket_launch_3.attributes.launch_20m_warning == 'true' %}
-                     {% set time = states.sensor.rocket_launch_3.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
-                     {% set hours = ((time % 86400) // 3600) %}
-                     {% set minutes = ((time % 3600) // 60) %}
-                     {% if states.sensor.rocket_launch_3.attributes.launch_24h_warning == 'true' %}
-                       {{hours|int}} hrs {{minutes|int}} mins
-                     {% endif %}
-                     {% if states.sensor.rocket_launch_3.attributes.launch_20m_warning == 'true' %}
-                        {{minutes|int}} mins
-                     {% endif %}
-                  {% else %}
-                     {{states.sensor.rocket_launch_3.attributes.launch_date_target}}
-                   {% endif %} 
-                secondary: >
-                  {{states.sensor.rocket_launch_3.attributes.provider}} 
-                  {{states.sensor.rocket_launch_3.attributes.vehicle}}
-              - type: custom:template-entity-row
-                entity: sensor.rocket_launch_4
-                name: "{{states.sensor.rocket_launch_4.attributes.name}}"
-                state: >
-                  {% if states.sensor.rocket_launch_4.attributes.launch_24h_warning == 'true' or
-                        states.sensor.rocket_launch_4.attributes.launch_20m_warning == 'true' %}
-                     {% set time = states.sensor.rocket_launch_4.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
-                     {% set hours = ((time % 86400) // 3600) %}
-                     {% set minutes = ((time % 3600) // 60) %}
-                     {% if states.sensor.rocket_launch_4.attributes.launch_24h_warning == 'true' %}
-                       {{hours|int}} hrs {{minutes|int}} mins
-                     {% endif %}
-                     {% if states.sensor.rocket_launch_4.attributes.launch_20m_warning == 'true' %}
-                        {{minutes|int}} mins
-                     {% endif %}
-                  {% else %}
-                     {{states.sensor.rocket_launch_4.attributes.launch_date_target}}
-                   {% endif %} 
-                secondary: >
-                  {{states.sensor.rocket_launch_4.attributes.provider}} 
-                  {{states.sensor.rocket_launch_4.attributes.vehicle}}
-              - type: custom:template-entity-row
-                entity: sensor.rocket_launch_5
-                name: "{{states.sensor.rocket_launch_5.attributes.name}}"
-                state: >
-                  {% if states.sensor.rocket_launch_5.attributes.launch_24h_warning == 'true' or
-                        states.sensor.rocket_launch_5.attributes.launch_20m_warning == 'true' %}
-                     {% set time = states.sensor.rocket_launch_5.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
-                     {% set hours = ((time % 86400) // 3600) %}
-                     {% set minutes = ((time % 3600) // 60) %}
-                     {% if states.sensor.rocket_launch_5.attributes.launch_24h_warning == 'true' %}
-                       {{hours|int}} hrs {{minutes|int}} mins
-                     {% endif %}
-                     {% if states.sensor.rocket_launch_5.attributes.launch_20m_warning == 'true' %}
-                        {{minutes|int}} mins
-                     {% endif %}
-                  {% else %}
-                     {{states.sensor.rocket_launch_5.attributes.launch_date_target}}
-                   {% endif %} 
-                secondary: >
-                  {{states.sensor.rocket_launch_5.attributes.provider}} 
-                  {{states.sensor.rocket_launch_5.attributes.vehicle}}
-                  
-                  
+  - type: grid
+    title: Rockets
+    columns: 1
+    square: false
+    cards:
+      - type: entities
+        entities:
+        - type: custom:template-entity-row
+          entity: sensor.rocket_launch_1
+          name: "{{states.sensor.rocket_launch_1.attributes.name}}"
+          state: >
+            {% if states.sensor.rocket_launch_1.attributes.launch_24h_warning == 'true' or
+                  states.sensor.rocket_launch_1.attributes.launch_20m_warning == 'true' %}
+               {% set time = states.sensor.rocket_launch_1.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
+               {% set hours = ((time % 86400) // 3600) %}
+               {% set minutes = ((time % 3600) // 60) %}
+               {% if states.sensor.rocket_launch_1.attributes.launch_24h_warning == 'true' %}
+                 {{hours|int}} hrs {{minutes|int}} mins
+               {% endif %}
+               {% if states.sensor.rocket_launch_1.attributes.launch_20m_warning == 'true' %}
+                  {{minutes|int}} mins
+               {% endif %}
+            {% else %}
+               {{states.sensor.rocket_launch_1.attributes.launch_date_target}}
+             {% endif %} 
+          secondary: >
+            {{states.sensor.rocket_launch_1.attributes.provider}} 
+            {{states.sensor.rocket_launch_1.attributes.vehicle}}
+        - type: custom:template-entity-row
+          entity: sensor.rocket_launch_2
+          name: "{{states.sensor.rocket_launch_2.attributes.name}}"
+          state: >
+            {% if states.sensor.rocket_launch_2.attributes.launch_24h_warning == 'true' or
+                  states.sensor.rocket_launch_2.attributes.launch_20m_warning == 'true' %}
+               {% set time = states.sensor.rocket_launch_2.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
+               {% set hours = ((time % 86400) // 3600) %}
+               {% set minutes = ((time % 3600) // 60) %}
+               {% if states.sensor.rocket_launch_2.attributes.launch_24h_warning == 'true' %}
+                 {{hours|int}} hrs {{minutes|int}} mins
+               {% endif %}
+               {% if states.sensor.rocket_launch_2.attributes.launch_20m_warning == 'true' %}
+                  {{minutes|int}} mins
+               {% endif %}
+            {% else %}
+               {{states.sensor.rocket_launch_2.attributes.launch_date_target}}
+             {% endif %} 
+          secondary: >
+            {{states.sensor.rocket_launch_2.attributes.provider}} 
+            {{states.sensor.rocket_launch_2.attributes.vehicle}}
+        - type: custom:template-entity-row
+          entity: sensor.rocket_launch_3
+          name: "{{states.sensor.rocket_launch_3.attributes.name}}"
+          state: >
+            {% if states.sensor.rocket_launch_3.attributes.launch_24h_warning == 'true' or
+                  states.sensor.rocket_launch_3.attributes.launch_20m_warning == 'true' %}
+               {% set time = states.sensor.rocket_launch_3.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
+               {% set hours = ((time % 86400) // 3600) %}
+               {% set minutes = ((time % 3600) // 60) %}
+               {% if states.sensor.rocket_launch_3.attributes.launch_24h_warning == 'true' %}
+                 {{hours|int}} hrs {{minutes|int}} mins
+               {% endif %}
+               {% if states.sensor.rocket_launch_3.attributes.launch_20m_warning == 'true' %}
+                  {{minutes|int}} mins
+               {% endif %}
+            {% else %}
+               {{states.sensor.rocket_launch_3.attributes.launch_date_target}}
+             {% endif %} 
+          secondary: >
+            {{states.sensor.rocket_launch_3.attributes.provider}} 
+            {{states.sensor.rocket_launch_3.attributes.vehicle}}
+        - type: custom:template-entity-row
+          entity: sensor.rocket_launch_4
+          name: "{{states.sensor.rocket_launch_4.attributes.name}}"
+          state: >
+            {% if states.sensor.rocket_launch_4.attributes.launch_24h_warning == 'true' or
+                  states.sensor.rocket_launch_4.attributes.launch_20m_warning == 'true' %}
+               {% set time = states.sensor.rocket_launch_4.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
+               {% set hours = ((time % 86400) // 3600) %}
+               {% set minutes = ((time % 3600) // 60) %}
+               {% if states.sensor.rocket_launch_4.attributes.launch_24h_warning == 'true' %}
+                 {{hours|int}} hrs {{minutes|int}} mins
+               {% endif %}
+               {% if states.sensor.rocket_launch_4.attributes.launch_20m_warning == 'true' %}
+                  {{minutes|int}} mins
+               {% endif %}
+            {% else %}
+               {{states.sensor.rocket_launch_4.attributes.launch_date_target}}
+             {% endif %} 
+          secondary: >
+            {{states.sensor.rocket_launch_4.attributes.provider}} 
+            {{states.sensor.rocket_launch_4.attributes.vehicle}}
+        - type: custom:template-entity-row
+          entity: sensor.rocket_launch_5
+          name: "{{states.sensor.rocket_launch_5.attributes.name}}"
+          state: >
+            {% if states.sensor.rocket_launch_5.attributes.launch_24h_warning == 'true' or
+                  states.sensor.rocket_launch_5.attributes.launch_20m_warning == 'true' %}
+               {% set time = states.sensor.rocket_launch_5.attributes.launch_target_timestamp|float - as_timestamp(utcnow()) %}
+               {% set hours = ((time % 86400) // 3600) %}
+               {% set minutes = ((time % 3600) // 60) %}
+               {% if states.sensor.rocket_launch_5.attributes.launch_24h_warning == 'true' %}
+                 {{hours|int}} hrs {{minutes|int}} mins
+               {% endif %}
+               {% if states.sensor.rocket_launch_5.attributes.launch_20m_warning == 'true' %}
+                  {{minutes|int}} mins
+               {% endif %}
+            {% else %}
+               {{states.sensor.rocket_launch_5.attributes.launch_date_target}}
+             {% endif %} 
+          secondary: >
+            {{states.sensor.rocket_launch_5.attributes.provider}} 
+            {{states.sensor.rocket_launch_5.attributes.vehicle}}
+            
+            

@@ -4,8 +4,10 @@ path: livingroom
 icon: 'mdi:sofa'
 badges: []
 cards:
-  - type: vertical-stack
-    title: Living Room
+  - type: grid
+    title: Living room
+    columns: 1
+    square: false
     cards:
       - type: custom:layout-card
         layout_type: horizontal

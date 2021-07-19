@@ -10,31 +10,20 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/London
+  internal_url: "http://192.168.0.254:8123"
   # Customization file
   customize: !include customize.yaml
-  whitelist_external_dirs:
-    - /config/python_scripts
-
 # Enables the frontend
-
 frontend:
   themes: !include_dir_merge_named themes
 system_health:
 
 mobile_app:
-
 # Database 
 recorder:
 discovery:  
 # Enables configuration UI
 config:
-http:
-  # Secrets are defined in the file secrets.yaml
-  #api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running 
-  # in Docker container, etc.
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
 # Checks for available updates
 # Note: This component will send some information about your system to
 # the developers to assist with development of Home Assistant.
@@ -45,12 +34,10 @@ updater:
   # include_used_components: true
 # Discover some devices automatically
 #discovery:
-#  ignore:
-#  - google_cast
-# Allows you to issue voice commands from the frontend in enabled browsers
 hassio:
 conversation:
 
+  
 # Enables support for tracking state changes over time
 logger:
   default: warn
@@ -86,7 +73,9 @@ lovelace:
       type: module
     - url: /hacsfiles/channel-pad/card-channel-pad.js
       type: module
-
+    - url: /hacsfiles/flex-horseshoe-card/flex-horseshoe-card.js
+      type: module
+    
 
 history:
 
@@ -109,6 +98,7 @@ cover: !include cover.yaml
 cloud: !include cloud.yaml 
 automation old: !include_dir_list automation/
 automation: !include automations.yaml
+device_tracker: !include device_tracker.yaml
 group: !include group.yaml
 script: !include_dir_merge_named script
 input_select: !include input_select.yaml
@@ -128,12 +118,12 @@ xiaomi_gateway3:
   debug: true
 wake_on_lan: # enables `wake_on_lan` domain
 webostv:
-  host: 192.168.0.19
+  host: 192.168.0.35
   #other settings
   turn_on_action:
     service: wake_on_lan.send_magic_packet
     data:
-      mac: 64:95:6C:FD:0D:5F
+      mac: B4:B2:91:63:49:41
       broadcast_address: 192.168.0.255
   customize:
     sources:
@@ -142,10 +132,10 @@ webostv:
       - Amazon Prime Video
       - BBC Sounds
       - BBC iPlayer
-      - Blu-ray Player
+      - LG
       - Disney+
       - Live TV
-      - NOW TV
+      - NOW
       - Netflix
       - Web Browser
       - YouTube

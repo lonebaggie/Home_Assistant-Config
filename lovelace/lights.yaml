@@ -4,8 +4,10 @@
   icon: 'mdi:lightbulb'
   badges: []
   cards:
-    - type: vertical-stack
+    - type: grid
       title: Lights
+      columns: 1
+      square: false
       cards:
         - type: 'custom:auto-entities'
           card:

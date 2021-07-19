@@ -4,9 +4,11 @@
   icon: mdi:video
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Media & Camera's
-      cards:
+  - type: grid
+    title: Media
+    columns: 1
+    square: false
+    cards:
         - type: custom:auto-entities
           card:
             type: glance

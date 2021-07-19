@@ -4,8 +4,10 @@
   icon: 'mdi:bed'
   badges: []
   cards:
-    - type: horizontal-stack
-      title: Maddy
+    - type: grid
+      title: Maddy room 
+      columns: 2
+      square: false
       cards:
         - type: glance
           columns: 2
@@ -13,6 +15,8 @@
             - entity: light.maddy
               name: Light 
               tap_action:
-                action: toggle     
+                action: toggle   
+            - entity: sensor.0x158d00018721c6_action
+              name: Button
         - type: 'custom:gap-card' 
       
