@@ -5,12 +5,12 @@ trigger:
   platform: state
 variables:
   opt: >
-    {% set sp = states.input_select.speak_list.state %}
+    {% set sp = states('input_select.speak_list') %}
     {% set no = sp.find("(c")+2 %}
     {{sp[no:no+2]|int}}
 condition:
   - condition: template
-    value_template: '{{states.input_select.speak_list.state != "do not use"  }}'
+    value_template: "{{states('input_select.speak_list') != 'do not use'  }}"
 action:
   - service_template: >
         {% set name = states('sensor.last_alexa').split('.') %}
@@ -20,7 +20,7 @@ action:
         type: tts
       message: >
         {% set ns=namespace(speak = "") %}
-        {% set ns.speak = states.input_select.speak_list.state %}
+        {% set ns.speak = states('input_select.speak_list') %}
         {% set dy = {'opening': ('closed','open'),'window':('closed','open'),
           'door': ('closed','open'),'garage_door':('closed','open'),
           'lock':('locked','unlocked'),'presence':('home','away'),
